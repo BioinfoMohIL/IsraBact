@@ -23,12 +23,6 @@ workflow sbt_analysis {
         docker      = docker
     }
 
-    call v.version_capture {
-        input:
-    }
-
-  
-
     output {
         String test = version_capture.version
         String sbt_elgato_version = elgato_reads.elgato_version
