@@ -1,0 +1,20 @@
+version: 1.2
+workflows:
+  - name: Species_Detection_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/theiaeuk/wf_species_detection.wdl
+
+  - name: SBT_Legionella_MOH 
+    subclass: WDL
+    primaryDescriptorPath: /workflows/wf_sbt_analysis.wdl
+
+  - name: Basespace_Fetcher_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/utilities/data_import/wf_basespace_fetch.wdl
+
+  - name: Strep_Typing_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/wf_strep_typing.wdl
+
+
+
