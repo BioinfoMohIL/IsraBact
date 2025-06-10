@@ -2,6 +2,7 @@ version 1.0
 
 import "../tasks/tasks_versioning.wdl" as versioning_task
 import "../tasks/utilities/data_import/task_basespace_cli.wdl" as basespace
+import "../tasks/metagenomics/task_detect_species.wdl" as metagenomics
 
 workflow species_detection {
     meta {
@@ -35,7 +36,7 @@ workflow species_detection {
             access_token = access_token
         }
 
-        call Detect_Species {
+        call metagenomics.detect_species as detect_species {
             input:
                 read1 = fetch_bs.read1,
                 read2 = fetch_bs.read2,
@@ -46,7 +47,7 @@ workflow species_detection {
 
     call merge_reports {
         input:
-            species_detected_list = Detect_Species.sample_detected
+            species_detected_list = detect_species.sample_detected
     }
 
     call version_capture {
