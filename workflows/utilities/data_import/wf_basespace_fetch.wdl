@@ -1,7 +1,7 @@
 version 1.0
 
-import "/tasks/tasks_versioning.wdl" as versioning
-import "/tasks/utilities/data_import/task_basespace_cli.wdl" as basespace
+import "../../../tasks/tasks_versioning.wdl" as versioning
+import "../../../tasks/utilities/data_import/task_basespace_cli.wdl" as basespace
 
 workflow basespace_fetch {
   meta {
