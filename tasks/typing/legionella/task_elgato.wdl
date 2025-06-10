@@ -6,6 +6,8 @@ task elgato_reads {
     File read2
     String samplename
     String docker
+    
+    Int cpu = 8
   }
 
   command <<<
@@ -37,8 +39,8 @@ task elgato_reads {
 
   runtime {
     docker: docker
-    memory: "8 GiB"
-    cpu: 8
+    memory: "~{cpu} GB"
+    cpu: ~{cpu}
   }
 
 }
