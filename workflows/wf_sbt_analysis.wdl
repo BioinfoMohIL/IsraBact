@@ -1,6 +1,6 @@
 version 1.0
 
-import '../tasks/typing/legionella/tasks_versioning.wdl' as v
+import '../tasks/tasks_versioning.wdl' as v
 
 task elgato_reads {
   input {
