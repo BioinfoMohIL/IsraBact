@@ -1,7 +1,7 @@
 version 1.0
 
-import "../tasks/tasks_versioning.wdl" as versioning
-import "../tasks/typing/streptococcus/task_seroba_v2" as seroba_v2
+import "/tasks/tasks_versioning.wdl" as versioning
+import "/tasks/typing/streptococcus/task_seroba_v2.wdl" as seroba_v2
 
 workflow strep_typing {
     meta {
