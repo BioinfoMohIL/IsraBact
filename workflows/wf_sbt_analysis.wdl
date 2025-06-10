@@ -24,7 +24,6 @@ workflow sbt_analysis {
     }
 
     output {
-        String test = version_capture.version
         String sbt_elgato_version = elgato_reads.elgato_version
         String sbt_elgato_reads = elgato_reads.sbt
         File sbt_elgato_possible_sts = elgato_reads.possible_mlsts
