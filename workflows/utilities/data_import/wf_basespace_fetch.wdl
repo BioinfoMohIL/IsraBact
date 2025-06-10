@@ -36,10 +36,8 @@ workflow basespace_fetch {
   output {
     String basespace_fetch_version = version_capture.version
     String basespace_fetch_analysis_date = version_capture.date
-    
     File read1 = fetch_bs.read1
     File? read2 = fetch_bs.read2
-
     Float read1_file_size_mb = fetch_bs.fwd_file_size
     Float read2_file_size_mb = fetch_bs.rev_file_size
     Float bs_read1_file_size_mb = fetch_bs.bs_fwd_file_size
