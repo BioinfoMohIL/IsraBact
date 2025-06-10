@@ -1,6 +1,6 @@
 version 1.0
 
-import '../tasks/typing/task_elgato.wdl' as elgato
+import '../tasks/typing/legionella/task_elgato.wdl' as elgato
 
 workflow sbt_analysis {
     meta {
