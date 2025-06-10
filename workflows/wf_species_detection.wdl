@@ -50,14 +50,9 @@ workflow species_detection {
             species_detected_list = detect_species.sample_detected
     }
 
-    call versioning.version_capture {
-        input:
-    }
-
+  
     output {
-        String basespace_fetch_version = version_capture.version
-        String basespace_fetch_analysis_date = version_capture.date
-
+    
         File reads_list = get_reads_list.reads_list
         Array[String] samples_name = get_reads_list.samples_name
         File species_detected = merge_reports.species_detected
