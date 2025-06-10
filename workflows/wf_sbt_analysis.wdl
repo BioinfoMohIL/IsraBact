@@ -1,6 +1,6 @@
 version 1.0
 
-import "../tasks/tasks_versioning.wdl" as versioning_task
+import "../tasks/tasks_versioning.wdl" as versioning
 import '../tasks/typing/legionella/task_elgato.wdl' as elgato
 
 workflow sbt_analysis {
@@ -18,7 +18,7 @@ workflow sbt_analysis {
     }
 
     
-    call elgato.elgato_reads as elgato_reads{
+    call elgato.elgato_reads {
         input:
         read1       = read1,
         read2       = read2,
@@ -26,7 +26,7 @@ workflow sbt_analysis {
         docker      = docker
     }
 
-    call version_capture {
+    call versioning.version_capture {
         input:
     }
 

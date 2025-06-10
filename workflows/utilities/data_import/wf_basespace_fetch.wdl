@@ -1,6 +1,6 @@
 version 1.0
 
-import "../../../tasks/tasks_versioning.wdl" as versioning_task
+import "../../../tasks/tasks_versioning.wdl" as versioning
 import "../../../tasks/utilities/data_import/task_basespace_cli.wdl" as basespace
 
 workflow basespace_fetch {
@@ -29,7 +29,7 @@ workflow basespace_fetch {
       access_token = access_token
   }
 
-  call version_capture {
+  call versioning.version_capture {
     input:
   }
 
