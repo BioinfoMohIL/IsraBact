@@ -15,13 +15,14 @@ task elgato_reads {
     
     el_gato.py --read1 ~{read1} --read2 ~{read2} --out ./out
   
-  
     st=$(awk -F "\t" 'NR==2 {print $2}' ./out/possible_mlsts.txt)
+    
     if [ -z "$st" ]; then
       st="No ST predicted!"
     else
       st="ST"$st
     fi
+    
     echo $st > SBT
 
     mv out/possible_mlsts.txt ~{samplename}_possible_mlsts.txt
