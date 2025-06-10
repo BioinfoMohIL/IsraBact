@@ -3,8 +3,7 @@ workflows:
   - name: Species_Detection_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/wf_species_detection.wdl
-
-  - name: Legionella_Typing_MOH 
+  - name: SBT_Legionella_MOH 
     subclass: WDL
     primaryDescriptorPath: /workflows/wf_legionella_typing.wdl
 
