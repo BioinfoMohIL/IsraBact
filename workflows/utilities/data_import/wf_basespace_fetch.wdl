@@ -42,7 +42,6 @@ workflow basespace_fetch {
 
     Float read1_file_size_mb = fetch_bs.fwd_file_size
     Float read2_file_size_mb = fetch_bs.rev_file_size
-
     Float bs_read1_file_size_mb = fetch_bs.bs_fwd_file_size
     Float bs_read2_file_size_mb = fetch_bs.bs_rev_file_size
   }
