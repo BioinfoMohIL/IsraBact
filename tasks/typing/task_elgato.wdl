@@ -38,7 +38,8 @@ task elgato_reads {
   runtime {
     docker: docker
     memory: "8G"
-    cpu: 2
+    cpu: 8
   }
+
 }
 
