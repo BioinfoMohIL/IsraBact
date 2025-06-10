@@ -1,6 +1,5 @@
 version 1.0
 
-import "../tasks/tasks_versioning.wdl" as versioning
 import '../tasks/typing/legionella/task_elgato.wdl' as elgato
 
 workflow sbt_analysis {
@@ -26,19 +25,14 @@ workflow sbt_analysis {
         docker      = docker
     }
 
-    call versioning.version_capture {
-        input:
-    }
+  
 
     output {
-        String basespace_fetch_version = version_capture.phb_version
-        String basespace_fetch_analysis_date = version_capture.date
-
         String sbt_elgato_version = elgato_reads.elgato_version
-        String sbt = elgato_reads.sbt
-        File sbt_possible_sts = elgato_reads.possible_mlsts
-        File sbt_inter_out = elgato_reads.intermediate_outputs
-        File sbt_alleles = elgato_reads.alleles
+        String sbt_elgato_reads = elgato_reads.sbt
+        File sbt_elgato_possible_sts = elgato_reads.possible_mlsts
+        File sbt_elgato_inter_out = elgato_reads.intermediate_outputs
+        File sbt_elgato_alleles = elgato_reads.alleles
     }
 }
 

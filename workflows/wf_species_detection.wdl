@@ -1,6 +1,5 @@
 version 1.0
 
-import "../tasks/tasks_versioning.wdl" as versioning
 import "../tasks/utilities/data_import/task_basespace_cli.wdl" as basespace
 import "../tasks/metagenomics/task_detect_species.wdl" as metagenomics
 
@@ -30,6 +29,7 @@ workflow species_detection {
     scatter(sample_name in get_reads_list.samples_name) {
         call basespace.fetch_bs as fetch_bs {
           input:
+            sample_name = sample_name,
             basespace_sample_name = sample_name,
             basespace_collection_id = basespace_collection_id,
             api_server = api_server,
@@ -55,7 +55,7 @@ workflow species_detection {
     }
 
     output {
-        String basespace_fetch_version = version_capture.phb_version
+        String basespace_fetch_version = version_capture.version
         String basespace_fetch_analysis_date = version_capture.date
 
         File reads_list = get_reads_list.reads_list

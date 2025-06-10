@@ -3,7 +3,7 @@ version 1.0
 task version_capture {
   input {
     String? timezone
-    String docker = "alpine:3.22.0"
+    String docker = "debian:12-slim"
   }
   meta {
     volatile: true

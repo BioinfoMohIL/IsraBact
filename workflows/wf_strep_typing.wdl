@@ -1,7 +1,6 @@
 version 1.0
 
-import "../tasks/tasks_versioning.wdl" as versioning
-import "../tasks/typing/streptococcus/task_seroba_v2.wdl" as seroba_v2
+import "../tasks/typing/streptococcus/task_seroba_v2.wdl" as seroba
 
 workflow strep_typing {
     meta {
@@ -16,27 +15,22 @@ workflow strep_typing {
         String samplename 
     }
 
-    call seroba_v2 as seroba {
+    call seroba.seroba_v2  {
         input:
             read1 = read1,
             read2 = read2,
             samplename = samplename
     }
 
-    call versioning.version_capture {
-        input:
-    }
+   
 
     output {
-        String basespace_fetch_version = version_capture.phb_version
-        String basespace_fetch_analysis_date = version_capture.date
-
-        String seroba_v2_version = seroba.seroba_version
-        String seroba_v2_docker = seroba.seroba_docker
-        String seroba_v2_serotype = seroba.seroba_serotype
-        String? seroba_v2_ariba_serotype = seroba.seroba_ariba_serotype
-        String? seroba_v2_ariba_identity = seroba.seroba_ariba_identity
-        File? seroba_v2_details = seroba.seroba_details
+        String seroba_v2_version = seroba_v2.seroba_version
+        String seroba_v2_docker = seroba_v2.seroba_docker
+        String seroba_v2_serotype = seroba_v2.seroba_serotype
+        String? seroba_v2_ariba_serotype = seroba_v2.seroba_ariba_serotype
+        String? seroba_v2_ariba_identity = seroba_v2.seroba_ariba_identity
+        File? seroba_v2_details = seroba_v2.seroba_details
     }
 
 }

@@ -1,0 +1,6 @@
+{
+    "sbt_analysis.read1": "genomes/LG214_1.clean.fastq.gz",
+    "sbt_analysis.read2": "genomes/LG214_2.clean.fastq.gz",
+    "sbt_analysis.samplename": "LG214"
+
+}
