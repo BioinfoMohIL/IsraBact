@@ -5,7 +5,7 @@ workflows:
     primaryDescriptorPath: /workflows/wf_species_detection.wdl
   - name: SBT_Legionella_MOH 
     subclass: WDL
-    primaryDescriptorPath: /workflows/wf_sbt_analysis.wdl
+    primaryDescriptorPath: /workflows/wf_v.wdl
   - name: Basespace_Fetcher_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/utilities/data_import/wf_basespace_fetch.wdl
