@@ -14,7 +14,6 @@ workflow sbt_analysis {
         String docker = "staphb/elgato:1.21.2"
     }
 
-    
     call elgato_reads {
         input:
         read1       = read1,

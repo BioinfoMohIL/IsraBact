@@ -22,8 +22,6 @@ workflow strep_typing {
             samplename = samplename
     }
 
-   
-
     output {
         String seroba_v2_version = seroba_v2.seroba_version
         String seroba_v2_docker = seroba_v2.seroba_docker
