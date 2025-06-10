@@ -62,7 +62,7 @@ workflow sbt_analysis {
     }
 
     
-    call elgato.elgato_reads {
+    call elgato_reads {
         input:
         read1       = read1,
         read2       = read2,
