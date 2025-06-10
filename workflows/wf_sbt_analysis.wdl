@@ -1,6 +1,6 @@
 version 1.0
 
-import "../tasks/task_versioning.wdl" as versioning_task
+import "../tasks/tasks_versioning.wdl" as versioning_task
 import '../tasks/typing/legionella/task_elgato.wdl' as elgato
 
 workflow sbt_analysis {
@@ -33,7 +33,7 @@ workflow sbt_analysis {
     output {
         String basespace_fetch_version = version_capture.phb_version
         String basespace_fetch_analysis_date = version_capture.date
-        
+
         String sbt_elgato_version = elgato_reads.elgato_version
         String sbt = elgato_reads.sbt
         File sbt_possible_sts = elgato_reads.possible_mlsts

@@ -1,6 +1,6 @@
 version 1.0
 
-import "../tasks/task_versioning.wdl" as versioning_task
+import "../tasks/tasks_versioning.wdl" as versioning_task
 import "../tasks/typing/streptococcus/task_seroba_v2" as seroba_v2
 
 workflow strep_typing {
@@ -30,7 +30,7 @@ workflow strep_typing {
     output {
         String basespace_fetch_version = version_capture.phb_version
         String basespace_fetch_analysis_date = version_capture.date
-        
+
         String seroba_v2_version = seroba.seroba_version
         String seroba_v2_docker = seroba.seroba_docker
         String seroba_v2_serotype = seroba.seroba_serotype
