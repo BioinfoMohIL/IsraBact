@@ -9,7 +9,7 @@ workflows:
   - name: Basespace_Fetcher_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/utilities/data_import/wf_basespace_fetch.wdl
-  - name: Strep_Typing_MOH
+  - name: Streptococcus_Typing_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/wf_strep_typing.wdl
 
