@@ -2,7 +2,7 @@ version 1.0
 
 workflow legionella_typing {
     meta {
-        description: "SBT Legionella pneumophila isolates using the elgato tool."
+        description: "SBT Legionella pneumophila isolates."
         author: "David Maimoun"
         organization: "MOH Jerusalem"
     }
