@@ -4,9 +4,9 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/wf_species_detection.wdl
 
-  - name: Legionella_Typing_MOH 
+  - name: Legionella_Typing_Elgato_MOH 
     subclass: WDL
-    primaryDescriptorPath: /workflows/wf_legionella_typing.wdl
+    primaryDescriptorPath: /workflows/wf_legionella_typing_elgato.wdl
 
   - name: Basespace_Fetcher_MOH
     subclass: WDL
