@@ -1,6 +1,6 @@
 version 1.0
 
-workflow sbt_analysis {
+workflow legionella_typing {
     meta {
         description: "SBT Legionella pneumophila isolates using the elgato tool."
         author: "David Maimoun"

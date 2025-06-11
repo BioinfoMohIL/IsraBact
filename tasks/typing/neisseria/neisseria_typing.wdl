@@ -15,7 +15,6 @@ task neisseria_typing {
         # Join them into a comma-separated string for argparse
         files_arg=$(IFS=, ; echo "${val[*]}")
 
-        # Call Python
         neisseria_typing --input ~{assembly} --output results --output_csv_file typing_report.csv --files "$files_arg" --split
     >>>
 
@@ -71,6 +70,7 @@ task serogrouping {
 
     runtime {
         docker: "bioinfomoh/nm_completion_analysis:1"
+        cpu: 8
         maxRetries: 3
 
     }

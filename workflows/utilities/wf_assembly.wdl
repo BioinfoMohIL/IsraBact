@@ -1,10 +1,10 @@
 version 1.0
 
-import "../tasks/qc/trimming.wdl" as trimming
-import "../tasks/qc/assembly_qc.wdl" as assembly_qc
-import "../tasks/qc/reads_qc.wdl" as reads_qc
-import "../tasks/qc/cg_pipeline.wdl" as cg
-import "../tasks/assembly.wdl" as assembly
+import "../../tasks/qc/task_trimming.wdl" as trimming
+import "../../tasks/qc/task_assembly_qc.wdl" as assembly_qc
+import "../../tasks/qc/task_reads_qc.wdl" as reads_qc
+import "../../tasks/qc/task_cg_pipeline.wdl" as cg
+import "../../tasks/assembly/task_assembly.wdl" as assemble_reads
 
 
 workflow assembly {
@@ -44,7 +44,7 @@ workflow assembly {
         read2 = trimmomatic.read2_trimmed
     }
     
-    call assembly.shovill as shovill {
+    call assemble_reads.shovill as shovill {
         input:
             samplename = samplename,
             read1 = trimmomatic.read1_trimmed,

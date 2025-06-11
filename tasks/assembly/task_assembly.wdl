@@ -7,7 +7,7 @@ task shovill {
     String samplename
     String docker = "us-docker.pkg.dev/general-theiagen/staphb/shovill:1.1.0"
     Int disk_size = 100
-    Int cpu = 4
+    Int cpu = 16
     Int memory = 16
     Int? depth
     String? genome_length

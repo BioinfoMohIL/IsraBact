@@ -3,9 +3,11 @@ workflows:
   - name: Species_Detection_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/wf_species_detection.wdl
+
   - name: Legionella_Typing_MOH 
     subclass: WDL
     primaryDescriptorPath: /workflows/wf_legionella_typing.wdl
+
   - name: Basespace_Fetcher_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/utilities/data_import/wf_basespace_fetch.wdl
@@ -13,6 +15,16 @@ workflows:
   - name: Streptococcus_Typing_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/wf_strep_typing.wdl
+  
+  - name: Neisseria_Typing_Reads_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/wf_neisseria_typing_reads.wdl
+
+  - name: Neisseria_Typing_Fasta_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/wf_neisseria_typing_fasta.wdl
+
+
 
 
 
