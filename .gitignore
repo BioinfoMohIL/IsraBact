@@ -1,0 +1,17 @@
+genomes/
+work/
+outputs/
+results/
+inputs.json
+*.fastq.gz
+*.bam
+*.vcf
+*.sam
+*.log
+*.zip
+*.gz
+.cache/
+*.tmp
+EOF
+
+
