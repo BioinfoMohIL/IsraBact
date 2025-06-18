@@ -32,10 +32,10 @@ task elgato_reads {
 
   output {    
     String elgato_version = read_string("VERSION")
-    String sbt = read_string("SBT")
-    File possible_mlsts = "~{samplename}_possible_mlsts.txt"
-    File intermediate_outputs = "~{samplename}_intermediate_outputs.txt"
-    File alleles = "~{samplename}_identified_alleles.fna"
+    String elgato_sbt = read_string("SBT")
+    File elgato_possible_mlsts = "~{samplename}_possible_mlsts.txt"
+    File elgato_intermediate_outputs = "~{samplename}_intermediate_outputs.txt"
+    File elgato_alleles = "~{samplename}_identified_alleles.fna"
   }
 
   runtime {

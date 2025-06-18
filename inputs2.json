@@ -1,0 +1,6 @@
+{
+    "species_detection_bs_reads.access_token":"4acb4557c76940d99ed57dfd3212d423",
+    "species_detection_bs_reads.api_server":"https://api.basespace.illumina.com",
+    "species_detection_bs_reads.basespace_collection_id":"N_020",
+    "species_detection_bs_reads.sample_prefix":"NM"
+}

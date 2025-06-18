@@ -10,6 +10,7 @@ task ncbi_scrub_pe {
     Int memory = 8
     Int cpu = 4
   }
+
   command <<<
     # date and version control
     date | tee DATE
@@ -62,12 +63,14 @@ task ncbi_scrub_pe {
       | tee >(cut -f 1-4 | tr '\t' '\n' | gzip > ~{samplename}_R1_dehosted.fastq.gz) \
       | cut -f 5-8 | tr '\t' '\n' | gzip > ~{samplename}_R2_dehosted.fastq.gz
   >>>
+
   output {
     File read1_dehosted = "~{samplename}_R1_dehosted.fastq.gz"
     File read2_dehosted = "~{samplename}_R2_dehosted.fastq.gz"
     Int human_spots_removed = read_int("SPOTS_REMOVED")
     String ncbi_scrub_docker = docker
   }
+
   runtime {
       docker: "~{docker}"
       memory: memory + " GB"
@@ -88,40 +91,43 @@ task ncbi_scrub_se {
     Int memory = 8
     Int cpu = 4
   }
+
   command <<<
-    # date and version control
-    date | tee DATE
+      # date and version control
+      date | tee DATE
 
-    # unzip fwd file as scrub tool does not take in .gz fastq files
-    if [[ "~{read1}" == *.gz ]]
-    then
-      echo "DEGUB: Gzipped input reads detected"
-      echo "Unzipping reads to r1.fastq"
-      gunzip -c ~{read1} > r1.fastq
-      read1_unzip=r1.fastq
-    else
-      read1_unzip=~{read1}
-    fi
+      # unzip fwd file as scrub tool does not take in .gz fastq files
+      if [[ "~{read1}" == *.gz ]]
+      then
+        echo "DEGUB: Gzipped input reads detected"
+        echo "Unzipping reads to r1.fastq"
+        gunzip -c ~{read1} > r1.fastq
+        read1_unzip=r1.fastq
+      else
+        read1_unzip=~{read1}
+      fi
 
-    # dehost reads
-    # -x Remove spots instead of default 'N' replacement.
-    # |& tail -n1 | awk -F" " '{print $1}' > SPOTS_REMOVED ; capture the number of spots removed by fetching the first item on the last line of stderr
-    echo "DEGUB: Running HRRT..."
-    echo "DEBUG: /opt/scrubber/scripts/scrub.sh -p ~{cpu} -x -i ${read1_unzip}"
-    /opt/scrubber/scripts/scrub.sh -p ~{cpu} -x -i ${read1_unzip} > STDOUT 2> STDERR
-    
-    #tail -n1 STDERR | awk -F" " '{print $1}' > SPOTS_REMOVED ; capture the number of spots removed by fetching the first item on the last line of stderr
-    tail -n1 STDERR | awk -F" " '{print $1}' > SPOTS_REMOVED
+      # dehost reads
+      # -x Remove spots instead of default 'N' replacement.
+      # |& tail -n1 | awk -F" " '{print $1}' > SPOTS_REMOVED ; capture the number of spots removed by fetching the first item on the last line of stderr
+      echo "DEGUB: Running HRRT..."
+      echo "DEBUG: /opt/scrubber/scripts/scrub.sh -p ~{cpu} -x -i ${read1_unzip}"
+      /opt/scrubber/scripts/scrub.sh -p ~{cpu} -x -i ${read1_unzip} > STDOUT 2> STDERR
+      
+      #tail -n1 STDERR | awk -F" " '{print $1}' > SPOTS_REMOVED ; capture the number of spots removed by fetching the first item on the last line of stderr
+      tail -n1 STDERR | awk -F" " '{print $1}' > SPOTS_REMOVED
 
-    # gzip dehosted reads
-    echo "DEGUB: Renaming dehosted reads..."
-    gzip ${read1_unzip}.clean -c > ~{samplename}_R1_dehosted.fastq.gz
+      # gzip dehosted reads
+      echo "DEGUB: Renaming dehosted reads..."
+      gzip ${read1_unzip}.clean -c > ~{samplename}_R1_dehosted.fastq.gz
   >>>
+
   output {
     File read1_dehosted = "~{samplename}_R1_dehosted.fastq.gz"
     Int human_spots_removed = read_int("SPOTS_REMOVED")
     String ncbi_scrub_docker = docker
   }
+
   runtime {
     docker: "~{docker}"
     memory: memory + " GB"
@@ -131,4 +137,5 @@ task ncbi_scrub_se {
     preemptible: 0
     maxRetries: 0
   }
+  
 }

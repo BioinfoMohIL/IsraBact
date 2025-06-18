@@ -1,6 +1,6 @@
 version 1.0
 
-import "../../tasks/typing/neisseria/neisseria_typing.wdl" as nm_typing
+import "../../tasks/typing/species/neisseria/neisseria_typing.wdl" as nm_typing
 
 workflow neisseria_typing {
   meta {

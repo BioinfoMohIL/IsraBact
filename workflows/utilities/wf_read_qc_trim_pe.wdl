@@ -34,12 +34,12 @@ workflow read_QC_trim_pe {
     File? phix
     String? workflow_series
     String read_processing = "trimmomatic" # options: trimmomatic, fastp
-    String read_qc = "fastq_scan" # options: fastq_scan, fastqc
+    String read_qc = "fastqc" # options: fastq_scan, fastqc
     String? trimmomatic_args
     String fastp_args = "--detect_adapter_for_pe -g -5 20 -3 20"
   }
 
-  if ("~{workflow_series}" == "pathomics") {
+  if ("~{workflow_series}" == "prokarioscope") {
     call ncbi_scrub.ncbi_scrub_pe {
       input:
         samplename = samplename,
@@ -138,7 +138,7 @@ workflow read_QC_trim_pe {
     }
   }
 
-  if ("~{workflow_series}" == "pathomics") {
+  if ("~{workflow_series}" == "prokarioscope") {
     if (call_midas) {
       call midas_task.midas {
         input:
@@ -150,7 +150,7 @@ workflow read_QC_trim_pe {
     }
   }
 
-  if ("~{workflow_series}" == "pathomics") {
+  if ("~{workflow_series}" == "prokarioscope") {
     if ((call_kraken) && defined(kraken_db)) {
       call kraken.kraken2_standalone {
         input:
@@ -164,10 +164,12 @@ workflow read_QC_trim_pe {
       }
     }  
 
-    if ((call_kraken) && ! defined(kraken_db)) {
+  if ((call_kraken) && ! defined(kraken_db)) {
       String kraken_db_warning = "Kraken database not defined"
     }
   }
+
+
 
   # if ("~{workflow_series}" == "theiameta") {
   #   call readlength_task.readlength {
@@ -176,6 +178,7 @@ workflow read_QC_trim_pe {
   #       read2 = bbduk.read2_clean
   #   }
   # }
+
 
   output {
     # NCBI scrubber

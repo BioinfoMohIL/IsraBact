@@ -12,6 +12,7 @@ inputs.json
 *.gz
 .cache/
 *.tmp
+.gitignore
 EOF
 
 
