@@ -17,7 +17,7 @@ import "./utilities/file_handling/wf_concatenate_illumina_lanes.wdl" as concaten
 
 workflow prokarioscope_pe {
     meta {
-        description: "De-novo genome assembly, taxonomic ID, and QC of paired-end bacterial NGS data"
+        description: "De-novo genome assembly, taxonomic ID, genes and species typing, alleles comparison, QC of paired-end bacterial NGS data, based on Theiagen - Public Health Bioinformatics workflows"
         author: "David Maimoun (The Codon Bleu)"
         email: "thecodonbleu@outlook.com"
     }

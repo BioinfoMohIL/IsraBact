@@ -12,7 +12,7 @@ task version_capture {
 
 
   command <<<
-    VERSION="Pathomics_PE v1.0"
+    VERSION="OmicsDuChef v1.0"
     ~{default='' 'export TZ=' + timezone}
     date +"%Y-%m-%d" > TODAY
     echo "$VERSION" > VERSION

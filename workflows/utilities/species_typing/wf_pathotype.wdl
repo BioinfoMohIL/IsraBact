@@ -43,13 +43,13 @@ import "../../tasks/gene_typing/variant_detection/task_snippy_gene_query.wdl" as
 import "../../tasks/gene_typing/variant_detection/task_snippy_variants.wdl" as snippy
 import "../../tasks/species_typing/candida/task_cauris_cladetyper.wdl" as cauris_cladetyper
 
-workflow merlin_magic {
+workflow pathotype {
   meta {
     description: "Workflow for bacterial and fungal species typing; based on the Bactopia subworkflow Merlin (https://bactopia.github.io/bactopia-tools/merlin/)"
   }
   input {
     String samplename
-    String merlin_tag
+    String patho_tag
     File assembly
     File? read1
     File? read2
@@ -285,7 +285,7 @@ workflow merlin_magic {
   }
 
   # theiaprok
-  if (merlin_tag == "Acinetobacter baumannii") {
+  if (patho_tag == "Acinetobacter baumannii") {
     call kaptive_task.kaptive {
       input:
         assembly = assembly,
@@ -309,7 +309,7 @@ workflow merlin_magic {
   }
 
   # stxtyper is special & in it's own conditional block because it should automatically be run on Escherichia and Shigella species; but optionally run on ANY bacterial sample if the user wants to screen for Shiga toxin genes
-  if (merlin_tag == "Escherichia" || merlin_tag == "Shigella sonnei" || call_stxtyper == true ) {
+  if (patho_tag == "Escherichia" || patho_tag == "Shigella sonnei" || call_stxtyper == true ) {
       call stxtyper_task.stxtyper {
         input:
           assembly = assembly,
@@ -322,10 +322,10 @@ workflow merlin_magic {
     }
   }
 
-  if (merlin_tag == "Escherichia" || merlin_tag == "Shigella sonnei" ) {
+  if (patho_tag == "Escherichia" || patho_tag == "Shigella sonnei" ) {
     # tools specific to ALL Escherichia and Shigella species
     #
-    # FYI see the GAMBIT task for all merlin_tag designations but all Escherichia and Shigella species are given "Escherichia" merlin_tag designation, except for Shigella sonnei which is given "Shigella sonnei" merlin_tag.
+    # FYI see the GAMBIT task for all patho_tag designations but all Escherichia and Shigella species are given "Escherichia" patho_tag designation, except for Shigella sonnei which is given "Shigella sonnei" patho_tag.
     # The reason being is that S. sonnei does have a species-specific tool (sonneityping) where the other Shigella species do not (flexneri, dysenteriae, boydii, etc.)
     call serotypefinder_task.serotypefinder {
       input:
@@ -386,7 +386,7 @@ workflow merlin_magic {
         docker = virulencefinder_docker_image
     }
   }
-  if (merlin_tag == "Shigella sonnei") {
+  if (patho_tag == "Shigella sonnei") {
     if (!assembly_only) {
       call sonneityping_task.sonneityping { 
         input:
@@ -399,7 +399,7 @@ workflow merlin_magic {
       }
     }
   }
-  if (merlin_tag == "Listeria") {
+  if (patho_tag == "Listeria") {
     call lissero_task.lissero {
       input:
         assembly = assembly,
@@ -409,7 +409,7 @@ workflow merlin_magic {
         docker = lissero_docker_image
     }
   }
-  if (merlin_tag == "Salmonella") {
+  if (patho_tag == "Salmonella") {
     call sistr_task.sistr {
       input: 
         assembly = assembly,
@@ -450,7 +450,7 @@ workflow merlin_magic {
     }
   }
   # see here for appropriate Klebsiella species & subspecies to be analyzed w Kleborate: https://github.com/klebgenomics/Kleborate/wiki/Species-detection
-  if (merlin_tag == "Klebsiella" || merlin_tag == "Klebsiella pneumoniae" || merlin_tag == "Klebsiella variicola" || merlin_tag == "Klebsiella aerogenes" || merlin_tag == "Klebsiella oxytoca") {
+  if (patho_tag == "Klebsiella" || patho_tag == "Klebsiella pneumoniae" || patho_tag == "Klebsiella variicola" || patho_tag == "Klebsiella aerogenes" || patho_tag == "Klebsiella oxytoca") {
     call kleborate_task.kleborate {
       input:
         assembly = assembly,
@@ -465,7 +465,7 @@ workflow merlin_magic {
         docker = kleborate_docker_image
     }
   }
-  if (merlin_tag == "Neisseria gonorrhoeae") {
+  if (patho_tag == "Neisseria gonorrhoeae") {
     call ngmaster_task.ngmaster {
       input:
         assembly = assembly,
@@ -473,7 +473,7 @@ workflow merlin_magic {
         docker = ngmaster_docker_image
     }
   }
-  if (merlin_tag == "Neisseria meningitidis") {
+  if (patho_tag == "Neisseria meningitidis") {
     call neisseria_typing_task.neisseria_typing {
       input:
         assembly = assembly,
@@ -481,7 +481,7 @@ workflow merlin_magic {
         docker = neisseria_typing_docker_image
     }
   }
-  if (merlin_tag == "Pseudomonas aeruginosa") {
+  if (patho_tag == "Pseudomonas aeruginosa") {
     call pasty_task.pasty {
       input:
         assembly = assembly,
@@ -491,7 +491,7 @@ workflow merlin_magic {
         docker = pasty_docker_image
     }
   }
-  if (merlin_tag == "Mycobacterium tuberculosis") {
+  if (patho_tag == "Mycobacterium tuberculosis") {
     if (!assembly_only) {
       if (paired_end && !ont_data) {
         call clockwork_task.clockwork_decon_reads {
@@ -549,7 +549,7 @@ workflow merlin_magic {
       }
     }
   }
-  if (merlin_tag == "Legionella pneumophila") {
+  if (patho_tag == "Legionella pneumophila") {
     call legsta_task.legsta {
       input:
         assembly = assembly,
@@ -565,7 +565,7 @@ workflow merlin_magic {
     }
 
   }
-  if (merlin_tag == "Staphylococcus aureus") {
+  if (patho_tag == "Staphylococcus aureus") {
     call spatyper_task.spatyper {
       input:
         assembly = assembly,
@@ -590,7 +590,7 @@ workflow merlin_magic {
     }
   }
 
-  if (merlin_tag == "Streptococcus pneumoniae") {
+  if (patho_tag == "Streptococcus pneumoniae") {
     if (paired_end && !ont_data) {
       call seroba.seroba_v2 as seroba_task {
         input:
@@ -635,7 +635,7 @@ workflow merlin_magic {
     }
   }
 
-  if (merlin_tag == "Streptococcus pyogenes") {
+  if (patho_tag == "Streptococcus pyogenes") {
     call emmtyper_task.emmtyper {
       input:
         assembly = assembly,
@@ -664,7 +664,7 @@ workflow merlin_magic {
     }
   }
 
-  if (merlin_tag == "Haemophilus influenzae") {
+  if (patho_tag == "Haemophilus influenzae") {
     call hicap_task.hicap {
       input:
         assembly = assembly,
@@ -677,7 +677,7 @@ workflow merlin_magic {
     }
   }
 
-  if (merlin_tag == "Vibrio" || merlin_tag == "Vibrio cholerae") {
+  if (patho_tag == "Vibrio" || patho_tag == "Vibrio cholerae") {
     if (!assembly_only && !ont_data) {
       call srst2_vibrio_task.srst2_vibrio {
         input:
@@ -715,7 +715,7 @@ workflow merlin_magic {
   }
   
   if (theiaeuk) {
-    if (merlin_tag == "Candidozyma auris" || merlin_tag == "Candida auris") {
+    if (patho_tag == "Candidozyma auris" || patho_tag == "Candida auris") {
       call cauris_cladetyper.cauris_cladetyper as cladetyper {
         input: 
           assembly_fasta = assembly,
@@ -776,7 +776,7 @@ workflow merlin_magic {
       }
     }
 
-    if (merlin_tag == "Aspergillus fumigatus") {
+    if (patho_tag == "Aspergillus fumigatus") {
       if (!assembly_only && !ont_data) {
         call snippy.snippy_variants as snippy_afumigatus {
           input:
@@ -819,7 +819,7 @@ workflow merlin_magic {
       }
     }
 
-    if (merlin_tag == "Cryptococcus neoformans") {
+    if (patho_tag == "Cryptococcus neoformans") {
       if (!assembly_only && !ont_data) {
         call snippy.snippy_variants as snippy_crypto {
           input:
@@ -879,9 +879,9 @@ workflow merlin_magic {
       "Candidozyma auris" : "498019",
       "Vibrio cholerae" : "666"
     }
-    # Check for Salmonella typing first then default to merlin_tag
+    # Check for Salmonella typing first then default to patho_tag
     String taxon = select_first([seqsero2.seqsero2_predicted_serotype, 
-      seqsero2_assembly.seqsero2_predicted_serotype,sistr.sistr_predicted_serotype, merlin_tag])
+      seqsero2_assembly.seqsero2_predicted_serotype,sistr.sistr_predicted_serotype, patho_tag])
 
     # Checks for a match to the AMR_Search available taxon codes
     if (taxon == "Neisseria gonorrhoeae" || taxon == "Staphylococcus aureus" || 
