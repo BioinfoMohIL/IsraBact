@@ -28,7 +28,6 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/utilities/wf_assembly_long_reads.wdl
   
-  
   - name: Fq2DNA_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/utilities/wf_fq2dna.wdl
