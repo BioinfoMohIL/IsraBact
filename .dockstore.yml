@@ -2,7 +2,7 @@ version: 1.2
 workflows:
   - name: Species_Detection_MOH
     subclass: WDL
-    primaryDescriptorPath: /workflows/wf_species_detection.wdl
+    primaryDescriptorPath: /workflows/metagenomics/wf_species_detection_bs_reads.wdl
 
   - name: Legionella_Typing_Elgato_MOH 
     subclass: WDL
