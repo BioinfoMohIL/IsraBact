@@ -1,41 +1,41 @@
 version 1.0
 
 # prokarioscope
-import "../../tasks/gene_typing/drug_resistance/task_abricate.wdl" as abricate_task
-import "../../tasks/gene_typing/drug_resistance/task_amr_search.wdl" as amr_search_task
-import "../../tasks/species_typing/acinetobacter/task_kaptive.wdl" as kaptive_task
-import "../../tasks/species_typing/escherichia_shigella/task_ectyper.wdl" as ectyper_task
-import "../../tasks/species_typing/escherichia_shigella/task_serotypefinder.wdl" as serotypefinder_task
-import "../../tasks/species_typing/escherichia_shigella/task_shigatyper.wdl" as shigatyper_task
-import "../../tasks/species_typing/escherichia_shigella/task_shigeifinder.wdl" as shigeifinder_task
-import "../../tasks/species_typing/escherichia_shigella/task_sonneityping.wdl" as sonneityping_task
-import "../../tasks/species_typing/escherichia_shigella/task_stxtyper.wdl" as stxtyper_task
-import "../../tasks/species_typing/escherichia_shigella/task_virulencefinder.wdl" as virulencefinder_task
-import "../../tasks/species_typing/haemophilus/task_hicap.wdl" as hicap_task
-import "../../tasks/species_typing/klebsiella/task_kleborate.wdl" as kleborate_task
-import "../../tasks/species_typing/legionella/task_legsta.wdl" as legsta_task
-import "../../tasks/species_typing/legionella/task_elgato.wdl" as elgato_task
-import "../../tasks/species_typing/listeria/task_lissero.wdl" as lissero_task
-import "../../tasks/species_typing/mycobacterium/task_clockwork.wdl" as clockwork_task
-import "../../tasks/species_typing/mycobacterium/task_tbp_parser.wdl" as tbp_parser_task
-import "../../tasks/species_typing/mycobacterium/task_tbprofiler.wdl" as tbprofiler_task
-import "../../tasks/species_typing/neisseria/task_neisseria_typing" as neisseria_typing_task
-import "../../tasks/species_typing/neisseria/task_ngmaster.wdl" as ngmaster_task
-import "../../tasks/species_typing/pseudomonas/task_pasty.wdl" as pasty_task
-import "../../tasks/species_typing/salmonella/task_genotyphi.wdl" as genotyphi
-import "../../tasks/species_typing/salmonella/task_seqsero2.wdl" as seqsero2_task
-import "../../tasks/species_typing/salmonella/task_sistr.wdl" as sistr_task
-import "../../tasks/species_typing/staphylococcus/task_agrvate.wdl" as agrvate_task
-import "../../tasks/species_typing/staphylococcus/task_spatyper.wdl" as spatyper_task
-import "../../tasks/species_typing/staphylococcus/task_staphopiasccmec.wdl" as staphopia_sccmec_task
-import "../../tasks/species_typing/streptococcus/task_emmtyper.wdl" as emmtyper_task
-import "../../tasks/species_typing/streptococcus/task_emmtypingtool.wdl" as emmtypingtool_task
-import "../../tasks/species_typing/streptococcus/task_pbptyper.wdl" as pbptyper
-import "../../tasks/species_typing/streptococcus/task_poppunk_streppneumo.wdl" as poppunk_spneumo
-import "../../tasks/species_typing/streptococcus/task_seroba_v2.wdl" as seroba
-import "../../tasks/species_typing/vibrio/task_srst2_vibrio.wdl" as srst2_vibrio_task
-import "../../tasks/species_typing/vibrio/task_abricate_vibrio.wdl" as abricate_vibrio_task
-import "../../tasks/species_typing/vibrio/task_vibecheck_vibrio.wdl" as vibecheck_vibrio_task
+import "../../../tasks/gene_typing/drug_resistance/task_abricate.wdl" as abricate_task
+import "../../../tasks/gene_typing/drug_resistance/task_amr_search.wdl" as amr_search_task
+import "../../../tasks/species_typing/acinetobacter/task_kaptive.wdl" as kaptive_task
+import "../../../tasks/species_typing/escherichia_shigella/task_ectyper.wdl" as ectyper_task
+import "../../../tasks/species_typing/escherichia_shigella/task_serotypefinder.wdl" as serotypefinder_task
+import "../../../tasks/species_typing/escherichia_shigella/task_shigatyper.wdl" as shigatyper_task
+import "../../../tasks/species_typing/escherichia_shigella/task_shigeifinder.wdl" as shigeifinder_task
+import "../../../tasks/species_typing/escherichia_shigella/task_sonneityping.wdl" as sonneityping_task
+import "../../../tasks/species_typing/escherichia_shigella/task_stxtyper.wdl" as stxtyper_task
+import "../../../tasks/species_typing/escherichia_shigella/task_virulencefinder.wdl" as virulencefinder_task
+import "../../../tasks/species_typing/haemophilus/task_hicap.wdl" as hicap_task
+import "../../../tasks/species_typing/klebsiella/task_kleborate.wdl" as kleborate_task
+import "../../../tasks/species_typing/legionella/task_legsta.wdl" as legsta_task
+import "../../../tasks/species_typing/legionella/task_elgato.wdl" as elgato_task
+import "../../../tasks/species_typing/listeria/task_lissero.wdl" as lissero_task
+import "../../../tasks/species_typing/mycobacterium/task_clockwork.wdl" as clockwork_task
+import "../../../tasks/species_typing/mycobacterium/task_tbp_parser.wdl" as tbp_parser_task
+import "../../../tasks/species_typing/mycobacterium/task_tbprofiler.wdl" as tbprofiler_task
+import "../../../tasks/species_typing/neisseria/task_ngmaster.wdl" as ngmaster_task
+import "../../../tasks/species_typing/pseudomonas/task_pasty.wdl" as pasty_task
+import "../../../tasks/species_typing/salmonella/task_genotyphi.wdl" as genotyphi
+import "../../../tasks/species_typing/salmonella/task_seqsero2.wdl" as seqsero2_task
+import "../../../tasks/species_typing/salmonella/task_sistr.wdl" as sistr_task
+import "../../../tasks/species_typing/staphylococcus/task_agrvate.wdl" as agrvate_task
+import "../../../tasks/species_typing/staphylococcus/task_spatyper.wdl" as spatyper_task
+import "../../../tasks/species_typing/staphylococcus/task_staphopiasccmec.wdl" as staphopia_sccmec_task
+import "../../../tasks/species_typing/streptococcus/task_emmtyper.wdl" as emmtyper_task
+import "../../../tasks/species_typing/streptococcus/task_emmtypingtool.wdl" as emmtypingtool_task
+import "../../../tasks/species_typing/streptococcus/task_pbptyper.wdl" as pbptyper
+import "../../../tasks/species_typing/streptococcus/task_poppunk_streppneumo.wdl" as poppunk_spneumo
+import "../../../tasks/species_typing/streptococcus/task_seroba_v2.wdl" as seroba
+import "../../../tasks/species_typing/vibrio/task_srst2_vibrio.wdl" as srst2_vibrio_task
+import "../../../tasks/species_typing/vibrio/task_abricate_vibrio.wdl" as abricate_vibrio_task
+import "../../../tasks/species_typing/vibrio/task_vibecheck_vibrio.wdl" as vibecheck_vibrio_task
+import "../species_typing/neisseria/wf_neisseria_typing_fasta.wdl" as neisseria_typing_wf
 
 
 # eukaryomics
@@ -473,8 +473,8 @@ workflow pathotype {
         docker = ngmaster_docker_image
     }
   }
-  if (patho_tag == "Neisseria meningitidis") {
-    call neisseria_typing_task.neisseria_typing {
+  if (patho_tag == "Neisseria meningitidis" || patho_tag == "neisseria meningitidis") {
+    call neisseria_typing_wf.neisseria_typing {
       input:
         assembly = assembly,
         samplename = samplename,
@@ -559,8 +559,8 @@ workflow pathotype {
 
     call elgato_task.elgato_reads {
       input:
-        read1 = read1,
-        read2 = select_first([read2])
+        read1 = select_first([read1]),
+        read2 = select_first([read2]),
         samplename = samplename,
     }
 

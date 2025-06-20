@@ -7,8 +7,8 @@ import "../tasks/taxon_id/task_gambit.wdl" as gambit_task
 import "../tasks/taxon_id/contamination/task_kmerfinder.wdl" as kmerfinder_task
 import "../tasks/gene_typing/drug_resistance/task_amrfinderplus.wdl" as amrfinderplus
 import "../tasks/gene_typing/drug_resistance/task_resfinder.wdl" as resfinder
-import "../tasks/gene_typing/multi/task_ts_mlst.wdl" as ts_mlst_task
-import "../tasks/quality_control/advanced_metrics/task_mummer_ani.wdl" as ani_task
+import "../tasks/species_typing/multi/task_ts_mlst.wdl" as ts_mlst_task
+import "../tasks/qc/advanced_metrics/task_mummer_ani.wdl" as ani_task
 import "./utilities/wf_assembly.wdl" as deno_assembly
 import "./utilities/wf_read_qc_trim_pe.wdl" as read_QC
 import "./utilities/species_typing/wf_pathotype.wdl" as pathotype
