@@ -6,7 +6,7 @@ workflows:
 
   - name: Legionella_Typing_Elgato_MOH 
     subclass: WDL
-    primaryDescriptorPath: /workflows/wf_legionella_typing_elgato.wdl
+    primaryDescriptorPath: /workflows/species_typing/legionella/wf_legionella_typing_elgato.wdl
 
   - name: Basespace_Fetcher_MOH
     subclass: WDL
@@ -14,19 +14,20 @@ workflows:
 
   - name: SP_Pneumoniae_Typing_MOH
     subclass: WDL
-    primaryDescriptorPath: /workflows/wf_sp_pneumoniae_typing.wdl
+    primaryDescriptorPath: /workflows/species_typing/streptococcus/wf_sp_pneumoniae_typing.wdl
   
   - name: Neisseria_Typing_Reads_MOH
     subclass: WDL
-    primaryDescriptorPath: /workflows/wf_neisseria_typing_reads.wdl
+    primaryDescriptorPath: /workflows/species_typing/neisseria/wf_neisseria_typing_reads.wdl
 
   - name: Neisseria_Typing_Fasta_MOH
     subclass: WDL
-    primaryDescriptorPath: /workflows/wf_neisseria_typing_fasta.wdl
+    primaryDescriptorPath: /workflows/species_typing/neisseria/wf_neisseria_typing_fasta.wdl
 
   - name: Long_Reads_Assembly_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/utilities/wf_assembly_long_reads.wdl
+  
   - name: Fq2DNA_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/utilities/wf_fq2dna.wdl
