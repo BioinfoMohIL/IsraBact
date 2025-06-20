@@ -19,6 +19,7 @@ workflows:
   - name: Neisseria_Typing_Reads_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/species_typing/neisseria/wf_neisseria_typing_reads.wdl
+    
   - name: Neisseria_Typing_Fasta_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/species_typing/neisseria/wf_neisseria_typing_fasta.wdl
