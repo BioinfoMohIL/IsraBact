@@ -52,7 +52,7 @@ workflow species_detection_bs_reads {
 
   
     output {
-        String meta_version = detect_species_bs_reads.version
+        # String meta_version = detect_species_bs_reads.version
         File meta_reads_list = get_reads_list.reads_list
         File meta_species_detected = merge_reports.species_detected
     
