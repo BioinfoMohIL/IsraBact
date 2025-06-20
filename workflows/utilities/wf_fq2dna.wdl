@@ -46,14 +46,22 @@ task fq2dna_run {
     basename=$(echo "${genus:0:1}${species:0:1}${strain}" | tr '[:upper:]' '[:lower:]')
     species="${genus} ${species} ${strain}"
     
+    gunzip -c ~{read1} > R1.fastq
+    gunzip -c ~{read2} > R2.fastq
+
     fq2dna \
-        -1 ~{read1} \
-        -2 ~{read2} \
+        -1 R1.fastq \
+        -2 R2.fastq \
         -o out \
         -b ${basename} \
         -s ~{organism} \
         -T "${species}" \
         -a ~{alien_tag}
+
+    echo out > report.txt
+
+    # Optional cleanup
+    rm R1.fastq R2.fastq
 
     echo out > report.txt
   >>>
