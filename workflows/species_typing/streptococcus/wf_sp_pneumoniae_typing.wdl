@@ -1,6 +1,6 @@
 version 1.0
 
-import "../tasks/typing/streptococcus/task_seroba_v2.wdl" as seroba
+import "../../../tasks/typing/streptococcus/task_seroba_v2.wdl" as seroba
 
 workflow strep_typing {
     meta {

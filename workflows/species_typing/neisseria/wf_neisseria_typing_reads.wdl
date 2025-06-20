@@ -1,10 +1,10 @@
 version 1.0
 
-import "../../tasks/typing/species/neisseria/neisseria_typing.wdl" as nm_typing
-import "../../tasks/qc/read/task_cg_pipeline.wdl" as cg
-import "../utilities/wf_assembly.wdl" as deno_assembly
-import "../utilities/wf_read_qc_trim_pe.wdl" as read_QC
-import "../utilities/file_handling/wf_concatenate_illumina_lanes.wdl" as concatenate_lanes_workflow
+import "../../../tasks/typing/species/neisseria/neisseria_typing.wdl" as nm_typing
+import "../../../tasks/qc/read/task_cg_pipeline.wdl" as cg
+import "../../utilities/wf_assembly.wdl" as deno_assembly
+import "../../utilities/wf_read_qc_trim_pe.wdl" as read_QC
+import "../../utilities/file_handling/wf_concatenate_illumina_lanes.wdl" as concatenate_lanes_workflow
 
 workflow neisseria_typing {
 	meta {
