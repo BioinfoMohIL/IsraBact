@@ -1,11 +1,11 @@
 version 1.0
 
-import "../../../tasks/assembly/task_unicycler.wdl" as task_unicycler
-import "../../../tasks/alignment/task_bwa.wdl" as task_bwa
-import "../../../tasks/qc/read_filtering/task_pilon.wdl" as task_pilon
-import "../../../tasks/qc/advanced_metrics/task_busco.wdl" as busco_task
-import "../../../tasks/qc/basic_statistics/task_quast.wdl" as quast_task
-import "../../../tasks/qc/read_filtering/task_filter_contigs.wdl" as task_filter_contigs
+import "../../tasks/assembly/task_unicycler.wdl" as task_unicycler
+import "../../tasks/alignment/task_bwa.wdl" as task_bwa
+import "../../tasks/qc/read_filtering/task_pilon.wdl" as task_pilon
+import "../../tasks/qc/advanced_metrics/task_busco.wdl" as busco_task
+import "../../tasks/qc/basic_statistics/task_quast.wdl" as quast_task
+import "../../tasks/qc/read_filtering/task_filter_contigs.wdl" as task_filter_contigs
 import "./wf_read_qc_trim_pe.wdl" as read_QC
 
 
