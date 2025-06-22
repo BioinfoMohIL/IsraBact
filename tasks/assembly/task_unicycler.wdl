@@ -12,12 +12,10 @@ task unicycler {
         Int disk_size = 100
         Int cpu = 16
         Int memory = 16
-        String docker = "quay.io/biocontainers/unicycler:0.5.0--py310hc8f18ef_2"
+        String docker = "quay.io/staphb/unicycler:0.5.1"
     }
 
     command <<<
-        set -euxo pipefail
-
         unicycler --version 2>&1 | sed -E 's/.*Unicycler v([0-9.]+).*/\1/' | tee VERSION
 
         unicycler --threads ~{cpu} \
