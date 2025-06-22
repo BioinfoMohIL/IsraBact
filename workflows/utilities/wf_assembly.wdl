@@ -14,8 +14,7 @@ import "../../tasks/qc/read_filtering/task_filter_contigs.wdl" as task_filter_co
 workflow assembly {
 	meta {
 		description: "De-novo genome assembly, QC your NGS reads"
-		author: "David Maimoun (The Codon Bleu)"
-		email: "thecodonbleu@outlook.com"
+		author: "David Maimoun"
 	}
 
 	input {

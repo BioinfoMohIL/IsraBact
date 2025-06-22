@@ -147,11 +147,11 @@ workflow neisseria_typing {
         String? busco_results = assembly.busco_results
 
          # Assembly QC - cg pipeline outputs
-        File? cg_pipeline_report_raw = cg_pipeline_raw.cg_pipeline_report
-        String? cg_pipeline_docker = cg_pipeline_raw.cg_pipeline_docker
-        Float? est_coverage_raw = cg_pipeline_raw.est_coverage
-        File? cg_pipeline_report_clean = cg_pipeline_clean.cg_pipeline_report
-        Float? est_coverage_clean = cg_pipeline_clean.est_coverage
+        # File? cg_pipeline_report_raw = cg_pipeline_raw.cg_pipeline_report
+        # String? cg_pipeline_docker = cg_pipeline_raw.cg_pipeline_docker
+        # Float? est_coverage_raw = cg_pipeline_raw.est_coverage
+        # File? cg_pipeline_report_clean = cg_pipeline_clean.cg_pipeline_report
+        # Float? est_coverage_clean = cg_pipeline_clean.est_coverage
     
         # Typing
         # File typing_results = typing.typing_results
