@@ -12,7 +12,7 @@ task unicycler {
         Int disk_size = 100
         Int cpu = 16
         Int memory = 16
-        String docker = "quay.io/staphb/unicycler:0.5.1"
+        String docker = "quay.io/staphb/unicycler:0.5.0"
     }
 
     command <<<
