@@ -1,0 +1,301 @@
+Isolate_ID,Species,Country,Year,Source,Host,Ciprofloxacin,Ampicillin,Tetracycline,Colistin
+ISO_0001,Shigella,Poland,2022,Stool,Human,nan,S,S,S
+ISO_0002,Pseudomonas,Poland,2020,Blood,Animal,S,R,S,S
+ISO_0003,Klebsiella,France,2022,Wound,Human,S,nan,S,R
+ISO_0004,Pseudomonas,Poland,2022,Wound,Human,nan,S,R,S
+ISO_0005,Pseudomonas,Italy,2020,Stool,Human,R,S,S,R
+ISO_0006,Salmonella sp.,Spain,2021,Blood,Human,nan,S,R,nan
+ISO_0007,Klebsiella,France,2022,Stool,Human,R,nan,R,S
+ISO_0008,Klebsiella,Spain,2020,Stool,Human,S,nan,S,R
+ISO_0009,Klebsiella,Poland,2020,Stool,Animal,R,S,S,R
+ISO_0010,Pseudomonas,Poland,2021,Blood,Animal,S,S,S,S
+ISO_0011,Shigella,France,2022,Wound,Human,R,R,R,S
+ISO_0012,Klebsiella,Italy,2022,Blood,Human,S,R,R,S
+ISO_0013,Pseudomonas,Germany,2020,Urine,Animal,S,S,R,S
+ISO_0014,Salmonella sp.,France,2020,Blood,Human,nan,R,R,R
+ISO_0015,Shigella,Germany,2021,Blood,Human,R,S,S,R
+ISO_0016,Salmonella sp.,Germany,2021,Blood,Human,S,R,R,R
+ISO_0017,Shigella,Italy,2022,Blood,Animal,S,R,S,S
+ISO_0018,Pseudomonas,Germany,2022,Wound,Human,R,S,R,S
+ISO_0019,E. coli,Germany,2020,Urine,Animal,R,nan,R,S
+ISO_0020,Shigella,Italy,2022,Wound,Human,S,R,R,R
+ISO_0021,Salmonella sp.,Germany,2021,Wound,Animal,S,S,S,S
+ISO_0022,Pseudomonas,Germany,2021,Blood,Animal,S,S,S,S
+ISO_0023,Shigella,Germany,2020,Stool,Human,S,R,S,S
+ISO_0024,E. coli,France,2021,Stool,Animal,R,S,S,S
+ISO_0025,E. coli,France,2021,Wound,Human,R,R,S,R
+ISO_0026,Klebsiella,France,2021,Wound,Animal,R,R,R,R
+ISO_0027,Klebsiella,Italy,2021,Blood,Human,nan,nan,R,S
+ISO_0028,Salmonella sp.,Poland,2020,Wound,Human,R,R,S,S
+ISO_0029,Shigella,Germany,2020,Blood,Animal,R,S,S,R
+ISO_0030,Shigella,Germany,2022,Stool,Human,R,S,R,S
+ISO_0031,Klebsiella,Italy,2021,Stool,Human,S,R,nan,S
+ISO_0032,Shigella,Germany,2022,Urine,Animal,nan,S,S,S
+ISO_0033,Shigella,France,2020,Stool,Human,S,nan,R,S
+ISO_0034,E. coli,Poland,2020,Wound,Human,S,R,S,R
+ISO_0035,Klebsiella,Spain,2020,Stool,Animal,S,S,S,S
+ISO_0036,Pseudomonas,Germany,2020,Blood,Animal,R,S,S,S
+ISO_0037,Klebsiella,France,2020,Stool,Human,nan,S,R,S
+ISO_0038,Pseudomonas,Spain,2020,Urine,Human,S,S,R,S
+ISO_0039,E. coli,Poland,2020,Stool,Animal,S,R,S,S
+ISO_0040,Salmonella sp.,Spain,2021,Blood,Animal,S,nan,S,R
+ISO_0041,Shigella,France,2022,Blood,Human,S,nan,S,S
+ISO_0042,E. coli,Spain,2020,Wound,Animal,S,S,S,S
+ISO_0043,Shigella,Italy,2021,Stool,Human,nan,S,R,S
+ISO_0044,Salmonella sp.,Spain,2021,Blood,Human,nan,S,S,S
+ISO_0045,Salmonella sp.,Germany,2022,Urine,Human,S,S,R,S
+ISO_0046,E. coli,Germany,2020,Wound,Human,S,S,S,S
+ISO_0047,Salmonella sp.,Italy,2022,Urine,Human,R,S,S,S
+ISO_0048,Pseudomonas,France,2020,Stool,Animal,S,S,R,R
+ISO_0049,Salmonella sp.,Germany,2021,Stool,Animal,R,S,S,R
+ISO_0050,Shigella,Poland,2021,Stool,Animal,S,S,R,S
+ISO_0051,Shigella,Germany,2021,Wound,Animal,nan,R,R,S
+ISO_0052,Shigella,Germany,2021,Blood,Human,S,R,R,R
+ISO_0053,Shigella,France,2022,Wound,Human,S,S,R,R
+ISO_0054,Pseudomonas,Spain,2020,Urine,Human,R,S,nan,S
+ISO_0055,Klebsiella,Germany,2020,Wound,Human,R,S,S,R
+ISO_0056,E. coli,Italy,2022,Urine,Animal,S,S,R,R
+ISO_0057,Shigella,Spain,2020,Wound,Human,R,S,S,R
+ISO_0058,Salmonella sp.,Poland,2021,Blood,Human,R,S,R,R
+ISO_0059,Shigella,France,2020,Urine,Animal,S,R,nan,R
+ISO_0060,Salmonella sp.,Poland,2021,Stool,Animal,S,S,S,R
+ISO_0061,Salmonella sp.,Spain,2022,Stool,Animal,S,S,S,S
+ISO_0062,Shigella,Spain,2020,Wound,Animal,R,S,R,S
+ISO_0063,Pseudomonas,Spain,2022,Stool,Human,S,S,S,S
+ISO_0064,Salmonella sp.,Poland,2020,Urine,Human,S,R,S,S
+ISO_0065,Salmonella sp.,Spain,2021,Stool,Animal,S,R,S,R
+ISO_0066,Shigella,Poland,2022,Blood,Human,S,R,R,R
+ISO_0067,Salmonella sp.,Spain,2020,Blood,Human,R,S,R,S
+ISO_0068,Salmonella sp.,Italy,2021,Wound,Human,S,R,nan,R
+ISO_0069,Shigella,Spain,2022,Urine,Animal,S,S,S,S
+ISO_0070,Shigella,Poland,2022,Blood,Human,S,S,R,S
+ISO_0071,E. coli,Germany,2020,Blood,Animal,S,R,R,S
+ISO_0072,Pseudomonas,Spain,2020,Urine,Human,S,S,nan,R
+ISO_0073,Pseudomonas,Germany,2020,Stool,Human,S,R,R,R
+ISO_0074,Salmonella sp.,Italy,2021,Stool,Human,S,S,S,S
+ISO_0075,Pseudomonas,France,2020,Wound,Animal,S,R,S,R
+ISO_0076,Salmonella sp.,Italy,2022,Stool,Human,S,S,R,S
+ISO_0077,E. coli,Spain,2022,Urine,Animal,S,R,S,S
+ISO_0078,Shigella,Germany,2020,Blood,Animal,S,nan,R,nan
+ISO_0079,Shigella,Germany,2020,Stool,Animal,S,S,R,R
+ISO_0080,Shigella,Poland,2022,Wound,Human,S,S,S,S
+ISO_0081,Pseudomonas,Germany,2021,Stool,Human,S,S,S,S
+ISO_0082,E. coli,Poland,2020,Urine,Human,S,S,S,R
+ISO_0083,Pseudomonas,France,2020,Wound,Human,S,S,S,R
+ISO_0084,Pseudomonas,Spain,2022,Stool,Animal,nan,S,R,S
+ISO_0085,E. coli,Poland,2020,Wound,Animal,R,S,R,R
+ISO_0086,E. coli,France,2021,Urine,Animal,R,S,R,R
+ISO_0087,E. coli,Germany,2022,Blood,Human,R,S,R,R
+ISO_0088,E. coli,Germany,2020,Urine,Animal,nan,R,R,S
+ISO_0089,Shigella,France,2022,Urine,Human,R,R,R,S
+ISO_0090,Klebsiella,Germany,2020,Urine,Animal,R,S,R,S
+ISO_0091,Klebsiella,France,2020,Urine,Human,R,S,R,R
+ISO_0092,E. coli,Poland,2020,Blood,Human,R,S,S,R
+ISO_0093,Klebsiella,Poland,2021,Blood,Animal,R,S,S,S
+ISO_0094,Klebsiella,France,2021,Wound,Animal,S,nan,R,S
+ISO_0095,E. coli,Poland,2022,Stool,Animal,S,R,nan,R
+ISO_0096,Klebsiella,Poland,2020,Blood,Animal,R,R,S,S
+ISO_0097,Pseudomonas,Poland,2020,Blood,Human,R,R,R,nan
+ISO_0098,Salmonella sp.,Italy,2021,Stool,Animal,R,S,S,S
+ISO_0099,Salmonella sp.,Spain,2020,Blood,Animal,R,S,S,S
+ISO_0100,E. coli,Germany,2021,Urine,Animal,S,R,S,nan
+ISO_0101,Shigella,Italy,2020,Urine,Human,S,S,R,R
+ISO_0102,E. coli,Poland,2022,Stool,Human,R,S,S,S
+ISO_0103,Shigella,France,2020,Wound,Animal,S,S,R,nan
+ISO_0104,Salmonella sp.,Poland,2020,Wound,Human,R,S,S,R
+ISO_0105,E. coli,Spain,2021,Stool,Animal,S,R,S,S
+ISO_0106,Pseudomonas,Poland,2020,Stool,Human,S,S,S,S
+ISO_0107,Klebsiella,France,2020,Urine,Human,S,S,S,S
+ISO_0108,Shigella,Spain,2021,Wound,Human,R,R,S,S
+ISO_0109,Klebsiella,Poland,2022,Blood,Human,nan,S,R,nan
+ISO_0110,Klebsiella,Spain,2022,Urine,Animal,R,R,R,S
+ISO_0111,E. coli,Germany,2021,Stool,Animal,R,S,S,R
+ISO_0112,Klebsiella,Germany,2021,Wound,Animal,R,S,R,S
+ISO_0113,Pseudomonas,Poland,2021,Blood,Human,R,S,R,R
+ISO_0114,Klebsiella,Spain,2021,Blood,Animal,nan,S,R,R
+ISO_0115,E. coli,France,2021,Urine,Animal,S,R,R,S
+ISO_0116,Pseudomonas,Poland,2022,Wound,Animal,R,S,nan,S
+ISO_0117,Salmonella sp.,Germany,2022,Wound,Human,S,R,S,S
+ISO_0118,Klebsiella,Germany,2021,Stool,Human,nan,R,nan,nan
+ISO_0119,E. coli,Poland,2020,Wound,Human,S,S,S,S
+ISO_0120,Salmonella sp.,Spain,2021,Wound,Animal,S,R,S,S
+ISO_0121,Salmonella sp.,Germany,2020,Urine,Animal,nan,S,R,R
+ISO_0122,Shigella,Spain,2021,Wound,Animal,nan,S,S,nan
+ISO_0123,Pseudomonas,Germany,2021,Blood,Human,S,R,R,nan
+ISO_0124,Klebsiella,Germany,2022,Urine,Human,R,R,S,S
+ISO_0125,E. coli,Italy,2020,Urine,Animal,S,R,S,R
+ISO_0126,Shigella,Germany,2020,Stool,Human,S,S,R,R
+ISO_0127,Pseudomonas,France,2022,Wound,Human,R,S,nan,R
+ISO_0128,Shigella,Poland,2022,Stool,Human,S,R,S,R
+ISO_0129,Pseudomonas,Poland,2022,Blood,Human,R,S,S,R
+ISO_0130,Pseudomonas,Spain,2022,Urine,Animal,R,S,R,nan
+ISO_0131,Klebsiella,Germany,2020,Urine,Human,R,R,S,S
+ISO_0132,Pseudomonas,France,2020,Urine,Human,R,S,S,R
+ISO_0133,Shigella,Spain,2021,Blood,Human,nan,S,R,R
+ISO_0134,Pseudomonas,Italy,2021,Blood,Human,S,nan,R,R
+ISO_0135,Klebsiella,Spain,2022,Stool,Animal,S,R,S,R
+ISO_0136,Klebsiella,Spain,2022,Stool,Animal,S,R,R,R
+ISO_0137,Shigella,Germany,2022,Stool,Human,R,R,S,R
+ISO_0138,Salmonella sp.,Italy,2021,Wound,Human,S,S,nan,S
+ISO_0139,Salmonella sp.,Spain,2021,Urine,Human,S,R,S,nan
+ISO_0140,Pseudomonas,France,2021,Urine,Human,S,S,R,R
+ISO_0141,E. coli,France,2021,Stool,Human,R,S,S,S
+ISO_0142,Pseudomonas,Poland,2021,Urine,Human,S,S,R,S
+ISO_0143,Shigella,Italy,2021,Stool,Animal,S,S,R,R
+ISO_0144,Shigella,Italy,2021,Wound,Human,nan,S,S,R
+ISO_0145,Shigella,Poland,2022,Wound,Animal,S,S,R,S
+ISO_0146,Shigella,Spain,2022,Blood,Animal,S,S,R,R
+ISO_0147,Shigella,Italy,2022,Wound,Human,S,R,S,S
+ISO_0148,Klebsiella,France,2022,Stool,Animal,S,nan,R,S
+ISO_0149,Salmonella sp.,France,2021,Wound,Animal,R,R,R,R
+ISO_0150,Shigella,Germany,2020,Blood,Animal,S,R,S,R
+ISO_0151,E. coli,Italy,2021,Urine,Animal,S,R,S,S
+ISO_0152,E. coli,Spain,2020,Stool,Animal,S,S,S,R
+ISO_0153,E. coli,Poland,2022,Urine,Animal,R,R,R,R
+ISO_0154,E. coli,Poland,2021,Blood,Human,R,R,S,S
+ISO_0155,Klebsiella,Spain,2022,Blood,Animal,S,R,R,S
+ISO_0156,E. coli,Germany,2021,Blood,Animal,R,R,R,R
+ISO_0157,Shigella,Poland,2022,Urine,Animal,S,S,S,S
+ISO_0158,Pseudomonas,Italy,2020,Urine,Human,R,S,R,R
+ISO_0159,E. coli,Germany,2020,Urine,Animal,R,R,R,S
+ISO_0160,Klebsiella,Italy,2020,Urine,Human,nan,S,S,S
+ISO_0161,Klebsiella,France,2021,Blood,Animal,S,S,S,S
+ISO_0162,E. coli,Germany,2020,Blood,Human,R,R,S,S
+ISO_0163,Pseudomonas,Poland,2021,Stool,Human,R,R,R,nan
+ISO_0164,E. coli,Germany,2020,Stool,Animal,R,nan,R,R
+ISO_0165,Klebsiella,Germany,2020,Urine,Animal,S,S,R,S
+ISO_0166,Salmonella sp.,Germany,2021,Wound,Human,R,R,R,R
+ISO_0167,Shigella,Germany,2021,Wound,Animal,S,S,S,R
+ISO_0168,Klebsiella,Italy,2020,Blood,Human,nan,R,S,R
+ISO_0169,E. coli,France,2021,Blood,Human,R,S,S,nan
+ISO_0170,Shigella,Spain,2020,Blood,Human,S,R,S,nan
+ISO_0171,E. coli,Germany,2021,Stool,Human,nan,R,S,R
+ISO_0172,E. coli,Poland,2022,Stool,Human,R,R,S,R
+ISO_0173,Salmonella sp.,Germany,2022,Blood,Animal,S,nan,R,S
+ISO_0174,Shigella,Poland,2022,Blood,Human,S,S,S,S
+ISO_0175,Shigella,Italy,2022,Blood,Human,nan,R,S,R
+ISO_0176,Salmonella sp.,Poland,2022,Wound,Animal,S,R,R,S
+ISO_0177,Klebsiella,Spain,2020,Stool,Human,S,S,R,S
+ISO_0178,E. coli,France,2022,Wound,Animal,S,R,nan,nan
+ISO_0179,Pseudomonas,Poland,2022,Wound,Animal,S,R,R,R
+ISO_0180,E. coli,Poland,2022,Blood,Animal,S,nan,R,S
+ISO_0181,E. coli,France,2022,Blood,Human,S,R,S,S
+ISO_0182,Klebsiella,Spain,2021,Urine,Human,S,S,S,S
+ISO_0183,E. coli,Germany,2020,Urine,Human,R,nan,S,S
+ISO_0184,Salmonella sp.,Poland,2022,Wound,Animal,R,R,S,S
+ISO_0185,Salmonella sp.,France,2022,Stool,Human,R,R,R,R
+ISO_0186,Shigella,Italy,2022,Blood,Animal,R,R,S,S
+ISO_0187,Pseudomonas,France,2020,Blood,Human,R,S,R,S
+ISO_0188,E. coli,Italy,2021,Wound,Animal,nan,S,S,R
+ISO_0189,E. coli,Spain,2020,Urine,Human,R,S,S,S
+ISO_0190,Klebsiella,Germany,2021,Stool,Human,S,R,R,R
+ISO_0191,Salmonella sp.,France,2022,Urine,Human,R,S,R,R
+ISO_0192,Pseudomonas,Poland,2022,Urine,Animal,S,nan,R,S
+ISO_0193,Shigella,Spain,2020,Urine,Animal,nan,S,R,S
+ISO_0194,Salmonella sp.,France,2020,Urine,Human,S,nan,R,S
+ISO_0195,Shigella,Poland,2021,Blood,Human,S,S,S,R
+ISO_0196,Klebsiella,France,2021,Blood,Animal,R,S,S,S
+ISO_0197,Klebsiella,Italy,2020,Urine,Animal,S,S,R,R
+ISO_0198,E. coli,France,2021,Stool,Animal,R,R,R,R
+ISO_0199,Pseudomonas,France,2020,Wound,Human,nan,R,R,nan
+ISO_0200,Shigella,France,2021,Stool,Animal,R,S,S,S
+ISO_0201,Salmonella sp.,Spain,2020,Stool,Human,S,R,R,S
+ISO_0202,Klebsiella,France,2020,Stool,Animal,S,S,S,R
+ISO_0203,E. coli,Poland,2020,Urine,Human,R,nan,S,S
+ISO_0204,E. coli,Italy,2021,Blood,Animal,R,S,S,S
+ISO_0205,Shigella,Italy,2021,Stool,Animal,R,R,S,S
+ISO_0206,Klebsiella,France,2021,Urine,Animal,R,R,R,S
+ISO_0207,Pseudomonas,Spain,2020,Stool,Animal,S,R,nan,R
+ISO_0208,Klebsiella,Spain,2021,Stool,Animal,R,S,R,R
+ISO_0209,Shigella,Poland,2021,Urine,Human,R,S,R,S
+ISO_0210,Shigella,France,2020,Blood,Animal,R,nan,S,R
+ISO_0211,Klebsiella,Italy,2022,Blood,Animal,S,S,nan,R
+ISO_0212,Shigella,Spain,2020,Wound,Animal,R,nan,S,nan
+ISO_0213,Klebsiella,France,2021,Urine,Human,R,S,R,S
+ISO_0214,Salmonella sp.,Spain,2020,Wound,Animal,R,R,R,S
+ISO_0215,Klebsiella,Spain,2022,Wound,Human,S,S,nan,S
+ISO_0216,Klebsiella,Italy,2020,Wound,Animal,S,R,R,S
+ISO_0217,Shigella,Germany,2021,Blood,Animal,R,R,S,R
+ISO_0218,Shigella,Poland,2022,Urine,Human,R,S,S,R
+ISO_0219,E. coli,Poland,2021,Wound,Animal,S,R,S,R
+ISO_0220,E. coli,Italy,2022,Urine,Human,S,S,R,R
+ISO_0221,Salmonella sp.,Spain,2022,Urine,Human,R,S,S,S
+ISO_0222,E. coli,France,2020,Blood,Animal,S,S,R,R
+ISO_0223,Klebsiella,Spain,2020,Wound,Human,nan,R,S,S
+ISO_0224,Shigella,Italy,2021,Wound,Animal,R,S,S,R
+ISO_0225,E. coli,Poland,2020,Urine,Animal,S,S,S,R
+ISO_0226,E. coli,Spain,2020,Stool,Human,S,S,R,S
+ISO_0227,Salmonella sp.,Poland,2022,Blood,Human,S,S,nan,R
+ISO_0228,Salmonella sp.,France,2020,Blood,Human,R,R,S,R
+ISO_0229,Klebsiella,Poland,2022,Blood,Human,R,S,R,R
+ISO_0230,Shigella,Poland,2022,Blood,Animal,S,R,R,R
+ISO_0231,Salmonella sp.,Germany,2022,Wound,Animal,nan,S,S,S
+ISO_0232,E. coli,Germany,2021,Wound,Human,S,S,S,R
+ISO_0233,Shigella,Germany,2021,Stool,Animal,S,S,S,R
+ISO_0234,Shigella,Poland,2021,Blood,Animal,S,S,R,S
+ISO_0235,E. coli,Italy,2022,Blood,Animal,S,nan,R,R
+ISO_0236,Salmonella sp.,Poland,2021,Urine,Animal,R,S,S,S
+ISO_0237,E. coli,Italy,2021,Wound,Human,R,nan,R,S
+ISO_0238,Shigella,Italy,2020,Blood,Human,S,S,S,S
+ISO_0239,Pseudomonas,Germany,2021,Stool,Animal,R,R,nan,S
+ISO_0240,Pseudomonas,Spain,2021,Stool,Human,S,R,nan,R
+ISO_0241,Klebsiella,France,2022,Wound,Human,R,S,nan,S
+ISO_0242,E. coli,Germany,2022,Stool,Human,R,R,S,R
+ISO_0243,E. coli,Germany,2022,Stool,Animal,R,S,R,S
+ISO_0244,Klebsiella,Spain,2022,Wound,Animal,S,R,S,R
+ISO_0245,Klebsiella,France,2022,Blood,Animal,nan,S,S,S
+ISO_0246,Klebsiella,Poland,2022,Blood,Human,R,S,S,S
+ISO_0247,Shigella,Poland,2021,Stool,Animal,S,S,R,R
+ISO_0248,E. coli,Germany,2022,Stool,Animal,S,S,S,R
+ISO_0249,Shigella,France,2022,Blood,Human,S,S,R,S
+ISO_0250,Klebsiella,Germany,2020,Wound,Animal,R,S,S,S
+ISO_0251,E. coli,Italy,2021,Stool,Animal,S,S,S,R
+ISO_0252,Shigella,Germany,2021,Urine,Human,S,R,S,S
+ISO_0253,Shigella,Germany,2021,Wound,Human,R,nan,R,nan
+ISO_0254,Klebsiella,Poland,2022,Stool,Human,R,S,nan,S
+ISO_0255,E. coli,Poland,2022,Stool,Animal,S,R,S,R
+ISO_0256,Klebsiella,Poland,2022,Urine,Animal,nan,R,R,S
+ISO_0257,E. coli,Italy,2020,Urine,Animal,R,S,R,R
+ISO_0258,Pseudomonas,Poland,2022,Blood,Human,S,R,R,nan
+ISO_0259,Salmonella sp.,France,2020,Wound,Human,nan,R,R,S
+ISO_0260,Salmonella sp.,Spain,2021,Wound,Animal,S,S,nan,R
+ISO_0261,Salmonella sp.,France,2022,Blood,Animal,nan,S,S,S
+ISO_0262,Klebsiella,France,2020,Wound,Human,S,S,S,R
+ISO_0263,Pseudomonas,Poland,2020,Wound,Human,S,nan,R,nan
+ISO_0264,E. coli,Spain,2022,Wound,Human,R,S,R,nan
+ISO_0265,Shigella,Spain,2021,Wound,Human,R,S,S,S
+ISO_0266,E. coli,Spain,2021,Wound,Animal,S,R,R,R
+ISO_0267,Shigella,Italy,2021,Urine,Human,S,S,S,S
+ISO_0268,E. coli,Poland,2020,Wound,Animal,R,R,nan,R
+ISO_0269,Pseudomonas,Spain,2020,Urine,Animal,S,nan,S,R
+ISO_0270,Shigella,Italy,2020,Wound,Animal,S,S,S,S
+ISO_0271,Klebsiella,Germany,2020,Blood,Human,S,S,R,R
+ISO_0272,E. coli,Germany,2021,Stool,Human,S,R,R,R
+ISO_0273,E. coli,Italy,2022,Urine,Human,S,S,R,nan
+ISO_0274,Shigella,Italy,2020,Wound,Human,R,S,S,R
+ISO_0275,Klebsiella,Poland,2020,Blood,Animal,R,R,R,R
+ISO_0276,Klebsiella,Poland,2021,Stool,Human,R,R,R,nan
+ISO_0277,Pseudomonas,Germany,2022,Urine,Human,R,S,S,R
+ISO_0278,Klebsiella,Spain,2022,Stool,Animal,S,R,R,S
+ISO_0279,Klebsiella,Germany,2021,Blood,Human,S,nan,R,nan
+ISO_0280,Klebsiella,Spain,2021,Urine,Animal,R,S,R,nan
+ISO_0281,Salmonella sp.,Spain,2022,Stool,Animal,S,R,nan,S
+ISO_0282,Pseudomonas,Poland,2020,Wound,Animal,R,S,S,R
+ISO_0283,E. coli,France,2022,Urine,Animal,nan,R,S,R
+ISO_0284,Shigella,France,2021,Stool,Animal,nan,S,R,S
+ISO_0285,E. coli,Italy,2020,Blood,Animal,R,R,nan,S
+ISO_0286,Pseudomonas,Poland,2020,Blood,Animal,S,R,S,S
+ISO_0287,Shigella,Spain,2021,Urine,Animal,R,S,R,R
+ISO_0288,Pseudomonas,France,2021,Stool,Human,S,S,S,R
+ISO_0289,Klebsiella,Spain,2021,Urine,Human,S,S,R,R
+ISO_0290,Shigella,France,2022,Urine,Human,R,S,S,S
+ISO_0291,Klebsiella,France,2022,Stool,Human,S,S,S,S
+ISO_0292,E. coli,France,2020,Stool,Animal,R,R,R,nan
+ISO_0293,E. coli,Poland,2021,Wound,Human,R,R,nan,S
+ISO_0294,Shigella,Germany,2020,Stool,Animal,S,nan,S,R
+ISO_0295,Shigella,Spain,2020,Blood,Human,R,S,S,S
+ISO_0296,Pseudomonas,Poland,2020,Urine,Human,S,S,R,S
+ISO_0297,Pseudomonas,Poland,2020,Urine,Human,S,R,R,S
+ISO_0298,Klebsiella,Poland,2021,Blood,Animal,nan,R,R,S
+ISO_0299,Shigella,Poland,2020,Stool,Human,R,S,S,S
+ISO_0300,E. coli,Poland,2021,Blood,Animal,S,S,R,S
