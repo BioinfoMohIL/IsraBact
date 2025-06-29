@@ -22,7 +22,7 @@ task amr_heatmap {
 
   input {
     File amr_input           # CSV or XLSX input file
-    Boolean remove_null       # Optional flag to remove NA rows
+    Boolean? remove_null       # Optional flag to remove NA rows
   }
 
   command <<<
