@@ -33,5 +33,3 @@ workflows:
     primaryDescriptorPath: /workflows/utilities/wf_fq2dna.wdl
 
 
-
-
