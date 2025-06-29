@@ -23,7 +23,7 @@ workflow wf_fq2dna {
     File fq2dna_metrics_zip         = fq2dna_run.metrics_zip
     File fq2dna_selected_scaffolds  = fq2dna_run.selected_scaffolds
     File fq2dna_selected_contigs    = fq2dna_run.selected_contigs
-    File fq2dna_scaffolding info:   = fq2dna_run.scaffolding_info
+    File fq2dna_scaffolding_info:   = fq2dna_run.scaffolding_info
   }
 }
 
