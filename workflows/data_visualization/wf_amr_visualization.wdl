@@ -4,7 +4,7 @@ workflow run_amr_heatmap {
 
   input {
     File amr_input
-    Boolean? remove_null = true
+    Boolean? remove_null = false
   }
 
   call amr_heatmap {
