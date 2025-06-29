@@ -59,12 +59,12 @@ task fq2dna_run {
         -T "${species_formatted}" \
         -a ~{alien_tag}
 
-    zip txt_info_files.zip out/*.txt
+    gzip txt_info_files.gz out/*.txt
   >>>
 
   output {
     File assembly_fasta      = "out/-s.all.fasta"
-    File metrics_zip         = "txt_info_files.zip"
+    File metrics_zip         = "txt_info_files.gz"
     File selected_scaffolds  = "out/-s.scf.fasta"
     File selected_contigs    = "out/-s.agp.fasta"
     File scaffolding_info    = "out/-s.agp"
