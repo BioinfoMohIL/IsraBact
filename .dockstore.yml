@@ -32,4 +32,8 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/utilities/wf_fq2dna.wdl
 
+  - name: AMR_Visualization_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/data_visualization/wf_amr_visualization.wdl
+
 
