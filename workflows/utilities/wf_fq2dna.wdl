@@ -62,7 +62,7 @@ task fq2dna_run {
     File metrics_zip         = "txt_info_files.zip"
     File selected_scaffolds  = "out/-s.scf.fasta"
     File selected_contigs    = "out/-s.agp.fasta"
-    File scaffolding_info:   = "out/-s.agp"
+    File scaffolding_info    = "out/-s.agp"
   }
 
   runtime {
