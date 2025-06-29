@@ -1,6 +1,11 @@
 version 1.0
 
 workflow wf_fq2dna {
+meta {
+		description: "De-novo genome assembly for reads using fd2dna (Alexis Criscuolo, Pasteur Institut)"
+		author: "David Maimoun"
+	}
+
   input {
     File read1
     File read2
