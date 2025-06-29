@@ -1,35 +1,30 @@
 version 1.0
 
 workflow wf_fq2dna {
-	meta {
-		description: "De-novo genome assembly for reads using fd2dna (Alexis Criscuolo, Pasteur Institut)"
-		author: "David Maimoun"
-		}
+  input {
+    File read1
+    File read2
+    String species
+    String? organism = "B" # "B(Bacteria), P(Prokariote),  E(Eukaryote), S(Standard), V(Virus)"
+    String? alien_tag = "AUTO"
+  }
 
-	input {
-	    File read1
-	    File read2
-	    String species
-	    String? organism = "B" # "B(Bacteria), P(Prokariote),  E(Eukaryote), S(Standard), V(Virus)"
-	    String? alien_tag = "AUTO"
-	  }
-	
-	  call fq2dna_run {
-	    input:
-		read1 = read1,
-		read2 = read2,
-		species = species,
-		organism = organism,
-		alien_tag = alien_tag
-	    }
-	
-	output {
-	    File fq2dna_assembly_fasta      = fq2dna_run.assembly_fasta
-	    File fq2dna_metrics_zip         = fq2dna_run.metrics_zip
-	    File fq2dna_selected_scaffolds  = fq2dna_run.selected_scaffolds
-	    File fq2dna_selected_contigs    = fq2dna_run.selected_contigs
-	    File fq2dna_scaffolding_info    = fq2dna_run.scaffolding_info
-	}
+  call fq2dna_run {
+    input:
+        read1 = read1,
+        read2 = read2,
+        species = species,
+        organism = organism,
+        alien_tag = alien_tag
+    }
+
+  output {
+    File fq2dna_assembly_fasta      = fq2dna_run.assembly_fasta
+    File fq2dna_metrics_zip         = fq2dna_run.metrics_zip
+    File fq2dna_selected_scaffolds  = fq2dna_run.selected_scaffolds
+    File fq2dna_selected_contigs    = fq2dna_run.selected_contigs
+    File fq2dna_scaffolding_info    = fq2dna_run.scaffolding_info
+  }
 }
 
 
@@ -50,6 +45,7 @@ task fq2dna_run {
 
     species_formatted=$(echo "${genus:0:1}${species_name:0:4}${strain:0:2}" | tr '[:upper:]' '[:lower:]')
 
+    mkdir out
     fq2dna \
         -1 ~{read1} \
         -2 ~{read2} \
@@ -60,6 +56,7 @@ task fq2dna_run {
         -a ~{alien_tag}
 
     gzip txt_info_files.gz out/*.txt
+    
   >>>
 
   output {
