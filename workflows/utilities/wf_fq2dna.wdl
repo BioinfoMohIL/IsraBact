@@ -18,10 +18,20 @@ workflow wf_fq2dna {
         alien_tag = alien_tag
     }
 
-#   output {
-#     File fq2dna_report = fq2dna_run.report
-#   }
+  output {
+    File fq2dna_assembly_fasta      = fq2dna_run.assembly_fasta
+    File fq2dna_metrics_zip         = fq2dna_run.metrics_zip
+    File fq2dna_selected_scaffolds  = fq2dna_run.selected_scaffolds
+    File fq2dna_selected_contigs    = fq2dna_run.selected_contigs
+    File fq2dna_scaffolding info:   = fq2dna_run.scaffolding_info
+  }
 }
+
+    
+       
+selected_scaffolds
+selected_contigs  
+scaffolding info: 
 
 task fq2dna_run {
   input {
@@ -48,11 +58,17 @@ task fq2dna_run {
         -s ~{organism} \
         -T "${species_formatted}" \
         -a ~{alien_tag}
+
+    zip txt_info_files.zip out/*.txt
   >>>
 
-#   output {
-#     File report = "out/report.txt"
-#   }
+  output {
+    File assembly_fasta      = "out/-s.all.fasta"
+    File metrics_zip         = "txt_info_files.zip"
+    File selected_scaffolds  = "out/-s.scf.fasta"
+    File selected_contigs    = "out/-s.agp.fasta"
+    File scaffolding_info:   = "out/-s.agp"
+  }
 
   runtime {
     docker: "bioinfomoh/fq2dna:1"
