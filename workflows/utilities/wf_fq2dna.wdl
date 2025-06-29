@@ -27,11 +27,6 @@ workflow wf_fq2dna {
   }
 }
 
-    
-       
-selected_scaffolds
-selected_contigs  
-scaffolding info: 
 
 task fq2dna_run {
   input {
