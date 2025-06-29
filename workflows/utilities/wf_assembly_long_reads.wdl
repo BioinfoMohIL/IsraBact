@@ -23,9 +23,9 @@ workflow assembly_long_reads {
 		String seq_method = 'Illumina'
 	
 		# trimming parameters
-        Int trim_min_length = 75
-        Int trim_quality_min_score = 20
-        Int trim_window_size = 10
+	        Int trim_min_length = 75
+	        Int trim_quality_min_score = 20
+	        Int trim_window_size = 10
 
 		# Optional parameters for unicycler
 		File? illumina_unpaired_fq
@@ -65,15 +65,15 @@ workflow assembly_long_reads {
 	}
 
 	call read_QC.read_QC_trim_pe as read_QC_trim {
-      input:
-        samplename = samplename,
-        read1 = select_first([read1]),
-        read2 = read2,
-        trim_min_length = trim_min_length,
-        trim_quality_min_score = trim_quality_min_score,
-        trim_window_size = trim_window_size,
-        workflow_series = "israbact_pe"
-    }
+	      input:
+	        samplename = samplename,
+	        read1 = select_first([read1]),
+	        read2 = read2,
+	        trim_min_length = trim_min_length,
+	        trim_quality_min_score = trim_quality_min_score,
+	        trim_window_size = trim_window_size,
+	        workflow_series = "israbact_pe"
+	    }
 	
 	call task_unicycler.unicycler {
 		input:
