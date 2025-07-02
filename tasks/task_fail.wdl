@@ -5,14 +5,14 @@ task fail {
         String message
     }
     command <<< 
-        echo "~{message}"
+        echo "~{message}" | tee "ERROR"
         exit 1
     >>>
 
     output {
-        String dummy = "Fail triggered"
+        File fail_logs = 'ERROR'
     }
-    
+
     runtime {
         docker: "alpine" 
     }

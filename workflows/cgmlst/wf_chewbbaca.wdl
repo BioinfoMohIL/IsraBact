@@ -20,23 +20,25 @@ workflow wf_chewbbaca {
             input:
                 message = "You must provide EITHER 'input_assemblies' OR 'assemblies_zipped', but not both."
         }
-    } else {
-        call task_chewbbaca.allele_calling {
-            input:
-                schema_zip = schema_zip,
-                prodigal_zip = prodigal_zip,
-                assemblies = input_assemblies,
-                assemblies_zipped = assemblies_zipped
-        }
+    } 
 
-        call task_chewbbaca.extract_cgmlst {
-            input:
-                cleaned_results = allele_calling.alleles_cleaned
-        }
-
-        output {
-            File chew_alleles = allele_calling.alleles_cleaned
-            File chew_visualization = extract_cgmlst.visualization
-        }
+    call task_chewbbaca.allele_calling {
+        input:
+            schema_zip = schema_zip,
+            prodigal_zip = prodigal_zip,
+            assemblies = input_assemblies,
+            assemblies_zipped = assemblies_zipped
     }
+
+    call task_chewbbaca.extract_cgmlst {
+        input:
+            cleaned_results = allele_calling.alleles_cleaned
+    }
+
+    output {
+        File fail_logs = fail.fail_logs
+        File chew_alleles = allele_calling.alleles_cleaned
+        File chew_visualization = extract_cgmlst.visualization
+    }
+    
 }
