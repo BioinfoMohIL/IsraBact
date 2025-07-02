@@ -5,7 +5,8 @@ task allele_calling {
     input {
         File schema_zip
         File prodigal_zip
-        Array[File] assemblies
+        Array[File]? assemblies
+        File? assemblies_zipped
         Int cpu = 20
     }
 
@@ -49,17 +50,28 @@ task allele_calling {
                     --ptf $(basename ~{prodigal_zip})_unzipped/*.trn \
                     --cpu ~{cpu}  
 
-    
-        echo "[2] Alleles Calling"
-        
+        echo "[2] Preparing assemblies input"
+
         mkdir -p assemblies_files
-        for f in ~{sep=' ' assemblies}; do
-            cp "$f" assemblies_files/
-        done
-        
+
+        # Case 1 : assemblies_zipped 
+        if [ -s "~{assemblies_zipped}" ]; then
+            echo "Decompressing assemblies_zipped"
+            unzip "~{assemblies_zipped}" -d assemblies_files || tar -xf "~{assemblies_zipped}" -C assemblies_files || tar -xzf "~{assemblies_zipped}" -C assemblies_files || echo "Unknown compression format for assemblies_zipped"
+        fi
+
+        # Case 2 : assemblies array files
+        if [ "~{sep=' ' assemblies}" != "" ]; then
+            echo "Copying assemblies list"
+            for f in ~{sep=' ' assemblies}; do
+                cp "$f" assemblies_files/
+            done
+        fi
+
+        echo "[3] Running AlleleCall"
         chewBBACA.py AlleleCall -i assemblies_files -g schema_adapted -o calling --cpu ~{cpu}
 
-        echo "[2.2] Cleaning sample name for better tree visualization"
+        echo "[4] Cleaning sample names"
         results_file=$(find calling -name "results_alleles.tsv" | head -n 1)
         
         awk -F'\t' 'BEGIN{OFS="\t"} {
@@ -70,7 +82,7 @@ task allele_calling {
             print
         }' "$results_file" > alleles_cleaned.tsv
 
-        echo "Compressing for output ..."
+        echo "Compressing output ..."
         tar -czf schema_adapted.tar.gz schema_adapted
         tar -czf calling.tar.gz calling
 
@@ -80,7 +92,6 @@ task allele_calling {
         File calling_dir = "calling.tar.gz"
         File alleles_cleaned = "alleles_cleaned.tsv"
         File schema_adapted = "schema_adapted.tar.gz"
-
     }
 
     runtime {
