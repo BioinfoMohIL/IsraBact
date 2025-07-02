@@ -1,6 +1,7 @@
 version 1.0
 
 import "../../tasks/cgmlst/task_chewbbaca.wdl" as task_chewbbaca
+import "../../tasks/task_fail.wdl" as task_fail
 
 workflow wf_chewbbaca {
     input {
@@ -16,8 +17,7 @@ workflow wf_chewbbaca {
 
     if (!assemblies_valid) {
         String error = "You must provide EITHER 'input_assemblies' OR 'assemblies_zipped', but not both."
-        # Forbid execution with a fail-fast
-        call task_chewbbaca.fail with {
+        call task_fail.fail {
             message = error
         }
     } 
