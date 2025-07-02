@@ -20,8 +20,7 @@ workflow wf_chewbbaca {
             input:
                 message = "You must provide EITHER 'input_assemblies' OR 'assemblies_zipped', but not both."
         }
-    } 
-    else {
+    } else {
         call task_chewbbaca.allele_calling {
             input:
                 schema_zip = schema_zip,
