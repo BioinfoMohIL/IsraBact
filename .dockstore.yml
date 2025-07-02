@@ -36,4 +36,8 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/data_visualization/wf_amr_visualization.wdl
 
+  - name: CgMLST_ChewBBACA_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/cgmlst/wf_chewbbaca.wdl
+
 
