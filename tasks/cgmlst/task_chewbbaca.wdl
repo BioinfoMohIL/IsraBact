@@ -84,7 +84,7 @@ task allele_calling {
     }
 
     runtime {
-        docker: "ummidock/chewbbaca:v3.3.10"
+        docker: "bioinfomoh/run_chewbbaca:1"
         cpu : "~{cpu}"
     }
 }
