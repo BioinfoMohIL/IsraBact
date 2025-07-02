@@ -16,9 +16,8 @@ workflow wf_chewbbaca {
         (!defined(input_assemblies) && defined(assemblies_zipped))
 
     if (!assemblies_valid) {
-        String error = "You must provide EITHER 'input_assemblies' OR 'assemblies_zipped', but not both."
         call task_fail.fail {
-            message = error
+            message = "You must provide EITHER 'input_assemblies' OR 'assemblies_zipped', but not both."
         }
     } 
     else {
