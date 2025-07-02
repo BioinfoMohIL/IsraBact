@@ -36,7 +36,7 @@ workflow wf_chewbbaca {
     }
 
     output {
-        File fail_logs = fail.fail_logs
+        File? fail_logs = fail.fail_logs
         File chew_alleles = allele_calling.alleles_cleaned
         File chew_visualization = extract_cgmlst.visualization
     }
