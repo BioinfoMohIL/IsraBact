@@ -1,0 +1,9 @@
+{
+  "SpeciesDetection.reads_list": "/home/user1/Desktop/programs/wdl/IsraBact/20250710_073124_SpeciesDetection/out/reads_list/reads_list.txt",
+  "SpeciesDetection.samples_name": [
+    "NM255",
+    "NM256"
+  ],
+  "SpeciesDetection.species_detected": "/home/user1/Desktop/programs/wdl/IsraBact/20250710_073124_SpeciesDetection/out/species_detected/species_detected.csv",
+  "SpeciesDetection.version": "Kraken v2.1.3"
+}

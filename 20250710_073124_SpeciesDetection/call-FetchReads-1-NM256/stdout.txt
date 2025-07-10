@@ -1,0 +1,12 @@
+sample_identifier: NM256
+dataset_name: NM256
+basespace_collection_id: N_020
+bs_command: bs --api-server=https://api.basespace.illumina.com --access-token=4acb4557c76940d99ed57dfd3212d423
+run_id: 292598336
+dataset_id: ds.0cbfa92647a84ed3ab3efe41342919f8
+dataset download: bs --api-server=https://api.basespace.illumina.com --access-token=4acb4557c76940d99ed57dfd3212d423 download dataset -i ds.0cbfa92647a84ed3ab3efe41342919f8 -o . --retry
+downloaded data: 
+ ./dataset_ds.0cbfa92647a84ed3ab3efe41342919f8/NM256_S49_L001_R1_001.fastq.gz
+./dataset_ds.0cbfa92647a84ed3ab3efe41342919f8/NM256_S49_L001_R2_001.fastq.gz
+./dataset_ds.0cbfa92647a84ed3ab3efe41342919f8/NM256_ds.0cbfa92647a84ed3ab3efe41342919f8.json
+Concatenating and renaming FASTQ files to add back underscores in basespace_sample_name

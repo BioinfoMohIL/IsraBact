@@ -57,9 +57,21 @@ task allele_calling {
         # Case 1 : assemblies_zipped 
         if [ -s "~{assemblies_zipped}" ]; then
             echo "Decompressing assemblies_zipped"
-            unzip "~{assemblies_zipped}" -d assemblies_files || tar -xf "~{assemblies_zipped}" -C assemblies_files || tar -xzf "~{assemblies_zipped}" -C assemblies_files || echo "Unknown compression format for assemblies_zipped"
-        fi
 
+            tmp_dir=$(mktemp -d)
+
+            # Try unzip
+            unzip "~{assemblies_zipped}" -d "$tmp_dir" || \
+            tar -xf "~{assemblies_zipped}" -C "$tmp_dir" || \
+            tar -xzf "~{assemblies_zipped}" -C "$tmp_dir" || \
+            { echo "Unknown compression format for assemblies_zipped"; exit 1; }
+
+            echo "Moving files to assemblies_files"
+            find "$tmp_dir" -type f -exec mv {} assemblies_files/ \;
+
+            rm -rf "$tmp_dir"
+        fi
+        
         # Case 2 : assemblies array files
         if [ "~{sep=' ' assemblies}" != "" ]; then
             echo "Copying assemblies list"
@@ -114,7 +126,8 @@ task extract_cgmlst {
     }
 
     output {
-        File visualization = "visualization.tar.gz"
+        File visualization_zip = "visualization.tar.gz"
+        File visualization_file = "visualization/cgMLST.tsv"
     }
 
     runtime {

@@ -1,0 +1,19 @@
+     
+bs project content --name N_020 \
+    --api-server=https://api.basespace.illumina.com \
+    --access-token=4acb4557c76940d99ed57dfd3212d423 \
+    --retry > reads_list.txt
+
+# Create a a samples name list from the reads_list
+# -> Fetch the name form the R1 read, and remove if got a 'Undetermined' read
+if [ -z NM ]; then
+    grep -o "[A-Za-z0-9_-]*_S[0-9]*_L[0-9]*_R1_[0-9]*\.fastq\.gz" reads_list.txt \
+    | sed 's/_S[0-9]*_L[0-9]*_R1_.*\.fastq\.gz//' \
+    | grep -v "^Undetermined$" \
+    > samples_name.txt
+else
+    grep -o "NM[A-Za-z0-9_-]*_S[0-9]*_L[0-9]*_R1_[0-9]*\.fastq\.gz" reads_list.txt \
+    | sed 's/_S[0-9]*_L[0-9]*_R1_.*\.fastq\.gz//' \
+    > samples_name.txt
+fi
+    

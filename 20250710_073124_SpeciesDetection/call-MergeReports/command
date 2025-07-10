@@ -1,0 +1,6 @@
+
+        echo "Sample,Detected,Match" > species_detected.csv
+        echo "NM255,Neisseria meningitidis,+
+NM256,Neisseria meningitidis,+" >> species_detected.csv
+        
+    
