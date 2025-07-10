@@ -1,1 +1,0 @@
-pushd /home/user1/Desktop/programs/wdl/IsraBact && miniwdl run workflows/metagenomics/wf_species_detection_bs_reads.wdl --input inputs.json; popd

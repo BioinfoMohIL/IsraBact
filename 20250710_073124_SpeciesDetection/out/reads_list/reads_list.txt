@@ -1,1 +1,0 @@
-../../call-GetReadsList/work/reads_list.txt
