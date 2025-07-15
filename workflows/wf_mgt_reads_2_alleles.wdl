@@ -76,13 +76,13 @@ task reads_to_alleles {
         Int disk_size
         String docker_image
 
-        Int genome_min
-        Int min_largest_contig
-        Int max_contig_no
-        Int n50_min      
-        Int blastident   
-        Float hspident     
-        Float locusnlimit  
+        Int? genome_min
+        Int? min_largest_contig
+        Int? max_contig_no
+        Int? n50_min      
+        Int? blastident   
+        Float? hspident     
+        Float? locusnlimit  
         
     }
 
