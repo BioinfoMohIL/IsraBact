@@ -45,13 +45,7 @@ task listeria_pred {
     }
 
     command <<<
-        current=$('pwd')
-        cd /ListPred
-
-        echo 'current:' ${current}
-
-        echo 'Ls:' 
-        ls    
+        
 
         echo 'her' > t.txt
 
