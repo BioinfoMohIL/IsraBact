@@ -24,14 +24,15 @@ workflow listeria_pred_reads {
     }
 
     output {
-        String  listpred_virulence              = listeria_pred.virulence_class
-        String  listpred_disinftolerance        = listeria_pred.disinfectant_phenotype
-        File    listpred_virulence_pred         = listeria_pred.virulence_pred
-        File    listpred_combined_pred_out_cat  = listeria_pred.combined_pred_out_cat
-        File    listpred_combined_pred_out_num  = listeria_pred.combined_pred_out_num
-        File    listpred_disinftolerance_pred   = listeria_pred.disinftolerance_pred
-        File?   listpred_disinf_align           = listeria_pred.disinf_align
-        File?   listpred_vir_align              = listeria_pred.vir_align
+        File test = listeria_pred.test
+        # String  listpred_virulence              = listeria_pred.virulence_class
+        # String  listpred_disinftolerance        = listeria_pred.disinfectant_phenotype
+        # File    listpred_virulence_pred         = listeria_pred.virulence_pred
+        # File    listpred_combined_pred_out_cat  = listeria_pred.combined_pred_out_cat
+        # File    listpred_combined_pred_out_num  = listeria_pred.combined_pred_out_num
+        # File    listpred_disinftolerance_pred   = listeria_pred.disinftolerance_pred
+        # File?   listpred_disinf_align           = listeria_pred.disinf_align
+        # File?   listpred_vir_align              = listeria_pred.vir_align
     }
 }
 
@@ -45,55 +46,61 @@ task listeria_pred {
 
     command <<<
         current=$('pwd')
-        # cd /ListPred
+        cd /ListPred
 
-    
-        snakemake -s /ListPred/workflow/Snakefile \
-            --cores ~{cpu} --use-conda --config ipe="~{read1} ~{read2}" outd="pred_results"
+        echo 'current:' ${current}
 
-        if [[ -d pred_results/prediction ]]; then
-            cp pred_results/prediction/virulence_prediction_out.csv $current
-            cp pred_results/prediction/combined_predictions_out_categorical.csv $current
-            cp pred_results/prediction/combined_predictions_out_numerical.csv $current
-            cp pred_results/prediction/disinftolerance_prediction_out.csv $current
+        echo 'Ls:' 
+        ls    
+        # snakemake -s /ListPred/workflow/Snakefile \
+        #     --cores ~{cpu} --use-conda --config ipe="~{read1} ~{read2}" outd="pred_results"
 
-            cat_data="${current}/combined_predictions_out_categorical.csv"
+        # if [[ -d pred_results/prediction ]]; then
+        #     cp pred_results/prediction/virulence_prediction_out.csv $current
+        #     cp pred_results/prediction/combined_predictions_out_categorical.csv $current
+        #     cp pred_results/prediction/combined_predictions_out_numerical.csv $current
+        #     cp pred_results/prediction/disinftolerance_prediction_out.csv $current
+
+        #     cat_data="${current}/combined_predictions_out_categorical.csv"
           
-            cut -d';' -f2 $cat_data | tail -n +2 > ${current}/virulence_class.txt;
-            cut -d';' -f3 $cat_data | tail -n +2 > ${current}/disinfectant_phenotype.txt
+        #     cut -d';' -f2 $cat_data | tail -n +2 > ${current}/virulence_class.txt;
+        #     cut -d';' -f3 $cat_data | tail -n +2 > ${current}/disinfectant_phenotype.txt
 
             
-        else
-            echo "❌ Directory 'pred_results/prediction' not found."
-            exit 1
-        fi
+        # else
+        #     echo "❌ Directory 'pred_results/prediction' not found."
+        #     exit 1
+        # fi
 
-        if [[ -d pred_results/vir_align_out ]]; then
-            cp -r pred_results/vir_align_out $current
-            tar -czf "$current/vir_align_out.tar.gz" -C "$current" vir_align_out
-            rm -rf "$current/vir_align_out"
-        else
-            echo "❌ Directory 'pred_results/vir_align_out' not found."
-        fi
+        # if [[ -d pred_results/vir_align_out ]]; then
+        #     cp -r pred_results/vir_align_out $current
+        #     tar -czf "$current/vir_align_out.tar.gz" -C "$current" vir_align_out
+        #     rm -rf "$current/vir_align_out"
+        # else
+        #     echo "❌ Directory 'pred_results/vir_align_out' not found."
+        # fi
 
-        if [[ -d pred_results/disinf_align_out ]]; then
-            cp -r pred_results/disinf_align_out $current
-            tar -czf "$current/disinf_align_out.tar.gz" -C "$current" disinf_align_out
-            rm -rf "$current/disinf_align_out"
-        else
-            echo "❌ Directory 'pred_results/disinf_align_out' not found."
-        fi
+        # if [[ -d pred_results/disinf_align_out ]]; then
+        #     cp -r pred_results/disinf_align_out $current
+        #     tar -czf "$current/disinf_align_out.tar.gz" -C "$current" disinf_align_out
+        #     rm -rf "$current/disinf_align_out"
+        # else
+        #     echo "❌ Directory 'pred_results/disinf_align_out' not found."
+        # fi
     >>>
 
+    echo 'her' > t.txt
+
     output {
-        String virulence_class        = read_string('virulence_class.txt')
-        String disinfectant_phenotype = read_string('disinfectant_phenotype.txt')
-        File virulence_pred           = "virulence_prediction_out.csv"
-        File combined_pred_out_cat    = "combined_predictions_out_categorical.csv"  
-        File combined_pred_out_num    = "combined_predictions_out_numerical.csv"  
-        File disinftolerance_pred     = "disinftolerance_prediction_out.csv"
-        File? disinf_align            = "disinf_align_out.tar.gz"
-        File? vir_align               = "vir_align_out.tar.gz"
+        File test = 't.txt'
+        # String virulence_class        = read_string('virulence_class.txt')
+        # String disinfectant_phenotype = read_string('disinfectant_phenotype.txt')
+        # File virulence_pred           = "virulence_prediction_out.csv"
+        # File combined_pred_out_cat    = "combined_predictions_out_categorical.csv"  
+        # File combined_pred_out_num    = "combined_predictions_out_numerical.csv"  
+        # File disinftolerance_pred     = "disinftolerance_prediction_out.csv"
+        # File? disinf_align            = "disinf_align_out.tar.gz"
+        # File? vir_align               = "vir_align_out.tar.gz"
 
 
     }
