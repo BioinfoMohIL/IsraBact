@@ -55,6 +55,41 @@ task listeria_pred {
 
         echo 'her' > t.txt
 
+        # snakemake -s /ListPred/workflow/Snakefile \
+        #     --cores ~{cpu} --use-conda --config ipe="~{read1} ~{read2}" outd="pred_results"
+
+        # if [[ -d pred_results/prediction ]]; then
+        #     cp pred_results/prediction/virulence_prediction_out.csv $current
+        #     cp pred_results/prediction/combined_predictions_out_categorical.csv $current
+        #     cp pred_results/prediction/combined_predictions_out_numerical.csv $current
+        #     cp pred_results/prediction/disinftolerance_prediction_out.csv $current
+
+        #     cat_data="${current}/combined_predictions_out_categorical.csv"
+          
+        #     cut -d';' -f2 $cat_data | tail -n +2 > ${current}/virulence_class.txt;
+        #     cut -d';' -f3 $cat_data | tail -n +2 > ${current}/disinfectant_phenotype.txt
+
+            
+        # else
+        #     echo "❌ Directory 'pred_results/prediction' not found."
+        #     exit 1
+        # fi
+
+        # if [[ -d pred_results/vir_align_out ]]; then
+        #     cp -r pred_results/vir_align_out $current
+        #     tar -czf "$current/vir_align_out.tar.gz" -C "$current" vir_align_out
+        #     rm -rf "$current/vir_align_out"
+        # else
+        #     echo "❌ Directory 'pred_results/vir_align_out' not found."
+        # fi
+
+        # if [[ -d pred_results/disinf_align_out ]]; then
+        #     cp -r pred_results/disinf_align_out $current
+        #     tar -czf "$current/disinf_align_out.tar.gz" -C "$current" disinf_align_out
+        #     rm -rf "$current/disinf_align_out"
+        # else
+        #     echo "❌ Directory 'pred_results/disinf_align_out' not found."
+        # fi
     >>>
 
 
