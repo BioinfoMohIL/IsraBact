@@ -45,11 +45,11 @@ task listeria_pred {
     }
 
     command <<<
-        ls -ld /ListPred
-        whoami
+        ls -ld /ListPred > t.txt
+        whoami >> t.txt
  
 
-        echo 'her' > t.txt
+        echo 'her' >> t.txt
 
     >>>
 
