@@ -44,10 +44,20 @@ task listeria_pred {
     }
 
     command <<<
-        current=$('pwd')
+          current=$('pwd')
         cd /ListPred
+        
+        r1=~{read1}
+        r2=~{read2}
+        prefix=$(basename "$r1" | cut -d'_' -f1)
+
+        # Rename sample <sample>_S**_L**_R[1,2]_001 into <sample>_R[1,2]
+        cp "$r1" "${prefix}_R1.fastq.gz"
+        cp "$r2" "${prefix}_R2.fastq.gz"
+
+     
         snakemake -s /ListPred/workflow/Snakefile \
-            --cores ~{cpu} --use-conda --config ipe="~{read1} ~{read2}" outd="pred_results"
+            --cores ~{cpu} --use-conda --config ipe="${prefix}_R1.fastq.gz ${prefix}_R2.fastq.gz" outd="pred_results"
 
         if [[ -d pred_results/prediction ]]; then
             cp pred_results/prediction/virulence_prediction_out.csv $current
