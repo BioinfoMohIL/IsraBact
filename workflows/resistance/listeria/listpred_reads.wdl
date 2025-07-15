@@ -45,13 +45,13 @@ task listeria_pred {
     }
 
     command <<<
-        
- 
         cd /ListPred
         cat ~{read1} > read1.fastq.gz
         cat ~{read2} > read2.fastq.gz
-        mkdir pred_results
+        
+        mkdir -p /ListPred/pred_results
         snakemake -s /ListPred/workflow/Snakefile --cores ~{cpu} --use-conda --config ipe="read1.fastq.gz read2.fastq.gz" outd="pred_results"
+        
         echo 'her' >> t.txt
 
     >>>
