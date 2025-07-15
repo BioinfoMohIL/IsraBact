@@ -50,7 +50,7 @@ task listeria_pred {
         cat ~{read2} > read2.fastq.gz
         
         mkdir -p /ListPred/pred_results
-        snakemake -s /ListPred/workflow/Snakefile --cores ~{cpu} --use-conda --config ipe="read1.fastq.gz read2.fastq.gz" outd="pred_results"
+        snakemake -s /ListPred/workflow/Snakefile --cores ~{cpu} --use-conda --config ipe="read1.fastq.gz read2.fastq.gz" outd="/ListPred/pred_results"
         
         echo 'her' >> t.txt
 
