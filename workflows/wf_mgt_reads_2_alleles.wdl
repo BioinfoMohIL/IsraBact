@@ -112,7 +112,6 @@ task reads_to_alleles {
             --strainid ~{samplename} \
             --kraken_db /app/db/minikraken_20171013_4GB \
             -o ./ \
-            --min_largest_contig
             ~{'--min_largest_contig '  + min_largest_contig} \
             ~{' --max_contig_no '  +  max_contig_no} \
             ~{'--genome_min '  + genome_min} \
