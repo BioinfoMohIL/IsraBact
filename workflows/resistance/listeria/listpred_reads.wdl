@@ -45,13 +45,9 @@ task listeria_pred {
 
     command <<<
         current=$('pwd')
-        cd /ListPred
+        # cd /ListPred
 
-        echo "read1"
-        cat ~{read1}
-        echo "read2"
-        cat ~{read2}
-
+    
         snakemake -s /ListPred/workflow/Snakefile \
             --cores ~{cpu} --use-conda --config ipe="~{read1} ~{read2}" outd="pred_results"
 
