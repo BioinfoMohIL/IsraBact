@@ -40,4 +40,16 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/cgmlst/wf_chewbbaca.wdl
 
+  - name: MGT_Reads2Alleles_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/wf_mgt_reads_2_alleles.wdl
+
+  - name: ListPred_Reads_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/resistance/listeria/listpred_reads.wdl
+
+  - name: ListPred_Fasta_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/resistance/listeria/listpred_fasta.wdl
+
 
