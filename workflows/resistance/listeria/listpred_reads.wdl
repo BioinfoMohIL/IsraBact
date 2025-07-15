@@ -52,6 +52,9 @@ task listeria_pred {
 
         echo 'Ls:' 
         ls    
+
+        echo 'her' > t.txt
+
         # snakemake -s /ListPred/workflow/Snakefile \
         #     --cores ~{cpu} --use-conda --config ipe="~{read1} ~{read2}" outd="pred_results"
 
@@ -87,7 +90,6 @@ task listeria_pred {
         # else
         #     echo "❌ Directory 'pred_results/disinf_align_out' not found."
         # fi
-    echo 'her' > t.txt
     >>>
 
 
