@@ -48,7 +48,10 @@ task listeria_pred {
         
  
         cd /ListPred
-        snakemake -s /ListPred/workflow/Snakefile --cores ~{cpu} --use-conda --config ipe="~{read1} ~{read2}" outd="pred_results"
+        cat ~{read1} > read1.fastq.gz
+        cat ~{read2} > read2.fastq.gz
+        
+        snakemake -s /ListPred/workflow/Snakefile --cores ~{cpu} --use-conda --config ipe="read1.fastq.gz read2.fastq.gz" outd="pred_results"
         echo 'her' >> t.txt
 
     >>>
