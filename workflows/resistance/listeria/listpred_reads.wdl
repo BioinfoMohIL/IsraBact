@@ -87,9 +87,9 @@ task listeria_pred {
         # else
         #     echo "❌ Directory 'pred_results/disinf_align_out' not found."
         # fi
+    echo 'her' > t.txt
     >>>
 
-    echo 'her' > t.txt
 
     output {
         File test = 't.txt'
