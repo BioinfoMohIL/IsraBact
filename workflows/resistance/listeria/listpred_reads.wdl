@@ -48,6 +48,7 @@ task listeria_pred {
         ls -ld /ListPred > t.txt
         whoami >> t.txt
  
+        cd /ListPred
 
         echo 'her' >> t.txt
 
