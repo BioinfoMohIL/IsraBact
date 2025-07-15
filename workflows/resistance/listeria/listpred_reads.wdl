@@ -46,7 +46,9 @@ task listeria_pred {
 
     command <<<
         current=$('pwd')
-        cd /ListPred
+        
+        snakemake  \
+            --cores ~{cpu} --use-conda --config ipe="~{read1} ~{read2}" outd="pred_results"
  
 
         echo 'her' > t.txt
