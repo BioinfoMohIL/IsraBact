@@ -13,7 +13,7 @@ workflow listeria_pred_reads {
     input {
         File read1
         File read2          
-        Int cpu = 20           
+        Int cpu = 12          
     }
 
     call listeria_pred {
@@ -100,7 +100,6 @@ task listeria_pred {
         docker: "genomicepidemiology/listpred:0.2.0"
         cpu: cpu 
         memory: "8 GB" 
-        disks: "local-disk 100 GB" 
     }
 
 }
