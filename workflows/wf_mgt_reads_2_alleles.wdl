@@ -12,21 +12,21 @@ workflow mgt_reads_to_alleles {
         Int memory          = 30
         Int disk_size       = 250
 
-        Int? min_largest_contig 
-        Int? max_contig_no 
-        Int? genome_min   
-        Int? n50_min         
-        Int? blastident   
-        Float? hspident          
-        Float? locusnlimit 
+        # Int? min_largest_contig 
+        # Int? max_contig_no 
+        # Int? genome_min   
+        # Int? n50_min         
+        # Int? blastident   
+        # Float? hspident          
+        # Float? locusnlimit 
 
-        # Int min_largest_contig = 50000
-        # Int max_contig_no = 700
-        # Int genome_min    = 3500000
-        # Int n50_min       = 15000    
-        # Int blastident    = 85
-        # Float hspident      = 0.95     
-        # Float locusnlimit   = 0.7
+        Int min_largest_contig = 50000
+        Int max_contig_no = 700
+        Int genome_min    = 3500000
+        Int n50_min       = 15000    
+        Int blastident    = 85
+        Float hspident      = 0.95     
+        Float locusnlimit   = 0.7
  
         String docker_image = "bioinfomoh/mgt_reads2alleles:1"
     }
@@ -76,11 +76,11 @@ task reads_to_alleles {
         Int disk_size
         String docker_image
 
-        Int? genome_min
-        Int? min_largest_contig
-        Int? max_contig_no
-        Int? n50_min      
-        Int? blastident   
+        Int genome_min
+        Int min_largest_contig
+        Int max_contig_no
+        Int n50_min      
+        Int blastident   
         Float? hspident     
         Float? locusnlimit  
         
