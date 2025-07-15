@@ -45,11 +45,10 @@ task listeria_pred {
     }
 
     command <<<
-        ls -ld /ListPred > t.txt
-        whoami >> t.txt
+        
  
         cd /ListPred
-
+        snakemake -s /ListPred/workflow/Snakefile --cores ~{cpu} --use-conda --config ipe="~{read1} ~{read2}" outd="pred_results"
         echo 'her' >> t.txt
 
     >>>
