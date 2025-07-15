@@ -45,11 +45,12 @@ task listeria_pred {
     }
 
     command <<<
-        current=$('pwd')
-        
-        
+        ls -ld /ListPred
+        whoami
  
+
         echo 'her' > t.txt
+
     >>>
 
 
