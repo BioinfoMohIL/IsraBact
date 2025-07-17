@@ -1,6 +1,0 @@
-
-VERSION="IsraBact v1.0"
-    
-date +"%Y-%m-%d" > TODAY
-echo "$VERSION" > VERSION
-  

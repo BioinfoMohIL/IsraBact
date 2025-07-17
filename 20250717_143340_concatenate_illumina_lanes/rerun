@@ -1,1 +1,0 @@
-pushd /home/user1/Desktop/programs/wdl/IsraBact && miniwdl run workflows/utilities/file_handling/wf_concatenate_illumina_lanes.wdl --input inputs.json; popd
