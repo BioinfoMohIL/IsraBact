@@ -6,8 +6,8 @@ import "../../../tasks/utilities/data_import/task_basespace_cli.wdl" as basespac
 workflow basespace_fetch {
   meta {
     description: "Fetch reads from Basespace via Basespace CLI."
-    author: "David Maimoun (The Codon Bleu)"
-    email: "thecodonbleu@outlook.com"
+    author: "David Maimoun"
+    organization: "MOH"
   }
 
   input {

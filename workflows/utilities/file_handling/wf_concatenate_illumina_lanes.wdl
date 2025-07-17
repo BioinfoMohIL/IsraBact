@@ -32,7 +32,7 @@ workflow concatenate_illumina_lanes {
       read2_lane4 = read2_lane4
   }
 
-  call version_capture {
+  call versioning.version_capture {
     input:
   }
 
