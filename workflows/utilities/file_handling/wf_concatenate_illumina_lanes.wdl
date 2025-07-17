@@ -1,7 +1,8 @@
 version 1.0
 
-import "../../../tasks/utilities/file_handling/task_concat_lanes.wdl" as concatenate_lanes
+import "../../../tasks/utilities/file_handling/task_concat_lanes.wdl" as task_concat_lanes
 import "../../../tasks/task_versioning.wdl" as versioning
+
 
 workflow concatenate_illumina_lanes {
   input {
@@ -17,8 +18,8 @@ workflow concatenate_illumina_lanes {
     File? read2_lane3
     File? read2_lane4
   }
-
-  call concatenate_lanes.cat_lanes {
+  
+  call task_concat_lanes.cat_lanes {
     input:
       samplename = samplename,
       read1_lane1 = read1_lane1,
@@ -31,7 +32,7 @@ workflow concatenate_illumina_lanes {
       read2_lane4 = read2_lane4
   }
 
-  call versioning.version_capture {
+  call version_capture {
     input:
   }
 
@@ -39,8 +40,11 @@ workflow concatenate_illumina_lanes {
     String concatenate_illumina_lanes_version = version_capture.version
     String concatenate_illumina_lanes_analysis_date = version_capture.date
 
-    File read1_concatenated = cat_lanes.read1_concatenated
-    File? read2_concatenated = cat_lanes.read2_concatenated
+    File read1 = cat_lanes.read1_concatenated
+    File? read2 = cat_lanes.read2_concatenated
+
+    Float read1_file_size_mb = cat_lanes.fwd_file_size
+    Float read2_file_size_mb = cat_lanes.rev_file_size
+    
   }
-  
 }
