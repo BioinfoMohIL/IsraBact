@@ -29,25 +29,24 @@ task cat_lanes {
     
     exists() { [[ -f $1 ]]; }
 
-    cat ~{read1_lane1} ~{read1_lane2} ~{read1_lane3} ~{read1_lane4} > "~{samplename}_R1.fastq.gz"
+    cat ~{read1_lane1} ~{read1_lane2} ~{read1_lane3} ~{read1_lane4} > "~{samplename}_merged_R1.fastq.gz"
 
     # Fetch the file size in MB
-    fwd_file_size=$(stat -c%s "~{samplename}_R1.fastq.gz")
+    fwd_file_size=$(stat -c%s "~{samplename}_merged_R1.fastq.gz")
     fwd_file_size_mb=$(awk -v size="$fwd_file_size" 'BEGIN {printf "%.2f", size / (1024*1024)}')
     echo "$fwd_file_size_mb" > fwd_size.txt
         
     if exists "~{read2_lane1}" ; then
-      cat ~{read2_lane1} ~{read2_lane2} ~{read2_lane3} ~{read2_lane4} > "~{samplename}_R2.fastq.gz"
+      cat ~{read2_lane1} ~{read2_lane2} ~{read2_lane3} ~{read2_lane4} > "~{samplename}_merged_R2.fastq.gz"
     
       # Fetch the file size in MB
-      rev_file_size=$(stat -c%s "~{samplename}_R2.fastq.gz")
+      rev_file_size=$(stat -c%s "~{samplename}_merged_R2.fastq.gz")
       rev_file_size_mb=$(awk -v size="$rev_file_size" 'BEGIN {printf "%.2f", size / (1024*1024)}')
       echo "$rev_file_size_mb" > rev_size.txt
     fi
 
     # ensure newly merged FASTQs are valid gzipped format
-    gzip -t *_R1*.gz
-    gzip -t *_R2*.gz
+    gzip -t *merged*.gz
   >>>
   
   output {

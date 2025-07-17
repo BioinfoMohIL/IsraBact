@@ -46,8 +46,7 @@ task cat_lanes {
     fi
 
     # ensure newly merged FASTQs are valid gzipped format
-    gzip -t *_R1*.gz
-    gzip -t *_R2*.gz
+    gzip -t *merged*.gz
   >>>
   
   output {

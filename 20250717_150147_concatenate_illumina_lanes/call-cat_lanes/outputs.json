@@ -1,0 +1,6 @@
+{
+  "cat_lanes.fwd_file_size": 158.82,
+  "cat_lanes.read1_concatenated": "/home/user1/Desktop/programs/wdl/IsraBact/20250717_150147_concatenate_illumina_lanes/call-cat_lanes/out/read1_concatenated/HI29832_R1.fastq.gz",
+  "cat_lanes.read2_concatenated": "/home/user1/Desktop/programs/wdl/IsraBact/20250717_150147_concatenate_illumina_lanes/call-cat_lanes/out/read2_concatenated/HI29832_R2.fastq.gz",
+  "cat_lanes.rev_file_size": 162.8
+}

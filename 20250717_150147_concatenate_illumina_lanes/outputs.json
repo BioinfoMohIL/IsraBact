@@ -1,0 +1,8 @@
+{
+  "concatenate_illumina_lanes.concatenate_illumina_lanes_analysis_date": "2025-07-17",
+  "concatenate_illumina_lanes.concatenate_illumina_lanes_version": "IsraBact v1.0",
+  "concatenate_illumina_lanes.read1": "/home/user1/Desktop/programs/wdl/IsraBact/20250717_150147_concatenate_illumina_lanes/out/read1/HI29832_R1.fastq.gz",
+  "concatenate_illumina_lanes.read1_file_size_mb": 158.82,
+  "concatenate_illumina_lanes.read2": "/home/user1/Desktop/programs/wdl/IsraBact/20250717_150147_concatenate_illumina_lanes/out/read2/HI29832_R2.fastq.gz",
+  "concatenate_illumina_lanes.read2_file_size_mb": 162.8
+}
