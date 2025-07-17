@@ -54,6 +54,6 @@ workflows:
 
   - name: Concatenate_Illumina_Lanes_MOH
     subclass: WDL
-    primaryDescriptorPath: /workflows/utilities/file_handling/concatenate_illumina_lanes.wdl
+    primaryDescriptorPath: /workflows/utilities/file_handling/wf_concatenate_illumina_lanes.wdl
 
 
