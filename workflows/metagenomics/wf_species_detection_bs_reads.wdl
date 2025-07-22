@@ -10,7 +10,7 @@ workflow SpeciesDetection {
     }
 
     meta {
-        description: "Check whether the sequenced samples correspond to the expected species using Kraken2."
+        description: "Check whether the sequenced samples in Basespace Illumina correspond to the expected species using Kraken2."
         author: "David Maimoun"
         organization : "MOH"
         email: "david.maimoun@moh.gov.il"
