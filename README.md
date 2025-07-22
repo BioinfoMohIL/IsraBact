@@ -1,12 +1,13 @@
-# IsraBact
+IsraBact WDL Workflows
+=======================================
+
 De-novo genome assembly, taxonomic ID, genes and species typing, alleles comparison, QC of paired-end bacterial NGS data, based on Theiagen - Public Health Bioinformatics workflows
 
-README - IsraBact WDL Workflows
-=======================================
 
 This repository provides WDL (Workflow Description Language) scripts for various bioinformatics workflows related to bacterial genomics. The workflows are designed to be run using MiniWDL or Cromwell with Docker support.
 
 Each workflow performs a specific task related to genome analysis, quality control, or virulence factor detection. Below are the detailed descriptions for each script.
+
 
 -------------------------------------------------------------------------------
 1. Workflow: metagenomics/wf_species_detection_bs_reads.wdl
@@ -16,16 +17,17 @@ Description:
   Check whether the sequenced samples in Basespace Illumina correspond to the expected species using Kraken2.
 
 Inputs:
-  - [String] api_server: "Illumina Basepace API"
-  - [String] access_token: "Illumina Basespace access token"
+  - **[String]** api_server: "Illumina Basepace API"
+  - *[String]* access_token: "Illumina Basespace access token"
   - [String] basespace_collection_id: "Samplename in the Basespace platform (for ex, EC001, NM005 , = our entity id)"
   - [String] sample_prefix: "Optional, to fetch only specific species according to your samplename prefix, for ex 'EC' for ecoli (useful for testing)"
     
 Outputs:
-  - [String] version.
-  - [File] Reads list file: "reads_list.txt".txt.
-  - [Array[String]] list of samples name.
-  - [File] Species detected table: species_detected.csv. Display the samplename (Sample), the species detected by Kraken (Detected), and + if detected matchs to expected (via the prefix, for ex, if samplename EC001, expected ecoli)
+  - **[String]** version.
+  - **[File]** Reads list file: "reads_list.txt".txt.
+  - **[Array[String]]** list of samples name.
+  - **[File]** Species detected table: species_detected.csv. Display the samplename (Sample), the species detected by Kraken (Detected), and + if detected matchs to expected (via the prefix, for ex, if samplename EC001, expected ecoli)
+
 
 -------------------------------------------------------------------------------
 2. Workflow: virulence/wf_virulence_finder.wdl
