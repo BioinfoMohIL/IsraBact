@@ -1,7 +1,7 @@
 version 1.0
 
 
-workflow listeria_pred_fasta {
+workflow wf_listeria_pred_reads {
 
     meta {
         description: "Runs ListPred (https://github.com/genomicepidemiology/ListPred.git)on raw data to predict Listeria serotype."
@@ -12,13 +12,15 @@ workflow listeria_pred_fasta {
     }
     
     input {
-        File assembly_fasta      
-        Int cpu = 12           
+        File read1
+        File read2          
+        Int cpu = 20           
     }
 
     call listeria_pred {
         input:
-            assembly_fasta = assembly_fasta,
+            read1 = read1,
+            read2 = read2,
             cpu = cpu,
     }
 
@@ -36,7 +38,8 @@ workflow listeria_pred_fasta {
 
 task listeria_pred {
     input {
-        File assembly_fasta
+        File read1
+        File read2
         Int cpu
 
     }
@@ -44,8 +47,18 @@ task listeria_pred {
     command <<<
         current=$('pwd')
         cd /ListPred
+        
+        r1=~{read1}
+        r2=~{read2}
+        prefix=$(basename "$r1" | cut -d'_' -f1)
+
+        # Rename sample <sample>_S**_L**_R[1,2]_001 into <sample>_R[1,2]
+        cp "$r1" "${prefix}_R1.fastq.gz"
+        cp "$r2" "${prefix}_R2.fastq.gz"
+
+     
         snakemake -s /ListPred/workflow/Snakefile \
-            --cores ~{cpu} --use-conda --config ipe="~{assembly_fasta}" outd="pred_results"
+            --cores ~{cpu} --use-conda --config ipe="${prefix}_R1.fastq.gz ${prefix}_R2.fastq.gz" outd="pred_results"
 
         if [[ -d pred_results/prediction ]]; then
             cp pred_results/prediction/virulence_prediction_out.csv $current
@@ -90,6 +103,7 @@ task listeria_pred {
         File disinftolerance_pred     = "disinftolerance_prediction_out.csv"
         File? disinf_align            = "disinf_align_out.tar.gz"
         File? vir_align               = "vir_align_out.tar.gz"
+
 
     }
 

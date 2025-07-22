@@ -46,11 +46,11 @@ workflows:
 
   - name: ListPred_Reads_MOH
     subclass: WDL
-    primaryDescriptorPath: /workflows/resistance/listeria/listpred_reads.wdl
+    primaryDescriptorPath: /workflows/resistance/listeria/wf_listpred_reads.wdl
 
   - name: ListPred_Fasta_MOH
     subclass: WDL
-    primaryDescriptorPath: /workflows/resistance/listeria/listpred_fasta.wdl
+    primaryDescriptorPath: /workflows/resistance/listeria/wf_listpred_fasta.wdl
 
   - name: Concatenate_Illumina_Lanes_MOH
     subclass: WDL

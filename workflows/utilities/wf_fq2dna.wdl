@@ -11,6 +11,12 @@ workflow wf_fq2dna {
     String alien_tag = "AUTO"
   }
 
+  meta {
+		description: "De-novo genome assembly, QC your NGS reads from fq2DNA (Alexis Criscuolo - Pasteur Institut) "
+		author: "David Maimoun"
+    organization: "MOH"
+	
+
   call task_fq2dna.fq2dna_run {
     input:
         read1 = read1,
