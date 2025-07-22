@@ -60,4 +60,8 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/utilities/data_import/bs_fetcher_reads.wdl
 
+  - name: Virulence_Finder_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/virulence/wf_virulence_finder.wdl
+
 

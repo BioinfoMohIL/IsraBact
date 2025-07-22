@@ -4,9 +4,10 @@ version 1.0
 workflow listeria_pred_reads {
 
     meta {
+        description: "Runs ListPred (https://github.com/genomicepidemiology/ListPred.git)on raw data to predict Listeria serotype."
         author: "David Maimoun"
         organization : "MOH"
-        description: "Runs ListPred (https://github.com/genomicepidemiology/ListPred.git)on raw data to predict Listeria serotype."
+        email: "david.maimoun@moh.gov.il"
         version: "1.0"
     }
     
@@ -44,7 +45,7 @@ task listeria_pred {
     }
 
     command <<<
-          current=$('pwd')
+        current=$('pwd')
         cd /ListPred
         
         r1=~{read1}

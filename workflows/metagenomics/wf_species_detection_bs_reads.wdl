@@ -9,6 +9,21 @@ workflow SpeciesDetection {
 
     }
 
+    meta {
+        description: "Check whether the sequenced samples correspond to the expected species using Kraken2."
+        author: "David Maimoun"
+        organization : "MOH"
+        email: "david.maimoun@moh.gov.il"
+        version: "1.0"
+    }
+
+    parameter_meta {
+        api_server: "Illumina Basepace API"
+        access_token: "Illumina Basespace access token"
+        basespace_collection_id: "Samplename in the Basespace platform (for ex, EC001, NM005 , = our entity id)"
+        sample_prefix: "Optional, to fetch only specific species according to your samplename prefix, for ex 'EC' for ecoli (useful for testing)"
+    }
+
     call GetReadsList {
         input:
             basespace_collection_id = basespace_collection_id,
