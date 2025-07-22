@@ -68,7 +68,7 @@ Notes:
 
 
 -------------------------------------------------------------------------------
-3. Workflow: resistance/wf_listeria_pred_fasta.wdl
+3. Workflow: resistance/wf_listpred_fasta.wdl
 -------------------------------------------------------------------------------
 
 Description:
@@ -95,7 +95,7 @@ Notes:
 
 
 -------------------------------------------------------------------------------
-4. Workflow: resistance/wf_listeria_pred_reads.wdl
+4. Workflow: resistance/wf_listpred_reads.wdl
 -------------------------------------------------------------------------------
 
 Description:
@@ -122,7 +122,7 @@ Notes:
 
 
 -------------------------------------------------------------------------------
-5. Workflow: utilities/wf_fq2dna
+5. Workflow: utilities/wf_fq2dna.wdl
 -------------------------------------------------------------------------------
 
 Description:
@@ -167,7 +167,7 @@ Notes:
 
 
 -------------------------------------------------------------------------------
-6. Workflow: utilities/assembly_long_reads
+6. Workflow: utilities/wf_assembly_long_reads.wdl
 -------------------------------------------------------------------------------
 
 Description:
