@@ -5,7 +5,7 @@ workflow wf_virulence_finder {
         File fasta_file
         String species        # ecoli  or salmonella 
         String samplename     
-        Boolean plasmid_check = true
+        Boolean plasmid_check = false
     }
 
     meta {

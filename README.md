@@ -72,7 +72,7 @@ Notes:
 -------------------------------------------------------------------------------
 
 Description:
-  Predicts *Listeria monocytogenes* serotypes and phenotypes using ListPred from assembled genomes.
+  Predicts *Listeria monocytogenes* serotypes and phenotypes using ListPred from assembled genomes - use ListPred (https://github.com/genomicepidemiology/ListPred.git).
 
 Inputs:
   - File: `assembly_fasta`  
@@ -99,7 +99,7 @@ Notes:
 -------------------------------------------------------------------------------
 
 Description:
-  Predicts *Listeria monocytogenes* serotypes and phenotypes directly from paired-end raw FASTQ reads using ListPred.
+  Predicts *Listeria monocytogenes* serotypes and phenotypes directly from paired-end raw FASTQ reads using ListPred - use ListPred (https://github.com/genomicepidemiology/ListPred.git).
 
 Inputs:
   - File: `read1`  
