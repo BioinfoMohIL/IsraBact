@@ -60,11 +60,11 @@ workflow wf_rasusa_workflow {
   }
 
   output {
-    String rasusa_wf_version = version_capture.version
-    String rasusa_wf_analysis_date = version_capture.date
-    String screen_pass = raw_check_reads.read_screen
+    String rasusa_wf_version_IGNORE = version_capture.version
+    String rasusa_wf_analysis_date_IGNORE = version_capture.date
+    String screen_pass_IGNORE = raw_check_reads.read_screen
 
-    String? rasusa_version = rasusa_task.rasusa_version
+    String? rasusa_version_IGNORE = rasusa_task.rasusa_version
     File? read1_subsampled = rasusa_task.read1_subsampled
     File? read2_subsampled = rasusa_task.read2_subsampled
   }
