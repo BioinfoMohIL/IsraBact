@@ -1,0 +1,595 @@
+id,Virulence_Gene,Locus_Tag,Note,Product,DB_Xref,Location
+3106,sseK3,SL1344_4096,None,Type III secretion system effector protein,EnsemblGenomes-Gn:SL1344_4096,genome
+3105,gtgA,SL1344_0965,None,hypothetical bacteriophage encoded virulence protein,EnsemblGenomes-Gn:SL1344_0965,genome
+3104,gogA,SN31241_20390,GogA of root UniRef RepID=B4T1J2_SALNS,GogA,None,genome
+3103,cvaC,SE15cs_04957,None,pre-colicin V protein CvaC,None,Plasmid-IncF
+3102,cvaB,SE15cs_04958,None,colicin V biosynthesis protein CvaB,None,Plasmid-IncF
+3101,cvaA,SE15cs_04959,None,colicin V secretion protein CvaA,None,Plasmid-IncF
+3100,sitC,STM2863,SitC (gi|5231096),iron ABC transporter permease,GeneID:1254386,genome
+3099,sitB,STM2862,SitB (gi|5231095),manganese/iron transporter ATP-binding protein,GeneID:1254385,genome
+3097,iutA,SARI_RS10055,Derived by automated computational analysis using gene prediction method: Protein Homology.,ferric aerobactin receptor IutA,None,genome
+3096,iucD,SARI_RS10050,Derived by automated computational analysis using gene prediction method: Protein Homology.,SidA/IucD/PvdA family monooxygenase,None,genome
+3095,iucC,SARI_RS10045,Derived by automated computational analysis using gene prediction method: Protein Homology.,aerobactin synthase IucC,None,genome
+3094,iucB,SARI_RS10040,Derived by automated computational analysis using gene prediction method: Protein Homology.,N(6)-hydroxylysine O-acetyltransferase,None,genome
+3093,iucA,SARI_RS10035,Derived by automated computational analysis using gene prediction method: Protein Homology.,NIS family aerobactin synthetase IucA,None,genome
+3092,S026,,,putative ATPase,,SGI-1
+3091,S025,,,putative proteinase subtilisin-like protein,,SGI-1
+3090,S024,,,putative exonuclease,,SGI-1
+3089,S023,,,putative helicase,,SGI-1
+3088,S022,,,hypothetical protein,,SGI-1
+3087,S021,,,hypothetical protein,,SGI-1
+3086,S020,,,putative integrase,,SGI-1
+3085,S019,,,hypothetical protein,,SGI-1
+3084,S018,,,hypothetical protein,,SGI-1
+3083,S017,,,hypothetical protein,,SGI-1
+3082,S016,,,hypothetical protein,,SGI-1
+3081,S015,,,hypothetical protein,,SGI-1
+3080,S014,,,hypothetical protein,,SGI-1
+3079,S013,,,hypothetical protein,,SGI-1
+3078,S004,,hypothetical protein,S004,,SGI-1
+3077,yidY,STM3847,"1st mdule; similar to E. coli putative transport protein (AAC76733.1); Blastp hit to AAC76733.1 (391 aa), 77% identity in aa 1 - 391",multidrug transporter subunit MdtL,GeneID:1255374,SGI-1
+3076,res,STM0358,type iii restriction-modification system stylti enzyme res (SW:T3RE_SALTY),DNA restriction (DNA helicase),GeneID:1251877,SGI-1
+3075,xis,t1928,corresponds to STY1012 from Accession AL513382: Salmonella typhi CT18,excisionase,,SGI-1
+3074,int,t1929,corresponds to STY1011 from Accession AL513382: Salmonella typhi CT18,integrase,,SGI-1
+3073,sinI,STM2516,SinI (gi|4583530),hypothetical protein,GeneID:1254038,SPI-24
+3072,ratA,STM2515,RatA (gi|4583529),hypothetical protein,GeneID:1254037,SPI-24
+3071,hns_2,NCTC3046_02516,,DNA-binding protein h-ns,GOA:A0A509BPK8,SPI-23
+3070,bfpA,NCTC3046_01785,,type IV pilin protein,,SPI-23
+3069,clpV,LFZ50_06835,Derived by automated computational analysis using gene prediction method: Protein Homology.,ClpV1 family T6SS ATPase,,SPI-22
+3067,tssI,CHD54_RS03425,incomplete; partial in the middle of a contig; missing C-terminus; Derived by automated computational analysis using gene prediction method: Protein Homology.,type VI secretion system tip protein VgrG,,SPI-22
+3066,tssH,CHD54_RS17730,Derived by automated computational analysis using gene prediction method: Protein Homology.,type VI secretion system ATPase TssH,,SPI-22
+3065,tssF,KCP69_18420,frameshifted; internal stop; incomplete; partial on complete genome; missing C-terminus; Derived by automated computational analysis using gene prediction method: Protein Homology.,type VI secretion system baseplate subunit TssF,,SPI-22
+3064,tssC,CHD54_18015,Derived by automated computational analysis using gene prediction method: Protein Homology.,type VI secretion system contractile sheath large subunit,,SPI-22
+3063,tssB,CHD54_18010,Derived by automated computational analysis using gene prediction method: Protein Homology.,type VI secretion system contractile sheath small subunit,,SPI-22
+3062,tssK,CHD54_18045,Derived by automated computational analysis using gene prediction method: Protein Homology.,type VI secretion system baseplate subunit TssK,,SPI-22
+3061,tssA,CHD54_18065,Derived by automated computational analysis using gene prediction method: Protein Homology.,type VI secretion system protein TssA,,SPI-22
+3060,vgrG_SPI-21,SARI_02603,KEGG: eci:UTI89_C0121 1.5e-151 usp; uropathogenic specific protein K01150; COG: COG3501 Uncharacterized protein conserved in bacteria,hypothetical protein,InterPro:IPR002711,SPI-21
+3059,hcp,SARI_RS12750,Derived by automated computational analysis using gene prediction method: Protein Homology.,type VI secretion system effector Hcp,,SPI-20
+3058,vgrG_SPI-20,SARI_RS12725,Derived by automated computational analysis using gene prediction method: Protein Homology.,type VI secretion system tip protein VgrG,,SPI-20
+3057,SARI_02719,SARI_02719,"COG: COG3515 Uncharacterized protein conserved in bacteria; Psort location: Cytoplasmic, score:8.96",hypothetical protein,InterPro:IPR010657,SPI-20
+3056,SARI_02718,SARI_02718,"COG: COG3515 Uncharacterized protein conserved in bacteria; Psort location: Cytoplasmic, score:8.96",hypothetical protein,,SPI-20
+3055,SARI_RS12650,SARI_RS12650,Derived by automated computational analysis using gene prediction method: Protein Homology.,type VI secretion system ImpA family N-terminal domain-containing protein,,SPI-20
+3054,icmF,AX05_10260,Type VI protein secretion system component VasK COG3523; Type VI secretion protein IcmF of Enterobacteriaceae UniRef RepID=B4T7L7_SALHS,Type VI secretion protein IcmF,,SPI-19 & SPI-22
+3053,impA,SEN1003,CDS has longer N-terminus than database hits,putative membrane protein,EnsemblGenomes-Gn:SEN1003,SPI-19
+3052,STY_RS07055-taiA,STY_RS07055,Derived by automated computational analysis using gene prediction method: Protein Homology.,hypothetical protein,,SPI-18
+3051,hlyE,STY_RS07050,Derived by automated computational analysis using gene prediction method: Protein Homology.,hemolysin HlyE,,SPI-18
+3050,STY_RS12400-STY2631,STY_RS12400,internal stop; incomplete; partial in the middle of a contig; missing C-terminus; Derived by automated computational analysis using gene prediction method: Protein Homology.,transposase,,SPI-17
+3049,STY_RS12395-STY2629,STY_RS12395,Derived by automated computational analysis using gene prediction method: Protein Homology.,acyltransferase,,SPI-17
+3048,gtrB,,,GtrB,,SPI-16
+3047,gtrA,STM0559,"similar to E. coli orf, hypothetical protein (AAC75409.1); Blastp hit to AAC75409.1 (120 aa), 81% identity in aa 1 - 120",translocase,GeneID:1252079,SPI-16
+3046,STY_RS15120-STY3191,STY_RS15120,Derived by automated computational analysis using gene prediction method: Protein Homology.,hypothetical protein,,SPI-15
+3045,STY_RS15105-STY3188,STY_RS15105,Derived by automated computational analysis using gene prediction method: Protein Homology.,hypothetical protein,,SPI-15
+3044,STM0859,STM0859,"similar to E. coli putative transcriptional regulator LYSR-type (AAC74667.1); Blastp hit to AAC74667.1 (297 aa), 28% identity in aa 1 - 264",putative LysR family transcriptional regulator,GeneID:1252378,SPI-14
+3043,STM0854,STM0854,,CoA ester lyase,GeneID:1252373,SPI-14
+3042,STM3121,STM3121,putative transcriptional regulator (gi|5852589),putative LysR family transcriptional regulator,GeneID:1254644,SPI-13
+3041,STM3119,STM3119,"similar to E. coli putative aldehyde dehydrogenase (AAC74469.1); Blastp hit to AAC74469.1 (681 aa), 29% identity in aa 530 - 661",molybdenum cofactor biosynthesis protein MoeC,GeneID:1254642,SPI-13
+3040,STM3118,STM3118,"similar to E. coli putative coenzyme A transferase (AAC75957.1); Blastp hit to AAC75957.1 (492 aa), 27% identity in aa 187 - 458, 24% identity in aa 8 - 169",putative acetyl-CoA hydrolase,GeneID:1254641,SPI-13
+3039,oafA,STM2232,O-antigen five:,acyltransferase,GeneID:1253754,SPI-12
+3038,STM2239,STM2239,"similar to antiterminator protein Q of phage P5; similar to E. coli orf, hypothetical protein (AAC73652.1); Blastp hit to AAC73652.1 (127 aa), 47% identity in aa 1 - 121",hypothetical protein,GeneID:1253761,SPI-11
+3037,msgA,STY_RS08885,Derived by automated computational analysis using gene prediction method: Protein Homology.,virulence protein MsgA,,SPI-11
+3036,envF,STM1240,probable lipoprotein ENVF precursor (SW:ENVF_SALTY),lipoprotein EnvF,GeneID:1252758,SPI-11
+3035,STY_RS23105-STY4826,STY_RS23105,Derived by automated computational analysis using gene prediction method: Protein Homology.,ogr/Delta-like zinc finger family protein,,SPI-10
+3033,STY_RS13660-STY2878,STY_RS13660,Derived by automated computational analysis using gene prediction method: Protein Homology.,HlyD family type I secretion periplasmic adaptor subunit,,SPI-9
+3032,STY_RS15540-STY3281,STY_RS15540,Derived by automated computational analysis using gene prediction method: Protein Homology.,bacteriocin immunity protein,,SPI-8
+3031,STY_RS15545-STY3283,STY_RS15545,Derived by automated computational analysis using gene prediction method: Protein Homology.,bacteriocin immunity protein,,SPI-8
+3030,viaB,,,Vi antigen,,SPI-7
+3029,viaA,SN31241_48340,Protein viaA of Bacteria UniRef RepID=VIAA_PECCP,Protein viaA,,SPI-7
+3028,PilV2,,,PilV2,,SPI-7
+3027,PilU,,,PilU,,SPI-7
+3026,pilT,,,PilT,,SPI-7
+3025,pilS,,,PilS,,SPI-7
+3024,pilR,,,PilR,,SPI-7
+3023,pilQ,,,PilQ,,SPI-7
+3022,pilP,,,PilP,,SPI-7
+3021,pilO,,,PilO,,SPI-7
+3020,pilNb,,,PilNb,,SPI-7
+3019,PilNa,,,PilNa,,SPI-7
+3018,pilM,,,PilM,,SPI-7
+3017,pilL,,,PilL,,SPI-7
+3016,pilV,STY_RS21740,Derived by automated computational analysis using gene prediction method: Protein Homology.,shufflon system plasmid conjugative transfer pilus tip adhesin PilV,,SPI-6
+3015,pagN,STM0306,,adhesin,GeneID:1251825,SPI-6
+3014,tinR,STY_RS01600,Derived by automated computational analysis using gene prediction method: Protein Homology.,Lrp/AsnC family transcriptional regulator,,SPI-6
+3013,sciS,STM0285,,hypothetical protein,GeneID:1251804,SPI-6
+3012,sciR,STM0284,,putative shiga-like toxin A subunit,GeneID:1251803,SPI-6
+3011,sciL,STM0277,,hypothetical protein,GeneID:1251796,SPI-6
+3010,siiF,B0X74_24885,part of type 1 secretory system (T1SS); Derived by automated computational analysis using gene prediction method: Protein Homology.,type 1 secretory system ATP-binding cassette component protein,,SPI-4
+3009,siiC,B0X74_24870,part of Salmonella Pathogenicity Island 4 (SPI-4); Derived by automated computational analysis using gene prediction method: Protein Homology.,type 1 secretion system outer membrane component SiiC,,SPI-4
+3008,STM3780,STM3780,"similar to E. coli tagatose-bisphosphate aldolase 2 (AAC76171.1); Blastp hit to AAC76171.1 (286 aa), 36% identity in aa 1 - 277","fructose-1,6-bisphosphate aldolase",GeneID:1255304,SPI-3
+3007,marT,STM3759,Pathogenicity island encoded protein: SPI3; putative transcriptional regulator MarT (gi|4324612),putative transcriptional regulatory protein,GeneID:1255283,SPI-3
+3006,STM3754,STM3754,Pathogenicity island encoded protein: SPI3; putative ATP binding protein SugR (gi|4324607),putative cytoplasmic protein,GeneID:1255278,SPI-3
+3005,STM3752,STM3752,Pathogenicity island encoded protein: SPI3,hypothetical protein,GeneID:1255276,SPI-3
+3004,ttrC,STM1384,tetrathionate reductase subunit C (TtrC) (gi|4456872),tetrathionate reductase subunit C,GeneID:1252902,SPI-2
+3003,STM2905,STM2905,,GNAT family N-acetyltransferase,GeneID:1254428,SPI-1
+3002,STM2902,STM2902,,putative cytoplasmic protein,GeneID:1254425,SPI-1
+3001,STM2901,STM2901,,hypothetical protein,GeneID:1254424,SPI-1
+493,STM0328,STM0328,"similar to E. coli putative transport protein (AAC74668.1); Blastp hit to AAC74668.1 (417 aa), 34% identity in aa 33 - 407",putative permease,NP_459323.3,genome
+492,finP,PSLT072,,putative transglycosylase,NP_490559.1,genome
+491,PSLT046,PSLT046,,putative carbonic anhydrase,NP_490536.1,genome
+490,STM4433,STM4433,"oxidoreductase family; similar to E. coli putative virulence factor (AAC74152.1); Blastp hit to AAC74152.1 (307 aa), 29% identity in aa 1 - 188, 52% identity in aa 272 - 296",inositol 2-dehydrogenase,NP_463294.1,genome
+489,STM4316,STM4316,,hypothetical protein,NP_463181.1,genome
+488,STM4261,STM4261,fusion of two hypothetical proteins; (gi|7467255) and (gi|7467255),hypothetical protein,NP_463126.1,genome
+487,STM4260,STM4260,predicted cation efflux pump; HLYD secretion protein (gi|7467244),cation transporter,NP_463125.1,genome
+486,STM4206,STM4206,"similar to E. coli orf, hypothetical protein (AAC75409.1); Blastp hit to AAC75409.1 (120 aa), 69% identity in aa 1 - 120",translocase,NP_463071.1,genome
+485,STM4198,STM4198,,hypothetical protein,NP_463063.1,genome
+484,STM4158,STM4158,,hypothetical protein,NP_463027.1,genome
+483,STM4155,STM4155,,putative inner membrane protein,NP_463024.1,genome
+482,STM4051,STM4051,hypothetical 15.6 Kda protein in RHAT 5'region. (SW:YIIY_SALTY),putative outer membrane protein,NP_462932.3,genome
+481,STM3981,STM3981,,putative cytoplasmic protein,NP_462866.1,genome
+480,STM3980,STM3980,,putative outer membrane protein,NP_462865.1,genome
+479,STM3907,STM3907,,hypothetical protein,NP_462798.1,genome
+478,STM3690,STM3690,,hypothetical protein,NP_462590.1,genome
+477,STM3602,STM3602,"similar to E. coli putative transcriptional regulator (AAC76400.1); Blastp hit to AAC76400.1 (265 aa), 28% identity in aa 27 - 260",GntR family transcriptional regulator,NP_462503.1,genome
+476,STM3192,STM3192,,putative arylsulfate sulfotransferase,NP_452517.1,genome
+475,STM3191,STM3191,,putative arylsulfate sulfotransferase,NP_452516.1,genome
+474,STM3128,STM3128,"similar to E. coli probable oxidoreductase (AAC74383.1); Blastp hit to AAC74383.1 (426 aa), 35% identity in aa 7 - 414",FAD-dependent oxidoreductase,NP_462043.1,genome
+473,STM3036,STM3036,,putative inner membrane protein,NP_461953.1,genome
+471,STM2680,STM2680,,hypothetical protein,NP_461610.1,genome
+470,STM2585,STM2585,similar to transposase,Gifsy-1 prophage protein,NP_461520.1,genome
+469,STM2574,STM2574,"similar to E. coli putative resistance protein (AAC76571.1); Blastp hit to AAC76571.1 (402 aa), 28% identity in aa 10 - 399",MFS transporter,NP_461509.1,genome
+468,STM2503,STM2503,"similar to E. coli putative cytochrome C-type biogenesis protein (AAC75556.1); Blastp hit to AAC75556.1 (747 aa), 73% identity in aa 1 - 733",sensor domain-containing phosphodiesterase,NP_461438.1,genome
+467,STM2373,STM2373,,hypothetical protein,NP_461315.1,genome
+466,STM2245,STM2245,,putative outer membrane protein,NP_461188.1,genome
+465,STM2243,STM2243,"similar to E. coli putative membrane protein (AAC74454.1); Blastp hit to AAC74454.1 (1122 aa), 60% identity in aa 458 - 505, 24% identity in aa 369 - 530",phage tail protein,NP_461186.1,genome
+464,STM2197,STM2197,"similar to E. coli 3-phosphoserine phosphatase (AAC77341.1); Blastp hit to AAC77341.1 (322 aa), 39% identity in aa 111 - 305",phosphoserine phosphatase SerB,NP_461142.1,genome
+463,STM2137,STM2137,,putative cytoplasmic protein,NP_461081.1,genome
+462,STM1934,STM1934,"similar to E. coli orf, hypothetical protein (AAC74974.1); Blastp hit to AAC74974.1 (107 aa), 61% identity in aa 1 - 104",hypothetical protein,NP_460890.1,genome
+461,STM1896,STM1896,,putative cytoplasmic protein,NP_460853.1,genome
+460,STM1864,STM1864,,disulfide bond formation protein B,NP_460820.1,genome
+459,STM1669,STM1669,"homology to invasin C of Yersinia; similar to E. coli putative factor (AAC74304.1); Blastp hit to AAC74304.1 (417 aa), 30% identity in aa 38 - 403",invasin,NP_460627.1,genome
+458,STM1668,STM1668,,putative outer membrane or exported protein,NP_460626.1,genome
+457,STM1583,STM1583,,effector protein steA,NP_460542.1,genome
+456,STM1549,STM1549,"similar to E. coli orf, hypothetical protein (AAC77205.1); Blastp hit to AAC77205.1 (131 aa), 82% identity in aa 1 - 129",hypothetical protein,NP_460509.1,genome
+455,STM1527,STM1527,"similar to E. coli orf, hypothetical protein (AAC74593.1); Blastp hit to AAC74593.1 (321 aa), 84% identity in aa 11 - 321",putative inner membrane protein,NP_460487.1,genome
+454,STM1002,STM1002,"similar to E. coli putative dehydratase (AAC75909.1); Blastp hit to AAC75909.1 (398 aa), 50% identity in aa 14 - 395",diaminopropionate ammonia-lyase,NP_459977.1,genome
+453,STM0972,STM0972,,pathogenicity island 1 protein SopD2,NP_459947.1,genome
+452,STM0765,STM0765,"similar to E. coli putative transport protein (AAC75352.1); Blastp hit to AAC75352.1 (610 aa), 31% identity in aa 9 - 193, 27% identity in aa 413 - 610, 27% identity in aa 425 - 594, 24% identity in aa 6 - 196",putative cation transporter,NP_459745.1,genome
+451,STM0723,STM0723,"similar to E. coli ATP-binding component of putrescine transport system (AAC73942.1); Blastp hit to AAC73942.1 (404 aa), 28% identity in aa 61 - 259",sugar ABC transporter ATP-binding protein,NP_459708.1,genome
+450,STM0557,STM0557,,putative inner membrane protein,NP_459550.1,genome
+449,STM0520,STM0520,"similar to E. coli putative transport protein, cryptic, orf, joins former yjiZ and yjjL (AAC77312.1); Blastp hit to AAC77312.1 (453 aa), 24% identity in aa 40 - 439",MFS transporter,NP_459515.1,genome
+448,STM0438,STM0438,"similar to E. coli orf, hypothetical protein (AAC73748.1); Blastp hit to AAC73748.1 (184 aa), 35% identity in aa 77 - 179, 33% identity in aa 56 - 171",putative TPR repeat protein,NP_459434.1,genome
+446,STM0036,STM0036,"similar to E. coli putative arylsulfatase regulator (AAC76803.1); Blastp hit to AAC76803.1 (411 aa), 46% identity in aa 8 - 401",anaerobic sulfatase maturase,NP_459041.1,genome
+445,STM0030,STM0030,leuO homolog (gi|6650098),putative LysR family transcriptional regulator,NP_459035.1,genome
+444,STM0016,STM0016,,hypothetical protein,NP_459021.1,genome
+443,znuC,STM1892,"ATP-binding protein; similar to E. coli putative ATP-binding component of a transport system (AAC74928.1); Blastp hit to AAC74928.1 (251 aa), 95% identity in aa 1 - 251",ABC superfamily high affinity Zn transport protein,NP_460849.3,genome
+442,znuB,STM1893,"ATP-binding protein; similar to E. coli orf, hypothetical protein (AAC74929.1); Blastp hit to AAC74929.1 (261 aa), 96% identity in aa 1 - 261",zinc ABC transporter permease,NP_460850.1,genome
+441,znuA,STM1891,"binding protein; similar to E. coli putative adhesin (AAC74927.1); Blastp hit to AAC74927.1 (328 aa), 85% identity in aa 1 - 328",ABC superfamily high affinity Zn transport protein,NP_460848.3,genome
+440,yqaE,STM2796,"similar to E. coli orf, hypothetical protein (AAC75713.1); Blastp hit to AAC75713.1 (52 aa), 94% identity in aa 1 - 51",proteolipid membrane potential modulator,NP_461722.1,genome
+439,yneC,STM4079,"similar to E. coli orf, hypothetical protein (AAC74591.1); Blastp hit to AAC74591.1 (96 aa), 80% identity in aa 1 - 96",putative inner membrane protein,NP_462960.3,genome
+438,yneB,STM4078,"similar to E. coli orf, hypothetical protein (AAC74590.1); Blastp hit to AAC74590.1 (291 aa), 89% identity in aa 1 - 290",autoinducer 2 aldolase,NP_462959.1,genome
+437,yncB,STM1589,"similar to E. coli putative oxidoreductase (AAC74531.1); Blastp hit to AAC74531.1 (376 aa), 85% identity in aa 28 - 375",putative NADP-dependent oxidoreductase,NP_460548.1,genome
+436,ynaF,STM1652,"similar to E. coli putative filament protein (AAC74458.1); Blastp hit to AAC74458.1 (168 aa), 90% identity in aa 25 - 168",universal stress protein F,NP_460611.1,genome
+435,yjeJ,STM4332,"similar to E. coli orf, hypothetical protein (AAC77105.1); Blastp hit to AAC77105.1 (289 aa), 58% identity in aa 1 - 283",hypothetical protein,NP_463196.1,genome
+434,yjeA,STM4344,putative LYSL-tRNA synthetase. (SW:SYK3_SALTY),elongation factor P lysine(34) lysyltransferase,NP_463208.1,genome
+433,yjdB,STM4293,hypothetical 61.6 Kda protein in basS/pmrA-adiY intergenic region. (SW:YJDB_SALTY),phosphoethanolamine transferase EptA,NP_463158.1,genome
+432,yjaG,STM4169,"similar to E. coli orf, hypothetical protein (AAC76973.1); Blastp hit to AAC76973.1 (196 aa), 94% identity in aa 1 - 196",hypothetical protein,NP_463038.1,genome
+431,yijP,STM4118,"similar to E. coli orf, hypothetical protein (AAC76937.1); Blastp hit to AAC76937.1 (577 aa), 89% identity in aa 1 - 577",hypothetical protein,NP_462998.1,genome
+430,yigG,STM3954,"similar to E. coli orf, hypothetical protein (AAC76821.1); Blastp hit to AAC76821.1 (138 aa), 57% identity in aa 7 - 136",hypothetical protein,NP_462839.1,genome
+429,yigF,STM3953,hypothetical 14.6 Kda protein in corA-rarD intergenic region. (SW:YIGF_SALTY),hypothetical protein,NP_462838.1,genome
+428,yibD,STM3707,"similar to E. coli putative regulator (AAC76639.1); Blastp hit to AAC76639.1 (344 aa), 80% identity in aa 1 - 343",putative glycosyltransferase,NP_462607.1,genome
+427,yiaO,STM3673,"similar to E. coli putative solute-binding transport protein (AAC76603.1); Blastp hit to AAC76603.1 (328 aa), 87% identity in aa 1 - 328","2,3-diketo-L-gulonate TRAP transporter",NP_462573.1,genome
+426,yfhL,STM2576,"similar to E. coli orf, hypothetical protein (AAC75615.1); Blastp hit to AAC75615.1 (86 aa), 94% identity in aa 1 - 86",putative ferredoxin,NP_461511.1,genome
+425,yfhH,STM2572,"membrane; similar to E. coli orf, hypothetical protein (AAC75614.1); Blastp hit to AAC75614.1 (306 aa), 83% identity in aa 25 - 306",hypothetical protein,NP_461507.1,genome
+424,yeiA,STM2187,"similar to E. coli putative oxidoreductase (AAC75208.1); Blastp hit to AAC75208.1 (413 aa), 93% identity in aa 3 - 413",dihydropyrimidine dehydrogenase subunit B,NP_461132.1,genome
+423,yegQ,STM2136,"similar to E. coli orf, hypothetical protein (AAC75142.1); Blastp hit to AAC75142.1 (453 aa), 96% identity in aa 1 - 453",U32 family peptidase,NP_461080.1,genome
+422,yeeI,STM2001,"similar to E. coli orf, hypothetical protein (AAC75041.1); Blastp hit to AAC75041.1 (278 aa), 85% identity in aa 14 - 263",hypothetical protein,NP_460951.1,genome
+421,yeaJ,STM1283,"Diguanylate cyclase/phosphodiesterase domain 1; similar to E. coli orf, hypothetical protein (AAC74856.1); Blastp hit to AAC74856.1 (556 aa), 68% identity in aa 61 - 556",diguanylate cylase,NP_460249.1,genome
+420,ydjA,STM1296,"similar to E. coli orf, hypothetical protein (AAC74835.1); Blastp hit to AAC74835.1 (183 aa), 88% identity in aa 1 - 183",NAD(P)H nitroreductase,NP_460262.1,genome
+419,ydiY,STM1327,"similar to E. coli orf, hypothetical protein (AAC74792.1); Blastp hit to AAC74792.1 (252 aa), 88% identity in aa 1 - 252",hypothetical protein,NP_460293.1,genome
+418,ydiK,STM1364,"similar to E. coli orf, hypothetical protein (AAC74758.1); Blastp hit to AAC74758.1 (370 aa), 89% identity in aa 1 - 370",hypothetical protein,NP_460329.1,genome
+417,ydhD,STM1433,"similar to E. coli orf, hypothetical protein (AAC74726.1); Blastp hit to AAC74726.1 (115 aa), 97% identity in aa 1 - 115",Grx4 family monothiol glutaredoxin,NP_460396.1,genome
+416,ydgF,STM1482,"similar to E. coli possible chaperone (AAC74672.1); Blastp hit to AAC74672.1 (121 aa), 83% identity in aa 4 - 121",multidrug transporter subunit MdtJ,NP_460442.1,genome
+415,yddX,STM1564,"similar to E. coli orf, hypothetical protein (AAC74554.1); Blastp hit to AAC74554.1 (92 aa), 88% identity in aa 22 - 92",biofilm-dependent modulation protein,NP_460523.1,genome
+414,yciH,STM1706,protein YCIH. (SW:YCIH_SALTY),translation initiation factor,NP_460665.1,genome
+413,yciF,STM1729,"similar to E. coli putative structural proteins (AAC74340.1); Blastp hit to AAC74340.1 (166 aa), 86% identity in aa 1 - 166",hypothetical protein,NP_460688.1,genome
+412,ychF,STM1784,"similar to E. coli putative GTP-binding protein (AAC74287.1); Blastp hit to AAC74287.1 (363 aa), 95% identity in aa 1 - 363",redox-regulated ATPase YchF,NP_460740.1,genome
+411,ycbG,STM1069,"similar to E. coli putative dehydrogenase (AAC74042.1); Blastp hit to AAC74042.1 (150 aa), 89% identity in aa 1 - 150",Ter macrodomain-binding protein MatP,NP_460043.1,genome
+410,ybhM,STM0808,"similar to E. coli orf, hypothetical protein (AAC73874.1); Blastp hit to AAC73874.1 (237 aa), 31% identity in aa 24 - 228",hypothetical protein,NP_459786.1,genome
+409,ybaJ,STM0474,"similar to E. coli orf, hypothetical protein (AAC73563.1); Blastp hit to AAC73563.1 (124 aa), 95% identity in aa 1 - 124",Hha toxicity attenuator,NP_459469.1,genome
+408,yaiU,STM0373,"similar to 3rd module of ATP-binding components of transporters; similar to E. coli putative flagellin structural protein (AAC73477.1); Blastp hit to AAC73477.1 (467 aa), 91% identity in aa 1 - 467",autotransporter outer membrane beta-barrel domain-containing protein,NP_459368.1,genome
+407,yafS,STM0262,"similar to E. coli orf, hypothetical protein (AAC73318.1); Blastp hit to AAC73318.1 (246 aa), 86% identity in aa 7 - 244",putative SAM-dependent methyltransferase,NP_459260.1,genome
+406,wecE,STM3925,"similar to E. coli putative regulator (AAC76796.1); Blastp hit to AAC76796.1 (376 aa), 92% identity in aa 1 - 376","dTDP-4-amino-4,6-dideoxygalactose transaminase",NP_462815.1,genome
+405,wcaM,STM2099,colanic acid biosynthesis protein WCAM. (SW:WCAM_SALTY),colanic acid biosynthesis protein WcaM,NP_461044.1,genome
+404,wcaE,STM2111,"in colanic acid gene cluster; similar to E. coli putative colanic acid biosynthesis glycosyl transferase (AAC75116.1); Blastp hit to AAC75116.1 (248 aa), 71% identity in aa 1 - 248",colanic acid biosynthesis glycosyltransferase WcaE,NP_461056.1,genome
+403,waaZ,STY_RS19490,Derived by automated computational analysis using gene prediction method: Protein Homology.,3-deoxy-D-manno-oct-2-ulosonate III transferase WaaZ,WP_000536021.1,genome
+402,waaK,STY_RS19495,Derived by automated computational analysis using gene prediction method: Protein Homology.,lipopolysaccharide N-acetylglucosaminyltransferase,WP_000591814.1,genome
+401,waaO,STY_RS19475,Derived by automated computational analysis using gene prediction method: Protein Homology.,lipopolysaccharide 3-alpha-galactosyltransferase,WP_000088491.1,genome
+400,waaG,STY_RS19450,Derived by automated computational analysis using gene prediction method: Protein Homology.,glycosyltransferase family 4 protein,WP_001261571.1,genome
+399,waaB,STY_RS19470,Derived by automated computational analysis using gene prediction method: Protein Homology.,"lipopolysaccharide 1,6-galactosyltransferase",WP_000704702.1,genome
+398,vexE,STY_RS22220,Derived by automated computational analysis using gene prediction method: Protein Homology.,Vi polysaccharide transport protein VexE,WP_000052242.1,genome
+397,vexD,STY_RS22225,Derived by automated computational analysis using gene prediction method: Protein Homology.,Vi polysaccharide ABC transporter inner membrane protein VexD,WP_000431675.1,genome
+396,vexC,STY_RS22230,Derived by automated computational analysis using gene prediction method: Protein Homology.,Vi polysaccharide ABC transporter ATP-binding protein VexC,WP_000467404.1,genome
+395,vexB,STY_RS22235,Derived by automated computational analysis using gene prediction method: Protein Homology.,Vi polysaccharide ABC transporter inner membrane protein VexB,WP_001023498.1,genome
+394,vexA,STY_RS22240,Derived by automated computational analysis using gene prediction method: Protein Homology.,Vi polysaccharide ABC transporter protein VexA,WP_000720235.1,genome
+393,vacJ,STM2392,"similar to E. coli lipoprotein precursor (AAC75406.1); Blastp hit to AAC75406.1 (251 aa), 94% identity in aa 1 - 251",phospholipid-binding lipoprotein MlaA,NP_461334.1,genome
+392,vacB,STM4368,"similar to E. coli putative enzyme (AAC77136.1); Blastp hit to AAC77136.1 (827 aa), 95% identity in aa 15 - 827",ribonuclease R,NP_463229.1,genome
+391,uvrY,STM1947,"similar to E. coli putative 2-component transcriptional regulator (AAC74981.1); Blastp hit to AAC74981.1 (218 aa), 96% identity in aa 1 - 218",two-component system response regulator UvrY,NP_460900.1,genome
+390,udg,STM2080,UDP-glucose 6-dehydrogenase. (SW:UDG_SALTY),UDP-glucose 6-dehydrogenase,NP_461025.1,genome
+389,ugd,STY_RS10770,Derived by automated computational analysis using gene prediction method: Protein Homology.,UDP-glucose 6-dehydrogenase,WP_000704814.1,genome
+388,tviE,STY_RS22245,Derived by automated computational analysis using gene prediction method: Protein Homology.,Vi polysaccharide biosynthesis glycosyltransferase TviE,WP_000632616.1,genome
+387,tviD,STY_RS22255,Derived by automated computational analysis using gene prediction method: Protein Homology.,Vi polysaccharide biosynthesis protein TviD,WP_010989299.1,genome
+386,tviC,STY_RS22260,Derived by automated computational analysis using gene prediction method: Protein Homology.,Vi polysaccharide biosynthesis UDP-N-acetylglucosaminuronic acid C-4 epimerase TviC,WP_000127915.1,genome
+385,tviB,STY_RS22265,Derived by automated computational analysis using gene prediction method: Protein Homology.,Vi polysaccharide biosynthesis UDP-N-acetylglucosamine C-6 dehydrogenase TviB,WP_000466893.1,genome
+384,tviA,STY_RS22270,Derived by automated computational analysis using gene prediction method: Protein Homology.,Vi polysaccharide biosynthesis regulator TviA,WP_001210944.1,genome
+383,trxC,STM2649,"similar to E. coli putative thioredoxin-like protein (AAC75635.1); Blastp hit to AAC75635.1 (139 aa), 94% identity in aa 1 - 139",thioredoxin TrxC,NP_461584.1,genome
+382,trxA,STM3915,redox factor; thioredoxin 1 (TRX1) (TRX). (SW:THIO_ECOLI),thioredoxin,NP_462806.1,genome
+381,trpB,STM1726,tryptophan synthase beta chain. (SW:TRPB_SALTY),tryptophan synthase subunit beta,NP_460685.1,genome
+380,trkA,STM3409,TRK system potassium uptake protein TRKA. (SW:TRKA_SALTY),Trk system potassium transport protein TrkA,NP_462313.1,genome
+379,traT,PSLT103,,conjugative transfer: surface exclusion,NP_490587.1,genome
+378,torD,STM3821,"similar to E. coli part of trimethylamine-N-oxide oxidoreductase (AAC74083.1); Blastp hit to AAC74083.1 (199 aa), 63% identity in aa 4 - 195",molecular chaperone TorD,NP_462721.1,genome
+377,tolA,STM0747,"similar to E. coli membrane spanning protein, required for outer membrane integrity (AAC73833.1); Blastp hit to AAC73833.1 (421 aa), 70% identity in aa 1 - 420",cell envelope integrity protein TolA,NP_459732.1,genome
+376,tktA,STM3076,"similar to E. coli transketolase 1 isozyme (AAC75972.1); Blastp hit to AAC75972.1 (663 aa), 95% identity in aa 1 - 663",transketolase,NP_461992.1,genome
+375,tdcE,STM3241,"similar to E. coli probable formate acetyltransferase 3 (AAC76149.1); Blastp hit to AAC76149.1 (746 aa), 93% identity in aa 1 - 741",formate C-acetyltransferase,NP_462155.1,genome
+374,tdcA,STM3245,"LysR family; similar to E. coli transcriptional activator of tdc operon (AAC76153.1); Blastp hit to AAC76153.1 (312 aa), 89% identity in aa 1 - 311",transcriptional regulator TdcA,NP_462159.1,genome
+373,tcfD,STY_RS01595,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein TcfD,WP_000066477.1,genome
+372,tcfC,STY_RS01590,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial outer membrane usher protein TcfC,WP_000092510.1,genome
+371,tcfB,STY_RS01585,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein TcfB,WP_000287810.1,genome
+370,tcfA,STY_RS01580,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein TcfA,WP_001009503.1,genome
+369,surA,STM0092,"survival protein; similar to E. coli survival protein (AAC73164.1); Blastp hit to AAC73164.1 (428 aa), 91% identity in aa 1 - 428",peptidylprolyl isomerase SurA,NP_459097.1,genome
+368,sugR,STM3753,putative cytoplasmic protein; Pathogenicity island encoded protein: SPI3; putative ATP binding protein SugR (gi|4324607),ATP-binding protein,NP_462652.1,genome
+367,STM4575,STM4575,"similar to E. coli putative transcriptional regulator (AAC76251.1); Blastp hit to AAC76251.1 (238 aa), 31% identity in aa 5 - 238",hypothetical protein,NP_463431.1,genome
+366,STM4574,STM4574,"similar to E. coli putative transcriptional regulator (AAC76251.1); Blastp hit to AAC76251.1 (238 aa), 32% identity in aa 1 - 238",hypothetical protein,NP_463430.1,genome
+365,stjC,STM4573,"similar to E. coli putative chaperone (AAC76247.1); Blastp hit to AAC76247.1 (224 aa), 49% identity in aa 1 - 223",fimbrial chaperone protein,NP_463429.1,genome
+364,stjB,STM4572,"similar to E. coli putative outer membrane protein (AAC76248.1); Blastp hit to AAC76248.1 (793 aa), 40% identity in aa 29 - 793",fimbrial assembly protein,NP_463428.1,genome
+363,STM4571,STM4571,,hypothetical protein,NP_463427.1,genome
+362,stkG,SPA_RS00905,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein StkG,WP_000765500.1,genome
+361,stkF,SPA_RS00910,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein,WP_001186617.1,genome
+360,stkE,SPA_RS00915,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein,WP_000673423.1,genome
+359,stkD,SPA_RS00920,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein,WP_001267118.1,genome
+358,stkC,SPA_RS00925,Derived by automated computational analysis using gene prediction method: Protein Homology.,outer membrane usher protein,WP_000898830.1,genome
+357,stkB,SPA_RS00930,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial chaperone,WP_000248433.1,genome
+356,stkA,SPA_RS00935,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein,WP_000466117.1,genome
+355,stiH,STM0174,lpfd protein precursor (SW:LPFD_SALTY),fimbrial protein StiH,NP_459179.1,genome
+354,stiC,STM0175,"similar to E. coli putative outer membrane protein (AAC76178.1); Blastp hit to AAC76178.1 (838 aa), 39% identity in aa 20 - 558, 34% identity in aa 493 - 837",fimbrial assembly protein,NP_459180.1,genome
+353,stiB,STM0176,"similar to E. coli periplasmic chaperone, required for type 1 fimbriae (AAC77272.1); Blastp hit to AAC77272.1 (241 aa), 39% identity in aa 20 - 235",long polar fimbrial chaperone LpfB,NP_459181.1,genome
+352,stiA,STM0177,"similar to E. coli major type 1 subunit fimbrin (pilin) (AAC77270.1); Blastp hit to AAC77270.1 (182 aa), 37% identity in aa 1 - 181",fimbrial protein StiA,NP_459182.1,genome
+351,sthE,STM4591,,major fimbrial protein SthE,NP_463447.1,genome
+350,sthD,STM4592,"similar to E. coli fimbrial morphology (AAC77275.1); Blastp hit to AAC77275.1 (167 aa), 31% identity in aa 18 - 166",fimbrial protein SthD,NP_463448.1,genome
+349,sthB,STM4593,"similar to E. coli putative outer membrane protein, export function (AAC73634.1); Blastp hit to AAC73634.1 (867 aa), 38% identity in aa 35 - 862",putative fimbrial usher protein,NP_463449.1,genome
+348,sthA,STM4594,"similar to E. coli periplasmic chaperone, required for type 1 fimbriae (AAC77272.1); Blastp hit to AAC77272.1 (241 aa), 33% identity in aa 26 - 234",fimbrial assembly chaperone SthB,NP_463450.1,genome
+347,STM4595,STM4595,"similar to E. coli fimbrial morphology (AAC77274.1); Blastp hit to AAC77274.1 (176 aa), 29% identity in aa 1 - 176",fimbrial protein SthA,NP_463451.1,genome
+346,stgD,STY_RS18760,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein StgD,WP_001241930.1,genome
+345,STY_RS18755,STY_RS18755,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial biogenesis outer membrane usher protein,WP_001247056.1,genome
+344,stgB,STY3919,,fimbrial chaperone protein,NP_458084.1,genome
+343,stgA,STY_RS18740,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein,WP_000773772.1,genome
+342,stfG,STM0200,putative adhesin; minor fimbrial subunit StfG (gi|3747034),fimbrial protein,NP_459205.1,genome
+341,stfF,STM0199,minor fimbrial subunit StfF (gi|3747033),fimbrial protein,NP_459204.1,genome
+340,stfE,STM0198,minor fimbrial subunit StfE (gi|3747032),fimbrial protein,NP_459203.1,genome
+339,stfD,STM0197,periplasmic fimbrial chaperone StfD (gi|3747031),fimbrial protein,NP_459202.1,genome
+338,stfC,STM0196,outer membrane usher protein StfC (gi|3747030),outer membrane usher protein,NP_459201.1,genome
+337,stfA,STM0195,major fimbrial subunit StfA (gi|3747029),fimbrial protein,NP_459200.1,genome
+336,steF,SPA_RS14310,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein,WP_001079653.1,genome
+335,steE,SPA_RS14305,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein,WP_000832400.1,genome
+334,steD,SPA_RS14300,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein,WP_000178263.1,genome
+333,steC,SPA_RS14295,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbria/pilus periplasmic chaperone,WP_001044464.1,genome
+332,steB,SPA_RS14290,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial biogenesis outer membrane usher protein,WP_000981791.1,genome
+331,steA,SPA_RS14285,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein,WP_000842512.1,genome
+330,stdC,STM3027,"similar to E. coli putative chaperone (AAC73811.1); Blastp hit to AAC73811.1 (242 aa), 40% identity in aa 20 - 230",fimbrial chaperone protein StdC,NP_461944.1,genome
+329,stdB,STM3028,"similar to E. coli putative membrane protein (AAC76082.1); Blastp hit to AAC76082.1 (821 aa), 42% identity in aa 20 - 817",fimbrial protein,NP_461945.1,genome
+328,stdA,STM3029,"similar to E. coli putative fimbrial-like protein (AAC73813.1); Blastp hit to AAC73813.1 (188 aa), 32% identity in aa 8 - 187",putative fimbrial-like protein,NP_461946.3,genome
+327,stcD,STM2149,"similar to E. coli putative type-1 fimbrial protein (AAC75169.1); Blastp hit to AAC75169.1 (344 aa), 50% identity in aa 3 - 344",adhesin,NP_461093.1,genome
+326,stcC,STM2150,"similar to E. coli putative outer membrane protein (AAC75170.1); Blastp hit to AAC75170.1 (826 aa), 74% identity in aa 1 - 826",fimbrial assembly protein,NP_461094.1,genome
+325,stcB,STM2151,"similar to E. coli putative chaperone (AAC75171.1); Blastp hit to AAC75171.1 (239 aa), 64% identity in aa 16 - 239",putative periplasmic chaperone protein,NP_461095.1,genome
+324,stcA,STM2152,"similar to E. coli putative fimbrial-like protein (AAC75172.1); Blastp hit to AAC75172.1 (180 aa), 33% identity in aa 1 - 180",fimbrial chaperone protein,NP_461096.1,genome
+323,stbE,STM0336,"similar to E. coli periplasmic chaperone, required for type 1 fimbriae (AAC77272.1); Blastp hit to AAC77272.1 (241 aa), 30% identity in aa 32 - 241",fimbrial assembly protein,NP_459331.1,genome
+322,stbD,STM0337,,fimbrial protein,NP_459332.1,genome
+321,stbC,STM0338,"similar to E. coli outer membrane protein; export and assembly of type 1 fimbriae, interrupted (AAC77273.1); Blastp hit to AAC77273.1 (878 aa), 30% identity in aa 30 - 870",fimbrial assembly protein,NP_459333.1,genome
+320,stbB,STM0339,"similar to E. coli probable pilin chaperone similar to PapD (AAC73251.1); Blastp hit to AAC73251.1 (246 aa), 40% identity in aa 1 - 240",fimbrial chaperone protein StbB,NP_459334.1,genome
+319,stbA,STM0340,"similar to E. coli major type 1 subunit fimbrin (pilin) (AAC77270.1); Blastp hit to AAC77270.1 (182 aa), 28% identity in aa 1 - 182",fimbrial protein,NP_459335.1,genome
+318,staG,STY_RS00925,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein,WP_000924983.1,genome
+317,staF,STY0202,,fimbrial protein,NP_454793.1,genome
+316,staE,STY_RS00935,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein StaE,WP_000744142.1,genome
+315,staD,STY_RS00940,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein,WP_000827925.1,genome
+314,staC,STY_RS00945,Derived by automated computational analysis using gene prediction method: Protein Homology.,outer membrane usher protein,WP_001125010.1,genome
+313,staB,STY_RS00950,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial chaperone,WP_000967611.1,genome
+312,staA,STY_RS00955,Derived by automated computational analysis using gene prediction method: Protein Homology.,fimbrial protein,WP_000709193.1,genome
+311,ssrB,STM1391,homologous with degU/uvrY/bvgA; SsrB (gi|2765824),DNA-binding response regulator,NP_460356.1,genome
+310,ssrA,STM1392,SpiR (gi|1498305),hybrid sensor histidine kinase/response regulator,NP_460357.1,genome
+309,sspH2,STM2241,induced by the SPI-2 regulator ssrA/B,E3 ubiquitin--protein ligase,NP_461184.1,genome
+308,sspA,STM3342,"regulator of transcription; similar to E. coli regulator of transcription; stringent starvation protein A (AAC76261.1); Blastp hit to AAC76261.1 (212 aa), 98% identity in aa 1 - 211",stringent starvation protein A,NP_462252.1,genome
+307,STM2287,STM2287,"similar to E. coli putative sulfatase / phosphatase (AAC75329.1); Blastp hit to AAC75329.1 (403 aa), 30% identity in aa 27 - 294, 29% identity in aa 297 - 363",putative cytoplasmic protein,NP_461229.3,genome
+306,sseK2,STM2137,type III secretion system protein; Provisional,putative cytoplasmic protein,NP_461081.1,genome
+305,sseK1,STM4157,type III secretion system protein; Provisional,putative cytoplasmic protein,NP_463026.1,genome
+304,sseJ,STM1631,regulated by SPI-2; secreted effector J SseJ (gi|9931614),pathogenicity island 2 effector protein SseJ,NP_460590.1,genome
+303,sseI,STM1051,secreted effector I (gi|8927434),Gifsy-2 prophage putative type III secreted protein,NP_460026.1,genome
+302,sseG,STM1405,SseG (gi|3377858),pathogenicity island 2 effector protein SseG,NP_460370.1,genome
+301,sseF,STM1404,SseF (gi|3377868),pathogenicity island 2 effector protein SseF,NP_460369.1,genome
+300,sseE,STM1402,SseE (gi|3377866),pathogenicity island 2 effector protein SseE,NP_460367.1,genome
+299,sseD,STM1401,SseD (gi|3776122),pathogenicity island 2 effector protein SseD,NP_460366.1,genome
+298,sseC,STM1400,SseC (gi|3377864),pathogenicity island 2 effector protein SseC,NP_460365.1,genome
+297,sseB,STM1398,putative secreted protein (gi|3377862),pathogenicity island 2 effector protein SseB,NP_460363.1,genome
+296,sseA,STM1397,SseA (gi|3377861),type III secretion system chaperone SseA,NP_460362.1,genome
+295,sscB,STM1403,SscB (gi|3377867),CesD/SycD/LcrH family type III secretion system chaperone,NP_460368.1,genome
+294,sscA,STM1399,putative secretion chaperone (gi|3377863),CesD/SycD/LcrH family type III secretion system chaperone,NP_460364.1,genome
+293,ssaV,STM1414,homology with the LcrD family of proteins; secretion system apparatus protein SSAV. (SW:SSAV_SALTY),EscV/YscV/HrcV family type III secretion system export apparatus protein,NP_460379.1,genome
+292,ssaU,STM1422,homology with YscU of the secretion system of Yersinia; secretion system apparatus protein SSAU. (SW:SSAU_SALTY),EscU/YscU/HrcU family type III secretion system export apparatus switch protein,NP_460387.1,genome
+291,ssaT,STM1421,homology with YscT of the secretion system of Yersinia; secretion system apparatus protein SSAT. (SW:SSAT_SALTY),EscT/YscT/HrcT family type III secretion system export apparatus protein,NP_460386.1,genome
+290,ssaS,STM1420,homology with YscS of the secretion system of Yersinia; secretion system apparatus protein SSAS. (SW:SSAS_SALTY),EscS/YscS/HrcS family type III secretion system export apparatus protein,NP_460385.1,genome
+289,ssaR,STM1419,homology with YscR of the secretion system of Yersinia; virulence protein yscr (SW:YSCR_SALTY),EscR/YscR/HrcR family type III secretion system export apparatus protein,NP_460384.1,genome
+288,ssaQ,STM1418,secretion system apparatus protein SSAQ. (SW:SSAQ_SALTY),type III secretion system protein SsaQ,NP_460383.1,genome
+287,ssaP,STM1417,secretion system apparatus protein SSAP. (SW:SSAP_SALTY),type III secretion system protein SsaP,NP_460382.1,genome
+286,ssaO,STM1416,secretion system apparatus protein SSAO. (SW:SSAO_SALTY),type III secretion system protein SsaO,NP_460381.1,genome
+285,ssaN,STM1415,homology with the YscN family of proteins; probable secretion system apparatus ATP synthase SSAN. (SW:SSAN_SALTY),EscN/YscN/HrcN family type III secretion system ATPase,NP_460380.1,genome
+284,ssaM,STM1413,secretion system apparatus protein SSAM. (SW:SSAM_SALTY),type III secretion system protein SsaM,NP_460378.1,genome
+283,ssaL,STM1412,secretion system apparatus protein SSAL. (SW:SSAL_SALTY),secretion system apparatus protein,NP_460377.1,genome
+282,ssaK,STM1411,secretion system apparatus protein SSAK. (SW:SSAK_SALTY),type III secretion system protein SsaK,NP_460376.1,genome
+281,ssaJ,STM1409,homology with the yscJ/mxiJ/prgK family of lipoproteins; secretion system apparatus lipoprotein SSAJ precursor. (SW:SSAJ_SALTY),EscJ/YscJ/HrcJ family type III secretion inner membrane ring protein,NP_460374.1,genome
+280,ssaI,STM1408,SsaI (gi|3776129),EscI/YscI/HrpB family type III secretion system inner rod protein,NP_460373.1,genome
+279,ssaH,STM1407,SsaH (gi|3776128),secretion system apparatus,NP_460372.1,genome
+278,ssaG,STM1406,SsaH (gi|2460267),secretion system apparatus,NP_460371.1,genome
+277,ssaE,STM1396,putative secretory apparatus component (gi|3377860),EscE/YscE/SsaE family type III secretion system needle protein co-chaperone,NP_460361.1,genome
+276,ssaD,STM1395,SpiB (gi|1498308),EscD/YscD/HrpQ family type III secretion system inner membrane ring protein,NP_460360.1,genome
+275,ssaC,STM1394,SpiA (gi|1498307),EscC/YscC/HrcC family type III secretion system outer membrane ring protein,NP_460359.1,genome
+274,ssaB,STM1393,SpiC (gi|1498306),pathogenicity island chaperone protein SpiC,NP_460358.1,genome
+273,spvR,PSLT041,,"Salmonella plasmid virulence: regulation of spv operon, lysR family",NP_490531.1,genome
+272,spvD,PSLT037,,Salmonella plasmid virulence: hydrophilic protein,NP_490527.1,genome
+271,spvC,PSLT038,,Salmonella plasmid virulence: hydrophilic protein,NP_490528.1,genome
+270,spvB,PSLT039,,Salmonella plasmid virulence: hydrophilic protein,NP_490529.1,genome
+269,spvA,PSLT040,,Salmonella plasmid virulence: outer membrane protein,NP_490530.1,genome
+268,sptP,STM2878,protein tyrosine phosphatase SptP (gi|1519054),pathogenicity island 1 effector protein StpP,NP_461799.1,genome
+267,sprB,STM2866,transcriptional regulator SprB (gi|5007028),transcriptional regulator,NP_461787.1,genome
+266,sirC,STY_RS14190,Derived by automated computational analysis using gene prediction method: Protein Homology.,transcriptional regulator SirC,WP_000243995.1,genome
+265,spoT,STM3742,"bifunctional; similar to E. coli (p)ppGpp synthetase II; also guanosine-3',5'-bis pyrophosphate 3'-pyrophosphohydrolase (AAC76674.1); Blastp hit to AAC76674.1 (702 aa), 98% identity in aa 1 - 702","bifunctional GTP diphosphokinase/guanosine-3',5'-bis(diphosphate) 3'-diphosphatase",NP_462642.1,genome
+264,spiC,STY_RS08155,Derived by automated computational analysis using gene prediction method: Protein Homology.,SPI-2 type III secretion system protein SpiC,WP_001738217.1,genome
+263,speA,STM3086,"similar to E. coli biosynthetic arginine decarboxylase (AAC75975.1); Blastp hit to AAC75975.1 (658 aa), 97% identity in aa 1 - 658",arginine decarboxylase,NP_462002.1,genome
+262,spaS,STM2887,secretory proteins; surface presentation of antigens protein SPAS. (SW:SPAS_SALTY),EscU/YscU/HrcU family type III secretion system export apparatus switch protein,NP_461808.1,genome
+261,spaR,STM2888,secretory proteins; surface presentation of antigens protein SPAR. (SW:SPAR_SALTY),EscT/YscT/HrcT family type III secretion system export apparatus protein,NP_461809.1,genome
+260,spaQ,STM2889,secretory proteins; surface presentation of antigens protein SPAQ. (SW:SPAQ_SALTY),EscS/YscS/HrcS family type III secretion system export apparatus protein,NP_461810.1,genome
+259,spaP,STM2890,secretory proteins; surface presentation of antigens protein SPAP. (SW:SPAP_SALTY),EscR/YscR/HrcR family type III secretion system export apparatus protein,NP_461811.1,genome
+258,spaO,STM2891,secretory proteins; surface presentation of antigens protein SPAO. (SW:SPAO_SALTY),type III secretion system protein SpaO,NP_461812.1,genome
+257,spaN,STY_RS14315,Derived by automated computational analysis using gene prediction method: Protein Homology.,SPI-1 type III secretion system protein SpaN,WP_000503113.1,genome
+256,spaM,STY_RS14320,Derived by automated computational analysis using gene prediction method: Protein Homology.,SPI-1 type III secretion system protein SpaM,WP_000555884.1,genome
+255,spaK,STY_RS14330,Derived by automated computational analysis using gene prediction method: Protein Homology.,SPI-1 type III secretion system chaperone SpaK,WP_001164066.1,genome
+254,soxS,STM4265,AraC/XylS family; regulatory protein SOXS. (SW:SOXS_SALTY),AraC family transcriptional regulator,NP_463130.1,genome
+253,sopE2,STM1855,SopE2 (gi|9651642),type III secretion protein SopE2,NP_460811.1,genome
+252,sopE,STY_RS22015,Derived by automated computational analysis using gene prediction method: Protein Homology.,SPI-1 type III secretion system guanine nucleotide exchange factor SopE,WP_000161708.1,genome
+251,sopD2,SEHA_RS05630,Derived by automated computational analysis using gene prediction method: Protein Homology.,type III secretion system effector SopD2,WP_001145570.1,genome
+250,sopD,STM2945,hypothetical 36.1 Kda protein in cysH 3'region (ORF4). (SW:YGCC_SALTY),secreted protein in the Sop family; transferred to eukaryotic cells,NP_461866.1,genome
+249,sopB,STM1091,invasion gene D protein (gi|2582385),inositol phosphatase,NP_460064.1,genome
+248,sopA,STM2066,"similar to secreted effector protein of Salmonella dublin; similar to E. coli orf, hypothetical protein (AAC77008.1); Blastp hit to AAC77008.1 (442 aa), 24% identity in aa 194 - 432, 20% identity in aa 59 - 151, 23% identity in aa 34 - 71, 32% identity in aa 19 - 50",E3 ubiquitin--protein ligase,NP_461011.1,genome
+247,solA,STM1160,"similar to E. coli sarcosine oxidase-like protein (AAC74143.1); Blastp hit to AAC74143.1 (372 aa), 84% identity in aa 1 - 371",N-methyltryptophan oxidase,NP_460131.1,genome
+246,sodC,STM1044,superoxide dismutase [Cu-Zn] precursor. (SW:SODC_SALTY),Gifsy-2 prophage superoxide dismutase precursor (Cu-Zn),NP_460019.1,genome
+245,sodB,STM1431,"similar to E. coli superoxide dismutase, iron (AAC74728.1); Blastp hit to AAC74728.1 (193 aa), 94% identity in aa 1 - 193",superoxide dismutase,NP_460394.1,genome
+244,smpB,SARI_RS01095,Derived by automated computational analysis using gene prediction method: Protein Homology.,SsrA-binding protein SmpB,WP_024131783.1,genome
+243,slyD,STM3455,"similar to E. coli FKBP-type peptidyl-prolyl cis-trans isomerase (rotamase) (AAC76374.1); Blastp hit to AAC76374.1 (196 aa), 97% identity in aa 1 - 196",peptidylprolyl isomerase,NP_462359.1,genome
+242,slyA,STM1444,transcriptional regulator SLYA (salmolysin) (cytolysin SLYA). (SW:SLYA_SALTY),MarR family transcriptional regulator for hemolysin,NP_460407.3,genome
+241,slrP,STM0800,leucine-rich repeat protein SlrP (gi|5107020),E3 ubiquitin--protein ligase,NP_459778.1,genome
+240,sitA,STM2861,SitA (gi|5231094),iron ABC transporter substrate-binding protein,NP_461782.1,genome
+239,sipD,STM2883,sspD protein (gi|7443300),cell invasion protein SipD,NP_461804.1,genome
+238,sipC,STM2884,sspC protein (gi|7443298),pathogenicity island 1 effector protein SipC,NP_461805.1,genome
+237,sipB,STM2885,SipB (gi|975295),pathogenicity island 1 effector protein SipB,NP_461806.1,genome
+236,sipA,STM2882,SipA (gi|1172128),pathogenicity island 1 effector protein SipA,NP_461803.1,genome
+235,sinH,STM2517,similar to Escherichia coli intimin and Yersinia pestis invasin proteins; (gi|4583531),intimin-like inverse autotransporter protein SinH,NP_461452.1,genome
+234,sigE,STY_RS05205,Derived by automated computational analysis using gene prediction method: Protein Homology.,type III secretion system chaperone SigE,WP_000444726.1,genome
+233,sifB,STM1602,secreted effector SifB (gi|8927437),effector protein SifB,NP_460561.1,genome
+232,sifA,STM1224,replication in macrophages; SIFA protein (SW:SIFA_SALTY),effector protein SifA,NP_460194.1,genome
+231,sicP,STM2879,SicP (gi|3283218),chaperone protein SicP,NP_461800.1,genome
+230,sicA,STM2886,secretory proteins; surface presentation of antigens protein SPAT. (SW:SPAT_SALTY),CesD/SycD/LcrH family type III secretion system chaperone,NP_461807.1,genome
+229,shdA,STM2513,IcsA; subspecies I specific; Peyer's patch colonization and shedding factor; ShdA (gi|5107805),C-terminal region of AIDA-like protein,NP_461448.1,genome
+228,serA,STM3062,"similar to E. coli D-3-phosphoglycerate dehydrogenase (AAC75950.1); Blastp hit to AAC75950.1 (410 aa), 96% identity in aa 1 - 410",D-3-phosphoglycerate dehydrogenase,NP_461978.1,genome
+227,sefD,STY_RS23170,frameshifted; Derived by automated computational analysis using gene prediction method: Protein Homology.,SEF18 fimbria major subunit SefD,CDS protein_id not found,genome
+226,sefC,SPA_RS21815,Derived by automated computational analysis using gene prediction method: Protein Homology.,SEF14/SEF18 fimbria usher protein SefC,WP_000753923.1,genome
+225,sefB,SPA_RS21810,Derived by automated computational analysis using gene prediction method: Protein Homology.,SEF14/SEF18 fimbria chaperone SefB,WP_001772663.1,genome
+224,sefA,SPA_RS21805,Derived by automated computational analysis using gene prediction method: Protein Homology.,SEF14 fimbria major subunit SefA,WP_011233254.1,genome
+223,sbmA,STM0376,"similar to E. coli sensitivity to microcin B17, possibly envelop protein (AAC73480.1); Blastp hit to AAC73480.1 (406 aa), 92% identity in aa 1 - 406",peptide transporter,NP_459371.1,genome
+222,sbcD,STM0396,"similar to E. coli ATP-dependent dsDNA exonuclease (AAC73501.1); Blastp hit to AAC73501.1 (400 aa), 84% identity in aa 1 - 400",exonuclease subunit SbcD,NP_459391.1,genome
+221,safD,STM0302,,pilin structural protein SafD,NP_459300.1,genome
+220,safC,STM0301,"similar to E. coli putative outer membrane protein, export function (AAC73634.1); Blastp hit to AAC73634.1 (867 aa), 34% identity in aa 35 - 862",pilin outer membrane usher protein SafC,NP_459299.1,genome
+219,safB,STM0300,"similar to E. coli putative chaperone (AAC76177.1); Blastp hit to AAC76177.1 (231 aa), 35% identity in aa 26 - 223",putative fimbriae assembly chaparone,NP_459298.1,genome
+218,safA,STM0299,,putative outer membrane protein,NP_459297.1,genome
+217,ruvB,STM1894,"similar to E. coli Holliday junction helicase subunit A; branch migration; repair (AAC74930.1); Blastp hit to AAC74930.1 (336 aa), 96% identity in aa 1 - 336",Holliday junction DNA helicase RuvB,NP_460851.1,genome
+216,rpoS,STM2924,major sigmafactor during stationary phase; RNA polymerase sigma factor RPOS (sigma-38). (SW:RPOS_SALTY),RNA polymerase sigma factor RpoS,NP_461845.1,genome
+215,rpoB,SARI_RS16395,Derived by automated computational analysis using gene prediction method: Protein Homology.,DNA-directed RNA polymerase subunit beta,WP_000263105.1,genome
+214,rhuM,STM3755,Pathogenicity island encoded protein: SPI3; RhuM (gi|4324608),hypothetical protein,NP_462654.1,genome
+213,rnr,STY_RS22585,Derived by automated computational analysis using gene prediction method: Protein Homology.,ribonuclease R,WP_000076357.1,genome
+212,rffA,STY_RS17255,Derived by automated computational analysis using gene prediction method: Protein Homology.,"dTDP-4-amino-4,6-dideoxygalactose transaminase",WP_000612080.1,genome
+211,rfe,STM3918,"similar to E. coli UDP-GlcNAc:undecaprenylphosphate GlcNAc-1-phosphate transferase; synthesis of enterobacterial common antigen (ECA) (AAC76789.1); Blastp hit to AAC76789.1 (367 aa), 87% identity in aa 1 - 367",undecaprenyl-phosphate alpha-N-acetylglucosaminyl 1-phosphate transferase,NP_462808.1,genome
+210,rfc,STM1332,O-antigen polymerase (SW:RFC_SALTY),polymerase,NP_460298.1,genome
+209,rfbP,STM2082,bifunctional enzyme; LPS side chain defect; undecaprenyl-phosphate galactosephosphotransferase. (SW:RFBP_SALTY),UDP-phosphate galactose phosphotransferase,NP_461027.1,genome
+208,rfbN,STM2085,LPS side chain defect: putative rhamnosyltransferase RFBN. (SW:RFBN_SALTY),rhamnosyltransferase,NP_461030.1,genome
+207,rfbM2,STY_RS10790,Derived by automated computational analysis using gene prediction method: Protein Homology.,mannose-1-phosphate guanylyltransferase/mannose-6-phosphate isomerase,WP_000009019.1,genome
+206,rfbM,STM2084,LPS side chain defect: mannose-1-phosphate guanylyltransferase GDP). (SW:RFBM_SALTY),mannose-1-phosphate guanylyltransferase/mannose-6-phosphate isomerase,NP_461029.1,genome
+205,rfbK,STM2083,LPS side chain defect: phosphomannomutase. (SW:RFBK_SALTY),phosphomannomutase,NP_461028.1,genome
+204,rfbI,STM2093,LPS side chain defect; RFBI protein. (SW:RFBI_SALTY),"CDP-6-deoxy-delta-3,4-glucoseen reductase",NP_461038.1,genome
+203,rfbH,STM2090,LPS side chain defect; lipopolysaccharide biosynthesis protein RFBH. (SW:RFBH_SALTY),lipopolysaccharide biosynthesis protein RfbH,NP_461035.1,genome
+202,rfbG,STM2091,"LPS side chain defect; CDP-glucose 4,6-dehydratase. (SW:RFBG_SALTY)","CDP-glucose 4,6-dehydratase",NP_461036.1,genome
+201,rfbD,STM2096,DTDP-4-dehydrorhamnose reductase. (SW:RFBD_SALTY),dTDP-4-dehydrorhamnose reductase,NP_461041.1,genome
+200,rfbC,STM2094,"dTDP-4-dehydrorhamnose 3,5-epimerase. (SW:RFBC_SALTY)","dTDP-4,deoxyrhamnose 3,5 epimerase",NP_461039.1,genome
+199,rfbB,STM2097,"DTDP-glucose 4,6-dehydratase. (SW:RFBB_SALTY)","dTDP-glucose 4,6-dehydratase",NP_461042.1,genome
+198,rfbA,STM2095,glucose-1-phosphate thymidylyltransferase. (SW:RFBA_SALTY),glucose-1-phosphate thymidylyltransferase,NP_461040.1,genome
+197,rfaZ,STM3715,lipopolysaccharide core biosynthesis protein RFAZ. (SW:RFAZ_SALTY),3-deoxy-D-manno-oct-2-ulosonate III transferase WaaZ,NP_462615.1,genome
+196,rfaP,STM3721,phosphorylation of core heptose; lipopolysaccharide core biosynthesis protein RFAP. (SW:RFAP_SALTY),lipopolysaccharide core heptose(I) kinase RfaP,NP_462621.1,genome
+195,rfaL,STM3713,O-antigen ligase. (SW:RFAL_SALTY),O-antigen ligase,NP_462613.1,genome
+194,rfaK,STM3714,"lipopolysaccharide core biosynthesis; lipopolysaccharide 1,2-N-acetylglucosaminetransferase. (SW:RFAK_SALTY)","UDP-glucose--(glucosyl)LPS alpha-1,2-glucosyltransferase",NP_462614.1,genome
+193,rfaJ,STM3717,"lipopolysaccharide 1,2-glucosyltransferase. (SW:RFAJ_SALTY)","lipopolysaccharide 1,2-glucosyltransferase",NP_462617.1,genome
+192,rfaI,STM3718,"lipopolysaccharide 1,3-galactosyltransferase. (SW:RFAI_SALTY)","lipopolysaccharide 1,3-galactosyltransferase",NP_462618.1,genome
+191,rfaH,STM3977,"affecting biosynthesis of lipopolysaccharide core, F pilin, and haemolysin; similar to E. coli transcriptional activator affecting biosynthesis of lipopolysaccharide core, F pilin, and haemolysin (AAC76845.1); Blastp hit to AAC76845.1 (162 aa), 87% identity in aa 1 - 162",transcriptional activator RfaH,NP_462862.1,genome
+190,rfaG,STM3722,"similar to E. coli glucosyltransferase I; lipopolysaccharide core biosynthesis (AAC76655.1); Blastp hit to AAC76655.1 (374 aa), 86% identity in aa 1 - 374",glucosyltransferase I RfaG,NP_462622.1,genome
+189,rfaB,STM3719,"lipopolysaccharide 1,6-galactosyltransferase. (SW:RFAB_SALTY)",glycosyl transferase,NP_462619.1,genome
+188,relA,STM2956,"similar to E. coli (p)ppGpp synthetase I (GTP pyrophosphokinase); regulation of RNA synthesis; stringent factor (AAC75826.1); Blastp hit to AAC75826.1 (744 aa), 96% identity in aa 1 - 743",GTP diphosphokinase,NP_461877.1,genome
+187,recD,STM2993,"similar to E. coli DNA helicase, ATP-dependent dsDNA/ssDNA exonuclease V subunit, ssDNA endonuclease (AAC75858.1); Blastp hit to AAC75858.1 (608 aa), 84% identity in aa 1 - 604",exodeoxyribonuclease V subunit alpha,NP_461910.1,genome
+186,rdgC,SARI_RS11845,Derived by automated computational analysis using gene prediction method: Protein Homology.,recombination-associated protein RdgC,WP_000964305.1,genome
+185,rcK,PSLT009,,resistance to complement killing,NP_490501.1,genome
+184,ratB,STM2514,RatB (gi|5107806),hypothetical protein,NP_461449.1,genome
+183,pyrD,STM1058,dihydroorotate dehydrogenase. (SW:PYRD_SALTY),dihydroorotate dehydrogenase (qui),NP_460032.1,genome
+182,purH,SARI_RS16265,Derived by automated computational analysis using gene prediction method: Protein Homology.,bifunctional phosphoribosylaminoimidazolecarboxamide formyltransferase/IMP cyclohydrolase,WP_001187587.1,genome
+181,purD,STM4175,GAR synthetase; phosphoribosylamine--glycine ligase. (SW:PUR2_SALTY),phosphoribosylamine--glycine ligase,NP_463044.1,genome
+180,pstC,SARI_RS17720,Derived by automated computational analysis using gene prediction method: Protein Homology.,phosphate ABC transporter permease PstC,WP_000741630.1,genome
+179,prgK,STM2871,lipoprotein; may link inner and outer membranes; PRGK protein precursor. (SW:PRGK_SALTY),EscJ/YscJ/HrcJ family type III secretion inner membrane ring protein,NP_461792.1,genome
+178,prgJ,STM2872,PRGJ protein. (SW:PRGJ_SALTY),type III secretion system protein PrgJ,NP_461793.1,genome
+177,prgI,STM2873,PRGI protein. (SW:PRGI_SALTY),EscF/YscF/HrpA family type III secretion system needle major subunit,NP_461794.1,genome
+176,prgH,STM2874,PRGH protein. (SW:PRGH_SALTY),type III secretion system protein PrgH,NP_461795.1,genome
+175,prfC,SARI_RS14130,Derived by automated computational analysis using gene prediction method: Protein Homology.,peptide chain release factor 3,WP_000175971.1,genome
+174,ppk,STM2501,"component of RNA degradosome; similar to E. coli polyphosphate kinase (AAC75554.1); Blastp hit to AAC75554.1 (688 aa), 96% identity in aa 1 - 688",RNA degradosome polyphosphate kinase,NP_461436.1,genome
+173,ppiC,STM3910,"similar to E. coli peptidyl-prolyl cis-trans isomerase C (rotamase C) (AAC76780.1); Blastp hit to AAC76780.1 (93 aa), 94% identity in aa 1 - 92",peptidylprolyl isomerase,NP_462801.1,genome
+172,ppdD,STM0144,"putative major component of type IV pilin; similar to E. coli prelipin peptidase dependent protein (AAC73219.1); Blastp hit to AAC73219.1 (146 aa), 89% identity in aa 1 - 146",prepilin peptidase-dependent pilin,NP_459149.1,genome
+171,pmrD,STM2304,polymyxin b resistance protein PMRD. (SW:PMRD_SALTY),signal transduction protein PmrD,NP_461246.1,genome
+170,pltB,STY_RS08915,Derived by automated computational analysis using gene prediction method: Protein Homology.,subtilase cytotoxin subunit B,WP_000281950.1,genome
+169,pltA,STY_RS08910,Derived by automated computational analysis using gene prediction method: Protein Homology.,pertussis-like toxin subunit ArtA,WP_001766395.1,genome
+168,pipD,STM1094,,dipeptidase,NP_460067.1,genome
+167,pipC,STM1090,invasion gene E protein (gi|2582386),type III secretion chaperone protein SigE,NP_460063.1,genome
+166,STM2780,STM2780,"putative pentapeptide repeats (8 copies); similar to E. coli orf, hypothetical protein (AAC77036.1); Blastp hit to AAC77036.1 (430 aa), 25% identity in aa 148 - 306, 26% identity in aa 145 - 259, 22% identity in aa 152 - 348, 23% identity in aa 238 - 412",effector protein PipB,NP_461706.1,genome
+165,pipB,STM1088,,effector protein PipB,NP_460061.1,genome
+164,pipA,STM1087,,virulence protein,NP_460060.1,genome
+163,phoU,STM3853,"similar to E. coli negative regulator for pho regulon and putative enzyme in phosphate metabolism (AAC76747.1); Blastp hit to AAC76747.1 (241 aa), 95% identity in aa 1 - 238",phosphate transport system regulatory protein PhoU,NP_462752.1,genome
+162,phoQ,STM1230,ligand is Mg+; virulence sensor protein PHOQ (SW:PHOQ_SALTY),sensor protein PhoQ,NP_460200.1,genome
+161,phoP,STM1231,transcribes genes expressed under low Mg+ concentration (OmpR family); virulence transcriptional regulatory protein PHOP. (SW:PHOP_SALTY),response regulator in two-component regulatory system with PhoQ,NP_460201.1,genome
+160,phoN,STM4319,nonspecific acid phosphatase precursor. (SW:PHON_SALTY),phosphatase PAP2 family protein,NP_463184.1,genome
+159,pflB,STM0973,"similar to E. coli formate acetyltransferase 1 (AAC73989.1); Blastp hit to AAC73989.1 (760 aa), 96% identity in aa 1 - 760",formate C-acetyltransferase,NP_459948.1,genome
+158,pflA,STM0970,"similar to E. coli pyruvate formate lyase activating enzyme 1 (AAC73988.1); Blastp hit to AAC73988.1 (246 aa), 97% identity in aa 3 - 246",pyruvate formate lyase activating enzyme 1,NP_459945.3,genome
+157,pefD,PSLT016,,plasmid-encoded fimbriae;chaperone,NP_490508.1,genome
+156,pefC,PSLT017,,plasmid-encoded fimbriae; usher protein,NP_490509.1,genome
+155,pefA,PSLT018,,plasmid-encoded fimbriae; major fimbrial subunit,NP_490510.1,genome
+154,pdgL,STM1599,D-ala-D-ala digestion in peptidoglycan; D-alanyl-D-alanine dipeptidase PcgL precursor (gi|4585342),D-alanyl-D-alanine dipeptidase,NP_460558.1,genome
+153,pcm,SARI_RS00145,Derived by automated computational analysis using gene prediction method: Protein Homology.,protein-L-isoaspartate(D-aspartate) O-methyltransferase,WP_000254715.1,genome
+152,pcgL,STY_RS06880,Derived by automated computational analysis using gene prediction method: Protein Homology.,M15 family metallopeptidase,WP_000237711.1,genome
+151,pagO,STM1862,predicted integral membrane protein; PAGO protein. (SW:PAGO_SALTY),EamA family transporter,NP_460818.1,genome
+150,pagK,STM1867,PagK (gi|2582047),phage virulence factor,NP_460822.1,genome
+149,pagD,STM1244,virulence protein PAGD precursor. (SW:PAGD_SALTY),virulence factor,NP_460214.1,genome
+148,pagC,STM1246,PhoP regulated; virulence membrane protein PAGC precursor. (SW:PAGC_SALTY),hypothetical protein,NP_460215.1,genome
+147,orgA,STM2869,oxygen-regulated invasion protein ORGA. (SW:ORGA_SALTY),invasion protein OrgB,NP_461790.1,genome
+146,STM2870,STM2870,oxygen-regulated invasion protein ORGA. (SW:ORGA_SALTY),putative inner membrane protein,NP_461791.1,genome
+145,orgB,STY_RS14200,Derived by automated computational analysis using gene prediction method: Protein Homology.,type III secretion system linker protein OrgB,WP_000916657.1,genome
+144,ordL,STY_RS15590,Derived by automated computational analysis using gene prediction method: Protein Homology.,FAD-binding oxidoreductase,WP_001092814.1,genome
+143,ompR,STM3502,affecting transcription of ompC and ompF (OmpR family); transcriptional regulatory protein OMPR. (SW:OMPR_SALTY),two-component system response regulator OmpR,NP_462405.1,genome
+142,skp,STY_RS01135,Derived by automated computational analysis using gene prediction method: Protein Homology.,molecular chaperone Skp,WP_000758966.1,genome
+141,ompA,STM1070,outer membrane protein a precursor (outer membrane protein 33K) (outermembrane major heat-modifiable protein). (SW:OMPA_SALTY),porin OmpA,NP_460044.1,genome
+140,nuoG,STM2323,nadh dehydrogenase I chain G. (SW:NUOG_SALTY),NADH dehydrogenase I chain G,NP_461265.3,genome
+139,nmpC,STM1572,predicted bacterial porin; outer membrane porin protein PMPD. (SW:OMPD_SALTY),phosphoporin PhoE,NP_460531.1,genome
+138,nlpC,STM1343,"similar to E. coli lipoprotein (AAC74778.1); Blastp hit to AAC74778.1 (154 aa), 86% identity in aa 1 - 154",endopeptidase,NP_460309.1,genome
+137,nfnB,STM0578,oxygen-insensitive NAD(P)H nitroreductase; oxygen-insensitive NAD(P)H nitroreductase. (SW:NFNB_SALTY),NAD(P)H nitroreductase,NP_459570.1,genome
+136,narG,STM1764,"similar to E. coli nitrate reductase 1, alpha subunit (AAC74308.1); Blastp hit to AAC74308.1 (1247 aa), 95% identity in aa 1 - 1247",nitrate reductase subunit alpha,NP_460720.1,genome
+135,msbB,STM1889,"suppressor of htrB (lpxL); similar to E. coli suppressor of htrB, heat shock protein (AAC74925.1); Blastp hit to AAC74925.1 (323 aa), 93% identity in aa 1 - 323",lipid A biosynthesis (KDO)2-(lauroyl)-lipid IVA acyltransferase,NP_460846.1,genome
+134,mppA,STM1679,"also negative regulator of mulitple antibiotic resistance; similar to E. coli putative transport periplasmic protein (AAC74411.1); Blastp hit to AAC74411.1 (544 aa), 92% identity in aa 8 - 544",oligopeptide ABC transporter substrate-binding protein OppA,NP_460637.1,genome
+133,misL,STM3757,Pathogenicity island encoded protein: SPI3; MisL (gi|4324610),autotransporter outer membrane beta-barrel domain-containing protein,NP_462656.1,genome
+132,mig-14,STM2782,,antimicrobial resistance protein Mig-14,NP_461708.1,genome
+131,miaA,SARI_RS15260,Derived by automated computational analysis using gene prediction method: Protein Homology.,tRNA (adenosine(37)-N6)-dimethylallyltransferase MiaA,WP_012210649.1,genome
+130,mgtC,STM3764,Pathogenicity island encoded protein: SPI3; Mg(2+) transport ATPase protein C. (SW:ATMC_SALTY),magnesium transporter MgtC,NP_462663.1,genome
+129,mgtB,STM3763,"Pathogenicity island encoded protein: SPI3; Mg(2+) transport ATPase, P-type 2. (SW:ATMB_SALTY)",magnesium-translocating P-type ATPase,NP_462662.1,genome
+128,mglA,STM2189,ABC superfamily (atp_bind); galactoside transport ATP-binding protein MGLA. (SW:MGLA_SALTY),galactose/methyl galactoside ABC transporter ATP-binding protein MglA,NP_461134.1,genome
+127,metA,STM4182,homoserine O-succinyltransferase. (SW:META_SALTY),homoserine O-succinyltransferase,NP_463047.1,genome
+126,mdfA,STM0866,"similar to E. coli proton motive force efflux pump (AAC73929.1); Blastp hit to AAC73929.1 (410 aa), 90% identity in aa 1 - 406",multidrug transporter MdfA,NP_459843.1,genome
+125,STM0029,STM0029,putative transcriptional regulator MarT (gi|4324612),transcriptional regulator,NP_459034.1,genome
+124,lpxD,STM0226,UDP-3-O-[3-hydroxymyristoyl] glucosamine N-acyltransferase. (SW:LPXD_SALTY),UDP-3-O-(3-hydroxymyristoyl)glucosamine N-acyltransferase,NP_459231.1,genome
+123,lppB,STM14_1670,similar to Escherichia coli murein lipoprotein (AAC74747.1),putative methyl-accepting chemotaxis protein,ACY88148.1,genome
+122,lppA,STM474_1381,,major outer membrane lipoprotein,ADX17077.1,genome
+121,lpfE,STM3636,PFE protein precursor (SW:LPFE_SALTY),long polar fimbrial protein LpfE,NP_462537.1,genome
+120,lpfD,STM3637,LPFD protein precursor. (SW:LPFD_SALTY),long polar fimbrial protein LpfD,NP_462538.1,genome
+119,lpfC,STM3638,outer membrane usher protein LPFC precursor. (SW:LPFC_SALTY),fimbrial assembly protein,NP_462539.1,genome
+118,lpfB,STM3639,chaperone protein LPFB precursor. (SW:LPFB_SALTY),long polar fimbrial chaperone LpfB,NP_462540.1,genome
+117,lpfA,STM3640,long polar fimbria protein A precursor. (SW:LPFA_SALTY),long polar fimbria,NP_462541.1,genome
+116,lon,STM0450,"ATP-dependent protease la; cleaves RcsA and SulA; heat shock k-protein (DNA binding activity); similar to E. coli DNA-binding, ATP-dependent protease La; heat shock K-protein (AAC73542.1); Blastp hit to AAC73542.1 (784 aa), 99% identity in aa 1 - 784",endopeptidase La,NP_459446.1,genome
+115,leuO,STM0115,probable activator protein in leuabcd operon. (SW:LEUO_SALTY),transcriptional regulator LeuO,NP_459120.1,genome
+114,rsmA,SARI_RS13615,Derived by automated computational analysis using gene prediction method: Protein Homology.,16S rRNA (adenine(1518)-N(6)/adenine(1519)-N(6))- dimethyltransferase RsmA,WP_001065400.1,genome
+113,kduI,STM3018,"similar to E. coli homolog of pectin degrading enzyme 5-keto 4-deoxyuronate isomerase (AAC75882.1); Blastp hit to AAC75882.1 (278 aa), 85% identity in aa 1 - 278",pectin-degrading enzyme,NP_461935.1,genome
+112,iroN,STM2777,"similar to E. coli outer membrane receptor for ferric enterobactin (enterochelin) and colicins B and D (AAC73685.1); Blastp hit to AAC73685.1 (746 aa), 52% identity in aa 3 - 728, 44% identity in aa 245 - 746",TonB-dependent siderophore receptor protein,NP_461704.3,genome
+111,iroB,STM2773,related to UDP-glucuronosyltransferase,putative glycosyl transferase,NP_461700.1,genome
+110,invJ,STM2892,secretory proteins; surface presentation of antigens protein SPAN. (SW:SPAN_SALTY),antigen presentation protein SpaN,NP_461813.1,genome
+109,invI,STM2893,secretory proteins; surface presentation of antigens protein SPAM. (SW:SPAM_SALTY),type III secretion system protein SpaM,NP_461814.1,genome
+108,invH,STM2900,invasion protein INVH precursor. (SW:INVH_SALTY),invasion lipoprotein InvH,NP_461821.1,genome
+107,invG,STM2898,INVG protein precursor. (SW:INVG_SALTY),EscC/YscC/HrcC family type III secretion system outer membrane ring protein,NP_461819.1,genome
+106,invF,STM2899,invasion protein INVF. (SW:INVF_SALTY),invasion protein,NP_461820.1,genome
+105,invE,STM2897,invasion protein ONVE. (SW:INVE_SALTY),SepL/TyeA/HrpJ family type III secretion system gatekeeper,NP_461818.1,genome
+104,invC,STM2894,secretory proteins; probable ATP synthase SPAL. (SW:SPAL_SALTY),EscN/YscN/HrcN family type III secretion system ATPase,NP_461815.1,genome
+103,invB,STM2895,secretory proteins; surface presentation of antigens protein SPAK. (SW:SPAK_SALTY),type III secretion system chaperone SpaK,NP_461816.1,genome
+102,invA,STM2896,invasion protein INVA. (SW:INVA_SALTY),EscV/YscV/HrcV family type III secretion system export apparatus protein,NP_461817.1,genome
+101,idnK,STM4485,"similar to E. coli gluconate kinase, thermosensitive glucokinase (AAC77225.1); Blastp hit to AAC77225.1 (187 aa), 86% identity in aa 1 - 171",gluconate kinase,NP_463345.1,genome
+100,ibpB,STM3808,"similar to E. coli heat shock protein (AAC76709.1); Blastp hit to AAC76709.1 (144 aa), 88% identity in aa 3 - 144",heat-shock protein,NP_462708.3,genome
+99,ibpA,STM3809,"similar to E. coli heat shock protein (AAC76710.1); Blastp hit to AAC76710.1 (137 aa), 97% identity in aa 1 - 137",heat-shock protein IbpA,NP_462709.3,genome
+98,iagB,STM2877,invasion protein IAGB precursor. (SW:IAGB_SALTY),invasion protein IagB,NP_461798.1,genome
+97,iacP,STM2881,acyl carrier protein (gi|1172129),putative acyl carrier protein,NP_461802.1,genome
+96,hyi,STY_RS02640,Derived by automated computational analysis using gene prediction method: Protein Homology.,hydroxypyruvate isomerase,WP_000943597.1,genome
+95,htrA,STM0209,protease DO precursor. (SW:DEGP_SALTY),serine endoprotease,NP_459214.1,genome
+94,hscC,STM0659,"similar to E. coli putative dnaK protein (AAC73751.1); Blastp hit to AAC73751.1 (556 aa), 83% identity in aa 1 - 556",molecular chaperone HscC,NP_459651.1,genome
+93,hrpA,STM1641,"similar to E. coli helicase, ATP-dependent (AAC74495.1); Blastp hit to AAC74495.1 (1281 aa), 95% identity in aa 1 - 1280",ATP-dependent RNA helicase HrpA,NP_460600.3,genome
+92,hns,STM1751,"HU; BH2; H;, NS; pleiotropic regulator; DNA-binding protein H-NS (histone-like protein HLP-II) (protein H1)(protein B1). (SW:HNS_SALTY)",transcriptional regulator,NP_460710.1,genome
+91,hlpA,STM0225,outer membrane protein OMPH precursor. (SW:OMPH_SALTY),molecular chaperone,NP_459230.1,genome
+90,hilD,STM2875,HilD (gi|4455108),AraC family transcriptional regulator,NP_461796.1,genome
+89,hilC,STM2867,HilC (gi|4455106),AraC family transcriptional regulator,NP_461788.1,genome
+88,hilA,STM2876,invasion protein IAGA (protein HILA). (SW:IAGA_SALTY),transcriptional regulator,NP_461797.1,genome
+87,hfq,STM4361,growth-related protein; host factor-I protein (HF-I). (SW:HFQ_SALTY),RNA chaperone Hfq,NP_463222.1,genome
+86,hemE,SARI_RS16310,Derived by automated computational analysis using gene prediction method: Protein Homology.,uroporphyrinogen decarboxylase,WP_000137626.1,genome
+85,gyrA,STM2272,"type II topoisomerase; similar to E. coli DNA gyrase, subunit A, type II topoisomerase (AAC75291.1); Blastp hit to AAC75291.1 (875 aa), 91% identity in aa 1 - 875",DNA gyrase subunit A,NP_461214.1,genome
+84,guaB,STM2511,"similar to E. coli IMP dehydrogenase (AAC75561.1); Blastp hit to AAC75561.1 (488 aa), 98% identity in aa 1 - 488",IMP dehydrogenase,NP_461446.1,genome
+83,guaA,STM2510,"similar to E. coli GMP synthetase (glutamine-hydrolyzing) (AAC75560.1); Blastp hit to AAC75560.1 (525 aa), 98% identity in aa 1 - 525",glutamine-hydrolyzing GMP synthase,NP_461445.1,genome
+82,greA,SARI_RS20265,Derived by automated computational analysis using gene prediction method: Protein Homology.,transcription elongation factor GreA,WP_001147998.1,genome
+81,gogB,STM2584,,type III secretion system protein,NP_461519.1,genome
+80,gmhA,STM0310,putative RBS for ghmA; RegulonDB:STMS1H000668,phosphoheptose isomerase,NP_459308.1,genome
+79,gip,STM0518,"similar to E. coli glyoxylate-induced protein (AAC73610.1); Blastp hit to AAC73610.1 (258 aa), 84% identity in aa 1 - 258",hydroxypyruvate isomerase,NP_459513.1,genome
+78,gatC,STY_RS16270,Derived by automated computational analysis using gene prediction method: Protein Homology.,PTS galactitol transporter subunit IIC,WP_000490608.1,genome
+77,galU,STM1752,"similar to E. coli glucose-1-phosphate uridylyltransferase (AAC74318.1); Blastp hit to AAC74318.1 (302 aa), 97% identity in aa 1 - 302",UTP--glucose-1-phosphate uridylyltransferase,NP_460711.1,genome
+76,galF,STM2098,UTP--glucose-1-phosphate uridylyltransferase. (SW:GALF_SALTY),GalU regulator GalF,NP_461043.1,genome
+75,galE,STM0776,UDP-glucose 4-epimerase. (SW:GALE_SALTY),UDP-glucose 4-epimerase,NP_459755.1,genome
+74,fur,STM0693,"similar to E. coli negative regulator (AAC73777.1); Blastp hit to AAC73777.1 (148 aa), 99% identity in aa 1 - 146",ferric iron uptake transcriptional regulator,NP_459678.1,genome
+73,focA,STM0974,"formate channel 1; putative FNT family member; similar to E. coli probable formate transporter (formate channel 1) (AAC73990.1); Blastp hit to AAC73990.1 (285 aa), 95% identity in aa 1 - 285",formate transporter FocA,NP_459949.1,genome
+72,fljA,STM2770,flagellar synthesis; repressor of phase-1 flagellin gene. (SW:FLJA_SALTY),phase 1 flagellin transcriptional repressor,NP_461697.1,genome
+71,fliQ,STM1980,flagellar biosynthetic protein FLIQ. (SW:FLIQ_SALTY),flagellar export apparatus protein FliQ,NP_460933.1,genome
+70,fliC,STM1959,filament structural protein; flagellin (phase-1-I flagellin). (SW:FLIC_SALTY),flagellin,NP_460912.1,genome
+69,fkpA,STM3453,"similar to E. coli FKBP-type peptidyl-prolyl cis-trans isomerase (rotamase) (AAC76372.1); Blastp hit to AAC76372.1 (270 aa), 90% identity in aa 1 - 270",FKBP-type peptidyl-prolyl cis-trans isomerase FkpA,NP_462357.1,genome
+68,fimZ,STM0549,putative transcriptional regulator (LuxR/UhpA family); fimbriae Z protein. (SW:FIMZ_SALTY),DNA-binding response regulator,NP_459544.1,genome
+67,fimY,STM0550,fimbriae Y protein. (SW:FIMY_SALTY),fimbriae Y protein,NP_459545.1,genome
+66,fimW,STM0552,fimbriae W protein. (SW:FIMW_SALTY),helix-turn-helix transcriptional regulator,NP_459547.1,genome
+65,fimI,STM0544,fimbrin-like protein FIMI. (SW:FIMI_SALTY),fimbrial protein FimI,NP_459539.1,genome
+64,fimH,STM0547,FIMH protein precursor. (SW:FIMH_SALTY),fimbrial adhesin FimH,NP_459542.1,genome
+63,fimF,STM0548,fimbrial-like protein FIMF precursor. (SW:FIMF_SALTY),adhesin,NP_459543.1,genome
+62,fimD,STM0546,outer membrane usher protein FIMD precursor. (SW:FIMD_SALTY),outer membrane usher protein,NP_459541.1,genome
+61,fimC,STM0545,chaperone protein FIMC precursor. (SW:FIMC_SALTY),fimbrial chaperone protein FimC,NP_459540.1,genome
+60,fimA,STM0543,"type-1 fimbrial protein, a chain precursor (TYPE-1A PILIN). (SW:FM1A_SALTY)",type-1 fimbrial protein subunit A,NP_459538.3,genome
+59,fepA,STM0585,"similar to E. coli outer membrane receptor for ferric enterobactin (enterochelin) and colicins B and D (AAC73685.1); Blastp hit to AAC73685.1 (746 aa), 81% identity in aa 1 - 746",outer membrane receptor protein,NP_459577.1,genome
+58,fabG,SARI_RS08390,Derived by automated computational analysis using gene prediction method: Protein Homology.,3-oxoacyl-ACP reductase FabG,WP_000007240.1,genome
+57,fadD,STM1818,"long-chain-fatty-acid--CoA ligase; similar to E. coli acyl-CoA synthetase, long-chain-fatty-acid--CoA ligase (AAC74875.1); Blastp hit to AAC74875.1 (561 aa), 93% identity in aa 1 - 561",long-chain-fatty-acid--CoA ligase,NP_460774.1,genome
+56,envZ,STM3501,osmolarity sensor protein ENVZ. (SW:ENVZ_SALTY),two-component system sensor histidine kinase EnvZ,NP_462404.1,genome
+55,dsbB,STM1807,"reoxidizes DsbA protein; similar to E. coli reoxidizes DsbA protein following formation of disulfide bond in P-ring of flagella. (AAC74269.1); Blastp hit to AAC74269.1 (176 aa), 85% identity in aa 1 - 176",disulfide bond formation protein B,NP_460763.1,genome
+54,dsbA,STM3997,thiol:disulfide interchange protein DABA precursor. (SW:DSBA_SALTY),protein disulfide oxidoreductase DsbA,NP_462877.1,genome
+53,dppA,STM3630,"ABC superfamily (peri_perm); similar to E. coli dipeptide transport protein (AAC76569.1); Blastp hit to AAC76569.1 (535 aa), 93% identity in aa 1 - 535",ABC transporter substrate-binding protein,NP_462532.1,genome
+52,dpiA,STM0626,"transcriptional regulation of cit operon (citrate fermentation) genes and of plasmid inheritance genes (OmpR family); similar to E. coli sequence similarity to Shigella regulator (AAC73721.1); Blastp hit to AAC73721.1 (226 aa), 84% identity in aa 1 - 226",response regulator,NP_459618.1,genome
+51,dnaK,SARI_RS13940,Derived by automated computational analysis using gene prediction method: Protein Homology.,molecular chaperone DnaK,WP_000516119.1,genome
+50,dksA,STM0186,dnaK suppressor protein. (SW:DKSA_SALTY),RNA polymerase-binding protein DksA,NP_459191.1,genome
+49,dinP,STM0313,"devoid of proofreading; damage-inducible protein P; similar to E. coli damage-inducible protein P; putative tRNA synthetase (AAC73335.1); Blastp hit to AAC73335.1 (351 aa), 91% identity in aa 1 - 351",DNA polymerase IV,NP_459311.1,genome
+48,dgt,STM0208,deoxyguanosinetriphosphate triphosphohydrolase. (SW:DGTP_SALTY),dGTPase,NP_459213.1,genome
+47,dctA,STM3614,C4-dicarboxylate transport protein. (SW:DCTA_SALTY),C4-dicarboxylate transporter DctA,NP_462515.1,genome
+46,dam,STM3484,DNA adenine methylase. (SW:DMA_SALTY),DNA adenine methylase,NP_462387.1,genome
+45,cyoB,STM0442,"similar to E. coli cytochrome o ubiquinol oxidase subunit I (AAC73534.1); Blastp hit to AAC73534.1 (663 aa), 95% identity in aa 1 - 663",cytochrome o ubiquinol oxidase subunit I,NP_459438.1,genome
+44,cstA,STM0600,"similar to E. coli carbon starvation protein (AAC73699.1); Blastp hit to AAC73699.1 (701 aa), 97% identity in aa 1 - 701",carbon starvation protein A,NP_459592.1,genome
+43,cspE,STM0629,"similar to E. coli cold shock protein (AAC73724.1); Blastp hit to AAC73724.1 (69 aa), 98% identity in aa 1 - 69",cold-shock protein,NP_459621.1,genome
+42,cspC,STM1837,"multicopy suppresses mukB mutants, putative regulator; cold shock-like protein CSPC. (SW:CSPC_SALTY)",cold-shock protein,NP_460793.1,genome
+41,csgG,STM1139,curli production assembly/transport component CSGG precursor. (SW:CSGG_SALTY),curli production assembly/transport protein CsgG,NP_460110.1,genome
+40,csgF,STM1140,curli production assembly/transport component CSGF precursor. (SW:CSGF_SALTY),curli assembly protein CsgF,NP_460111.1,genome
+39,csgE,STM1141,curli production assembly/transport component CSGE precursor. (SW:CSGE_SALTY),curli assembly protein CsgE,NP_460112.1,genome
+38,csgD,STM1142,LuxR/UhpA family member; probable csgAB operon transcriptional regulatory protein. (SW:CSGD_SALTY),transcriptional regulator CsgD,NP_460113.1,genome
+37,csgC,STM1145,putative curlin production protein CSGC precursor. (SW:CSGC_SALTY),Curli assembly protein CsgC,NP_460116.1,genome
+36,csgB,STM1143,nucleator for assembly of adhesive surface organelles; minor curlin subunit precursor (fimbrin SEF17 minor subunit). (SW:CSGB_SALTY),curli minor subunit precursor,NP_460114.1,genome
+35,csgA,STM1144,coiled surface structures; cryptic; major curlin subunit precursor (fimbrin SEF17). (SW:CSGA_SALTY),curli major subunit,NP_460115.1,genome
+34,crp,STM3466,catabolite gene activator (CAMP receptor protein) (CAMP-regulatoryprotein). (SW:CRP_SALTY),transcriptional regulator Crp,NP_462369.1,genome
+33,cpxR,STM4059,"regulates expression of protein folding and degrading factors (OmpR family); similar to E. coli transcriptional regulator in 2-component system (AAC76894.1); Blastp hit to AAC76894.1 (232 aa), 97% identity in aa 1 - 232",DNA-binding response regulator,NP_462940.1,genome
+32,cpxA,STM4058,"senses misfolded proteins in bacterial envelope; similar to E. coli probable sensor protein (histidine protein kinase), acting on arcA (AAC76893.1); Blastp hit to AAC76893.1 (457 aa), 96% identity in aa 1 - 457",two-component system sensor histidine kinase CpxA,NP_462939.1,genome
+31,cpsG,STM2104,in colanic acid gene cluster; phosphomannomutase. (SW:MANB_SALTY),phosphomannomutase,NP_461049.1,genome
+30,copS,STM1095,"Pathogenicity island encoded protein: SPI5; similar to E. coli putative 2-component sensor protein (AAC75034.1); Blastp hit to AAC75034.1 (452 aa), 54% identity in aa 1 - 449",two-component sensor histidine kinase,NP_447527.1,genome
+29,cobS,STM2017,cobalamin [5'-phosphate] synthase. (SW:COBS_SALTY),adenosylcobinamide-GDP ribazoletransferase,NP_460962.1,genome
+28,cls,SARI_RS05635,Derived by automated computational analysis using gene prediction method: Protein Homology.,cardiolipin synthase,WP_000206887.1,genome
+27,clpP,STM0448,"heat shock protein F21.5; similar to E. coli ATP-dependent proteolytic subunit of clpA-clpP serine protease, heat shock protein F21.5 (AAC73540.1); Blastp hit to AAC73540.1 (207 aa), 99% identity in aa 1 - 207","ATP-dependent Clp endopeptidase, proteolytic subunit ClpP",NP_459444.1,genome
+26,clpB,STM2660,"Hsp 100; part of novel multi-chaperone system with DnaK, DnaJ, and GrpE; similar to E. coli heat shock protein (AAC75641.1); Blastp hit to AAC75641.1 (857 aa), 96% identity in aa 1 - 857",ATP-dependent chaperone ClpB,NP_461591.1,genome
+25,citC,STM0624,"similar to E. coli citrate lyase synthetase (citrate (pro-3S)-lyase ligase (AAC73719.1); Blastp hit to AAC73719.1 (381 aa), 86% identity in aa 30 - 380",[citrate (pro-3S)-lyase] ligase,NP_459616.1,genome
+24,celF,STM1316,"similar to E. coli phospho-beta-glucosidase; cryptic (AAC74804.1); Blastp hit to AAC74804.1 (450 aa), 90% identity in aa 1 - 450",6-phospho-beta-glucosidase,NP_460282.1,genome
+23,celA,STM1312,"similar to E. coli PEP-dependent phosphotransferase enzyme IV for cellobiose, arbutin, and salicin (AAC74808.1); Blastp hit to AAC74808.1 (106 aa), 96% identity in aa 1 - 106",PTS sugar transporter subunit IIB,NP_460278.1,genome
+22,cdtB,STY_RS08895,Derived by automated computational analysis using gene prediction method: Protein Homology.,cytolethal distending toxin S-CDT,WP_001529135.1,genome
+21,cbiA,STM2035,"cobyrinic acid A,C-diamide synthase. (SW:CBIA_SALTY)","cobyrinic acid a,c-diamide synthase",NP_460980.1,genome
+20,carB,STM0067,carbamoyl-phosphate synthase large chain. (SW:CARB_SALTY),carbamoyl phosphate synthase large subunit,NP_459072.1,genome
+19,carA,STM0066,carbamoyl-phosphate synthase small chain. (SW:CARA_SALTY),carbamoyl phosphate synthase small subunit,NP_459071.1,genome
+18,cadB,STM2558,"similar to E. coli transport of lysine/cadaverine (AAC77093.1); Blastp hit to AAC77093.1 (444 aa), 90% identity in aa 1 - 440",lysine:cadaverine antiporter,NP_461493.1,genome
+17,bglX,STM2166,periplasmic beta-glucosidase precursor. (SW:BGLX_SALTY),beta-glucosidase,NP_461111.1,genome
+16,bcfG,STM0027,fimbrial chaperone (gi|4959517),fimbrial chaparone,NP_459032.1,genome
+15,bcfF,STM0026,fimbrial subunit (gi|4959516),fimbrial protein,NP_459031.1,genome
+14,bcfE,STM0025,fimbrial subunit (gi|4959515),fimbrial protein,NP_459030.1,genome
+13,bcfD,STM0024,fimbrial subunit (gi|4959514),fimbrial protein,NP_459029.1,genome
+12,bcfC,STM0023,bovine colonization factor BcfC (gi|4530570),outer membrane usher protein,NP_459028.1,genome
+11,bcfB,STM0022,fimbrial chaperone (gi|4959512),fimbrial chaperone protein,NP_459027.1,genome
+10,bcfA,STM0021,fimbrial subunit (gi|4959511),fimbrial protein,NP_459026.1,genome
+9,barA,STM2958,"similar to E. coli sensor-regulator, activates OmpR by phophorylation (AAC75828.1); Blastp hit to AAC75828.1 (918 aa), 90% identity in aa 1 - 918",two-component sensor histidine kinase BarA,NP_461879.1,genome
+8,avrA,STM2865,,putative inner membrane protein,NP_461786.1,genome
+7,atpA,STM3867,"similar to E. coli membrane-bound ATP synthase, F1 sector, alpha-subunit (AAC76757.1); Blastp hit to AAC76757.1 (513 aa), 98% identity in aa 1 - 513",F0F1 ATP synthase subunit alpha,NP_462766.1,genome
+6,assT,STY_RS15910,Derived by automated computational analysis using gene prediction method: Protein Homology.,aryl-sulfate sulfotransferase,WP_000460261.1,genome
+5,asd,STM3539,aspartate-semialdehyde dehydrogenase. (SW:DHAS_SALTY),aspartate-semialdehyde dehydrogenase,NP_462440.1,genome
+4,aroD,STM1358,"similar to E. coli 3-dehydroquinate dehydratase (AAC74763.1); Blastp hit to AAC74763.1 (252 aa), 80% identity in aa 1 - 252",3-dehydroquinate dehydratase,NP_460324.1,genome
+3,aroC,STM2384,"similar to E. coli chorismate synthase (AAC75389.1); Blastp hit to AAC75389.1 (361 aa), 95% identity in aa 1 - 361",chorismate synthase,NP_461326.1,genome
+2,aroA,STM0978,3-phosphoshikimate 1-carboxyvinyltransferase. (SW:AROA_SALTY),3-phosphoshikimate 1-carboxyvinyltransferase,NP_459953.1,genome
+1,allD,STM0528,"similar to E. coli putative malate dehydrogenase (AAC73619.1); Blastp hit to AAC73619.1 (349 aa), 86% identity in aa 1 - 349",ureidoglycolate dehydrogenase,NP_459523.1,genome

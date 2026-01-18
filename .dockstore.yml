@@ -1,0 +1,90 @@
+version: 1.2
+workflows:
+  - name: Species_Detection_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/metagenomics/wf_species_detection_bs_reads.wdl
+
+  - name: Basespace_Fetcher_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/utilities/data_import/wf_basespace_fetch.wdl
+
+  - name: Legionella_Typing_Elgato_MOH 
+    subclass: WDL
+    primaryDescriptorPath: /workflows/species_typing/legionella/wf_legionella_typing_elgato.wdl
+
+  - name: Neisseria_Typing_Reads_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/species_typing/neisseria/wf_neisseria_typing_reads.wdl
+
+  - name: Neisseria_Typing_Fasta_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/species_typing/neisseria/wf_neisseria_typing_fasta.wdl
+
+  - name: Long_Reads_Assembly_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/utilities/wf_assembly_long_reads.wdl
+  
+  - name: Fq2DNA_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/utilities/wf_fq2dna.wdl
+
+  - name: AMR_Visualization_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/data_visualization/wf_amr_visualization.wdl
+
+  - name: CgMLST_ChewBBACA_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/cgmlst/wf_chewbbaca.wdl
+
+  - name: MGT_Reads2Alleles_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/wf_mgt_reads_2_alleles.wdl
+
+  - name: ListPred_Reads_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/resistance/listeria/wf_listpred_reads.wdl
+
+  - name: ListPred_Fasta_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/resistance/listeria/wf_listpred_fasta.wdl
+
+  - name: Concatenate_Illumina_Lanes_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/utilities/file_handling/wf_concatenate_illumina_lanes.wdl
+  
+  - name: BaseSpace_Fetcher_Reads_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/utilities/data_import/wf_bs_fetcher_reads.wdl
+
+  - name: Virulence_Finder_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/virulence/wf_virulence_finder.wdl
+
+  - name: Bordetella_Typing_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/species_typing/bordetella/wf_bordetella_typing.wdl
+  
+  - name: SP_Pneumoniae_SerobaV2_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/species_typing/streptococcus/wf_sp_pneumoniae_typing.wdl
+  
+  - name: SP_Pneumoniae_PopPUNK_v276_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/species_typing/streptococcus/wf_poppunk_strep_v276.wdl
+  
+  - name: MLST_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/species_typing/multi/wf_isrb_mlst.wdl
+
+  - name: Get_File_Size_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/utilities/file_handling/wf_get_file_size.wdl
+  
+  - name: RASUSA_For_All_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/standalone_modules/wf_rasusa_all.wdl
+
+    
+  - name: Matrixer_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/utilities/wf_matrixer.wdl

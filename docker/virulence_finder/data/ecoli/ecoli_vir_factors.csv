@@ -1,0 +1,236 @@
+id,Virulence_Gene,Locus_Tag,Note,Product,DB_Xref,Location
+5251,flgB,Z1711,Residues 1 to 138 of 138 are 99.27 pct identical to residues 1 to 138 of 138 from Escherichia coli K-12 Strain MG1655: B1073,"flagellar biosynthesis, cell-proximal portion of basal-body rod",None,genome
+5250,hlyF,None,None,HlyF,None,plasmid
+5249,hlyD,None,None,HlyD protein,GOA:C0M639,genome
+5248,hlyA,None,None,HlyA protein,GOA:C0M637,genome
+5247,feoB,ETECE925_00379,None,None,None,genome
+5246,feoC,ETECE925_00378,None,None,None,genome
+5245,fhuA,ETECE925_03868,None,None,None,genome
+5244,sfaA,None,None,S fimbrial adhesin major subunit SfaA,None,genome
+5243,kfiC,PIB86_03950,Derived by automated computational analysis using gene prediction method: Protein Homology.,K5 polysaccharide biosynthesis glycosyltransferase KfiC,None,genome
+5242,kfiB,PIB86_03940,Derived by automated computational analysis using gene prediction method: Protein Homology.,kfiB protein,None,genome
+5241,kfiA,PIB86_03935,Derived by automated computational analysis using gene prediction method: Protein Homology.,K5 polysaccharide biosynthesis alpha-UDP-GlcNAc glycosyltransferase KfiA,None,genome
+5240,neuA,PD07_06620,Derived by automated computational analysis using gene prediction method: Protein Homology.,NeuA,None,genome
+5239,yfcV,ETECE562_01620,None,None,None,genome
+5238,uspB,ETECE562_00351,None,None,None,genome
+5237,tcpC,None,Tir domain containing protein; similar to c2398 of Escherichia coli CFT073,TcpC,None,genome
+5236,traT,IPF_283,Identical to sp|P15177|TRAT4_ECOLI TraT complement resistance protein precursor,None,GOA:B1VCB1,plasmid
+5235,terC,None,Integral membrane protein TerC,TerC,None,plasmid
+5234,terB,None,Tellurite resistance protein TerB,TerB,None,plasmid
+5233,sitA,None,None,SitA,None,plasmid
+5232,sfaD,None,None,SfaD,None,genome
+5231,sfaE,None,None,S fimbreal adhesin E,None,genome
+5230,senB,p425_00120,FIG00639638,SenB,None,plasmid
+5229,neuC,None,None,NeuC,None,genome
+5228,mcmA,None,None,microcin M,None,genome
+5227,kpsM,None,capsule transport protein,KpsM,None,genome
+5226,kpsE,None,capsule transport protein,KpsE,None,genome
+5225,kpsD,None,capsule transport protein,KpsD,None,genome
+5224,irp2,None,HMWP2,high-molecular-weight protein 2,None,genome
+5223,hra1,None,heat resistant agglutinin 1,Hra1,None,genome
+5222,gsp,None,"C-terminal similar to E. coli YjfC, Swiss-Prot Accession Number P33222, and YgiC, Swiss-Prot Accession Number P24196",glutathionylspermidine synthetase/amidase,None,genome
+5221,gad,None,None,Gad,None,genome
+5220,focC,ETECE1649_03775,None,None,None,genome
+5219,fyuA,None,None,FyuA,None,genome
+5218,etsC,None,putative type 1 secretion system outer membrane protein; etsC,EtsC,None,plasmid
+5217,entA,None,"2,3-dihydroxybenzoate-2,3-dehydrogenase",EntA,None,genome
+5216,ecpA,JE86ST05C_03270,"DFAST-ECOLI:ABB64944.1 ECP pilin [pid:96.9%, q_cov:99.5%, s_cov:91.9%, Eval:5.0e-103]; MGA_328",ECP pilin,None,genome
+5215,ecpB,JE86ST05C_03260,"DFAST-ECOLI:AAN78884.1 ECP production pilus chaperone [pid:97.7%, q_cov:100.0%, s_cov:93.3%, Eval:2.7e-122]; MGA_327",ECP production pilus chaperone,None,genome
+5214,ecpC,JE86ST05C_03250,"DFAST-ECOLI:AAC73394.1 ECP production outer membrane protein [pid:97.5%, q_cov:100.0%, s_cov:100.0%, Eval:0.0e+00]; MGA_326",ECP production outer membrane protein,None,genome
+5213,ecpD,JE86ST05C_03240,"DFAST-ECOLI:AAC73393.1 polymerized tip adhesin of ECP fibers [pid:99.4%, q_cov:100.0%, s_cov:95.6%, Eval:7.0e-315]; MGA_325",polymerized tip adhesin of ECP fibers,None,genome
+5212,ecpE,JE86ST05C_03230,"DFAST-ECOLI:AAN78881.1 ECP production pilus chaperone [pid:96.2%, q_cov:100.0%, s_cov:94.0%, Eval:4.1e-132]; MGA_324",ECP production pilus chaperone,None,genome
+5211,chuA,None,heme utilization/transport protein; probable TonB-dependent outer membrane receptor protein,ChuA,None,genome
+5210,csgE,None,similar to Escherichia coli CsgE: SwissProt Accession Number P52105,curli production assembly/transport component CsgE precursor,None,genome
+5209,csgF,None,similar to Escherichia coli CsgF: SwissProt Accession Number P52104,curli production assembly/transport component CsgF precursor,None,genome
+5208,csgG,None,similar to Escherichia coli CsgG: SwissProt Accession Number P52103,curli production assembly/transport component CsgG precursor,None,genome
+5207,csgD,None,necessary for transcription of the csgAB operon; similar to Escherichia coli CsgD: SwissProt Accession Number P52106,regulatory protein CsgD,None,genome
+5206,cma,None,colicin M,Cma,None,plasmid
+5205,celb,None,lysis protein precursor,celB,None,plasmid
+5204,cea,GO935_RS00505,Derived by automated computational analysis using gene prediction method: Protein Homology.,pore-forming bacteriocin colicin E1,None,plasmid
+5203,cba,None,colicin B activity protein,Cba,None,plasmid
+5202,afaD,None,invasin,AfaD,None,genome
+5201,cib,ETECE1779_00085,None,Colicin 1b Cib-homolog protein,None,genome
+5200,cia,ETECE1779_00178,None,None,None,genome
+5199,fimH,None,fimbrial adhesin,FimH,None,genome
+5198,fimA,None,main subunit F1 pili,FimA,None,genome
+5181,yfeD,ECRM12581_15920,FIG00638165; Geneious type: cds; label: yfeD CDS,yfeD,None,genome
+5180,yfeC,ECRM12581_15915,Geneious type: cds; label: yfeC CDS; regulator; Not classified,Putative negative regulator,None,genome
+5179,yfeB,None,100 pct identical to gp:AF106329_5[orf73 of plasmid F],None,None,plasmid
+5178,yfeA,None,100 pct identical to gp:AF106329_4[orf227 of plasmid F],None,None,plasmid
+5177,ybtQ,C22711_4009,TMHMM annotation prediction; source=UniProt,ybtQ,None,genome
+5176,Vat,None,serine protease autotransporter,Vat-vacuolating autotransporter toxin,None,genome
+5175,tsh,None,None,Tsh,None,genome
+5174,toxB,None,similar to SWISS_PROT accession number P18177,Toxin B,None,genome
+5173,tir,None,None,Tir,None,genome
+5172,tcdA,KHW16_10575,Derived by automated computational analysis using gene prediction method: Protein Homology.,tRNA cyclic N6-threonylcarbamoyladenosine(37) synthase TcdA,None,genome
+5171,tccP,None,type III secreted effector protein; activator of N-WASP,tir-cytoskeleton coupling protein,None,genome
+5170,subB,None,putative cytotoxin cofactor; similar to YPO0337 from Yersinia pestis,SubB,None,genome
+5169,subA,None,subtilase-like serine protease with cytotoxic activity; member of peptidase_S8 subtilase family,SubA,None,genome
+5168,stxB2gB,None,None,Shiga toxin 2 B-subunit,None,genome
+5167,stxB2gA,None,None,Shiga toxin 2 A-subunit,None,genome
+5166,stxB2fB,None,None,shiga toxin 2 variant f B-subunit,None,genome
+5165,stxB2fA,None,None,shiga toxin 2 variant f A-subunit,None,genome
+5164,stxB2eB,None,"similar to other Shiga-like toxin II variants encoded by GenBank Accession Numbers M29153, X81415, X81416, X81417 and X81418",Shiga-like toxin IIe variant B subunit,None,genome
+5163,stxB2eA,None,"similar to other Shiga-like toxin II variants encoded by GenBank Accession Numbers M29153, X81415, X81416, X81417 and X81418",Shiga-like toxin IIe variant A subunit,None,genome
+5162,stxB2dB,None,None,shiga toxin 2d subunit B,GOA:Q8GGL0,genome
+5161,stxB2dA,None,None,shiga toxin 2d subunit A,GOA:Q8GGK9,genome
+5160,stxB2c,None,stx2c,Shiga toxin 2c subunit B,None,genome
+5159,stxB2b,None,None,Shiga toxin 2 B-subunit,None,genome
+5158,stxB2a,None,Shiga toxin II subunit B,Stx2B,None,genome
+5157,stxB1d,None,None,shiga-like toxin type 1 subunit B variant,None,genome
+5156,stxB1c,None,None,shiga toxin 1c subunit B,None,genome
+5155,stxB1a,None,Stx1 variant B subunit,shiga toxin 1 variant B subunit,None,genome
+5154,stxA2e,None,None,Shiga-like toxin 2A-subunit,GOA:Q93K91,genome
+5153,stxA2c,None,None,shiga toxin 2c B-subunit,GOA:Q07871,genome
+5152,stxA2b,None,None,Shiga toxin 2B subunit,None,genome
+5151,stxA2a,None,None,Shiga toxin 2A subunit,None,genome
+5150,stxA1d,None,None,shiga-like toxin type 1 subunit A variant,None,genome
+5149,stxA1c,None,None,SLT-I B Subunit,GOA:Q47641,genome
+5148,stxA1b,None,Stx1 variant B subunit,shiga toxin 1 variant B subunit,None,genome
+5147,stxA1a,None,Stx1 variant A subunit,shiga toxin 1 variant A subunit,None,genome
+5146,stx2gB,None,None,shiga toxin 2g subunit B,GOA:Q8VLE0,genome
+5145,stx2gA,None,None,shiga toxin 2g subunit A,GOA:Q5WPV7,genome
+5144,stx2fB,None,None,shiga toxin 2 variant f B-subunit,None,genome
+5143,stx2fA,None,None,shiga toxin 2 variant f A-subunit,None,genome
+5142,stx2dB,None,None,variant Shiga toxin type 2 B subunit,None,genome
+5141,stx2dA,None,None,variant Shiga toxin type 2 A subunit,None,genome
+5140,stx1dB,None,None,shiga-like toxin type 1 subunit B variant,None,genome
+5139,stb,None,None,heat stable enterotoxin II (STb),HSSP:P22542,genome
+5138,sta1,None,heat-stable enterotoxin I,None,None,genome
+5137,sslE,LMJ95_RS15260,frameshifted; Derived by automated computational analysis using gene prediction method: Protein Homology.,lipoprotein metalloprotease SslE,None,genome
+5136,sinH,ECDEC2E_2977,None,sinH,None,genome
+5135,sigA,HHJ22_03825,Derived by automated computational analysis using gene prediction method: Protein Homology.,serine protease autotransporter toxin SigA,None,genome
+5134,sfaS,UTI89_C1114,None,S fimbriae minor subunit SfaS,None,genome
+5133,sfaF,IMP05_06435,Derived by automated computational analysis using gene prediction method: Protein Homology.,S/F1C fimbrial usher SfaF/FocD,None,genome
+5132,sepA,None,None,SepA variant 1,None,plasmid
+5131,sat,None,ORF28,secreted autotransporter toxin Sat,GOA:Q8FDW4,genome
+5130,sab,GC231_25615,Derived by automated computational analysis using gene prediction method: Protein Homology.,autotransporter adhesin Sab,None,genome
+5129,saa,None,Saa,STEC autoagglutinating adhesin,None,genome
+5128,rpeA,None,"putative SPATE autotransporter; similar to the SPATE proteins, Hbp from Escherichia coli EBI and Tsh from avian pathogenic Escherichia coli",RpeA,None,genome
+5127,pic,None,None,Pic,None,genome
+5126,pet,None,plasmid encoded toxin; autotransporter,Pet precursor,None,genome
+5125,perA,None,None,None,None,genome
+5124,papH,None,None,None,GOA:P07111,genome
+5123,papG-III,KZ304_RS26180,incomplete; too short partial abutting assembly gap; missing N-terminus and C-terminus; Derived by automated computational analysis using gene prediction method: Protein Homology.,P fimbria tip G-adhesin PapG-III,None,genome
+5122,papG-II,None,papG protein,None,None,genome
+5121,papG,None,"extracellular location, P-pili F13 tip protein",papG protein,GOA:P13720,genome
+5120,papF,None,"extracellular location, P-pili F13 tip protein",papF protein,GOA:P08408,genome
+5119,papE,None,"extracellular location, P-pili F13 tip protein",papE protein,GOA:P08407,genome
+5118,papC,None,"outer membrane location, P-pili F13",papC protein,GOA:P07110,genome
+5117,papA,None,"extracellular location, P-pili F13 structural protein",papA protein,GOA:P04127,genome
+5116,ompT,b0565,None,omptin family outer membrane protease OmpT,UniProtKB/Swiss-Prot:P09169,genome
+5115,nleC,None,N-terminal part of non-LEE-encoded effector NleC,None,None,genome
+5114,nleB,None,None,non-LEE-encoded effector NleB,None,genome
+5113,nleB1,ECO103_3561,Integrative element ECO103_IE03,T3SS secreted effector NleB-like protein,None,genome
+5112,nleA,None,None,non-LEE-encoded effector NleA,None,genome
+5111,nfaE,None,30.5 kda CS3 fibrillae assembly protein homolog; precursor; conceptual translation presented here differs from translation in publication,NfaE,None,genome
+5110,myfA_2,BvCmsHHNP033_00377,None,Fimbrial protein MyfA,None,genome
+5109,myfA_1,BvCmsHHNP033_00376,None,Fimbrial protein MyfA,None,genome
+5108,mchF,None,None,MchF protein,GOA:Q9EXN5,genome
+5107,mchB,None,None,MchB protein,GOA:P62530,genome
+5106,lukE,CI074_RS26020,incomplete; too short partial abutting assembly gap; missing N-terminus and C-terminus; Derived by automated computational analysis using gene prediction method: Protein Homology.,bi-component leukocidin LukED subunit E,None,genome
+5105,lukD,GP890_RS23695,incomplete; too short partial abutting assembly gap; missing N-terminus and C-terminus; Derived by automated computational analysis using gene prediction method: Protein Homology.,bi-component leukocidin LukED subunit D,None,genome
+5104,lpfA2,EG539_22675,Derived by automated computational analysis using gene prediction method: Protein Homology.,long polar fimbria major subunit LpfA2,None,genome
+5103,lpfA1,EG539_21465,Derived by automated computational analysis using gene prediction method: Protein Homology.,long polar fimbria major subunit LpfA1,None,genome
+5102,lpfA,EcSMS35_4096,identified by match to protein family HMM PF00419,long polar fimbrial operon protein LpfA,None,genome
+5101,lngA,None,None,structural subunit of longus pili,None,genome
+5100,katP,None,None,Catalase-peroxidase,None,plasmid
+5099,iutA,None,ferric aerobactin receptor; iutA,IutA,None,plasmid
+5098,iucD,None,L-lysine 6-monooxygenase; iucD,IucD,None,plasmid
+5097,iucC,None,aerobactin siderophore biosynthesis protein; iucC,IucC,None,plasmid
+5096,iucB,None,aerobactin siderophore biosynthesis protein; iucB,IucB,None,plasmid
+5095,iucA,None,aerobactin siderophore biosynthesis protein; iucA,IucA,None,plasmid
+5094,iss,None,increased serum survival; iss,Iss,None,plasmid
+5093,iroN,None,salmochelin siderophore receptor; iroN,IroN,None,plasmid
+5092,iroE,None,putative hydrolase; iroE,IroE,None,plasmid
+5091,iroD,None,putative ferric enterochelin esterase; iroD,IroD,None,plasmid
+5090,iroC,None,ATP binding cassette (ABC) transporter homologue; iroC,IroC,None,plasmid
+5089,iroB,None,putative glycosyltransferase; iroB,IroB,None,plasmid
+5088,ireA,None,iron-regulated protein,IreA,None,genome
+5087,ipaH9.8,LLK26_RS11270,incomplete; too short partial abutting assembly gap; missing C-terminus; Derived by automated computational analysis using gene prediction method: Protein Homology.,T3SS effector E3 ubiquitin-protein ligase IpaH9.8,None,genome
+5086,ipaH3,I6H00_04665,Derived by automated computational analysis using gene prediction method: Protein Homology.,T3SS effector E3 ubiquitin-protein ligase IpaH3,None,plasmid
+5085,ipaD,K3392_25280,frameshifted; Derived by automated computational analysis using gene prediction method: Protein Homology.,type III secretion system needle tip complex protein IpaD,None,plasmid
+5084,iha,None,adhesin and siderophore receptor,Iha,None,genome
+5083,ibeA,None,Ibe10; similar to Drosophila melanogaster AMAN II and PLAVS erythrocyte binding protein,invasion protein IbeA,None,genome
+5082,iap,ETECE562_01339,None,None,None,genome
+5081,hreP,None,None,subtilisin/kexin-like protease HreP,None,genome
+5080,hlyE,None,None,hemolysin,None,genome
+5079,hlyA-alpha,None,alpha hemolysin,HlyA,None,genome
+5078,hlgC,E4K52_RS26575,Derived by automated computational analysis using gene prediction method: Protein Homology.,leukocidin family pore-forming toxin,None,genome
+5077,hlgB,GQA55_RS24380,incomplete; too short partial abutting assembly gap; missing N-terminus and C-terminus; Derived by automated computational analysis using gene prediction method: Protein Homology.,bi-component gamma-hemolysin HlgAB/HlgCB subunit B,None,genome
+5076,hlgA,E4K51_RS27070,Derived by automated computational analysis using gene prediction method: Protein Homology.,bi-component gamma-hemolysin HlgAB subunit A,None,genome
+5075,hld,SAKOR_01999,possible truncation,Delta-hemolysin hld,None,genome
+5074,hdaD/agg4D,K2839_24900,Derived by automated computational analysis using gene prediction method: Protein Homology.,aggregative adherence fimbria 4 chaperone Agg4D/HdaD,None,plasmid
+5073,hdaA/agg4A,K2839_24885,Derived by automated computational analysis using gene prediction method: Protein Homology.,aggregative adherence fimbria 4 major subunit Agg4A/HdaA,None,plasmid
+5072,focG,None,F1C fimbriae subunit,FocG,None,genome
+5071,fim41a,None,None,Fim41a precursor,None,genome
+5070,fedF,None,FedF,F18 fimbrial adhesin AC precursor,None,genome
+5069,fedA,None,None,fimbrial protein F107 subunit A precursor,None,genome
+5068,fdeC,L2W44_01720,Derived by automated computational analysis using gene prediction method: Protein Homology.,intimin-like adhesin FdeC,None,genome
+5067,fasA,None,major subunit protein,FasA,None,genome
+5066,faeG,None,None,K88 fimbrial protein AC precursor,GOA:Q708I7,genome
+5065,f17g,None,None,F17G adhesin subunit precursor,None,genome
+5064,f17a,None,None,F17A fimbrial subunit precursor,None,genome
+5063,etx,None,None,epsilon-toxin,None,genome
+5062,etsB,None,putative type 1 secretion system ATP-binding protein,EtsB,None,plasmid
+5061,etpD,SE18017_43950,None,EtpD,None,genome
+5060,espX1,STN0717ESC20_36990,similar to AA sequence:VFDB Virulence Factors Database (VFDB_setA_nt):espX1:VFG034849:1frame,Type III secretion system effector EspX1,None,genome
+5059,espP,None,a novel extracellular serine protease,serine protease EspP,None,genome
+5058,espK,ECs_1568,None,T3SS secreted effector EspK,None,genome
+5057,espJ,None,None,non-LEE-encoded effector EspJ,None,genome
+5056,espI,FS611_15475,Derived by automated computational analysis using gene prediction method: Protein Homology.,serine protease autotransporter EspI,None,genome
+5055,espF,None,Orf30,EspF,None,genome
+5054,espC,None,rORF1,unknown,None,genome
+5053,espB,None,None,EspB,None,genome
+5052,espA,None,None,EspA,None,genome
+5051,epeA,LH0053,predicted subcellular location is secreted,Autotransporter protease,None,plasmid
+5050,eilA,None,None,HilA family transcriptional regulator,None,genome
+5049,ehxA,None,EhxA; EHEC-hemolysin,hemolysin,None,genome
+5048,efa1,None,None,EHEC factor for adherence,None,genome
+5047,eatA,None,None,secreted autotransporter protein EatA,None,plasmid
+5046,ealB,None,toxin binding subunit; ealB,putative exported protein,None,genome
+5045,ealA,None,ealA,putative pertussis-like toxin catalytic subunit,None,genome
+5044,eae_zeta,None,None,initmin ZETA-2,GOA:Q8VL93,genome
+5043,eae_xi,None,None,xi intimin,None,genome
+5042,eae_theta,None,None,initmin THETA-2,GOA:B7VEN6,genome
+5041,eae_rho,None,None,intimin rho,None,genome
+5040,eae_lambda,None,None,intimin,None,genome
+5039,eae_kappa,None,None,kappa intimin,None,genome
+5038,eae_iota,None,None,intimin,None,genome
+5037,eae_gamma,None,None,intimin,None,genome
+5036,eae_epsilon,None,"epsilon2; outer membrane protein, mediates attaching and effacing lesion",intimin,None,genome
+5035,eae_beta,None,None,intimin,None,genome
+5034,eae_alpha,None,None,intimin,None,genome
+5033,cvaC,None,103 AA,cvaC product,GOA:P22522,genome
+5032,cofA,None,type IV pilin precursor,CofA,None,genome
+5031,cnf3,None,bacterial toxin,cytotoxic necrotizing factor 3,InterPro:IPR008430,genome
+5030,cnf2,None,None,cytotoxic necrotizing factor type 2,None,genome
+5029,cnf1,None,Cnf1; bacterial toxin,cytotoxic necrotizing factor 1,None,genome
+5028,cif,None,Cif,cell cycle inhibiting factor,None,genome
+5027,cfaC,ETEC_p948_0390,None,cfA/I fimbrial subunit A precursor (colonization factor antigen subunit A; putative chaperone),EnsemblGenomes-Gn:ETEC_p948_0390,plasmid
+5026,cdtB,None,None,CdtB,None,genome
+5025,cdtA,None,None,CdtA,None,genome
+5024,capU,None,CapU; hypothetical,hexosyltransferase homolog,None,plasmid
+5023,bmaE,None,M-agglutinin subunit (bmaE),None,None,genome
+5022,bfpA,None,BfpA,Bundlin,None,plasmid
+5021,astA,None,EAST1,heat-stable enterotoxin 1,None,genome
+5020,air,FTV95_17965,frameshifted; incomplete; partial on complete genome; missing C-terminus; Derived by automated computational analysis using gene prediction method: Protein Homology.,inverse autotransporter adhesin EaeX/Air,None,genome
+5019,aggR,None,None,AggR,GOA:P43464,genome
+5018,aggD,None,None,chaperone,None,genome
+5017,aggC,None,None,usher protein,None,genome
+5016,aggB,None,None,unknown,None,genome
+5015,aggA,None,None,fimbrial subunit,None,genome
+5014,agg5A,None,aaf5a type:2,aggregative adherence fimbriae V,None,genome
+5013,agg3D,None,Agg3D,putative periplasmic chaperone,None,plasmid
+5012,agg3C,None,Agg3C,putative usher protein,None,plasmid
+5011,agg3B,None,Agg3B,putative invasin protein,None,plasmid
+5010,agg3A,None,Agg3A,adhesin protein,None,plasmid
+5009,afaC,None,None,AfaC protein,GOA:B8ZX21,genome
+5008,aatA,None,93 pct identical amino acid sequence and equal length to AatA outermembrane protein in GenBank Accession Number AAQ62649,"AatA, outermembrane protein",None,plasmid
+5007,aar,None,None,AggR-activated transcriptional regulator,None,genome
+5006,aap,EC042_pAA055,None,dispersin,UniProtKB/TrEMBL:D3H544,plasmid
+5005,aaiC/hcp,EC042_0965,None,hydroxylamine reductase,GOA:D3GZU4,genome
+5004,aafD,EC042_pAA046,None,chaperone protein,GOA:D3H537,plasmid
+5003,aafC,EC042_pAA031,None,aggregative adherence fimbria II usher protein,GOA:D3H576,plasmid
+5002,aafB,EC042_pAA030,None,afimbrial adhesin,InterPro:IPR008394,plasmid
+5001,aafA,EC042_pAA048,None,major fimbrial subunit of aggregative adherence fimbria II,GOA:D3H539,plasmid

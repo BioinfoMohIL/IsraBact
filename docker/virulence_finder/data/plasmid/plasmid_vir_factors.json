@@ -1,0 +1,3035 @@
+[
+  {
+    "id": "5197",
+    "Virulence_Gene": "IncW_trwC",
+    "Locus_Tag": "None",
+    "Note": "conjugative relaxase",
+    "Product": "TrwC",
+    "DB_Xref": "None",
+    "Location": "plasmid"
+  },
+  {
+    "id": "5196",
+    "Virulence_Gene": "IncW_trwB",
+    "Locus_Tag": "None",
+    "Note": "coupling protein",
+    "Product": "TrwB",
+    "DB_Xref": "None",
+    "Location": "plasmid"
+  },
+  {
+    "id": "5195",
+    "Virulence_Gene": "IncW_trwA",
+    "Locus_Tag": "None",
+    "Note": "relaxosome accessory protein",
+    "Product": "TrwA",
+    "DB_Xref": "None",
+    "Location": "plasmid"
+  },
+  {
+    "id": "5194",
+    "Virulence_Gene": "IncP_trbK",
+    "Locus_Tag": "None",
+    "Note": "cleavage point for export signal sequence between amino acids 21..22",
+    "Product": "TrbK",
+    "DB_Xref": "None",
+    "Location": "plasmid"
+  },
+  {
+    "id": "5193",
+    "Virulence_Gene": "IncP_traE",
+    "Locus_Tag": "None",
+    "Note": "None",
+    "Product": "TraE",
+    "DB_Xref": "None",
+    "Location": "plasmid"
+  },
+  {
+    "id": "5192",
+    "Virulence_Gene": "IncP_traA",
+    "Locus_Tag": "None",
+    "Note": "None",
+    "Product": "None",
+    "DB_Xref": "InterPro:IPR020497",
+    "Location": "plasmid"
+  },
+  {
+    "id": "5191",
+    "Virulence_Gene": "IncAC_traY",
+    "Locus_Tag": "EHM21304_p1630",
+    "Note": "conjugal transfer protein",
+    "Product": "type IV conjugative transfer system protein TraY",
+    "DB_Xref": "None",
+    "Location": "plasmid"
+  },
+  {
+    "id": "5190",
+    "Virulence_Gene": "IncAC_traT",
+    "Locus_Tag": "EHM21304_p1100",
+    "Note": "surface exclusion protein",
+    "Product": "type IV conjugative transfer system protein TraT",
+    "DB_Xref": "None",
+    "Location": "plasmid"
+  },
+  {
+    "id": "5189",
+    "Virulence_Gene": "IncAC_traS",
+    "Locus_Tag": "EHM21304_p1110",
+    "Note": "surface exclusion protein",
+    "Product": "type IV conjugative transfer system protein TraS",
+    "DB_Xref": "None",
+    "Location": "plasmid"
+  },
+  {
+    "id": "5188",
+    "Virulence_Gene": "IncAC_traR",
+    "Locus_Tag": "EHM21304_p1730",
+    "Note": "conjugal transfer regulatory protein",
+    "Product": "type IV conjugative transfer system protein TraR",
+    "DB_Xref": "None",
+    "Location": "plasmid"
+  },
+  {
+    "id": "5187",
+    "Virulence_Gene": "IncAC_traQ",
+    "Locus_Tag": "EHM21304_p1160",
+    "Note": "conjugal transfer pilus chaperone",
+    "Product": "type IV conjugative transfer system protein TraQ",
+    "DB_Xref": "None",
+    "Location": "plasmid"
+  },
+  {
+    "id": "5186",
+    "Virulence_Gene": "IncAC_traP",
+    "Locus_Tag": "EHM21304_p1690",
+    "Note": "conjugal transfer protein",
+    "Product": "type IV conjugative transfer system protein TraP",
+    "DB_Xref": "None",
+    "Location": "plasmid"
+  },
+  {
+    "id": "5185",
+    "Virulence_Gene": "IncAC_traO",
+    "Locus_Tag": "None",
+    "Note": "None",
+    "Product": "traO",
+    "DB_Xref": "SEED:fig|562.37737.peg.2333",
+    "Location": "plasmid"
+  },
+  {
+    "id": "5184",
+    "Virulence_Gene": "IncAC_traM",
+    "Locus_Tag": "EHM21304_p1610",
+    "Note": "signal transduction protein",
+    "Product": "type IV conjugative transfer system protein TraM",
+    "DB_Xref": "None",
+    "Location": "plasmid"
+  },
+  {
+    "id": "5183",
+    "Virulence_Gene": "IncAC_traK",
+    "Locus_Tag": "EHM21304_p1670",
+    "Note": "conjugative transfer system secretin",
+    "Product": "type IV conjugative transfer system protein TraK",
+    "DB_Xref": "None",
+    "Location": "plasmid"
+  },
+  {
+    "id": "5182",
+    "Virulence_Gene": "IncAC_traJ",
+    "Locus_Tag": "EHM21304_p1620",
+    "Note": "functional relaxosome complex initiator",
+    "Product": "type IV conjugative transfer system protein TraJ",
+    "DB_Xref": "None",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2373",
+    "Virulence_Gene": "IncFIA_trbJ",
+    "Locus_Tag": "AVR69_RS25335",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "P-type conjugative transfer protein TrbJ",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2372",
+    "Virulence_Gene": "IncFIA_trbI",
+    "Locus_Tag": "AVR69_RS25400",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type-F conjugative transfer system protein TrbI",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2371",
+    "Virulence_Gene": "IncFIA_trbF",
+    "Locus_Tag": "AVR69_RS25330",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "F-type conjugal transfer protein TrbF",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2370",
+    "Virulence_Gene": "IncFIA_trbE",
+    "Locus_Tag": "AVR69_RS25370",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TrbE",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2369",
+    "Virulence_Gene": "IncFIA_trbD",
+    "Locus_Tag": "C0634_RS01325",
+    "Note": "Derived by automated computational analysis using gene prediction method: GeneMarkS-2+.",
+    "Product": "conjugal transfer protein TrbD",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2368",
+    "Virulence_Gene": "IncFIA_trbC",
+    "Locus_Tag": "AVR69_RS25380",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type-F conjugative transfer system pilin assembly protein TrbC",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2367",
+    "Virulence_Gene": "IncFIA_trbB",
+    "Locus_Tag": "AVR69_RS25340",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type-F conjugative transfer system pilin assembly thiol-disulfide isomerase TrbB",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2366",
+    "Virulence_Gene": "IncFIA_trbA",
+    "Locus_Tag": "AVR69_RS25350",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TrbA",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2365",
+    "Virulence_Gene": "IncFIA_traX",
+    "Locus_Tag": "AVR69_RS25290",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer pilus acetylase TraX",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2364",
+    "Virulence_Gene": "IncFIA_traW",
+    "Locus_Tag": "AVR69_RS25395",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type-F conjugative transfer system protein TraW",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2363",
+    "Virulence_Gene": "IncFIA_traV",
+    "Locus_Tag": "AVR69_RS25415",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type IV conjugative transfer system lipoprotein TraV",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2362",
+    "Virulence_Gene": "IncFIA_traU",
+    "Locus_Tag": "AVR69_RS25390",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer pilus assembly protein TraU",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2361",
+    "Virulence_Gene": "IncFIA_traT",
+    "Locus_Tag": "AVR69_RS25310",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "complement resistance protein TraT",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2360",
+    "Virulence_Gene": "IncFIA_traR",
+    "Locus_Tag": "AVR69_RS25410",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TraR",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2359",
+    "Virulence_Gene": "IncFIA_traQ",
+    "Locus_Tag": "AVR69_RS25345",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type-F conjugative transfer system pilin chaperone TraQ",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2358",
+    "Virulence_Gene": "IncFIA_traP",
+    "Locus_Tag": "AVR69_RS25425",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TraP",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2357",
+    "Virulence_Gene": "IncFIA_traN",
+    "Locus_Tag": "AVR69_RS25375",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type-F conjugative transfer system mating-pair stabilization protein TraN",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2356",
+    "Virulence_Gene": "IncFIA_traL",
+    "Locus_Tag": "AVR69_RS25445",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type IV conjugative transfer system protein TraL",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2355",
+    "Virulence_Gene": "IncFIA_traK",
+    "Locus_Tag": "AVR69_RS25435",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type-F conjugative transfer system secretin TraK",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2354",
+    "Virulence_Gene": "IncFIA_traI",
+    "Locus_Tag": "AVR69_RS25295",
+    "Note": "frameshifted; Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugative transfer relaxase/helicase TraI",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2353",
+    "Virulence_Gene": "IncFIA_traH",
+    "Locus_Tag": "AVR69_RS25325",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TraH",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2352",
+    "Virulence_Gene": "IncFIA_traG",
+    "Locus_Tag": "AVR69_RS25320",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer mating pair stabilization protein TraG",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2351",
+    "Virulence_Gene": "IncFIA_traF",
+    "Locus_Tag": "AVR69_RS25365",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type-F conjugative transfer system pilin assembly protein TraF",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2350",
+    "Virulence_Gene": "IncFIA_traE",
+    "Locus_Tag": "AVR69_RS25440",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type IV conjugative transfer system protein TraE",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2349",
+    "Virulence_Gene": "IncFIA_traD",
+    "Locus_Tag": "AVR69_RS25300",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type IV conjugative transfer system coupling protein TraD",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2348",
+    "Virulence_Gene": "IncFIA_traC",
+    "Locus_Tag": "AVR69_RS25405",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type IV secretion system protein TraC",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2347",
+    "Virulence_Gene": "IncFIA_traB",
+    "Locus_Tag": "AVR69_RS25430",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TraB",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2346",
+    "Virulence_Gene": "IncFIA_traA",
+    "Locus_Tag": "AVR69_RS25450",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type IV conjugative transfer system pilin TraA",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2345",
+    "Virulence_Gene": "IncW_trwN",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrwN protein",
+    "DB_Xref": "InterPro:IPR008258",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2344",
+    "Virulence_Gene": "IncW_trwL",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrwL protein",
+    "DB_Xref": "InterPro:IPR007039",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2343",
+    "Virulence_Gene": "IncW_trwM",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrwM protein",
+    "DB_Xref": "InterPro:IPR007792",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2342",
+    "Virulence_Gene": "IncW_trwK",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrwK protein",
+    "DB_Xref": "GOA:O50330",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2341",
+    "Virulence_Gene": "IncW_trwJ",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrwJ protein",
+    "DB_Xref": "InterPro:IPR012991",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2340",
+    "Virulence_Gene": "IncW_trwI",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrwI protein",
+    "DB_Xref": "GOA:O50333",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2339",
+    "Virulence_Gene": "IncW_trwH",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrwH protein",
+    "DB_Xref": "UniProtKB/TrEMBL:O50334",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2338",
+    "Virulence_Gene": "IncW_trwG",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrwG protein",
+    "DB_Xref": "GOA:O50335",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2337",
+    "Virulence_Gene": "IncW_trwF",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrwF protein",
+    "DB_Xref": "InterPro:IPR010258",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2336",
+    "Virulence_Gene": "IncW_trwE",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrwE protein",
+    "DB_Xref": "InterPro:IPR005498",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2335",
+    "Virulence_Gene": "IncW_trwD",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrwdD protein",
+    "DB_Xref": "GOA:O50338",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2331",
+    "Virulence_Gene": "IncP_traX",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00072",
+    "Product": "TraX",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2330",
+    "Virulence_Gene": "IncP_trbN",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00071",
+    "Product": "TrbN",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2329",
+    "Virulence_Gene": "IncP_trbM",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00070",
+    "Product": "TrbM",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2328",
+    "Virulence_Gene": "IncP_trbL",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00069",
+    "Product": "TrbL",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2327",
+    "Virulence_Gene": "IncP_trbJ",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00068",
+    "Product": "TrbJ",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2326",
+    "Virulence_Gene": "IncP_trbI",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00067",
+    "Product": "conjugal transfer protein TrbI",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2325",
+    "Virulence_Gene": "IncP_trbH",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00066",
+    "Product": "TrbH",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2324",
+    "Virulence_Gene": "IncP_trbG",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00065",
+    "Product": "TrbG",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2323",
+    "Virulence_Gene": "IncP_trbF",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00064",
+    "Product": "TrbF",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2322",
+    "Virulence_Gene": "IncP_trbE",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00063",
+    "Product": "conjugal transfer protein TrbE",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2321",
+    "Virulence_Gene": "IncP_trbD",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00062",
+    "Product": "TrbD",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2320",
+    "Virulence_Gene": "IncP_trbC",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00061",
+    "Product": "TrbC",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2319",
+    "Virulence_Gene": "IncP_trbB",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00060",
+    "Product": "conjugal transfer protein TrbB",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2318",
+    "Virulence_Gene": "IncP_trbA",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00059",
+    "Product": "conjugal transfer protein TrbA",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2317",
+    "Virulence_Gene": "IncP_traO",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00039",
+    "Product": "TraO",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2316",
+    "Virulence_Gene": "IncP_traN",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00038",
+    "Product": "TraN",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2315",
+    "Virulence_Gene": "IncP_traM",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00035",
+    "Product": "TraM",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2314",
+    "Virulence_Gene": "IncP_traL",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00034",
+    "Product": "TraL",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2313",
+    "Virulence_Gene": "IncP_traK",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00033",
+    "Product": "TraK",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2312",
+    "Virulence_Gene": "IncP_traJ",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00032",
+    "Product": "TraJ",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2311",
+    "Virulence_Gene": "IncP_traI",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00031",
+    "Product": "TraI",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2310",
+    "Virulence_Gene": "IncP_traH",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00030",
+    "Product": "type IV secretory system Conjugative DNA transfer family protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2309",
+    "Virulence_Gene": "IncP_traG",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00029",
+    "Product": "TraG",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2308",
+    "Virulence_Gene": "IncP_traF",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00028",
+    "Product": "TraF",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2307",
+    "Virulence_Gene": "IncP_traD",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00024",
+    "Product": "TraD",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2306",
+    "Virulence_Gene": "IncP_traC",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00023",
+    "Product": "TraC",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2305",
+    "Virulence_Gene": "IncP_traB",
+    "Locus_Tag": "",
+    "Note": "pMCR_1511_00022",
+    "Product": "TraB",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2304",
+    "Virulence_Gene": "IncN_kikA",
+    "Locus_Tag": "",
+    "Note": "killer protein of the TrbM family",
+    "Product": "KikA",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2303",
+    "Virulence_Gene": "IncN_korB",
+    "Locus_Tag": "",
+    "Note": "DNA-binding protein; H-NS family protein",
+    "Product": "KorB",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2302",
+    "Virulence_Gene": "IncN_traL",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraL",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2301",
+    "Virulence_Gene": "IncN_korA",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "KorA",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2300",
+    "Virulence_Gene": "IncN_traM",
+    "Locus_Tag": "",
+    "Note": "conjugation transfer protein",
+    "Product": "TraM",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2299",
+    "Virulence_Gene": "IncN_traA",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraA",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2298",
+    "Virulence_Gene": "IncN_traB",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraB",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2297",
+    "Virulence_Gene": "IncN_traC",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraC",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2296",
+    "Virulence_Gene": "IncN_eex",
+    "Locus_Tag": "",
+    "Note": "entry exclusion protein",
+    "Product": "Eex",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2295",
+    "Virulence_Gene": "IncN_traD",
+    "Locus_Tag": "",
+    "Note": "plasmid conjugal transfer protein",
+    "Product": "TraD",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2294",
+    "Virulence_Gene": "IncN_traE",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraE",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2293",
+    "Virulence_Gene": "IncN_traO",
+    "Locus_Tag": "",
+    "Note": "type IV conjugative trasnfer system protein",
+    "Product": "TraO",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2292",
+    "Virulence_Gene": "IncN_traF",
+    "Locus_Tag": "",
+    "Note": "type IV conjugative transfer system protein",
+    "Product": "TraF",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2291",
+    "Virulence_Gene": "IncN_traG",
+    "Locus_Tag": "",
+    "Note": "conjugation protein",
+    "Product": "TraG",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2290",
+    "Virulence_Gene": "IncN_traI",
+    "Locus_Tag": "",
+    "Note": "conjugal nickase and helicase",
+    "Product": "TraI",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2289",
+    "Virulence_Gene": "IncN_traJ",
+    "Locus_Tag": "",
+    "Note": "type IV secretion-system coupling protein DNA-binding domain",
+    "Product": "TraJ",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2288",
+    "Virulence_Gene": "IncN_trak",
+    "Locus_Tag": "",
+    "Note": "conjugation transfer protein",
+    "Product": "TraK",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2287",
+    "Virulence_Gene": "IncM_mobC",
+    "Locus_Tag": "",
+    "Note": "mobilization protein",
+    "Product": "MobC",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2286",
+    "Virulence_Gene": "IncM_mobB",
+    "Locus_Tag": "",
+    "Note": "mobilization protein",
+    "Product": "MobB",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2285",
+    "Virulence_Gene": "IncM_mobA",
+    "Locus_Tag": "",
+    "Note": "mobilization protein",
+    "Product": "MobA",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2284",
+    "Virulence_Gene": "IncM_traH",
+    "Locus_Tag": "",
+    "Note": "conjugative transfer protein",
+    "Product": "TraH",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2283",
+    "Virulence_Gene": "IncM_traI",
+    "Locus_Tag": "",
+    "Note": "protein involved in plasmid transfer",
+    "Product": "TraI",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2282",
+    "Virulence_Gene": "IncM_traJ",
+    "Locus_Tag": "",
+    "Note": "conjugative transfer protein",
+    "Product": "TraJ",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2281",
+    "Virulence_Gene": "IncM_traK",
+    "Locus_Tag": "",
+    "Note": "conjugative transfer protein",
+    "Product": "TraK",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2280",
+    "Virulence_Gene": "IncM_traL",
+    "Locus_Tag": "",
+    "Note": "conjugative transfer protein",
+    "Product": "TraL",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2279",
+    "Virulence_Gene": "IncM_traM",
+    "Locus_Tag": "",
+    "Note": "protein involved in plasmid transfer",
+    "Product": "TraM",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2278",
+    "Virulence_Gene": "IncM_traN",
+    "Locus_Tag": "",
+    "Note": "protein involved in plasmid transfer",
+    "Product": "TraN",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2277",
+    "Virulence_Gene": "IncM_traO",
+    "Locus_Tag": "",
+    "Note": "Bacterial conjugation TrbI-like protein",
+    "Product": "TraO",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2276",
+    "Virulence_Gene": "IncM_traP",
+    "Locus_Tag": "",
+    "Note": "conjugative transfer protein",
+    "Product": "TraP",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2275",
+    "Virulence_Gene": "IncM_traQ",
+    "Locus_Tag": "",
+    "Note": "protein involved in plasmid transfer",
+    "Product": "TraQ",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2274",
+    "Virulence_Gene": "IncM_traR",
+    "Locus_Tag": "",
+    "Note": "conjugative transfer protein",
+    "Product": "TraR",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2273",
+    "Virulence_Gene": "IncM_traU",
+    "Locus_Tag": "",
+    "Note": "protein involved in plasmid transfer",
+    "Product": "TraU",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2272",
+    "Virulence_Gene": "IncM_traW",
+    "Locus_Tag": "",
+    "Note": "protein involved in plasmid trasfer",
+    "Product": "TraW",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2271",
+    "Virulence_Gene": "IncM_traX",
+    "Locus_Tag": "",
+    "Note": "protein involved in plasmid transfer",
+    "Product": "TraX",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2270",
+    "Virulence_Gene": "IncM_traY",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer/type IV secretion protein",
+    "Product": "TraY of the IncM type",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2269",
+    "Virulence_Gene": "IncM_trbC",
+    "Locus_Tag": "",
+    "Note": "protein involved in plasmid transfer",
+    "Product": "TrbC",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2268",
+    "Virulence_Gene": "IncM_trbB",
+    "Locus_Tag": "DKC05_00745",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "DsbC family protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2267",
+    "Virulence_Gene": "IncM_trbA",
+    "Locus_Tag": "DKC05_00740",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TrbA",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2228",
+    "Virulence_Gene": "IncI2_trbL",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "Conjugal transfer prtein TrbL (VirB6)",
+    "DB_Xref": "GOA:A0A0A1IXR0",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2227",
+    "Virulence_Gene": "IncI2_trbJ",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "Conjugal transfer prtein TrbJ (VirB5)",
+    "DB_Xref": "InterPro:IPR014158",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2226",
+    "Virulence_Gene": "IncI2_traL",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TraL",
+    "DB_Xref": "InterPro:IPR002586",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2225",
+    "Virulence_Gene": "IncI2_traK",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "Type IV secretion system protein VirD4",
+    "DB_Xref": "GOA:A0A0A1IXF7",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2224",
+    "Virulence_Gene": "IncI2_traJ",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "ATPase provides energy for both assembly of type IV secretion complex and secretion of T-DNA complex (VirB11)",
+    "DB_Xref": "GOA:A0A0A1IXF8",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2223",
+    "Virulence_Gene": "IncI2_traI",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "Inner membrane protein forms channel for type IV secretion of T-DNA complex (VirB10)",
+    "DB_Xref": "InterPro:IPR005498",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2222",
+    "Virulence_Gene": "IncI2_traH",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "Forms the bulk of type IV secretion complex that spans outer membrane and periplasm (VirB9)",
+    "DB_Xref": "InterPro:IPR010258",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2221",
+    "Virulence_Gene": "IncI2_traG",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "Inner membrane protein forms channel for type IV secretion of T-DNA complex (VirB8)",
+    "DB_Xref": "GOA:A0A0A1IXA9",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2220",
+    "Virulence_Gene": "IncI2_traE",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "ATPase provides energy for both assembly of type IV secretion complex and secretion of T-DNA complex (VirB4)",
+    "DB_Xref": "GOA:A0A0A1IXV4",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2219",
+    "Virulence_Gene": "IncI2_traD",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "\"Type IV secretory pathway, VirB3-like protein\"",
+    "DB_Xref": "InterPro:IPR007792",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2218",
+    "Virulence_Gene": "IncI2_traC",
+    "Locus_Tag": "",
+    "Note": "TraC protein",
+    "Product": "Major pilus subunit of type IV secretion complex (VirB2)",
+    "DB_Xref": "InterPro:IPR007039",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2216",
+    "Virulence_Gene": "IncI2_traB",
+    "Locus_Tag": "",
+    "Note": "Conjugal transfer protein TraB",
+    "Product": "Bores hole in peptidoglycan layer allowing type IV secretion complex assembly to occur (VirB1)",
+    "DB_Xref": "InterPro:IPR008258",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2215",
+    "Virulence_Gene": "IncI2_pilV",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "IncI1 plasmid conjugative transfer pilus-tip adhesin protein PilV",
+    "DB_Xref": "InterPro:IPR007001",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2214",
+    "Virulence_Gene": "IncI2_pilU",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "PilU protein",
+    "DB_Xref": "GOA:A0A0A1IXV7",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2213",
+    "Virulence_Gene": "IncI2_pilT",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "IncI1 plasmid conjugative transfer putative membrane protein PilT",
+    "DB_Xref": "InterPro:IPR008258",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2212",
+    "Virulence_Gene": "IncI2_pilS",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "IncI1 plasmid conjugative transfer prepilin PilS",
+    "DB_Xref": "InterPro:IPR014911",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2211",
+    "Virulence_Gene": "IncI2_pilR",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "IncI1 plasmid conjugative transfer inner membrane protein PilR",
+    "DB_Xref": "InterPro:IPR018076",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2210",
+    "Virulence_Gene": "IncI2_pilQ",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "IncI1 plasmid conjugative transfer ATPase PilQ",
+    "DB_Xref": "GOA:A0A0A1IXF6",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2209",
+    "Virulence_Gene": "IncI2_pilP",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "IncI1 plasmid pilus assembly protein PilP",
+    "DB_Xref": "InterPro:IPR022753",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2208",
+    "Virulence_Gene": "IncI2_pilO",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "IncI1 plasmid pilus assembly protein PilO",
+    "DB_Xref": "InterPro:IPR009663",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2207",
+    "Virulence_Gene": "IncI2_pilN",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "IncI1 plasmid conjugative transfer lipoprotein PilN",
+    "DB_Xref": "GOA:A0A0A1IXQ8",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2206",
+    "Virulence_Gene": "IncI2_pilM",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "IncI1 plasmid conjugative transfer protein PilM",
+    "DB_Xref": "InterPro:IPR009987",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2205",
+    "Virulence_Gene": "IncI2_pilL",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "IncI1 plasmid conjugative transfer protein PilL",
+    "DB_Xref": "InterPro:IPR018927",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2204",
+    "Virulence_Gene": "IncI1_traA",
+    "Locus_Tag": "R64_p137",
+    "Note": "100 pct identical to ref::NP_052555[TraA of plasmid ColIb-P9]",
+    "Product": "CDS product not found",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2203",
+    "Virulence_Gene": "IncI1_traB",
+    "Locus_Tag": "R64_p136",
+    "Note": "98 pct identical to ref::NP_052554[TraB of plasmid ColIb-P9]",
+    "Product": "transcription termination factor NusG",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2202",
+    "Virulence_Gene": "IncI1_traC",
+    "Locus_Tag": "R64_p135",
+    "Note": "99 pct identical to ref::NP_052553[TraC of plasmid ColIb-P9]; conserved domain: pfam11140 DUF2913",
+    "Product": "putative positive regulator",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2201",
+    "Virulence_Gene": "IncI1_traD",
+    "Locus_Tag": "R64_p134",
+    "Note": "27 pct identical to ref::NP_052552[TrcD of plasmid ColIb-P9]",
+    "Product": "CDS product not found",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2200",
+    "Virulence_Gene": "IncI1_pilI",
+    "Locus_Tag": "R64_p133",
+    "Note": "90 pct identical to ref::NP_052551[PilI of plasmid ColIb-P9]",
+    "Product": "PilI type IV pilus biogenesis protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2199",
+    "Virulence_Gene": "IncI1_pilJ",
+    "Locus_Tag": "R64_p132",
+    "Note": "70 pct identical to ref::NP_052550[PilJ of plasmid ColIb-P9]",
+    "Product": "PilJ type IV pilus biogenesis protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2198",
+    "Virulence_Gene": "IncI1_pilK",
+    "Locus_Tag": "R64_p131",
+    "Note": "86 pct identical to ref::NP_052549[PilK of plasmid ColIb-P9]",
+    "Product": "PilK type IV pilus biogenesis protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2197",
+    "Virulence_Gene": "IncI1_pilL",
+    "Locus_Tag": "R64_p130",
+    "Note": "99 pct identical to ref::NP_052548[PilL of plasmid ColIb-P9]",
+    "Product": "PilL lipoprotein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2196",
+    "Virulence_Gene": "IncI1_pilM",
+    "Locus_Tag": "R64_p129",
+    "Note": "100 pct identical to ref::NP_052547[PilM of plasmid ColIb-P9]",
+    "Product": "PilM type IV pilus biogenesis protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2195",
+    "Virulence_Gene": "IncI1_pilN",
+    "Locus_Tag": "R64_p128",
+    "Note": "100 pct identical to ref::NP_052546[PilN of plasmid ColIb-P9]; 15 pct identical (12 gaps) to 400 residues of 489 aa protein gp:CAA45458[TcpT of Vibrio cholerae]; 27 pct identical (12 gaps) to 389 residues of 553 aa protein gp:CAA92328[BfpB of plasmid pMAR2]; lipoprotein",
+    "Product": "PilN type IV pilus secretin",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2194",
+    "Virulence_Gene": "IncI1_pilO",
+    "Locus_Tag": "R64_p127",
+    "Note": "99 pct identical to ref::NP_052545[PilO of plasmid ColIb-P9]",
+    "Product": "PilO type IV pilus biogenesis protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2193",
+    "Virulence_Gene": "IncI1_pilP",
+    "Locus_Tag": "R64_p126",
+    "Note": "99 pct identical to ref::NP_052544[PilP of plasmid ColIb-P9]",
+    "Product": "PilP type IV pilus biogenesis protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2192",
+    "Virulence_Gene": "IncI1_pilQ",
+    "Locus_Tag": "R64_p125",
+    "Note": "100 pct identical to ref::NP_052543[PilQ of plasmid ColIb-P9]; 30 pct identical (46 gaps) to 400 residues of 503 aa protein gp:CAA45462[TcpT of Vibrio cholerae]; 30 pct identical (46 gaps) to 424 residues of 534 aa protein gp:CAA92331[BfpD of plasmid pMAR2]",
+    "Product": "PilQ type IV pilus ATPase",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2191",
+    "Virulence_Gene": "IncI1_pilR",
+    "Locus_Tag": "R64_p124",
+    "Note": "100 pct identical to ref::NP_052542[PilR of plasmid ColIb-P9]; 24 pct identical (33 gaps) to 273 residues of 340 aa protein gp:CAA45463[TcpE of Vibrio cholerae]; 29 pct identical (6 gaps) to 348 residues of 352 aa protein gp:CAA92332[BfpE of plasmid pMAR2]",
+    "Product": "PilR integral membrane protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2190",
+    "Virulence_Gene": "IncI1_pilS",
+    "Locus_Tag": "R64_p123",
+    "Note": "27 pct identical (14 gaps) to 59 residues of 224 aa protein gp:CAA45455[TcpA of Vibrio cholerae]; 27 pct identical (19 gaps) to 98 residues of 193 aa protein gp:CAA92336[BfpA of plasmid pMAR2]; 99 pct identical to ref::NP_052541[PilS of plasmid ColIb-P9]; processed by PilU protein",
+    "Product": "PilS type IV prepilin",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2189",
+    "Virulence_Gene": "IncI1_pilT",
+    "Locus_Tag": "R64_p122",
+    "Note": "100 pct identical to ref::NP_052540[PilT of plasmid ColIb-P9]; 31 pct identical (17 gaps) to 133 residues of 148 aa protein gp:CAA92335[BfpH of plasmid pMAR2]",
+    "Product": "PilT lytic transglycosilase",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2188",
+    "Virulence_Gene": "IncI1_pilU",
+    "Locus_Tag": "R64_p121",
+    "Note": "23 pct identical (11 gaps) to 134 residues of 249 aa protein gp:CAA92334[BfpP of plasmid pMAR2]; 99 pct identical to ref::NP_052539[PilU of plasmid ColIb-P9]; conserved domain: pfam01478 Peptidase_A24",
+    "Product": "PilU prepilin peptidase",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2187",
+    "Virulence_Gene": "IncI1_pilV",
+    "Locus_Tag": "R64_p119",
+    "Note": "ORFA'",
+    "Product": "PilVA' C-terminal segment",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2186",
+    "Virulence_Gene": "IncI1_traE",
+    "Locus_Tag": "R64_p112",
+    "Note": "98 pct identical to ref:NP_052531[TraE of plasmid ColIb-P9]",
+    "Product": "CDS product not found",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2185",
+    "Virulence_Gene": "IncI1_traF",
+    "Locus_Tag": "R64_p111",
+    "Note": "99 pct identical to ref:NP_052530[TraF of plasmid ColIb-P9]",
+    "Product": "CDS product not found",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2184",
+    "Virulence_Gene": "IncI1_traG",
+    "Locus_Tag": "R64_p110",
+    "Note": "100 pct identical to ref:NP_052529[TraG of plasmid ColIb-P9]; 37 pct identical (1 gaps) to 190 residues of 201 aa protein ref:NP_456839 [Ais protein of Salmonella enterica server Typhi]",
+    "Product": "histidine phosphatase domain protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2183",
+    "Virulence_Gene": "IncI1_traH",
+    "Locus_Tag": "R64_p109",
+    "Note": "100 pct identical to ref:NP_052528[TraH of plasmid ColIb-P9]; 30 pct identical (2 gaps) to 68 residues of 163 aa protein ref:YP_001249798 [DotD of Legionella pneumophila]",
+    "Product": "TraH lipoprotein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2182",
+    "Virulence_Gene": "IncI1_traI",
+    "Locus_Tag": "R64_p108",
+    "Note": "28 pct identical (4 gaps) to 264 residues of 303 aa protein ref:YP_001249797[DotC of Legionella pneumophila]; 99 pct identical to ref:NP_052527[TraI of plasmid ColIb-P9]",
+    "Product": "TraI lipoprotein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2181",
+    "Virulence_Gene": "IncI1_traJ",
+    "Locus_Tag": "R64_p107",
+    "Note": "100 pct identical to ref:NP_052526[TraJ of plasmid ColIb-P9]; 28 pct identical (8 gaps) to 168 residues of 517 aa protein gb:BAB91689[PilQ of plasmid R64]; 32 pct identical (11 gap) to 319 residues of 369 aa protein ref:YP_001249796 [DotB of Legionella pneumophila]",
+    "Product": "TraJ transfer ATPase",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2180",
+    "Virulence_Gene": "IncI1_traK",
+    "Locus_Tag": "R64_p106",
+    "Note": "33 pct identical (1 gaps) to 56 residues of 86 aa protein ref:YP_001252149 [IcmT of Legionella pneumophila]; 98 pct identical to ref:NP_052525[TraK of plasmid ColIb-P9]",
+    "Product": "TraK transfer protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2179",
+    "Virulence_Gene": "IncI1_traL",
+    "Locus_Tag": "R64_p102",
+    "Note": "100 pct identical to ref:NP_052521[TraL of plasmid ColIb-P9]",
+    "Product": "TraL transfer protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2178",
+    "Virulence_Gene": "IncI1_traM",
+    "Locus_Tag": "R64_p101",
+    "Note": "29 pct identical (12 gaps) to 188 residues of 212 aa protein ref:YP_001252141 [IcmL (DotI) of Legionella pneumophila]; 99 pct identical to ref:NP_052520[TraM of plasmid ColIb-P9]",
+    "Product": "IcmL family protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2177",
+    "Virulence_Gene": "IncI1_traN",
+    "Locus_Tag": "R64_p100",
+    "Note": "27 pct identical (26 gaps) to 319 residues of 360 aa protein ref:YP_001252140 [IcmK (DotH) of Legionella pneumophila]; 99 pct identical to ref:NP_052519[TraN of plasmid ColIb-P9]; conserved domain: pfam12293 DUF3625",
+    "Product": "TraN transfer protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2176",
+    "Virulence_Gene": "IncI1_traO",
+    "Locus_Tag": "R64_p099",
+    "Note": "99 pct identical to ref:NP_052518[TraO of plasmid ColIb-P9]",
+    "Product": "TraO transfer protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2175",
+    "Virulence_Gene": "IncI1_traP",
+    "Locus_Tag": "R64_p098",
+    "Note": "100 pct identical to ref:NP_052517[TraP of plasmid ColIb-P9]; 23 pct identical (33 gaps) to 247 residues of 268 aa protein ref:YP_001252138 [IcmG (DotF) of Legionella pneumophila]",
+    "Product": "TraP transfer protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2174",
+    "Virulence_Gene": "IncI1_traQ",
+    "Locus_Tag": "R64_p097",
+    "Note": "100 pct identical to ref:NP_052516[TraQ of plasmid ColIb-P9]; 20 pct identical (15 gaps) to 68 residues of 132 aa protein ref:YP_001252136 [IcmD (DotP) of Legionella pneumophila]",
+    "Product": "TraQ transfer protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2173",
+    "Virulence_Gene": "IncI1_traR",
+    "Locus_Tag": "R64_p096",
+    "Note": "95 pct identical to ref:NP_052515[TraR of plasmid ColIb-P9]",
+    "Product": "TraR transfer protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2172",
+    "Virulence_Gene": "IncI1_traS",
+    "Locus_Tag": "R64_p095",
+    "Note": "100 pct identical to ref:NP_052514[TraS of plasmid ColIb-P9]",
+    "Product": "TraS transfer protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2171",
+    "Virulence_Gene": "IncI1_traT",
+    "Locus_Tag": "R64_p094",
+    "Note": "100 pct identical to ref:NP_052513[TraT of plasmid ColIb-P9]",
+    "Product": "TraT transfer protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2170",
+    "Virulence_Gene": "IncI1_traU",
+    "Locus_Tag": "R64_p093",
+    "Note": "27 pct identical (44 gaps) to 956 residues of 1009 aa protein ref:YP_001252134 [IcmB (DotO) of Legionella pneumophila]; 99 pct identical to ref:NP_052512[TraU of plasmid ColIb-P9]",
+    "Product": "TraU nucleotide-binding protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2169",
+    "Virulence_Gene": "IncI1_traV",
+    "Locus_Tag": "R64_p092",
+    "Note": "100 pct identical to ref:NP_052511[TraV of plasmid ColIb-P9]",
+    "Product": "TraV transfer protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2168",
+    "Virulence_Gene": "IncI1_traW",
+    "Locus_Tag": "R64_p091",
+    "Note": "97 pct identical to ref:NP_052510[TraW of plasmid ColIb-P9]",
+    "Product": "TraW lipoprotein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2167",
+    "Virulence_Gene": "IncI1_traX",
+    "Locus_Tag": "R64_p090",
+    "Note": "93 pct identical to ref:NP_052509[TraX of plasmid ColIb-P9]",
+    "Product": "TraX transfer protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2166",
+    "Virulence_Gene": "IncI1_traY",
+    "Locus_Tag": "R64_p089",
+    "Note": "25 pct identical (21 gaps) to N-terminal179 residues and 27 pct identical (4 gaps) to C-terminal144 residues of 1020 aa protein ref:YP_001249785[DotA of Legionella pneumophila]; 97 pct identical to ref:NP_052508[TraY of plasmid ColIb-P9]",
+    "Product": "TraY integral membrane protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2165",
+    "Virulence_Gene": "IncI1_trbA",
+    "Locus_Tag": "R64_p084",
+    "Note": "100 pct identical to ref:NP_052504[TrbA of plasmid ColIb-P9]; 26 pct identical (34 gaps) to 239 residues of 376 aa protein ref:YP_001252145[IcmP (DotM) of Legionella pneumophila]",
+    "Product": "TrbA transfer protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2164",
+    "Virulence_Gene": "IncI1_trbB",
+    "Locus_Tag": "R64_p083",
+    "Note": "99 pct identical to ref:NP_052503[TrbB of plasmid ColIb-P9]",
+    "Product": "protein disulfide isomerase",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2163",
+    "Virulence_Gene": "IncI1_trbC",
+    "Locus_Tag": "R64_p082",
+    "Note": "100 pct identical to ref:NP_052502[TrbC of plasmid ColIb-P9]; 25 pct identical (51 gaps) to 628 residues of 783 aa protein ref:YP_001252144[IcmO (DotL) of Legionella pneumophila]; nucleotide-binding protein",
+    "Product": "TrbC transfer protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2162",
+    "Virulence_Gene": "IncHI2_traF",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TraF",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2161",
+    "Virulence_Gene": "IncHI2_traG",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TraG",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2160",
+    "Virulence_Gene": "IncHI2_traJ",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TraJ",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2158",
+    "Virulence_Gene": "IncHI2_traI",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TraI",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2157",
+    "Virulence_Gene": "IncHI2_traH",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TraH",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2156",
+    "Virulence_Gene": "IncHI2_trhR",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrhR",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2155",
+    "Virulence_Gene": "IncHI2_trhY",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrhY",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2154",
+    "Virulence_Gene": "IncHI2_trhF",
+    "Locus_Tag": "",
+    "Note": "IncF plasmid conjugative transfer pilus assembly protein",
+    "Product": "TrhF",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2153",
+    "Virulence_Gene": "IncHI2_trhH",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "Pilus assembly protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2152",
+    "Virulence_Gene": "IncHI2_trhG",
+    "Locus_Tag": "",
+    "Note": "IncF plasmid conjugative transfer protein",
+    "Product": "TrhG",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2151",
+    "Virulence_Gene": "IncHI2_trhI",
+    "Locus_Tag": "",
+    "Note": "Plasmid conjugative transfer DNA helicase",
+    "Product": "TrhI",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2150",
+    "Virulence_Gene": "IncHI2_orf4",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "IncH1 plasmid conjugative transfer protein Orf4",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2149",
+    "Virulence_Gene": "IncHI2_trhN",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrhN",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2148",
+    "Virulence_Gene": "IncHI2_trhU",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrhU",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2147",
+    "Virulence_Gene": "IncHI2_MH287084_30570",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "hypothetical protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2146",
+    "Virulence_Gene": "IncHI2_trhW",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrhW",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2145",
+    "Virulence_Gene": "IncHI2_trhP",
+    "Locus_Tag": "",
+    "Note": "IncH1 plasmid conjugative signal peptidase",
+    "Product": "TrhP",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2144",
+    "Virulence_Gene": "IncHI2_orf9",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "IncH1 plasmid conjugative transfer protein Orf9",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2143",
+    "Virulence_Gene": "IncHI2_htdK",
+    "Locus_Tag": "",
+    "Note": "IncH1 plasmid conjugative transfer protein",
+    "Product": "HtdK",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2142",
+    "Virulence_Gene": "IncHI2_htdF",
+    "Locus_Tag": "",
+    "Note": "IncH1 plasmid conjugative transfer protein",
+    "Product": "HtdF",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2141",
+    "Virulence_Gene": "IncHI2_htdA",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "HtdA",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2140",
+    "Virulence_Gene": "IncHI2_trhO",
+    "Locus_Tag": "",
+    "Note": "IncH1 plasmid conjugative transfer protein",
+    "Product": "TrhO",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2139",
+    "Virulence_Gene": "IncHI2_orf16",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "IncH1 plasmid conjugative transfer protein Orf16",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2138",
+    "Virulence_Gene": "IncHI2_orf17",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "IncH1 plasmid conjugative transfer protein Orf17",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2137",
+    "Virulence_Gene": "IncHI2_trhZ",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrhZ",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2136",
+    "Virulence_Gene": "IncHI2_trhC",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrhC",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2135",
+    "Virulence_Gene": "IncHI2_trhV",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrhV",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2134",
+    "Virulence_Gene": "IncHI2_htdT",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "HdtT",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2133",
+    "Virulence_Gene": "IncHI2_htdV",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "HtdV",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2132",
+    "Virulence_Gene": "IncHI2_trhB",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrhB",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2131",
+    "Virulence_Gene": "IncHI2_htdO",
+    "Locus_Tag": "",
+    "Note": "IncH1 plasmid conjugative transfer protein",
+    "Product": "HtdO",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2130",
+    "Virulence_Gene": "IncHI2_trhK",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrhK",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2129",
+    "Virulence_Gene": "IncHI2_trhE",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "TrhE",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2128",
+    "Virulence_Gene": "IncHI2_trhL",
+    "Locus_Tag": "",
+    "Note": "IncH1 plasmid conjugative transfer protein",
+    "Product": "TrhL",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2127",
+    "Virulence_Gene": "IncHI2_trhA",
+    "Locus_Tag": "",
+    "Note": "IncH1 plasmid conjugative transfer pilin precursor",
+    "Product": "TrhA",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2126",
+    "Virulence_Gene": "IncHI1_trhY",
+    "Locus_Tag": "",
+    "Note": "similar to Salmonella Choleraesuis protein MAK1.150c from plasmid pMAK1",
+    "Product": "transfer protein TrhY",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2125",
+    "Virulence_Gene": "IncHI1_trhW",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "plasmid transfer protein TrhW",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2124",
+    "Virulence_Gene": "IncHI1_trhV",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "putative plasmid transfer protein TrhV",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2123",
+    "Virulence_Gene": "IncHI1_trhU",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "plasmid transfer protein TrhU",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2122",
+    "Virulence_Gene": "IncHI1_trhR",
+    "Locus_Tag": "",
+    "Note": "similar to Salmonella Choleraesuis protein MAK1.151c from plasmid pMAK1",
+    "Product": "conjugative transfer protein TrhR",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2121",
+    "Virulence_Gene": "IncHI1_trhO",
+    "Locus_Tag": "",
+    "Note": "similar to R27_p016",
+    "Product": "TrhO",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2120",
+    "Virulence_Gene": "IncHI1_trhN",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "plasmid transfer protein TrhN",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2119",
+    "Virulence_Gene": "IncHI1_trhL",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "plasmid transfer protein TrhL",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2118",
+    "Virulence_Gene": "IncHI1_trhK",
+    "Locus_Tag": "",
+    "Note": "similar to R27_p031",
+    "Product": "TrhK",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2117",
+    "Virulence_Gene": "IncHI1_trhI",
+    "Locus_Tag": "",
+    "Note": "putative DNA helicase",
+    "Product": "TrhI",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2116",
+    "Virulence_Gene": "IncHI1_trhF",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "putative pilin maturation protein TrhF",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2115",
+    "Virulence_Gene": "IncHI1_trhE",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "pilus assembly protein TrhE",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2114",
+    "Virulence_Gene": "IncHI1_trhC",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "plasmid transfer protein TrhC",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2113",
+    "Virulence_Gene": "IncHI1_trhB",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "plasmid transfer protein TrhB",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2112",
+    "Virulence_Gene": "IncHI1_trhA",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "putative pilin precursor TrhA",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2111",
+    "Virulence_Gene": "IncHI1_trbN",
+    "Locus_Tag": "",
+    "Note": "putative pilin biogenesis protein",
+    "Product": "TrbN",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2110",
+    "Virulence_Gene": "IncHI1_traJ",
+    "Locus_Tag": "",
+    "Note": "similar to Salmonella Choleraesuis protein MAK1.157 from plasmid pMAK1",
+    "Product": "transfer protein TraJ",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2109",
+    "Virulence_Gene": "IncHI1_traI",
+    "Locus_Tag": "",
+    "Note": "similar to Salmonella Choleraesuis protein MAK1.154 from plasmid pMAK1",
+    "Product": "conjugative transfer system protein TraI",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2108",
+    "Virulence_Gene": "IncHI1_traH",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "pilus-assembly protein TraH",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2107",
+    "Virulence_Gene": "IncHI1_traG",
+    "Locus_Tag": "",
+    "Note": "plasmid transfer protein",
+    "Product": "TraG",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2106",
+    "Virulence_Gene": "IncHI1_traF",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "putative pilus-assembly protein TraF",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2105",
+    "Virulence_Gene": "IncHI1_traD",
+    "Locus_Tag": "",
+    "Note": "conjugative coupling factor",
+    "Product": "TraD",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2104",
+    "Virulence_Gene": "IncHI1_traC",
+    "Locus_Tag": "",
+    "Note": "type IV secretion-like conjugative transfer system protein",
+    "Product": "TraC",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2103",
+    "Virulence_Gene": "IncHI1_traB",
+    "Locus_Tag": "",
+    "Note": "putative plasmid transfer protein",
+    "Product": "traB",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2102",
+    "Virulence_Gene": "IncHI1_KP899804_186327",
+    "Locus_Tag": "",
+    "Note": "similar to Salmonella Choleraesuis protein MAK1.152 from plasmid pMAK1",
+    "Product": "conjugative transfer protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2101",
+    "Virulence_Gene": "IncHI1_KP899804_180478",
+    "Locus_Tag": "",
+    "Note": "similar to Salmonella Choleraesuis protein MAK1.155 from plasmid pMAK1",
+    "Product": "conjugative coupling factor",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2100",
+    "Virulence_Gene": "IncHI1_htdV",
+    "Locus_Tag": "",
+    "Note": "similar to Salmonella Choleraesuis protein MAK1.233 from plasmid pMAK1",
+    "Product": "putative membrane protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2099",
+    "Virulence_Gene": "IncHI1_htdT",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "plasmid transfer protein htdT",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2098",
+    "Virulence_Gene": "IncHI1_htdO",
+    "Locus_Tag": "",
+    "Note": "similar to R27_p030",
+    "Product": "HtdO",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2097",
+    "Virulence_Gene": "IncHI1_htdK",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "HtdK",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2096",
+    "Virulence_Gene": "IncHI1_htdF",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "putative periplasmic protein HtdF",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2095",
+    "Virulence_Gene": "IncHI1_htdA",
+    "Locus_Tag": "",
+    "Note": "",
+    "Product": "transfer repressor HtdA",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2094",
+    "Virulence_Gene": "IncFIB_trbI",
+    "Locus_Tag": "HXF02_RS00405",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type-F conjugative transfer system protein TrbI",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2092",
+    "Virulence_Gene": "IncFIB_trbG",
+    "Locus_Tag": "HXF02_RS00385",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TrbG",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2091",
+    "Virulence_Gene": "IncFIB_trbF",
+    "Locus_Tag": "HXF02_RS00465",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "F-type conjugal transfer protein TrbF",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2090",
+    "Virulence_Gene": "IncFIB_trbE",
+    "Locus_Tag": "HXF02_RS00430",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TrbE",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2089",
+    "Virulence_Gene": "IncFIB_trbD",
+    "Locus_Tag": "HXF02_RS00380",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TrbD",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2088",
+    "Virulence_Gene": "IncFIB_trbC",
+    "Locus_Tag": "HXF02_RS00420",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type-F conjugative transfer system pilin assembly protein TrbC",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2087",
+    "Virulence_Gene": "IncFIB_trbB",
+    "Locus_Tag": "HXF02_RS00455",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type-F conjugative transfer system pilin assembly thiol-disulfide isomerase TrbB",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2086",
+    "Virulence_Gene": "IncFIB_trbA",
+    "Locus_Tag": "HXF02_RS00440",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TrbA",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2085",
+    "Virulence_Gene": "IncFIB_traY",
+    "Locus_Tag": "HXF02_RS00345",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer relaxosome protein TraY",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2084",
+    "Virulence_Gene": "IncFIB_traX",
+    "Locus_Tag": "HXF02_RS00510",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer pilus acetylase TraX",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2083",
+    "Virulence_Gene": "IncFIB_traW",
+    "Locus_Tag": "HXF02_RS00410",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type-F conjugative transfer system protein TraW",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2082",
+    "Virulence_Gene": "IncFIB_traV",
+    "Locus_Tag": "HXF02_RS00390",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type IV conjugative transfer system lipoprotein TraV",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2081",
+    "Virulence_Gene": "IncFIB_traU",
+    "Locus_Tag": "HXF02_RS00415",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer pilus assembly protein TraU",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2080",
+    "Virulence_Gene": "IncFIB_traT",
+    "Locus_Tag": "HXF02_RS00485",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "complement resistance protein TraT",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2079",
+    "Virulence_Gene": "IncFIB_traS",
+    "Locus_Tag": "HXF02_RS00480",
+    "Note": "\"TraS, as the term is used in F-like plasmids, is a plasmid entry exclusion protein. It interacts with the F-like plasmid mating stabilization protein TraG; Derived by automated computational analysis using gene prediction method: Protein Homology.\"",
+    "Product": "conjugal transfer entry exclusion protein TraS",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2078",
+    "Virulence_Gene": "IncFIB_traR",
+    "Locus_Tag": "HXF02_RS00395",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TraR",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2077",
+    "Virulence_Gene": "IncFIB_traQ",
+    "Locus_Tag": "HXF02_RS00450",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type-F conjugative transfer system pilin chaperone TraQ",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2076",
+    "Virulence_Gene": "IncFIB_traP",
+    "Locus_Tag": "HXF02_RS00375",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TraP",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2075",
+    "Virulence_Gene": "IncFIB_traN",
+    "Locus_Tag": "HXF02_RS00420",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type-F conjugative transfer system pilin assembly protein TrbC",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2074",
+    "Virulence_Gene": "IncFIB_traM",
+    "Locus_Tag": "HXF02_RS00335",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "relaxosome protein TraM",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2073",
+    "Virulence_Gene": "IncFIB_traL",
+    "Locus_Tag": "HXF02_RS00355",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type IV conjugative transfer system protein TraL",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2072",
+    "Virulence_Gene": "IncFIB_traK",
+    "Locus_Tag": "HXF02_RS00365",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type-F conjugative transfer system secretin TraK",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2071",
+    "Virulence_Gene": "IncFIB_traJ",
+    "Locus_Tag": "HXF02_RS00340",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer transcriptional regulator TraJ",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2070",
+    "Virulence_Gene": "IncFIB_traI",
+    "Locus_Tag": "HXF02_RS00505",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugative transfer relaxase/helicase TraI",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2069",
+    "Virulence_Gene": "IncFIB_traH",
+    "Locus_Tag": "HXF02_RS00470",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TraH",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2068",
+    "Virulence_Gene": "IncFIB_traG",
+    "Locus_Tag": "HXF02_RS00475",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer mating pair stabilization protein TraG",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2067",
+    "Virulence_Gene": "IncFIB_traF",
+    "Locus_Tag": "HXF02_RS00435",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type-F conjugative transfer system pilin assembly protein TraF",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2066",
+    "Virulence_Gene": "IncFIB_traE",
+    "Locus_Tag": "HXF02_RS00360",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type IV conjugative transfer system protein TraE",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2065",
+    "Virulence_Gene": "IncFIB_traD",
+    "Locus_Tag": "HXF02_RS00490",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type IV conjugative transfer system coupling protein TraD",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2064",
+    "Virulence_Gene": "IncFIB_traC",
+    "Locus_Tag": "HXF02_RS00400",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type IV secretion system protein TraC",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2063",
+    "Virulence_Gene": "IncFIB_traB",
+    "Locus_Tag": "HXF02_RS00370",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TraB",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2062",
+    "Virulence_Gene": "IncFIB_traA",
+    "Locus_Tag": "HXF02_RS00350",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type IV conjugative transfer system pilin TraA",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2061",
+    "Virulence_Gene": "IncB/O/K_traB",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraB",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2060",
+    "Virulence_Gene": "IncB/O/K_traC",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraC",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2059",
+    "Virulence_Gene": "IncB/O/K_pilI",
+    "Locus_Tag": "",
+    "Note": "thin pilus biogenesis protein",
+    "Product": "PilI",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2058",
+    "Virulence_Gene": "IncB/O/K_pilK",
+    "Locus_Tag": "",
+    "Note": "thin pilus biogenesis protein",
+    "Product": "PilK",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2057",
+    "Virulence_Gene": "IncB/O/K_pilL",
+    "Locus_Tag": "",
+    "Note": "thin pilus biogenesis protein",
+    "Product": "PilL",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2056",
+    "Virulence_Gene": "IncB/O/K_pilM",
+    "Locus_Tag": "",
+    "Note": "thin pilus biogenesis protein",
+    "Product": "PilM",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2055",
+    "Virulence_Gene": "IncB/O/K_pilN",
+    "Locus_Tag": "",
+    "Note": "thin pilus biogenesis protein",
+    "Product": "PilN",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2054",
+    "Virulence_Gene": "IncB/O/K_pilO",
+    "Locus_Tag": "",
+    "Note": "thin pilus biogenesis protein",
+    "Product": "PilO",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2053",
+    "Virulence_Gene": "IncB/O/K_pilP",
+    "Locus_Tag": "",
+    "Note": "thin pilus biogenesis protein",
+    "Product": "PilP",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2052",
+    "Virulence_Gene": "IncB/O/K_pilQ",
+    "Locus_Tag": "",
+    "Note": "thin pilus biogenesis protein",
+    "Product": "PilQ",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2051",
+    "Virulence_Gene": "IncB/O/K_pilR",
+    "Locus_Tag": "",
+    "Note": "thin pilus biogenesis protein",
+    "Product": "PilR",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2050",
+    "Virulence_Gene": "IncB/O/K_pilS",
+    "Locus_Tag": "",
+    "Note": "thin pilus biogenesis protein",
+    "Product": "PilS",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2049",
+    "Virulence_Gene": "IncB/O/K_pilT",
+    "Locus_Tag": "",
+    "Note": "thin pilus biogenesis protein",
+    "Product": "PilT",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2048",
+    "Virulence_Gene": "IncB/O/K_pilU",
+    "Locus_Tag": "",
+    "Note": "thin pilus biogenesis protein",
+    "Product": "PilU",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2047",
+    "Virulence_Gene": "IncB/O/K_pilV",
+    "Locus_Tag": "",
+    "Note": "thin pilus biogenesis protein",
+    "Product": "PilV",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2046",
+    "Virulence_Gene": "IncB/O/K_traE",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraE",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2045",
+    "Virulence_Gene": "IncB/O/K_traF",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraF",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2044",
+    "Virulence_Gene": "IncB/O/K_traH",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraH",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2043",
+    "Virulence_Gene": "IncB/O/K_traI",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraI",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2042",
+    "Virulence_Gene": "IncB/O/K_traJ",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraJ",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2041",
+    "Virulence_Gene": "IncB/O/K_traK",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraK",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2040",
+    "Virulence_Gene": "IncB/O/K_traL",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraL",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2039",
+    "Virulence_Gene": "IncB/O/K_traM",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraM",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2038",
+    "Virulence_Gene": "IncB/O/K_traN",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraN",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2037",
+    "Virulence_Gene": "IncB/O/K_traO",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraO",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2036",
+    "Virulence_Gene": "IncB/O/K_traP",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraP",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2035",
+    "Virulence_Gene": "IncB/O/K_traQ",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraQ",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2034",
+    "Virulence_Gene": "IncB/O/K_traR",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraR",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2033",
+    "Virulence_Gene": "IncB/O/K_traS",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraS",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2032",
+    "Virulence_Gene": "IncB/O/K_traT",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraT",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2031",
+    "Virulence_Gene": "IncB/O/K_traU",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraU",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2030",
+    "Virulence_Gene": "IncB/O/K_traV",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraV",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2029",
+    "Virulence_Gene": "IncB/O/K_traW",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraW",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2028",
+    "Virulence_Gene": "IncB/O/K_traX",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraX",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2027",
+    "Virulence_Gene": "IncB/O/K_traY",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TraY",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2026",
+    "Virulence_Gene": "IncB/O/K_trbA",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TrbA",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2025",
+    "Virulence_Gene": "IncB/O/K_trbB",
+    "Locus_Tag": "",
+    "Note": "conjugal transfer protein",
+    "Product": "TrbB",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2024",
+    "Virulence_Gene": "IncB/O/K_trbC",
+    "Locus_Tag": "",
+    "Note": "type 4 coupling protein",
+    "Product": "TrbC",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2023",
+    "Virulence_Gene": "IncAC_traG",
+    "Locus_Tag": "HS646_RS00940",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TraG N-terminal domain-containing protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2022",
+    "Virulence_Gene": "IncAC_traH",
+    "Locus_Tag": "HS646_RS00935",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TraH",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2021",
+    "Virulence_Gene": "IncAC_traF",
+    "Locus_Tag": "HS646_RS00930",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TraF",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2020",
+    "Virulence_Gene": "IncAC_traN",
+    "Locus_Tag": "HS646_RS00510",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer mating pair stabilization protein TraN",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2019",
+    "Virulence_Gene": "IncAC_traU",
+    "Locus_Tag": "HS646_RS00505",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "TraU family protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2018",
+    "Virulence_Gene": "IncAC_traW",
+    "Locus_Tag": "HS646_RS00495",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TraW",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2017",
+    "Virulence_Gene": "IncAC_trhF",
+    "Locus_Tag": "HS646_RS00490",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "S26 family signal peptidase",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2016",
+    "Virulence_Gene": "IncAC_traC",
+    "Locus_Tag": "HS646_RS00480",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type IV secretion system protein TraC",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2015",
+    "Virulence_Gene": "IncAC_traA",
+    "Locus_Tag": "HS646_RS00440",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "hypothetical protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2014",
+    "Virulence_Gene": "IncAC_traV",
+    "Locus_Tag": "HS646_RS00435",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type IV conjugative transfer system lipoprotein TraV",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2013",
+    "Virulence_Gene": "IncAC_traB",
+    "Locus_Tag": "HS646_RS00430",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "conjugal transfer protein TraB",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2012",
+    "Virulence_Gene": "IncAC_traE",
+    "Locus_Tag": "HS646_RS00420",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "hypothetical protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2011",
+    "Virulence_Gene": "IncAC_traL",
+    "Locus_Tag": "HS646_RS00415",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "type IV conjugative transfer system protein TraL",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2010",
+    "Virulence_Gene": "IncAC_traD",
+    "Locus_Tag": "HS646_RS00375",
+    "Note": "\"Members of this protein family are the putative conjugative coupling factor, TraD, as the term is used for the SXT and TOL plasmid systems; Derived by automated computational analysis using gene prediction method: Protein Homology.\"",
+    "Product": "conjugative transfer system coupling protein TraD",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  },
+  {
+    "id": "2009",
+    "Virulence_Gene": "IncAC_traI",
+    "Locus_Tag": "HS646_RS00370",
+    "Note": "Derived by automated computational analysis using gene prediction method: Protein Homology.",
+    "Product": "TraI domain-containing protein",
+    "DB_Xref": "",
+    "Location": "plasmid"
+  }
+]

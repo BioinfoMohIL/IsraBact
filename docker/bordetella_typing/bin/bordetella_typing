@@ -1,0 +1,3 @@
+# !usr/bin/bash
+
+python3 /app/bordetella_typing.py $@
