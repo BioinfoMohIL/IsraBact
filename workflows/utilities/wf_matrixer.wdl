@@ -11,7 +11,7 @@ workflow wf_matrixer {
     }
 
     output {
-        File matrix_tsv = build_matrix.output_matrix
+        File matrixer_matrix = build_matrix.output_matrix
     }
 }
 
@@ -24,43 +24,36 @@ task build_matrix {
         python3 << 'EOF'
         import pandas as pd
 
-        # Lecture du TSV
         df = pd.read_csv("~{amr_tsv}", sep="\t", dtype=str)
 
-        # Nettoyage des colonnes : minuscules et strip
+        # Clean cols
         df.columns = [c.strip().lower() for c in df.columns]
 
-        # Supprimer les lignes qui sont des headers répétés
+        # Del rows with header (new header with each sample appears when concate)
         df = df[df['name'].str.lower() != 'name']
 
-        # Colonnes requises
         required_cols = ['name', 'element symbol', '% identity to reference']
         for col in required_cols:
             if col not in df.columns:
                 raise ValueError(f"Colonne manquante : {col}")
 
-        # Renommage pour uniformité
         df = df.rename(columns={
             'name': 'Name',
             'element symbol': 'Element',
             '% identity to reference': 'Identity'
         })
 
-        # Construction de la matrice pivot
         matrix = df.pivot_table(
             index='Name',
             columns='Element',
             values='Identity',
-            aggfunc='first'  # si doublons, prend le premier
+            aggfunc='first'  # if duplicate, take first
         )
 
-        # Tri des colonnes par ordre alphabétique
         matrix = matrix.reindex(sorted(matrix.columns), axis=1)
 
-        # Remplacer NaN par vide
         matrix = matrix.fillna("0")
 
-        # Sauvegarde finale
         matrix.to_csv("matrix.tsv", sep="\t")
         EOF
     >>>
