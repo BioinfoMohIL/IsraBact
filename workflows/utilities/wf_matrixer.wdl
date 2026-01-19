@@ -10,7 +10,7 @@ workflow wf_matrixer {
 
     call task_matrixer.build_matrix {
         input:
-            amr_tsv = input_tsv
+            amr_tsv = input_tsv,
             genes = genes
     }
 
