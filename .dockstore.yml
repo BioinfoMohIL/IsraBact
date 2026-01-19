@@ -84,6 +84,7 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/standalone_modules/wf_rasusa_all.wdl
 
+
   - name: Matrixer_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/utilities/wf_matrixer.wdl
