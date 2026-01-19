@@ -123,29 +123,28 @@ workflow wf_neisseria_typing_reads {
         
   
        	# Assembly denovo outputs 
-		String assembler_used = assembly.assembler_used
 		String seq_platform = assembly.seq_platform
 
         File assembly_fasta = assembly.assembly_fasta
-        File? contigs_gfa = assembly.contigs_gfa
+        File contigs_gfa = assembly.contigs_gfa
         File? filtered_contigs_metrics = assembly.filtered_contigs_metrics
         String assembler = assembly.assembler_used
-        String? assembler_version = assembly.assembler_version
+        String assembler_version = assembly.assembler_version
         
         # Assembly QC - quast outputs
-        File? quast_report = assembly.quast_report
-        String? quast_version = assembly.quast_version
-        Int? assembly_length = assembly.assembly_length
-        Int? number_contigs = assembly.number_contigs
-        Int? n50_value = assembly.n50_value
-        Float? quast_gc_percent = assembly.quast_gc_percent
+        File quast_report = assembly.quast_report
+        String quast_version = assembly.quast_version
+        Int assembly_length = assembly.assembly_length
+        Int number_contigs = assembly.number_contigs
+        Int n50_value = assembly.n50_value
+        Float quast_gc_percent = assembly.quast_gc_percent
            
         # Assembly QC - busco outputs
-        String? busco_version = assembly.busco_version
+        String busco_version = assembly.busco_version
         File? busco_report = assembly.busco_report
-        String? busco_docker = assembly.busco_docker
-        String? busco_database = assembly.busco_database
-        String? busco_results = assembly.busco_results
+        String busco_docker = assembly.busco_docker
+        String busco_database = assembly.busco_database
+        String busco_results = assembly.busco_results
 
          # Assembly QC - cg pipeline outputs
         # File? cg_pipeline_report_raw = cg_pipeline_raw.cg_pipeline_report
