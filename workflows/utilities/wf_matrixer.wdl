@@ -1,6 +1,6 @@
 version 1.0
 
-import "tasks/utilities/task_matrixer.wdl" as task_matrixer
+import "../../tasks/utilities/task_matrixer.wdl" as task_matrixer
 
 workflow wf_matrixer {
     input {
