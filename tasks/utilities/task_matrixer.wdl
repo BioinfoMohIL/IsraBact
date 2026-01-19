@@ -2,23 +2,25 @@ version 1.0
 
 task build_matrix {
     input {
-        File amr_tsv
-        String genes
+        File input_tsv
+        String scope = "all"  # options: "all" or "core"
     }
 
     command <<<
         python3 << 'EOF'
         import pandas as pd
 
-        df = pd.read_csv("~{amr_tsv}", sep="\t", dtype=str)
+        # Lire le TSV
+        df = pd.read_csv("~{input_tsv}", sep="\t", dtype=str)
 
-        # Clean column names
+        # Nettoyer les colonnes
         df.columns = [c.strip().lower() for c in df.columns]
 
-        # Remove duplicated headers after concat
+        # Supprimer les lignes où "name" apparaît comme ligne d'en-tête
         df = df[df['name'].str.lower() != 'name']
 
-        required_cols = ['name', 'element symbol', '% identity to reference']
+        # Colonnes requises
+        required_cols = ['name', 'element symbol', '% identity to reference', 'scope']
         for col in required_cols:
             if col not in df.columns:
                 raise ValueError(f"Colonne manquante : {col}")
@@ -26,35 +28,28 @@ task build_matrix {
         df = df.rename(columns={
             'name': 'Name',
             'element symbol': 'Element',
-            '% identity to reference': 'Identity'
+            '% identity to reference': 'Identity',
+            'scope': 'Scope'
         })
 
-        # Build base matrix
+
+
+        if "~{scope}".lower() == "core":
+            df = df[df['Scope'].str.lower() == 'core']
+
+        print(df['Name'],df['Scope'])
+        # Construire la matrice pivot
         matrix = df.pivot_table(
             index='Name',
             columns='Element',
             values='Identity',
-            aggfunc='first'
+            aggfunc='first'  # if duplicate, pick first
         )
 
-        # If genes list is provided, restrict columns to it
-        genes_str = "~{genes}".strip()
-        if genes_str and genes_str.lower() != "na":
-            genes_list = [g.strip() for g in genes_str.split(",") if g.strip()]
-
-            # Add missing genes as empty columns
-            for g in genes_list:
-                if g not in matrix.columns:
-                    matrix[g] = "0"
-
-            # Reorder columns exactly as provided
-            matrix = matrix[genes_list]
-        else:
-            # Default behavior: sort all genes alphabetically
-            matrix = matrix.reindex(sorted(matrix.columns), axis=1)
-
+        matrix = matrix.reindex(sorted(matrix.columns), axis=1)
         matrix = matrix.fillna("0")
 
+        # Sauvegarder
         matrix.to_csv("matrix.tsv", sep="\t")
         EOF
     >>>
