@@ -50,12 +50,12 @@ task build_matrix {
         matrix = matrix.fillna("0")
 
         # Sauvegarder
-        matrix.to_csv("matrix.tsv", sep="\t")
+        matrix.to_csv(f"matrix_~{scope}_genes.tsv", sep="\t")
         EOF
     >>>
 
     output {
-        File output_matrix = "matrix.tsv"
+        File output_matrix = "matrix_~{scope}_genes.tsv"
     }
 
     runtime {
