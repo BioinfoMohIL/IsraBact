@@ -3,7 +3,7 @@ version 1.0
 task build_matrix {
     input {
         File input_tsv
-        String scope = "all"  # options: "all" or "core"
+        String scope
     }
 
     command <<<

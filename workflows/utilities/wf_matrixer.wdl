@@ -5,7 +5,7 @@ import "../../tasks/utilities/task_matrixer.wdl" as task_matrixer
 workflow wf_matrixer {
     input {
         File input_tsv
-        String scope
+        String scope = 'all' # options: "all" or "core"
     }
 
     call task_matrixer.build_matrix {
