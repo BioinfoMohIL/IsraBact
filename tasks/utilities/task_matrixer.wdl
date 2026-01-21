@@ -10,16 +10,14 @@ task build_matrix {
         python3 << 'EOF'
         import pandas as pd
 
-        # Lire le TSV
         df = pd.read_csv("~{input_tsv}", sep="\t", dtype=str)
 
-        # Nettoyer les colonnes
+        # Clean cols
         df.columns = [c.strip().lower() for c in df.columns]
 
-        # Supprimer les lignes où "name" apparaît comme ligne d'en-tête
+        # Remove row when "name" (appears because the Concatenate_Columns_Content_PHB concatenation )
         df = df[df['name'].str.lower() != 'name']
 
-        # Colonnes requises
         required_cols = ['name', 'element symbol', '% identity to reference', 'scope']
         for col in required_cols:
             if col not in df.columns:
@@ -38,7 +36,7 @@ task build_matrix {
             df = df[df['Scope'].str.lower() == 'core']
 
         print(df['Name'],df['Scope'])
-        # Construire la matrice pivot
+
         matrix = df.pivot_table(
             index='Name',
             columns='Element',
@@ -48,9 +46,8 @@ task build_matrix {
 
         matrix = matrix.reindex(sorted(matrix.columns), axis=1)
         matrix = matrix.fillna("0")
-
-        # Sauvegarder
         matrix.to_csv(f"matrix_~{scope}_genes.tsv", sep="\t")
+
         EOF
     >>>
 
