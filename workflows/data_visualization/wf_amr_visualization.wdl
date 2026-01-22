@@ -1,10 +1,10 @@
 version 1.0
 
-workflow run_amr_heatmap {
+workflow wf_amr_heatmap {
 
   input {
     File amr_input
-    Boolean? remove_null_values = true
+    Boolean remove_null_values = true
   }
 
   call amr_heatmap {
