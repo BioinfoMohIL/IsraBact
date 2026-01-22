@@ -21,7 +21,7 @@ task build_matrix {
         required_cols = ['name', 'element symbol', '% identity to reference', 'scope']
         for col in required_cols:
             if col not in df.columns:
-                raise ValueError(f"Colonne manquante : {col}")
+                raise ValueError(f"Column missing : {col}")
 
         df = df.rename(columns={
             'name': 'Name',
