@@ -88,3 +88,7 @@ workflows:
   - name: Matrixer_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/utilities/wf_matrixer.wdl
+    
+  - name: DiphtOscan_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows\epidemyology\diphtheria
