@@ -4,6 +4,12 @@ import "../../../tasks/epidemiology/diphtheria/task_diphtoscan.wdl" as task_diph
 import "../../../tasks/task_fail.wdl" as task_fail
 
 workflow wf_diphtheria_scan {
+    workflow species_detection {
+    meta {
+        description: "diphtOscan is a tool to search genomic assemblies of Corynebacterium diphtheriae and other species of the Corynebacterium diphtheriae species complex (CdSC) - (https://gitlab.pasteur.fr/BEBP/diphtoscan) ."
+        author: "David Maimoun"
+    }
+
     input {
         Array[File]? assemblies
         File? assembly
