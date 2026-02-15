@@ -1,21 +1,23 @@
 version 1.0
 
-task run_diphtOscan {
+task diphtoscan {
     input {
-        Array[File] assemblies
+        Array[File] my_input
+
         Boolean mlst
         Boolean tox
         Boolean res_vir
         Boolean extend_genotyping
         Boolean integron
         Boolean tree
-        Int threads
+
+        Int threads 
         String docker_image = "bioinfomoh/diphtoscan:latest"
     }
 
     command {
         diphtoscan \
-        -a ~{sep=" " assemblies} \
+        -a ~{sep=" " my_input} \
         ~{if mlst then "-st" else ""} \
         ~{if tox then "-t" else ""} \
         ~{if res_vir then "-res_vir" else ""} \
