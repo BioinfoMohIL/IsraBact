@@ -19,6 +19,8 @@ task diphtoscan {
         # Update the db before
         # ~{if update_db then "diphtoscan -u" else ""}
         output_name="results"
+        is_tree="~{tree}"
+
 
         diphtoscan \
         -a ~{sep=" " my_input} \
@@ -36,15 +38,15 @@ task diphtoscan {
         fi
 
         # Run this block only if tree = true
-        ~{if tree then "
-            mkdir -p jolytree_results
-            echo Gathering tree results ...
-            mv *jolytree.* jolytree_results/ 2>/dev/null
+            if [[ "${is_tree}" == "true" ]]; then
+                mkdir -p jolytree_results
+                echo "Gathering tree results ..."
+                mv *jolytree.* jolytree_results/ 2>/dev/null
 
-            if [[ -d jolytree_results && \"\$(ls -A jolytree_results)\" ]]; then
-                zip -r jolytree_results.zip jolytree_results
+                if [[ -d jolytree_results && "$(ls -A jolytree_results)" ]]; then
+                    zip -r jolytree_results.zip jolytree_results
+                fi
             fi
-        " else ""}
     >>>
 
 

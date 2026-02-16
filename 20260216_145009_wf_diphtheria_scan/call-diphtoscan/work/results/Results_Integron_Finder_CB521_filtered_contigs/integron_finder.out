@@ -1,0 +1,741 @@
+
+**************************************************************************
+ ___       _                               _____ _           _
+|_ _|_ __ | |_ ___  __ _ _ __ ___  _ __   |  ___(_)_ __   __| | ___ _ __
+ | || '_ \| __/ _ \/ _` | '__/ _ \| '_ \  | |_  | | '_ \ / _` |/ _ \ '__|
+ | || | | | ||  __/ (_| | | | (_) | | | | |  _| | | | | | (_| |  __/ |
+|___|_| |_|\__\___|\__, |_|  \___/|_| |_| |_|   |_|_| |_|\__,_|\___|_|
+                   |___/
+
+**************************************************************************
+
+integron_finder version 2.0.6 
+Using:
+ - Python 3.10.19 | packaged by conda-forge | (main, Jan 26 2026, 23:45:08) [GCC 14.3.0]
+ - numpy 2.2.6
+ - pandas 2.3.3
+ - matplolib 3.10.8
+ - biopython 1.83
+
+ - Prodigal V2.6.3: February, 2016
+ - INFERNAL 1.1.4 (Dec 2020)
+ - HMMER 3.3.2 (Nov 2020); http://hmmer.org/
+
+Authors:
+ - Jean Cury, Bertrand Neron, Eduardo Rocha,
+
+Citation:
+
+ Néron, B.; Littner, E.; Haudiquet, M.; Perrin, A.; Cury, J.; Rocha, E.P.C.
+ IntegronFinder 2.0: Identification and Analysis of Integrons across Bacteria, with a Focus on Antibiotic Resistance in Klebsiella.
+ Microorganisms 2022, 10, 700. https://doi.org/10.3390/microorganisms10040700
+
+ If you use --func-annot in conjunction with file NCBIfam-AMRFinder.hmm please also cite
+
+ Haft, DH et al., Nucleic Acids Res. 2018 Jan 4;46(D1):D851-D860
+ PMID: 29112715
+ 
+
+                     =======================
+
+integron_finder is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+integron_finder is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program (COPYING file).
+If not, see <http://www.gnu.org/licenses/>.
+
+                     =======================
+
+command used: integron_finder --cpu 16 --outdir results/ --gbk --func-annot --mute /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CB521_filtered_contigs.fasta
+
+                     =======================
+
+[0m
+INFO     : ############ Processing replicon NODE_1_length_310358_cov_49.718287 (1/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_1_length_310358_cov_49.718287, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_1_length_310358_cov_49.718287
+INFO     : ############ Processing replicon NODE_2_length_280111_cov_37.907213 (2/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_2_length_280111_cov_37.907213, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_2_length_280111_cov_37.907213
+INFO     : ############ Processing replicon NODE_3_length_225654_cov_48.577372 (3/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_3_length_225654_cov_48.577372, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_3_length_225654_cov_48.577372
+INFO     : ############ Processing replicon NODE_4_length_160632_cov_51.234180 (4/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_4_length_160632_cov_51.234180, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_4_length_160632_cov_51.234180
+INFO     : ############ Processing replicon NODE_5_length_137581_cov_54.374962 (5/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_5_length_137581_cov_54.374962, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_5_length_137581_cov_54.374962
+INFO     : ############ Processing replicon NODE_6_length_99817_cov_40.271522 (6/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_6_length_99817_cov_40.271522, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_6_length_99817_cov_40.271522
+INFO     : ############ Processing replicon NODE_7_length_97287_cov_38.757369 (7/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_7_length_97287_cov_38.757369, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_7_length_97287_cov_38.757369
+INFO     : ############ Processing replicon NODE_8_length_93010_cov_40.807306 (8/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_8_length_93010_cov_40.807306, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_8_length_93010_cov_40.807306
+INFO     : ############ Processing replicon NODE_9_length_81831_cov_63.625428 (9/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_9_length_81831_cov_63.625428, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_9_length_81831_cov_63.625428
+INFO     : ############ Processing replicon NODE_10_length_80976_cov_66.924749 (10/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_10_length_80976_cov_66.924749, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_10_length_80976_cov_66.924749
+INFO     : ############ Processing replicon NODE_11_length_79960_cov_51.395125 (11/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_11_length_79960_cov_51.395125, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_11_length_79960_cov_51.395125
+INFO     : ############ Processing replicon NODE_12_length_75607_cov_63.964852 (12/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_12_length_75607_cov_63.964852, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_12_length_75607_cov_63.964852
+INFO     : ############ Processing replicon NODE_13_length_71237_cov_59.959134 (13/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_13_length_71237_cov_59.959134, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_13_length_71237_cov_59.959134
+INFO     : ############ Processing replicon NODE_14_length_58074_cov_57.100592 (14/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_14_length_58074_cov_57.100592, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_14_length_58074_cov_57.100592
+INFO     : ############ Processing replicon NODE_15_length_52036_cov_49.119093 (15/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_15_length_52036_cov_49.119093, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_15_length_52036_cov_49.119093
+INFO     : ############ Processing replicon NODE_16_length_50330_cov_55.429715 (16/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_16_length_50330_cov_55.429715, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_16_length_50330_cov_55.429715
+INFO     : ############ Processing replicon NODE_17_length_44332_cov_58.871757 (17/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_17_length_44332_cov_58.871757, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_17_length_44332_cov_58.871757
+INFO     : ############ Processing replicon NODE_18_length_41358_cov_53.493415 (18/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_18_length_41358_cov_53.493415, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_18_length_41358_cov_53.493415
+INFO     : ############ Processing replicon NODE_19_length_38118_cov_62.492011 (19/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_19_length_38118_cov_62.492011, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_19_length_38118_cov_62.492011
+INFO     : ############ Processing replicon NODE_20_length_36924_cov_38.627089 (20/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_20_length_36924_cov_38.627089, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_20_length_36924_cov_38.627089
+INFO     : ############ Processing replicon NODE_21_length_36416_cov_36.955772 (21/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_21_length_36416_cov_36.955772, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_21_length_36416_cov_36.955772
+INFO     : ############ Processing replicon NODE_22_length_36100_cov_57.614433 (22/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_22_length_36100_cov_57.614433, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_22_length_36100_cov_57.614433
+INFO     : ############ Processing replicon NODE_23_length_32185_cov_39.647670 (23/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_23_length_32185_cov_39.647670, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_23_length_32185_cov_39.647670
+INFO     : ############ Processing replicon NODE_24_length_30922_cov_42.820783 (24/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_24_length_30922_cov_42.820783, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_24_length_30922_cov_42.820783
+INFO     : ############ Processing replicon NODE_25_length_30269_cov_46.131444 (25/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_25_length_30269_cov_46.131444, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_25_length_30269_cov_46.131444
+INFO     : ############ Processing replicon NODE_26_length_30097_cov_47.088121 (26/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_26_length_30097_cov_47.088121, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_26_length_30097_cov_47.088121
+INFO     : ############ Processing replicon NODE_27_length_29637_cov_61.209929 (27/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_27_length_29637_cov_61.209929, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_27_length_29637_cov_61.209929
+INFO     : ############ Processing replicon NODE_28_length_25764_cov_47.401256 (28/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_28_length_25764_cov_47.401256, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_28_length_25764_cov_47.401256
+INFO     : ############ Processing replicon NODE_29_length_19531_cov_62.301072 (29/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_29_length_19531_cov_62.301072, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_29_length_19531_cov_62.301072
+INFO     : ############ Processing replicon NODE_30_length_15062_cov_62.740275 (30/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_30_length_15062_cov_62.740275, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_30_length_15062_cov_62.740275
+INFO     : ############ Processing replicon NODE_31_length_8378_cov_64.949097 (31/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_31_length_8378_cov_64.949097, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_31_length_8378_cov_64.949097
+INFO     : ############ Processing replicon NODE_32_length_5130_cov_36.722367 (32/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_32_length_5130_cov_36.722367, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_32_length_5130_cov_36.722367
+INFO     : ############ Processing replicon NODE_33_length_4415_cov_62.622901 (33/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_33_length_4415_cov_62.622901, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_33_length_4415_cov_62.622901
+INFO     : ############ Processing replicon NODE_34_length_3139_cov_72.771580 (34/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_34_length_3139_cov_72.771580, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_34_length_3139_cov_72.771580
+INFO     : ############ Processing replicon NODE_35_length_3069_cov_224.369477 (35/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_35_length_3069_cov_224.369477, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_35_length_3069_cov_224.369477
+INFO     : ############ Processing replicon NODE_36_length_2545_cov_241.569065 (36/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_36_length_2545_cov_241.569065, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_36_length_2545_cov_241.569065
+INFO     : ############ Processing replicon NODE_37_length_1618_cov_62.763917 (37/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_37_length_1618_cov_62.763917, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_37_length_1618_cov_62.763917
+INFO     : ############ Processing replicon NODE_38_length_1468_cov_110.126025 (38/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_38_length_1468_cov_110.126025, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_38_length_1468_cov_110.126025
+INFO     : ############ Processing replicon NODE_39_length_1437_cov_321.783206 (39/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_39_length_1437_cov_321.783206, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_39_length_1437_cov_321.783206
+INFO     : ############ Processing replicon NODE_40_length_1415_cov_238.362578 (40/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_40_length_1415_cov_238.362578, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_40_length_1415_cov_238.362578
+INFO     : ############ Processing replicon NODE_41_length_1181_cov_106.740987 (41/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_41_length_1181_cov_106.740987, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_41_length_1181_cov_106.740987
+INFO     : ############ Processing replicon NODE_42_length_1180_cov_101.562203 (42/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_42_length_1180_cov_101.562203, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_42_length_1180_cov_101.562203
+INFO     : ############ Processing replicon NODE_43_length_908_cov_123.629962 (43/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_43_length_908_cov_123.629962, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_43_length_908_cov_123.629962
+INFO     : ############ Processing replicon NODE_44_length_773_cov_38.705882 (44/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_44_length_773_cov_38.705882, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_44_length_773_cov_38.705882
+INFO     : ############ Processing replicon NODE_45_length_752_cov_546.089600 (45/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_45_length_752_cov_546.089600, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_45_length_752_cov_546.089600
+INFO     : ############ Processing replicon NODE_46_length_708_cov_497.425129 (46/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_46_length_708_cov_497.425129, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_46_length_708_cov_497.425129
+INFO     : ############ Processing replicon NODE_47_length_565_cov_87.746575 (47/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_47_length_565_cov_87.746575, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_47_length_565_cov_87.746575
+INFO     : ############ Processing replicon NODE_48_length_563_cov_126.644495 (48/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_48_length_563_cov_126.644495, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_48_length_563_cov_126.644495
+INFO     : ############ Processing replicon NODE_49_length_537_cov_49.339024 (49/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_49_length_537_cov_49.339024, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_49_length_537_cov_49.339024
+INFO     : ############ Processing replicon NODE_50_length_507_cov_66.668421 (50/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_50_length_507_cov_66.668421, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_50_length_507_cov_66.668421
+INFO     : ############ Processing replicon NODE_51_length_483_cov_144.098315 (51/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_51_length_483_cov_144.098315, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_51_length_483_cov_144.098315
+INFO     : ############ Processing replicon NODE_53_length_480_cov_140.433428 (52/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_53_length_480_cov_140.433428, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_53_length_480_cov_140.433428
+INFO     : ############ Processing replicon NODE_54_length_420_cov_74.054608 (53/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_54_length_420_cov_74.054608, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_54_length_420_cov_74.054608
+INFO     : ############ Processing replicon NODE_55_length_396_cov_90.591078 (54/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_55_length_396_cov_90.591078, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_55_length_396_cov_90.591078
+INFO     : ############ Processing replicon NODE_56_length_255_cov_308.101562 (55/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_56_length_255_cov_308.101562, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_56_length_255_cov_308.101562
+INFO     : ############ Processing replicon NODE_57_length_255_cov_150.093750 (56/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_57_length_255_cov_150.093750, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_57_length_255_cov_150.093750
+INFO     : ############ Processing replicon NODE_58_length_255_cov_99.875000 (57/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_58_length_255_cov_99.875000, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_58_length_255_cov_99.875000
+INFO     : ############ Processing replicon NODE_59_length_255_cov_93.773438 (58/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_59_length_255_cov_93.773438, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_59_length_255_cov_93.773438
+INFO     : ############ Processing replicon NODE_60_length_255_cov_74.015625 (59/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_60_length_255_cov_74.015625, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_60_length_255_cov_74.015625
+INFO     : ############ Processing replicon NODE_61_length_255_cov_67.320312 (60/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_61_length_255_cov_67.320312, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_61_length_255_cov_67.320312
+INFO     : ############ Processing replicon NODE_62_length_255_cov_40.695312 (61/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_62_length_255_cov_40.695312, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_62_length_255_cov_40.695312
+INFO     : ############ Processing replicon NODE_63_length_255_cov_22.929688 (62/69) ############
+
+WARNING  : The protein file: '/mnt/miniwdl_task_container/work/results/Results_Integron_Finder_CB521_filtered_contigs/tmp_NODE_63_length_255_cov_22.929688/NODE_63_length_255_cov_22.929688.prt' is empty cannot perform hmmsearch on it.
+WARNING  : ############ Skip replicon NODE_63_length_255_cov_22.929688 ############
+INFO     : ############ Processing replicon NODE_64_length_255_cov_14.265625 (63/69) ############
+
+WARNING  : The protein file: '/mnt/miniwdl_task_container/work/results/Results_Integron_Finder_CB521_filtered_contigs/tmp_NODE_64_length_255_cov_14.265625/NODE_64_length_255_cov_14.265625.prt' is empty cannot perform hmmsearch on it.
+WARNING  : ############ Skip replicon NODE_64_length_255_cov_14.265625 ############
+INFO     : ############ Processing replicon NODE_65_length_255_cov_11.335938 (64/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_65_length_255_cov_11.335938, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_65_length_255_cov_11.335938
+INFO     : ############ Processing replicon NODE_66_length_252_cov_62.056000 (65/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_66_length_252_cov_62.056000, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_66_length_252_cov_62.056000
+INFO     : ############ Processing replicon NODE_67_length_250_cov_87.365854 (66/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_67_length_250_cov_87.365854, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_67_length_250_cov_87.365854
+INFO     : ############ Processing replicon NODE_68_length_250_cov_56.756098 (67/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_68_length_250_cov_56.756098, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_68_length_250_cov_56.756098
+INFO     : ############ Processing replicon NODE_69_length_247_cov_21.108333 (68/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_69_length_247_cov_21.108333, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_69_length_247_cov_21.108333
+INFO     : ############ Processing replicon NODE_70_length_221_cov_257.127660 (69/69) ############
+
+INFO     : Starting Default search ... :
+INFO     : Default search done... : 
+INFO     : In replicon NODE_70_length_221_cov_257.127660, there are:
+INFO     : - 0 complete integron(s) found with a total 0 attC site(s)
+INFO     : - 0 CALIN element(s) found with a total of 0 attC site(s)
+INFO     : - 0 In0 element(s) found with a total of 0 attC site
+INFO     : Starting functional annotation ...:
+INFO     : Writing out results for replicon NODE_70_length_221_cov_257.127660
+INFO     : Merging integrons results.
+

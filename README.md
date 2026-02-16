@@ -1,241 +1,347 @@
-IsraBact WDL Workflows (v1.0)
-=======================================
+# 🧬 IsraBact WDL Workflows
 
-De-novo genome assembly, taxonomic ID, genes and species typing, alleles comparison, and virulence prediction from paired-end bacterial NGS data.
+<p align="center">
+  <img src="https://img.shields.io/badge/WDL-1.0-4B8BBE?style=for-the-badge&logo=python" alt="WDL 1.0">
+  <img src="https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker" alt="Docker">
+  <img src="https://img.shields.io/badge/Status-Production-00C853?style=for-the-badge" alt="Status">
+  <img src="https://img.shields.io/badge/Israel-MOH-0038B8?style=for-the-badge" alt="Israel MOH">
+</p>
 
-This project contains WDL (Workflow Description Language) workflows based on Theiagen - Public Health Bioinformatics pipelines and tools such as Kraken2, BLAST, and ListPred.
+<p align="center">
+  <b>🦠 Complete bacterial genomics toolkit for public health surveillance</b><br>
+  From raw reads to virulence prediction in one pipeline
+</p>
 
-These WDLs are designed to be executed via MiniWDL or Cromwell with Docker backend support.
+---
 
--------------------------------------------------------------------------------
-1. Workflow: metagenomics/wf_species_detection_bs_reads.wdl
--------------------------------------------------------------------------------
+## 🎯 What's Inside
 
-Description:
-  Check if the sequenced samples on Basespace Illumina correspond to the expected species using Kraken2 classification.
+| Workflow | What It Does | Input | Output |
+|----------|--------------|-------|--------|
+| 🔬 **Species Detection** | Check if your samples are what you think they are | Basespace reads | Species match ✅/❌ |
+| ☠️ **Virulence Finder** | Find nasty virulence genes | Assembly FASTA | Gene presence matrix |
+| 🧫 **ListPred** | Predict *Listeria* serotype & phenotype | FASTA or FASTQ | Virulence class + disinfectant tolerance |
+| 🧬 **fq2DNA Assembly** | Build genomes from scratch | Paired-end reads | Quality assembly + metrics |
+| 🔧 **Long Reads Assembly** | Unicycler + Pilon polishing | Short + long reads | Hybrid assembly + QC |
+| 🦠 **DiphtOscan** | *C. diphtheriae* comprehensive analysis | Assembly FASTA | MLST + toxin + AMR + tree |
 
-Inputs:
-  - String: `api_server`  
-      → Illumina Basespace API endpoint  
-  - String: `access_token`  
-      → Your personal token to access Basespace data  
-  - String: `basespace_collection_id`  
-      → Name or ID of the sample (e.g., EC001, NM005)  
-  - String: `sample_prefix`  
-      → Optional prefix to filter samples (e.g., 'EC' for E. coli)
+---
 
-Outputs:
-  - File: `reads_list.txt`  
-      → List of input reads fetched from Basespace  
-  - Array[String]: `samples`  
-      → Sample names included in the analysis  
-  - File: `species_detected.csv`  
-      → Table with sample name, Kraken2-detected species, and match status ("+" if detected species matches prefix-based expected species)
+## 🚀 Quick Start
 
+### 1️⃣ Run Species Check
 
--------------------------------------------------------------------------------
-2. Workflow: virulence/wf_virulence_finder.wdl
--------------------------------------------------------------------------------
+```json
+{
+  "api_server": "https://api.basespace.illumina.com",
+  "access_token": "YOUR_TOKEN",
+  "basespace_collection_id": "12345",
+  "sample_prefix": "EC"
+}
+```
 
-Description:
-  Detects virulence genes using BLAST against the FDA VirulenceFinder database (https://virulence.fda.gov/).  
-  Generates CSV and HTML reports showing presence/absence of genes.
+### 2️⃣ Find Virulence Genes
 
-Inputs:
-  - File: `fasta`  
-      → Genome assembly in FASTA format  
-  - String: `species`  
-      → 'salmonella' or 'ecoli'  
-  - String: `samplename`  
-      → Sample ID (used in output naming)  
-  - Boolean: `plasmid_check` (default: false)  
-      → If true, will also search for plasmid virulence genes
+```json
+{
+  "fasta": "genome.fasta",
+  "species": "salmonella",
+  "samplename": "outbreak_001"
+}
+```
 
-Outputs:
-  - File: `virfind_hits_csv`  
-      → Table with detailed BLAST hits  
-  - File: `virfind_summary_csv`  
-      → Matrix of gene presence/absence (0/1)  
-  - File: `virfind_summary_html`  
-      → Visual HTML summary table  
-  - Optional Files (if `plasmid_check=true`):  
-      → `virfind_plasmid_hits_csv`  
-      → `virfind_plasmid_summary_csv`  
-      → `virfind_plasmid_summary_html`
+### 3️⃣ Assemble Genome
 
-Notes:
-  - All searches use local BLAST with JSON virulence references.
+```json
+{
+  "read1": "sample_R1.fastq.gz",
+  "read2": "sample_R2.fastq.gz",
+  "samplename": "sample_001"
+}
+```
 
+---
 
--------------------------------------------------------------------------------
-3. Workflow: resistance/wf_listpred_fasta.wdl
--------------------------------------------------------------------------------
+## 📦 Workflows Deep Dive
 
-Description:
-  Predicts *Listeria monocytogenes* serotypes and phenotypes using ListPred from assembled genomes - use ListPred (https://github.com/genomicepidemiology/ListPred.git).
+### 🔬 Species Detection
+**File:** `metagenomics/wf_species_detection_bs_reads.wdl`
 
-Inputs:
-  - File: `assembly_fasta`  
-      → Assembled genome in FASTA format  
-  - Int: `cpu` (default = 12)  
-      → Number of CPU threads for Snakemake
+```
+Basespace → Kraken2 → Species Match Report
+```
 
-Outputs:
-  - File: `virulence_prediction_out.csv`  
-  - File: `combined_predictions_out_categorical.csv`  
-  - File: `combined_predictions_out_numerical.csv`  
-  - File: `disinftolerance_prediction_out.csv`  
-  - File: `vir_align_out.tar.gz` (optional)  
-  - File: `disinf_align_out.tar.gz` (optional)  
-  - String: `virulence_class`  
-  - String: `disinfectant_phenotype`
+**Perfect for:** QC before starting expensive analyses
 
-Notes:
-  - Outputs are extracted from prediction and alignment results
+---
 
+### ☠️ Virulence Finder
+**File:** `virulence/wf_virulence_finder.wdl`
 
--------------------------------------------------------------------------------
-4. Workflow: resistance/wf_listpred_reads.wdl
--------------------------------------------------------------------------------
+```
+Assembly → BLAST vs FDA DB → Gene Matrix (CSV + HTML)
+```
 
-Description:
-  Predicts *Listeria monocytogenes* serotypes and phenotypes directly from paired-end raw FASTQ reads using ListPred - use ListPred (https://github.com/genomicepidemiology/ListPred.git).
+**Supports:** *Salmonella*, *E. coli*  
+**Bonus:** Plasmid virulence check with `plasmid_check: true`
 
-Inputs:
-  - File: `read1`  
-  - File: `read2`  
-  - Int: `cpu` (default = 20)
+---
 
-Outputs:
-  - File: `virulence_prediction_out.csv`  
-  - File: `combined_predictions_out_categorical.csv`  
-  - File: `combined_predictions_out_numerical.csv`  
-  - File: `disinftolerance_prediction_out.csv`  
-  - File: `vir_align_out.tar.gz` (optional)  
-  - File: `disinf_align_out.tar.gz` (optional)  
-  - String: `virulence_class`  
-  - String: `disinfectant_phenotype`
+### 🧫 ListPred (Listeria)
+**Files:** `resistance/wf_listpred_fasta.wdl` | `wf_listpred_reads.wdl`
 
-Notes:
-  - Input FASTQ files are renamed and reformatted automatically
-  - Snakemake handles serotype/virulence/disinfectant classification
+```
+FASTA/FASTQ → Snakemake → Serotype + Virulence + Disinfectant Tolerance
+```
 
+**Use case:** Food safety surveillance
 
--------------------------------------------------------------------------------
-5. Workflow: utilities/wf_fq2dna.wdl
--------------------------------------------------------------------------------
+---
 
-Description:
-  De-novo genome assembly and quality control of paired-end NGS reads using fq2DNA  
-  (Developed by Alexis Criscuolo, Institut Pasteur). This workflow processes reads to produce assembly fasta files, metrics, and scaffold/contig selections.
+### 🧬 fq2DNA Assembly
+**File:** `utilities/wf_fq2dna.wdl`
 
-Inputs:
-  - File: `read1`  
-      → Forward FASTQ reads (paired-end)  
-  - File: `read2`  
-      → Reverse FASTQ reads (paired-end)  
-  - String: `species`  
-      → Species identifier used for annotation or filtering  
-  - String: `organism` (default: "B")  
-      → Organism type code:  
-        - "B" = Bacteria  
-        - "P" = Prokaryote  
-        - "E" = Eukaryote  
-        - "S" = Standard  
-        - "V" = Virus  
-  - String: `alien_tag` (default: "AUTO")  
-      → Tag for contamination or foreign DNA detection
+```
+Raw Reads → fq2DNA → Assembly + Metrics + Selected Scaffolds
+```
 
-Outputs:
-  - String: `fq2dna_version`  
-      → fq2DNA software version used  
-  - File: `fq2dna_assembly_fasta`  
-      → Genome assembly FASTA file produced by fq2DNA  
-  - File: `fq2dna_metrics_zip`  
-      → ZIP archive containing quality metrics and reports  
-  - File: `fq2dna_selected_scaffolds`  
-      → Selected scaffold sequences in FASTA format  
-  - File: `fq2dna_selected_contigs`  
-      → Selected contigs in FASTA format  
-  - File: `fq2dna_scaffolding_info`  
-      → Text file summarizing scaffolding information and statistics
+**Special:** Auto-detects contamination with `alien_tag`
 
-Notes:
-  - This workflow relies on the `fq2dna_run` task which executes the fq2DNA pipeline.
-  - Organism and alien_tag parameters help tune the assembly and contamination filtering.
-  - Outputs include both assembled sequences and detailed QC metrics for downstream analysis.
+**Organism types:**
+- `B` = Bacteria
+- `V` = Virus
+- `E` = Eukaryote
 
+---
 
--------------------------------------------------------------------------------
-6. Workflow: utilities/wf_assembly_long_reads.wdl
--------------------------------------------------------------------------------
+### 🔧 Long Reads Assembly
+**File:** `utilities/wf_assembly_long_reads.wdl`
 
-Description:
-  De-novo genome assembly for long reads primarily using Unicycler with optional Pilon polishing,
-  filtering of contigs, and quality control metrics generation (QUAST, BUSCO).
-  Includes trimming and QC of paired-end reads before assembly.
+```
+Short + Long Reads → Unicycler → Pilon Polishing → QC (QUAST + BUSCO)
+```
 
-Inputs:
-  - File: `read1`  
-      → Forward reads FASTQ (paired-end)  
-  - File: `read2`  
-      → Reverse reads FASTQ (paired-end)  
-  - String: `samplename`  
-      → Sample identifier  
-  - String: `assembler` (default: "unicycler")  
-      → Assembly tool to use (currently supports Unicycler)  
-  - String: `seq_method` (default: "Illumina")  
-      → Sequencing method description  
-  - Int: `trim_min_length` (default: 75)  
-      → Minimum read length after trimming  
-  - Int: `trim_quality_min_score` (default: 20)  
-      → Minimum base quality score for trimming  
-  - Int: `trim_window_size` (default: 10)  
-      → Sliding window size for trimming  
-  - File?: `illumina_unpaired_fq`  
-      → Optional unpaired Illumina reads  
-  - File?: `long_reads`  
-      → Optional long reads (e.g., Nanopore, PacBio) for hybrid assembly  
-  - Boolean: `call_pilon` (default: false)  
-      → Whether to run Pilon polishing post-assembly  
-  - String?: `assembler_options`  
-      → Extra assembler options as a string  
-  - Boolean: `run_filter_contigs` (default: false)  
-      → Whether to filter contigs after assembly  
-  - Additional optional parameters for bwa, pilon, and filtering tasks (CPU, memory, docker images, etc.)
+**Perfect for:** Hybrid assemblies (Illumina + Nanopore/PacBio)
 
-Outputs:
-  - Multiple outputs related to:
-    - Read QC (FastQC, FastQ screen, trimming reports, cleaned reads)
-    - Assembly results (FASTA, GFA, logs)
-    - Pilon polishing outputs (VCF, changes)
-    - Filtered contigs metrics
-    - Assembly QC reports (QUAST, BUSCO), including assembly length, N50, GC content, completeness scores
+**Quality reports:**
+- ✅ N50, assembly length
+- ✅ GC content
+- ✅ BUSCO completeness
 
-Notes:
-  - Performs paired-end read trimming and quality control before assembly.
-  - Supports hybrid assembly with optional long reads input.
-  - Pilon polishing improves assembly accuracy if enabled.
-  - Filtering step removes low-quality or short contigs.
-  - Generates detailed QC and assembly reports for downstream analysis.
+---
 
+### 🦠 DiphtOscan
+**File:** `epidemiology/diphtheria/wf_diphtoscan.wdl`
 
--------------------------------------------------------------------------------
+```
+Assembly → diphtOscan → MLST + Toxin + AMR + Tree
+```
 
-Environment:
-  - Requires Docker
-  - MiniWDL or Cromwell recommended
-  - Internet access required for downloading containers or accessing Basespace
+**Features:**
+- 🧬 MLST typing
+- 🦠 Toxin detection
+- 💊 Resistance profiling
+- 🌳 Phylogenetic tree (optional)
 
-License:
-  Ministry of Health – Jerusalem, Israel
+**[📖 Full docs →](DIPHTOSCAN_README.md)**
 
-Version:
-  1.0
+---
 
-Maintainer:
-  David Maimoun  
-  Email: david.maimoun@moh.gov.il
+## 🎨 Output Examples
 
-Support:
-  Please open an issue on the repository or email the maintainer directly.
+### Virulence Matrix (CSV)
+```csv
+Sample,gene_A,gene_B,gene_C
+strain_1,1,0,1
+strain_2,1,1,0
+```
+
+### Species Detection
+```csv
+Sample,Detected_Species,Expected,Match
+EC001,Escherichia coli,Escherichia,+
+EC002,Salmonella enterica,Escherichia,-
+```
+
+### ListPred Result
+```
+Virulence Class: HV (Hypervirulent)
+Disinfectant Tolerance: Tolerant
+```
+
+---
+
+## 🛠️ Requirements
+
+- 🐳 **Docker** (containers for all tools)
+- ⚙️ **MiniWDL** or **Cromwell** (workflow engine)
+- ☁️ **Cloud** or **HPC** (optional but recommended)
+
+### Install MiniWDL
+
+```bash
+pip install miniwdl
+```
+
+### Run a Workflow
+
+```bash
+miniwdl run wf_virulence_finder.wdl -i inputs.json
+```
+
+---
+
+## 🎯 Use Cases
+
+| Scenario | Recommended Workflow |
+|----------|---------------------|
+| 🔍 **Unknown sample QC** | Species Detection |
+| 🦠 **Outbreak investigation** | Virulence Finder + DiphtOscan |
+| 🧫 **Food safety** | ListPred |
+| 🧬 **De novo assembly** | fq2DNA or Long Reads |
+| 📊 **Surveillance** | All of the above! |
+
+---
+
+## 🏗️ Architecture
+
+```
+IsraBact WDL/
+├── 📁 metagenomics/
+│   └── wf_species_detection_bs_reads.wdl
+├── 📁 virulence/
+│   └── wf_virulence_finder.wdl
+├── 📁 resistance/
+│   ├── wf_listpred_fasta.wdl
+│   └── wf_listpred_reads.wdl
+├── 📁 utilities/
+│   ├── wf_fq2dna.wdl
+│   └── wf_assembly_long_reads.wdl
+└── 📁 epidemiology/diphtheria/
+    └── wf_diphtoscan.wdl
+```
+
+---
+
+## 💡 Pro Tips
+
+### Speed Up Assemblies
+```json
+{
+  "cpu": 32,
+  "call_pilon": false
+}
+```
+
+### Batch Processing
+```json
+{
+  "assemblies": ["s1.fasta", "s2.fasta", "s3.fasta"]
+}
+```
+
+### Skip DB Updates
+```json
+{
+  "update_db": false
+}
+```
+
+---
+
+## 🐛 Troubleshooting
+
+### Docker not found?
+```bash
+docker --version
+# Install: https://docs.docker.com/get-docker/
+```
+
+### Out of memory?
+```json
+{
+  "memory": "32 GB"
+}
+```
+
+### Workflow fails?
+```bash
+# Check logs
+ls -la _LAST/
+cat _LAST/stderr.txt
+```
+
+---
+
+## 📚 Resources
+
+- 🔧 **Theiagen Workflows**: [GitHub](https://github.com/theiagen/public_health_bioinformatics)
+- 🦠 **FDA VirulenceFinder**: [virulence.fda.gov](https://virulence.fda.gov/)
+- 🧫 **ListPred**: [GitHub](https://github.com/genomicepidemiology/ListPred)
+- 🧬 **fq2DNA**: Institut Pasteur (Alexis Criscuolo)
+- 🔬 **Kraken2**: [GitHub](https://github.com/DerrickWood/kraken2)
+- 🦠 **DiphtOscan**: [GitLab Pasteur](https://gitlab.pasteur.fr/BEBP/diphtoscan)
+
+---
+
+## 👥 Team
+
+**Developed by:**  
+🏥 **Ministry of Health** – Jerusalem, Israel
+
+**Maintainer:**  
+👨‍💻 **David Maimoun**  
+📧 david.maimoun@moh.gov.il
+
+**Based on:**  
+Theiagen Public Health Bioinformatics pipelines
+
+---
+
+## 📄 License
+
+Ministry of Health – Jerusalem, Israel
+
+---
+
+## 🙏 Acknowledgments
+
+Special thanks to:
+- 🦠 Theiagen Genomics team
+- 🧬 Institut Pasteur bioinformatics
+- 🔬 FDA CFSAN researchers
+- 🌍 Public health genomics community
+
+---
+
+## 🆘 Support
+
+- 🐛 **Issues**: Open an issue on the repository
+- 📧 **Email**: david.maimoun@moh.gov.il
+- 💬 **Questions**: Tag maintainer in issues
+
+---
+
+<p align="center">
+  <b>🧬 Built with ❤️ for public health genomics 🦠</b><br>
+  <sub>Protecting communities through bacterial surveillance</sub>
+</p>
+
+---
+
+## 📊 Quick Reference
+
+| Need | Workflow | Time* |
+|------|----------|-------|
+| Species check | Species Detection | ~5 min |
+| Virulence genes | Virulence Finder | ~10 min |
+| *Listeria* typing | ListPred | ~15 min |
+| De novo assembly | fq2DNA | ~30 min |
+| Hybrid assembly | Long Reads | ~1-2 hrs |
+| *Diphtheria* analysis | DiphtOscan | ~20 min |
+
+*\*Approximate times for typical samples*
+
+---
+
+**Ready to start? Pick a workflow above and run it! 🚀**
