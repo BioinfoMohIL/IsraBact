@@ -13,7 +13,7 @@ task diphtoscan {
 
         Int threads 
         Boolean update_db
-        String docker_image = "bioinfomoh/diphtoscan:latest"
+        String docker_image = docker_image
     }
 
     command <<<
