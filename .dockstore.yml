@@ -91,4 +91,4 @@ workflows:
     
   - name: DiphtOscan_MOH
     subclass: WDL
-    primaryDescriptorPath: /workflows\epidemyology\diphtheria
+    primaryDescriptorPath: /workflows/epidemyology/diphtheria/wf_diphteria_scan.wdl
