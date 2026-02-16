@@ -17,7 +17,8 @@ task diphtoscan {
 
     command <<<
         # Update the db before
-        ~{if update_db then "diphtoscan -u" else ""}
+        # ~{if update_db then "diphtoscan -u" else ""}
+        output_name="results"
 
         diphtoscan \
         -a ~{sep=" " my_input} \
@@ -27,19 +28,30 @@ task diphtoscan {
         ~{if extend_genotyping then "-plus" else ""} \
         ~{if integron then "-integron" else ""} \
         ~{if tree then "-tree" else ""} \
-        -o results \
+        -o ${output_name} \
         --threads ~{threads} 
 
         if [[ -d results && "$(ls -A results)" ]]; then
             zip -r results.zip results
         fi
 
+        # Run this block only if tree = true
+        ~{if tree then "
+            mkdir -p jolytree_results
+            echo Gathering tree results ...
+            mv *jolytree.* jolytree_results/ 2>/dev/null
 
+            if [[ -d jolytree_results && \"\$(ls -A jolytree_results)\" ]]; then
+                zip -r jolytree_results.zip jolytree_results
+            fi
+        " else ""}
     >>>
 
 
     output {
         File results = "results.zip"
+        File? tree_results = "jolytree_results.zip"
+
     }
 
     runtime {

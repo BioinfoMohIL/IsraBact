@@ -18,7 +18,7 @@ workflow wf_diphtheria_scan {
         Boolean res_vir = true
         Boolean integron = true
         Boolean extend_genotyping = false
-        Boolean tree = false
+        Boolean tree = true
         Boolean update_db = true
 
         Int threads = 16
@@ -51,6 +51,7 @@ workflow wf_diphtheria_scan {
 
     output {
         File diphtoscan_results = select_first([diphtoscan.results, fail.fail_logs])
+        File? diphtoscan_tree_results = diphtoscan.tree_results
 
     }
 }

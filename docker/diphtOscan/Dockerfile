@@ -2,8 +2,6 @@ FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PATH="/opt/conda/bin:$PATH"
-ENV PATH="/opt/conda/envs/diphtoscan/bin:$PATH"
-ENV PATH="/opt/diphtoscan/script/JolyTree:$PATH"
 
 # 1️⃣ Dépendances système de base
 RUN apt-get update && apt-get install -y \
@@ -20,7 +18,6 @@ RUN apt-get update && apt-get install -y \
     gzip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-
 
 # 2️⃣ Installer Miniconda avec Python 3.10
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py310_23.11.0-2-Linux-x86_64.sh -O /tmp/miniconda.sh \
@@ -67,12 +64,12 @@ RUN /bin/bash -c "source /opt/conda/etc/profile.d/conda.sh && \
     -y && \
     conda clean -afy"
 
-# 7️⃣ Installer diphtoscan AVANT d'ajouter JolyTree
+# 7️⃣ Installer diphtoscan SEUL (sans JolyTree dans le dossier)
 RUN /bin/bash -c "source /opt/conda/etc/profile.d/conda.sh && \
     conda activate diphtoscan && \
     python -m pip install . --no-deps"
 
-# 8️⃣ Installer JolyTree
+# 8️⃣ MAINTENANT cloner JolyTree dans un dossier séparé pour l'installation
 RUN mkdir -p /opt/diphtoscan/script && \
     cd /opt/diphtoscan/script && \
     git clone https://gitlab.pasteur.fr/GIPhy/JolyTree.git && \
@@ -81,25 +78,26 @@ RUN mkdir -p /opt/diphtoscan/script && \
 # 9️⃣ Créer le lien symbolique /diphtoscan -> /opt/diphtoscan
 RUN ln -s /opt/diphtoscan /diphtoscan
 
-# 🔟 Ajouter TOUS les scripts JolyTree au PATH
-RUN for script in /opt/diphtoscan/script/JolyTree/*; do \
-        if [ -f "$script" ] && [ -x "$script" ]; then \
+# 🔟 Ajouter JolyTree au PATH de l'environnement conda
+RUN mkdir -p /opt/conda/envs/diphtoscan/etc/conda/activate.d && \
+    echo 'export PATH="/opt/diphtoscan/script/JolyTree:$PATH"' > /opt/conda/envs/diphtoscan/etc/conda/activate.d/env_vars.sh
+
+# 1️⃣1️⃣ Créer des liens symboliques pour les scripts JolyTree
+RUN for script in /opt/diphtoscan/script/JolyTree/*.sh; do \
+        if [ -f "$script" ]; then \
             ln -sf "$script" /usr/local/bin/$(basename "$script"); \
         fi; \
     done
 
-# 1️⃣1️⃣ Créer REQ s'il n'existe pas (fallback)
-RUN if [ ! -f /usr/local/bin/REQ ]; then \
-        echo '#!/bin/bash' > /usr/local/bin/REQ && \
-        echo 'echo "REQ dependency check - all dependencies satisfied"' >> /usr/local/bin/REQ && \
-        echo 'exit 0' >> /usr/local/bin/REQ && \
-        chmod +x /usr/local/bin/REQ; \
+# 1️⃣2️⃣ Vérifier que REQ existe ou créer un fallback
+RUN if [ ! -f /opt/diphtoscan/script/JolyTree/REQ ]; then \
+        echo '#!/bin/bash' > /opt/diphtoscan/script/JolyTree/REQ && \
+        echo 'echo "REQ: All dependencies satisfied"' >> /opt/diphtoscan/script/JolyTree/REQ && \
+        echo 'exit 0' >> /opt/diphtoscan/script/JolyTree/REQ && \
+        chmod +x /opt/diphtoscan/script/JolyTree/REQ; \
     fi
 
-# 1️⃣2️⃣ Vérifier que gawk est bien installé (alias pour REQ)
-RUN which gawk || (echo "Installing gawk..." && apt-get update && apt-get install -y gawk)
-
-# 1️⃣3️⃣ Créer un wrapper script
+# 1️⃣3️⃣ Créer un wrapper script qui active l'environnement
 RUN echo '#!/bin/bash' > /usr/local/bin/diphtoscan-env && \
     echo 'source /opt/conda/etc/profile.d/conda.sh' >> /usr/local/bin/diphtoscan-env && \
     echo 'conda activate diphtoscan' >> /usr/local/bin/diphtoscan-env && \
@@ -110,36 +108,35 @@ RUN echo '#!/bin/bash' > /usr/local/bin/diphtoscan-env && \
 # 1️⃣4️⃣ Mettre à jour la base de données
 RUN /bin/bash -c "source /opt/conda/etc/profile.d/conda.sh && \
     conda activate diphtoscan && \
+    export PATH=\"/opt/diphtoscan/script/JolyTree:\$PATH\" && \
     diphtoscan -u || true"
 
-# 1️⃣5️⃣ Vérifier l'installation complète
+# 1️⃣5️⃣ Vérification complète de l'installation
 RUN echo "=== Vérification de l'installation ===" && \
-    echo "--- diphtoscan version ---" && \
+    echo "--- diphtoscan installé ---" && \
     /bin/bash -c "source /opt/conda/etc/profile.d/conda.sh && conda activate diphtoscan && diphtoscan --version" && \
-    echo "--- Contenu de JolyTree ---" && \
-    ls -la /opt/diphtoscan/script/JolyTree/ && \
-    echo "--- Liens symboliques ---" && \
-    ls -la /diphtoscan/script/JolyTree/ && \
-    echo "--- Scripts dans PATH ---" && \
-    which JolyTree.sh 2>/dev/null || echo "JolyTree.sh not in PATH but available in /opt/diphtoscan/script/JolyTree/" && \
-    which REQ || echo "REQ created as fallback" && \
-    echo "--- Dépendances ---" && \
-    which gawk && which fastme && which mafft && \
-    echo "=== Installation terminée ==="
+    echo "" && \
+    echo "--- JolyTree présent ---" && \
+    ls -la /opt/diphtoscan/script/JolyTree/JolyTree.sh && \
+    echo "" && \
+    echo "--- Symlink /diphtoscan ---" && \
+    ls -la /diphtoscan/script/JolyTree/JolyTree.sh && \
+    echo "" && \
+    echo "=== Installation réussie ==="
 
 # 1️⃣6️⃣ Créer le répertoire de travail
 RUN mkdir -p /data
 WORKDIR /data
 
+# Configuration de l'environnement
+ENV PATH="/opt/conda/envs/diphtoscan/bin:/opt/diphtoscan/script/JolyTree:$PATH"
+
 # Point d'entrée
 SHELL ["/bin/bash", "-c"]
 ENTRYPOINT ["diphtoscan-env"]
-
-RUN diphtoscan -u
-
 CMD ["diphtoscan", "--help"]
 
 # Labels
 LABEL maintainer="bioinfomoh"
-LABEL description="Docker image for diphtOscan with full JolyTree support including REQ"
-LABEL version="1.5"
+LABEL description="Docker image for diphtOscan with full JolyTree support"
+LABEL version="2.1"

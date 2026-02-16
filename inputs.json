@@ -1,6 +1,12 @@
 {
-    "wf_diphtheria_scan.assembly": 
-        "data/CB521_filtered_contigs.fasta"
+    "wf_diphtheria_scan.assemblies": [
+        "data/CB521_filtered_contigs.fasta",
+        "data/CB522_filtered_contigs.fasta",
+        "data/CB527_filtered_contigs.fasta",
+        "data/CB530_filtered_contigs.fasta",
+        "data/CB537_filtered_contigs.fasta",
+        "data/CB534_filtered_contigs.fasta"]
+        
      
     
 }
