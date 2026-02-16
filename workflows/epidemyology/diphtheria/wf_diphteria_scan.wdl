@@ -18,7 +18,7 @@ workflow wf_diphtheria_scan {
         Boolean res_vir = true
         Boolean integron = true
         Boolean extend_genotyping = false
-        Boolean tree = true
+        Boolean tree = false
         Boolean update_db = true
 
         Int threads = 16
