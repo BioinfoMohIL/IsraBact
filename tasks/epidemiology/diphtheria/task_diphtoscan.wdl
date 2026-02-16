@@ -13,7 +13,6 @@ task diphtoscan {
 
         Int threads 
         Boolean update_db
-        String docker_image = docker_image
     }
 
     command <<<
@@ -44,7 +43,7 @@ task diphtoscan {
     }
 
     runtime {
-        docker: docker_image
+        docker: "bioinfomoh/diphtoscan:latest"
         cpu: threads
         memory: "8G"
     }

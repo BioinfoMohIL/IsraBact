@@ -20,7 +20,6 @@ workflow wf_diphtheria_scan {
         Boolean extend_genotyping = false
         Boolean tree = false
         Boolean update_db = true
-        String docker_image = "bioinfomoh/diphtoscan:latest"
 
         Int threads = 16
     }
