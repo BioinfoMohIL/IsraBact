@@ -1,3 +1,0 @@
-# integron_finder 2.0.6 
-# cmd: integron_finder --cpu 16 --outdir results/ --gbk --func-annot --mute /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CB521_filtered_contigs.fasta
-# No Integron found
