@@ -12,10 +12,14 @@ task diphtoscan {
         Boolean tree
 
         Int threads 
+        Boolean update_db
         String docker_image = "bioinfomoh/diphtoscan:latest"
     }
 
-    command {
+    command <<<
+        # Update the db before
+        ~{if update_db then "diphtoscan -u" else ""}
+
         diphtoscan \
         -a ~{sep=" " my_input} \
         ~{if mlst then "-st" else ""} \
@@ -25,11 +29,18 @@ task diphtoscan {
         ~{if integron then "-integron" else ""} \
         ~{if tree then "-tree" else ""} \
         -o results \
-        --threads ~{threads} \
-    }
+        --threads ~{threads} 
+
+        if [[ -d results && "$(ls -A results)" ]]; then
+            zip -r results.zip results
+        fi
+
+
+    >>>
+
 
     output {
-        Array[File] results = glob("results/*")
+        File results = "results.zip"
     }
 
     runtime {

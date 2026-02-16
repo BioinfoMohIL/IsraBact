@@ -4,7 +4,6 @@ import "../../../tasks/epidemiology/diphtheria/task_diphtoscan.wdl" as task_diph
 import "../../../tasks/task_fail.wdl" as task_fail
 
 workflow wf_diphtheria_scan {
-    workflow species_detection {
     meta {
         description: "diphtOscan is a tool to search genomic assemblies of Corynebacterium diphtheriae and other species of the Corynebacterium diphtheriae species complex (CdSC) - (https://gitlab.pasteur.fr/BEBP/diphtoscan) ."
         author: "David Maimoun"
@@ -20,8 +19,9 @@ workflow wf_diphtheria_scan {
         Boolean integron = true
         Boolean extend_genotyping = false
         Boolean tree = false
+        Boolean update_db = true
 
-        Int threads = 12
+        Int threads = 16
     }
 
     Array[File] input_files = flatten([
@@ -44,11 +44,14 @@ workflow wf_diphtheria_scan {
             extend_genotyping = extend_genotyping,
             integron = integron,
             tree = tree,
-            threads = threads
+            threads = threads,
+            update_db = update_db
     }
 
+
     output {
-        Array[File] results = diphtoscan.results
+        File diphtoscan_results = select_first([diphtoscan.results, fail.fail_logs])
+
     }
 }
 

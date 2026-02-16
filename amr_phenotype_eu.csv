@@ -1,8 +1,0 @@
-Isolate_ID,Species,Country,Year,Source,Host,Ciprofloxacin,Ampicillin,Tetracycline,Colistin
-ISO_001,E. coli,France,2021,Urine,Human,R,R,S,S
-ISO_002,e.coli,france,2021,Blood,Human,S,R,R,R
-ISO_003,Salmonella sp.,Germany,2020,Stool,Human,R,R,S,
-ISO_004,E. coli,Italy,2020,Urine,Human,,S,R,R
-ISO_005,Klebsiella,Denmark,2021,Blood,Human,R,R,R,R
-ISO_006,Klebsiella,Germany,2022,Stool,Animal,R,,S,R
-ISO_007,Salmonella sp.,Italy,2021,Stool,Animal,S,R,R,S

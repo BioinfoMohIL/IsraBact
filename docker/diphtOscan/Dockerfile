@@ -16,8 +16,11 @@ RUN apt-get update && apt-get install -y \
     ca-certificates \
     gawk \
     bc \
+    zip \
+    gzip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
 
 # 2️⃣ Installer Miniconda avec Python 3.10
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py310_23.11.0-2-Linux-x86_64.sh -O /tmp/miniconda.sh \
