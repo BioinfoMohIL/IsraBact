@@ -60,7 +60,7 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/virulence/wf_virulence_finder.wdl
 
-  - name: Bordetella_Typing_PasterDB_MOH
+  - name: Bordetella_Typing_PasteurDB_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/species_typing/bordetella/wf_bordetella_typing.wdl
   
