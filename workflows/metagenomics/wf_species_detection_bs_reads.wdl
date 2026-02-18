@@ -1,6 +1,6 @@
 version 1.0
 
-workflow SpeciesDetection {
+workflow wf_species_detection_bs {
     input {
         String basespace_collection_id 
         String api_server
@@ -225,7 +225,7 @@ task Detect_Species {
     String sample_id
     
     String docker = "bioinfomoh/specie_detection:1"
-    Int cpu = 8
+    Int cpu = 16
   
   }
 
