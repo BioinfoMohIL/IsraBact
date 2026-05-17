@@ -92,9 +92,11 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/epidemyology/diphtheria/wf_diphteria_scan.wdl
 
+
   - name: Assembly_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/utilities/wf_assembly.wdl
+
 
   - name: Unzip_Into_Bucket_Helper_MOH
     subclass: WDL
