@@ -95,3 +95,7 @@ workflows:
   - name: Assembly_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/utilities/wf_assembly.wdl
+
+  - name: Unzip_Into_Bucket_Helper_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/helpers/wf_unzip_into_bucket.wdl
