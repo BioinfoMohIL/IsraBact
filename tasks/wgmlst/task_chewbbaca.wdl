@@ -105,49 +105,27 @@ task allele_calling {
 
         else
             case "$PREFIX" in
-
                 CA)
-
                     GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/campylobacter_jejuni/Campylobacter_jejuni_wgMLST_2025-07-31T16_53_57.662910.zip"
-
                     ;;
-
                 EC|F-EC)
-
                     GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/escherichia_coli/Escherichia_coli_wgMLST_2025-08-01T13_27_15.392572.zip"
-
                     ;;
-
                 SA|SO)
-
                     GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/salmonella_enterica/Salmonella_enterica_wgMLST_2025-08-01T20_14_39.891230.zip"
-
                     ;;
-
                 ST)
-
                     GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/streptococcus_pyogenes/Streptococcus_pyogenes_wgMLST_2025-07-23T16_14_20.901319.zip"
-
                     ;;
-
                 NM|M)
-
                     GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/neisseria_meningitidis/Neisseria_meningitidis_cgMLST_2025-08-01T16_08_32.955509.zip"
-
                     ;;
-
                 LF|LC)
-
                     GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/listeria/Listeria_wgMLST.zip"
-
                     ;;
-
                 *)
-
                     echo "[error] Unsupported species prefix: $PREFIX"
-
                     exit 1
-
                     ;;
 
             esac
