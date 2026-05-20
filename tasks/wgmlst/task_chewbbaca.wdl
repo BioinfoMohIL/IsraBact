@@ -77,7 +77,7 @@ task fetch_species_schema_adapted {
 task allele_calling {
     input {
         String species
-        Array[File]? assemblies
+        Array[File] assemblies
         File? assemblies_zipped
         File? schema_adapted_zip
         Int     allele_call_mode               
