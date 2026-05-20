@@ -1,6 +1,6 @@
 version 1.0
 
-import "../../tasks/cgmlst/task_chewbbaca.wdl" as task_chewbbaca
+import "../../tasks/wgmlst/task_chewbbaca.wdl" as task_chewbbaca
 import "../../tasks/task_fail.wdl" as task_fail
 
 workflow wf_chewbbaca {

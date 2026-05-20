@@ -98,6 +98,6 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/helpers/wf_unzip_into_bucket.wdl
 
-  - name: cg/wgMLST_ChewBBACA_MOH
+  - name: wgMLST_ChewBBACA_MOH
     subclass: WDL
-    primaryDescriptorPath: /workflows/cgmlst/wf_chewbbaca.wdl
+    primaryDescriptorPath: /workflows/wgmlst/wf_chewbbaca.wdl
