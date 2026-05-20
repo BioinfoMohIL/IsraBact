@@ -1,12 +1,12 @@
 {
-    "wf_diphtheria_scan.assemblies": [
-        "data/CB521_filtered_contigs.fasta",
-        "data/CB522_filtered_contigs.fasta",
-        "data/CB527_filtered_contigs.fasta",
-        "data/CB530_filtered_contigs.fasta",
-        "data/CB537_filtered_contigs.fasta",
-        "data/CB534_filtered_contigs.fasta"]
-        
-     
-    
+  "wf_chewbbaca.schema_adapted_zip": "Campylobacter_jejuni_wgMLST_2025-07-31T16_53_57.662910.zip",
+  "wf_chewbbaca.assemblies": [
+    "CN0131_filtered_contigs.fasta",
+    "CN0132_filtered_contigs.fasta",
+    "CN0133_filtered_contigs.fasta"
+  ],
+  "species": "Campylobacter"
+  
 }
+  
+  

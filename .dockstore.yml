@@ -32,10 +32,6 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/data_visualization/wf_amr_visualization.wdl
 
-  - name: CgMLST_ChewBBACA_MOH
-    subclass: WDL
-    primaryDescriptorPath: /workflows/cgmlst/wf_chewbbaca.wdl
-
   - name: MGT_Reads2Alleles_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/wf_mgt_reads_2_alleles.wdl
@@ -101,3 +97,7 @@ workflows:
   - name: Unzip_Into_Bucket_Helper_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/helpers/wf_unzip_into_bucket.wdl
+
+  - name: cg/wgMLST_ChewBBACA_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/cgmlst/wf_chewbbaca.wdl
