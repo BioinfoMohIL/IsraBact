@@ -109,7 +109,7 @@ task allele_calling {
 
             case "$PREFIX" in
                 CA)
-                    GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/campylobacter_jejuni/Campylobacter_jejuni_wgMLST_2025-07-31T16_53_57.662910.zip"
+                    GCS_PATH="gs://fc-2e6ab592-cfdf-461e-aa3e-037d7d033cfc/Campylobacter_jejuni_wgMLST_2025-07-31T16_53_57.662910.zip"
                     ;;
                 EC|F-EC)
                     GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/escherichia_coli/Escherichia_coli_wgMLST_2025-08-01T13_27_15.392572.zip"
