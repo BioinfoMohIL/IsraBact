@@ -1,9 +1,9 @@
 {
-  "wf_chewbbaca.schema_adapted_zip": "Campylobacter_jejuni_wgMLST_2025-07-31T16_53_57.662910.zip",
+  "wf_chewbbaca.schema_adapted_zip": "test/Campylobacter_jejuni_wgMLST_2025-07-31T16_53_57.662910.zip",
   "wf_chewbbaca.assemblies": [
-    "CN0131_filtered_contigs.fasta",
-    "CN0132_filtered_contigs.fasta",
-    "CN0133_filtered_contigs.fasta"
+    "test/CN0131_filtered_contigs.fasta",
+    "test/CN0132_filtered_contigs.fasta",
+    "test/CN0133_filtered_contigs.fasta"
   ],
   "species": "Campylobacter"
   

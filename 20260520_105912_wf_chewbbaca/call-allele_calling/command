@@ -1,0 +1,116 @@
+
+set -e
+
+SPECIES="Campylobacter"
+
+echo "[info] Requested species: $SPECIES"
+
+if [ "true" = "true" ]; then
+    echo "[info] Using provided schema archive"
+
+    cp "/mnt/miniwdl_task_container/work/_miniwdl_inputs/0/Campylobacter_jejuni_wgMLST_2025-07-31T16_53_57.662910.zip" schema_adapted_archive
+
+else
+    echo "[info] No custom archive provided, using default GCS schema"
+
+    case "$SPECIES" in
+        Campylobacter)
+            GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/campylobacter_jejuni/Campylobacter_jejuni_wgMLST_2025-07-31T16_53_57.662910.zip"
+            ;;
+        Escherichia coli)
+            GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/escherichia_coli/Escherichia_coli_wgMLST_2025-08-01T13_27_15.392572.zip"
+            ;;
+        Salmonella)
+            GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/salmonella_enterica/Salmonella_enterica_wgMLST_2025-08-01T20_14_39.891230.zip"
+            ;;
+        Streptococcus)
+            GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/streptococcus_pyogenes/Streptococcus_pyogenes_wgMLST_2025-07-23T16_14_20.901319.zip"
+            ;;
+        Neisseria meningitidis)
+            GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/neisseria_meningitidis/Neisseria_meningitidis_cgMLST_2025-08-01T16_08_32.955509.zip"
+            ;;
+        Listeria monocytogenes)
+            GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/listeria/Listeria_wgMLST.zip"
+            ;;
+        *)
+        echo "[error] Unsupported species: $SPECIES"
+        exit 1
+        ;;
+    esac
+
+    echo "[info] Downloading archive from:"
+    echo "$GCS_PATH"
+    cp "$GCS_PATH" schema_adapted_archive.zip
+    mv schema_adapted_archive.zip schema_adapted_archive
+fi
+
+mkdir -p schema_adapted
+unzip -q schema_adapted_archive -d schema_adapted
+
+mkdir -p assemblies_files
+
+echo "[2] Preparing assemblies input"
+# Cas 1 : assemblies_zipped 
+if [ -s "" ]; then
+    echo "Decompressing assemblies_zipped"
+    tmp_dir=$(mktemp -d)
+
+    if [[ "$(basename "")" == *.zip ]]; then
+        unzip -q "" -d "$tmp_dir"
+    else
+        tar -xf "" -C "$tmp_dir"
+    fi
+
+    echo "Moving files to assemblies_files"
+    find "$tmp_dir" -type f \( -name "*.fasta" -o -name "*.fa" -o -name "*.fna" \) -exec mv {} assemblies_files/ \;
+    rm -rf "$tmp_dir"
+fi
+
+# Cas 2 : assemblies array files
+if [ "/mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CN0131_filtered_contigs.fasta /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CN0132_filtered_contigs.fasta /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CN0133_filtered_contigs.fasta" != "" ]; then
+    echo "Copying assemblies list"
+    for f in /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CN0131_filtered_contigs.fasta /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CN0132_filtered_contigs.fasta /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CN0133_filtered_contigs.fasta; do
+        cp "$f" assemblies_files/
+    done
+fi
+
+echo "[3] Running AlleleCall (chewBBACA v3 - Fast Mode)"
+chewBBACA.py AlleleCall \
+            -i assemblies_files \
+            -g schema_adapted \
+            -o calling \
+            --cpu 30 \
+
+            # --mode 4 \
+            # --bsr 0.600000 \
+            # --l 0 \
+            # --t 11 \
+            # --st 0.200000 \
+            #  \
+            #  \
+
+echo "[4] Cleaning sample names"
+results_file=$(find calling -name "results_alleles.tsv" | head -n 1)
+
+awk -F'\t' 'BEGIN{OFS="\t"} {
+    if (NR == 1) {
+        print
+    } else {
+        name = $1
+        sub(/\.[^.]+$/, "", name)
+        split(name, parts, /[_-]/)
+        $1 = parts[1]
+        print
+    }
+}' "$results_file" > alleles_cleaned.tsv
+
+echo "[5] Generating V3 Interactive Evaluation Report"
+chewBBACA.py AlleleCallEvaluator \
+            -i calling \
+            -g schema_adapted \
+            -o evaluation_report
+
+echo "Compressing outputs for Terra..."
+tar -czf schema_adapted.tar.gz schema_adapted
+tar -czf calling.tar.gz calling
+tar -czf evaluation_report.tar.gz evaluation_report

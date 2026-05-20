@@ -110,7 +110,7 @@ task allele_calling {
                 Campylobacter)
                     GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/campylobacter_jejuni/Campylobacter_jejuni_wgMLST_2025-07-31T16_53_57.662910.zip"
                     ;;
-                "Escherichia coli")
+                Escherichia coli)
                     GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/escherichia_coli/Escherichia_coli_wgMLST_2025-08-01T13_27_15.392572.zip"
                     ;;
                 Salmonella)
@@ -119,10 +119,10 @@ task allele_calling {
                 Streptococcus)
                     GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/streptococcus_pyogenes/Streptococcus_pyogenes_wgMLST_2025-07-23T16_14_20.901319.zip"
                     ;;
-                "Neisseria meningitidis")
+                Neisseria meningitidis)
                     GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/neisseria_meningitidis/Neisseria_meningitidis_cgMLST_2025-08-01T16_08_32.955509.zip"
                     ;;
-                "Listeria monocytogenes")
+                Listeria monocytogenes)
                     GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/listeria/Listeria_wgMLST.zip"
                     ;;
                 *)
