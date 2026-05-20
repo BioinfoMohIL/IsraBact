@@ -120,6 +120,9 @@ task allele_calling {
                 NM|M)
                     GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/neisseria_meningitidis/Neisseria_meningitidis_cgMLST_2025-08-01T16_08_32.955509.zip"
                     ;;
+                 LG)
+                    GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/legionella_pneumophila/Legionella_pneumophila_wgMLST_2026-02-18T15_35_04.061183.zip"
+                    ;;
                 LF|LC)
                     GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/listeria/Listeria_wgMLST.zip"
                     ;;

@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>chewBBACA — Terra User Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Couleurs (inchangées) */
+    --green-dark:   #0a4a30;
+    --green-mid:    #0f6e56;
+    --green-light:  #e8f5ee;
+    --green-border: #b2dcc4;
+    --green-muted:  #4a7060;
+    --amber-dark:   #7a4500;
+    --amber-bg:     #fef8ee;
+    --amber-border: #f0d090;
+    --blue-dark:    #174a8a;
+    --blue-bg:      #eef5fd;
+    --blue-border:  #b0cff0;
+    --coral-dark:   #8a2a10;
+    --coral-bg:     #fdf0ed;
+    --coral-border: #f0b0a0;
+    --text-primary: #111c14;
+    --text-body:    #334a3a;
+    --text-muted:   #5a7868;
+    --bg-page:      #f4f7f5;
+    --bg-white:     #ffffff;
+    --border-soft:  #d8ead0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg-page);
+    color: var(--text-body);
+    line-height: 1.75; /* Plus aéré pour la lisibilité */
+    font-size: 16px; /* Taille minimum WCAG AA */
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ────────────────────────────────
+     HERO
+  ──────────────────────────────── */
+  .hero {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border-soft);
+    padding: 3.5rem 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -60px;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(15,110,86,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 860px; margin: 0 auto; position: relative; }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--green-light);
+    border: 1px solid var(--green-border);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 13px; /* +1.5px */
+    font-family: 'DM Mono', monospace;
+    color: var(--green-mid); letter-spacing: 0.05em;
+    margin-bottom: 1.4rem; font-weight: 500;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.25rem, 6vw, 3.5rem); /* Plus gros */
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--green-mid);
+  }
+
+  .hero-sub {
+    font-size: 17px; /* +1px */
+    color: var(--text-muted);
+    max-width: 580px;
+    line-height: 1.8;
+    font-weight: 400;
+  }
+
+  .hero-badges {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 1.8rem;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 13px; border-radius: 20px;
+    font-size: 13px; /* +1.5px */
+    font-family: 'DM Mono', monospace; font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .badge-teal  { background: var(--green-light); color: var(--green-mid);  border: 1px solid var(--green-border); }
+  .badge-amber { background: var(--amber-bg);    color: var(--amber-dark); border: 1px solid var(--amber-border); }
+  .badge-blue  { background: var(--blue-bg);     color: var(--blue-dark);  border: 1px solid var(--blue-border);  }
+
+  /* ────────────────────────────────
+     TOC (table of contents)
+  ──────────────────────────────── */
+  .toc {
+    background: var(--bg-white);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    padding: 1.3rem 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .toc-title {
+    font-size: 12px; /* +1px */
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--text-muted); margin-bottom: 0.8rem;
+  }
+  .toc-list {
+    list-style: none;
+    display: flex; flex-wrap: wrap; gap: 6px 16px;
+  }
+  .toc-list a {
+    font-size: 14px; /* +1px */
+    color: var(--green-mid);
+    text-decoration: none; font-weight: 500;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .toc-list a:hover { text-decoration: underline; }
+  .toc-list a::before { content: '→'; font-size: 12px; opacity: 0.6; }
+
+  /* ────────────────────────────────
+     LAYOUT
+  ──────────────────────────────── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  /* ────────────────────────────────
+     SECTION HEADERS
+  ──────────────────────────────── */
+  .section-label {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 1.4rem;
+  }
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px; /* +1px */
+    font-weight: 500;
+    color: var(--green-mid);
+    background: var(--green-light);
+    border: 1px solid var(--green-border);
+    border-radius: 6px;
+    padding: 3px 10px;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem; /* +0.25rem */
+    font-weight: 300;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border-soft);
+    margin: 3rem 0;
+  }
+
+  /* ────────────────────────────────
+     INTRO — lead text
+  ──────────────────────────────── */
+  .lead {
+    font-size: 16.5px; /* +1px */
+    color: var(--text-body);
+    line-height: 1.85; /* Plus aéré */
+    margin-bottom: 1.5rem;
+    max-width: 740px;
+  }
+  .lead strong { color: var(--text-primary); font-weight: 600; }
+
+  /* ────────────────────────────────
+     INTRO CARDS
+  ──────────────────────────────── */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 12px;
+    margin-top: 0.5rem;
+  }
+  .intro-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    padding: 1.2rem 1.3rem;
+    transition: box-shadow 0.15s;
+  }
+  .intro-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .intro-card-icon {
+    width: 36px; height: 36px; border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; margin-bottom: 0.8rem;
+  }
+  .ico-teal  { background: var(--green-light); color: var(--green-mid); }
+  .ico-amber { background: var(--amber-bg);    color: var(--amber-dark); }
+  .ico-blue  { background: var(--blue-bg);     color: var(--blue-dark); }
+  .ico-coral { background: var(--coral-bg);    color: var(--coral-dark); }
+  .intro-card h3 {
+    font-size: 15px; /* +1.5px */
+    font-weight: 600;
+    color: var(--text-primary); margin-bottom: 5px;
+  }
+  .intro-card p  {
+    font-size: 14px; /* +1px */
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ────────────────────────────────
+     PIPELINE STEPS
+  ──────────────────────────────── */
+  .pipeline {
+    display: flex; flex-direction: column;
+    gap: 0; margin-top: 0.5rem;
+    position: relative;
+  }
+  .pipeline::before {
+    content: '';
+    position: absolute;
+    left: 19px; top: 44px; bottom: 44px; width: 1px;
+    background: linear-gradient(to bottom, var(--green-border), transparent);
+  }
+  .pipeline-step {
+    display: flex; gap: 18px;
+    padding: 1.1rem 0;
+    position: relative;
+  }
+  .step-dot {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--bg-white);
+    border: 1.5px solid var(--green-border);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; z-index: 1;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px; /* +1px */
+    font-weight: 500;
+    color: var(--green-mid);
+  }
+  .step-content { flex: 1; padding-top: 5px; }
+  .step-content h3 {
+    font-size: 16.5px; /* +1px */
+    font-weight: 600;
+    color: var(--text-primary); margin-bottom: 4px;
+  }
+  .step-content p  { font-size: 15px; /* +1px */ color: var(--text-muted); line-height: 1.75; }
+
+  /* ────────────────────────────────
+     PARAMS TABLE
+  ──────────────────────────────── */
+  .param-group { margin-bottom: 2rem; }
+  .param-group-title {
+    font-size: 12px; /* +1px */
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--green-mid);
+    margin-bottom: 0.5rem;
+    padding-bottom: 8px;
+    border-bottom: 1.5px solid var(--border-soft);
+  }
+  .param-row {
+    display: grid;
+    grid-template-columns: 220px 110px 1fr;
+    gap: 14px;
+    padding: 11px 0;
+    border-bottom: 1px solid #eef4f0;
+    align-items: start;
+  }
+  .param-row:last-child { border-bottom: none; }
+  .param-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px; /* +1.5px */
+    font-weight: 500;
+    color: #0a5040;
+    word-break: break-all;
+    line-height: 1.5;
+  }
+  .param-default {
+    font-family: 'DM Mono', monospace; font-size: 13px; /* +1px */
+    color: var(--amber-dark);
+    background: var(--amber-bg);
+    border: 1px solid var(--amber-border);
+    border-radius: 5px;
+    padding: 2px 8px;
+    display: inline-block; width: fit-content;
+  }
+  .param-required {
+    font-size: 12px; /* +1.5px */
+    font-family: 'DM Mono', monospace;
+    color: var(--coral-dark);
+    background: var(--coral-bg);
+    border: 1px solid var(--coral-border);
+    border-radius: 5px;
+    padding: 2px 8px;
+    display: inline-block; width: fit-content;
+  }
+  .param-desc {
+    font-size: 15px; /* +1.5px */
+    color: var(--text-body);
+    line-height: 1.7;
+  }
+  .param-desc strong { color: var(--text-primary); font-weight: 600; }
+
+  /* ────────────────────────────────
+     TERRA STEPS
+  ──────────────────────────────── */
+  .terra-steps { display: flex; flex-direction: column; gap: 14px; margin-top: 0.5rem; }
+  .terra-step {
+    background: var(--bg-white);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    padding: 1.3rem 1.5rem;
+    display: flex; gap: 16px; align-items: flex-start;
+    transition: box-shadow 0.15s;
+  }
+  .terra-step:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.05); }
+  .terra-step-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--green-light);
+    border: 1.5px solid var(--green-border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px; /* +1px */
+    font-weight: 500;
+    color: var(--green-mid); flex-shrink: 0; margin-top: 2px;
+  }
+  .terra-step-body h3 {
+    font-size: 17px; /* +1px */
+    font-weight: 600;
+    color: var(--text-primary); margin-bottom: 8px;
+  }
+  .terra-step-body p  {
+    font-size: 15.5px; /* +1px */
+    color: var(--text-body);
+    line-height: 1.8; margin-bottom: 6px;
+  }
+  .terra-step-body p:last-child { margin-bottom: 0; }
+  .terra-step-body ol {
+    padding-left: 22px; margin-bottom: 8px;
+  }
+  .terra-step-body li {
+    font-size: 15.5px; /* +1px */
+    color: var(--text-body);
+    line-height: 1.85; margin-bottom: 4px;
+  }
+  .terra-step-body a {
+    color: var(--green-mid);
+    text-decoration: none; font-weight: 500;
+  }
+  .terra-step-body a:hover { text-decoration: underline; }
+  .terra-step-body strong {
+    color: var(--text-primary); font-weight: 600;
+  }
+
+  /* ────────────────────────────────
+     INLINE CODE
+  ──────────────────────────────── */
+  code {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px; /* +1px */
+    color: #0a5040;
+    background: var(--green-light);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #c8ddd0;
+  }
+
+  /* ────────────────────────────────
+     TIP / ALERT
+  ──────────────────────────────── */
+  .tip {
+    display: flex; align-items: flex-start; gap: 9px;
+    margin-top: 12px;
+    background: var(--amber-bg);
+    border: 1px solid var(--amber-border);
+    border-radius: 10px; padding: 10px 14px;
+    font-size: 14px; /* +1px */
+    color: #6a3d00; line-height: 1.7;
+  }
+  .tip i { color: #c07800; margin-top: 2px; flex-shrink: 0; font-size: 17px; }
+
+  .alert {
+    display: flex; gap: 12px;
+    background: var(--coral-bg);
+    border: 1px solid var(--coral-border);
+    border-left: 3px solid #d04020;
+    border-radius: 10px; padding: 1rem 1.2rem;
+    margin-top: 1.5rem;
+  }
+  .alert i { color: var(--coral-dark); flex-shrink: 0; margin-top: 2px; font-size: 19px; }
+  .alert p  { font-size: 15px; /* +1px */ color: #6a1a08; line-height: 1.75; }
+  .alert strong { color: #5a1000; font-weight: 600; }
+
+  /* ────────────────────────────────
+     CODE BLOCK
+  ──────────────────────────────── */
+  .code-block {
+    background: #f0f7f2;
+    border: 1px solid #c0ddc8;
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+    margin-top: 1rem;
+    overflow-x: auto;
+  }
+  .code-block pre {
+    font-family: 'DM Mono', monospace;
+    font-size: 13.5px; /* +1px */
+    color: #1e3a28;
+    line-height: 1.9;
+    white-space: pre;
+  }
+  .code-block pre .k { color: #0a5040; font-weight: 500; }
+  .code-block pre .v { color: #7a4000; }
+  .code-block pre .c { color: #7a9e87; }
+
+  /* ────────────────────────────────
+     OUTPUTS
+  ──────────────────────────────── */
+  .output-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 12px; margin-top: 0.5rem;
+  }
+  .output-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    display: flex; align-items: flex-start; gap: 12px;
+    transition: box-shadow 0.15s;
+  }
+  .output-card:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .output-card i {
+    color: var(--green-mid); margin-top: 2px;
+    flex-shrink: 0; font-size: 19px;
+  }
+  .output-card h4 {
+    font-size: 14px; /* +1.5px */
+    font-weight: 600;
+    color: var(--text-primary); margin-bottom: 4px;
+    font-family: 'DM Mono', monospace;
+  }
+  .output-card p { font-size: 14px; /* +1px */ color: var(--text-muted); line-height: 1.6; }
+
+  /* ────────────────────────────────
+     FOOTER
+  ──────────────────────────────── */
+  .footer {
+    border-top: 1px solid var(--border-soft);
+    background: var(--bg-white);
+    padding: 1.6rem 2rem;
+    text-align: center;
+    font-size: 13px; /* +1px */
+    color: var(--text-muted);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.03em;
+  }
+
+  /* ────────────────────────────────
+     RESPONSIVE — tailles encore plus grosses sur mobile
+  ──────────────────────────────── */
+  @media (max-width: 640px) {
+    .param-row { grid-template-columns: 1fr; gap: 6px; }
+    .hero { padding: 2.5rem 1.2rem 2rem; }
+    .section-title { font-size: 1.75rem; }
+    .terra-step { padding: 1rem 1.1rem; }
+    .container { padding: 2rem 1rem 3rem; }
+    
+    /* Tailles plus grosses sur mobile pour la lisibilité */
+    body { font-size: 17px; }
+    .hero h1 { font-size: clamp(2rem, 7vw, 2.8rem); }
+    .hero-sub { font-size: 16px; }
+    .section-title { font-size: 1.85rem; }
+    .step-content h3 { font-size: 17px; }
+    .step-content p, .terra-step-body li { font-size: 16px; }
+    .param-name { font-size: 15px; }
+    .param-desc { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ───────────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <i class="ti ti-dna" aria-hidden="true"></i>
+      User guide · Terra.bio
+    </div>
+    <h1>Running <em>chewBBACA</em><br>without writing code</h1>
+    <p class="hero-sub">
+      A step-by-step guide to running the cgMLST typing workflow on Terra —
+      from uploading your assemblies to downloading your results.
+    </p>
+    <div class="hero-badges">
+      <span class="badge badge-teal">
+        <i class="ti ti-tag"></i>chewBBACA v3.3.10
+      </span>
+      <span class="badge badge-amber">
+        <i class="ti ti-cloud"></i>Terra.bio
+      </span>
+      <span class="badge badge-blue">
+        <i class="ti ti-code"></i>WDL workflow
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONTAINER ──────────────────────────────────────── -->
+<div class="container">
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+      <li><a href="#intro">What is chewBBACA?</a></li>
+      <li><a href="#pipeline">What the workflow does</a></li>
+      <li><a href="#params">Parameters</a></li>
+      <li><a href="#howto">How to run on Terra</a></li>
+      <li><a href="#outputs">Output files</a></li>
+    </ul>
+  </div>
+
+  <!-- ── INTRO ─────────────────────────────────────────── -->
+  <div id="intro" class="section-label">
+    <span class="section-num">INTRO</span>
+    <h2 class="section-title">What is chewBBACA?</h2>
+  </div>
+
+  <p class="lead">
+    chewBBACA is a bioinformatics tool for large-scale bacterial genome
+    characterisation using <strong>cgMLST</strong> (core genome MultiLocus
+    Sequence Typing). It compares thousands of genes (loci) across bacterial
+    strains to produce a unique "genetic barcode" per strain — invaluable for
+    outbreak detection, epidemiological surveillance, and clone tracking.
+  </p>
+
+  <div class="intro-grid">
+    <div class="intro-card">
+      <div class="intro-card-icon ico-teal">
+        <i class="ti ti-schema"></i>
+      </div>
+      <h3>Adapted schema</h3>
+      <p>Species-specific reference database of loci. Pre-computed and provided as a .zip file by the bioinformatics team.</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-card-icon ico-amber">
+        <i class="ti ti-dna-2"></i>
+      </div>
+      <h3>AlleleCall</h3>
+      <p>Core step: compares each assembly against the schema to assign an allele number to every locus per strain.</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-card-icon ico-blue">
+        <i class="ti ti-filter"></i>
+      </div>
+      <h3>ExtractCgMLST</h3>
+      <p>Filters loci present in at least X% of strains to define the "core genome" used for downstream analysis.</p>
+    </div>
+    <div class="intro-card">
+      <div class="intro-card-icon ico-coral">
+        <i class="ti ti-file-type-csv"></i>
+      </div>
+      <h3>Output</h3>
+      <p>A TSV table — one row per strain, one column per locus — ready for GrapeTree or PHYLOViZ.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ── PIPELINE ──────────────────────────────────────── -->
+  <div id="pipeline" class="section-label">
+    <span class="section-num">01</span>
+    <h2 class="section-title">What the workflow does</h2>
+  </div>
+
+  <div class="pipeline">
+    <div class="pipeline-step">
+      <div class="step-dot">1</div>
+      <div class="step-content">
+        <h3>Input validation</h3>
+        <p>
+          The workflow checks that you have provided either
+          <code>assemblies</code> or <code>assemblies_zipped</code> — but not both.
+          If neither or both are given, it stops immediately with a clear error message.
+        </p>
+      </div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-dot">2</div>
+      <div class="step-content">
+        <h3>AlleleCall</h3>
+        <p>
+          Decompresses the adapted schema, prepares the assembly files, and runs
+          chewBBACA to assign an allele to each locus for each strain. Sample names
+          are automatically cleaned (extension stripped, first token kept).
+        </p>
+      </div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-dot">3</div>
+      <div class="step-content">
+        <h3>ExtractCgMLST</h3>
+        <p>
+          Extracts the core genome at each threshold defined in
+          <code>cgmlst_thresholds</code> (e.g. 95%, 99%, 100%).
+          One result file is produced per threshold.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ── PARAMETERS ────────────────────────────────────── -->
+  <div id="params" class="section-label">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Workflow parameters</h2>
+  </div>
+
+  <!-- Required -->
+  <div class="param-group">
+    <div class="param-group-title">Required inputs</div>
+
+    <div class="param-row">
+      <div><div class="param-name">assemblies</div></div>
+      <div><span class="param-required">required *</span></div>
+      <div class="param-desc">
+        List of .fasta / .fa / .fna files — one per strain.
+      </div>
+    </div>
+
+     <div class="param-row">
+      <div><div class="param-name">specie_prefix</div></div>
+      <div><span class="param-required">required *</span></div>
+      <div class="param-desc">
+         "CA" | "EC" | "F-EC" | "SA" | "SO" | "ST" | "NM" | "M" | "LF" | "LC" | "LG".<br>
+         <em>Don't forget the quotation marks</em> 
+        </div>
+    </div>
+
+ <br><br>
+
+  <!-- AlleleCall -->
+  <div class="param-group">
+    <div class="param-group-title">AlleleCall — advanced parameters</div>
+
+    <div class="param-row">
+      <div><div class="param-name">allele_call_mode</div></div>
+      <div><span class="param-default">4</span></div>
+      <div class="param-desc">
+        <strong>Mode 4 = fast mode</strong> (recommended for routine use).
+        Mode 1 is more thorough but significantly slower — only use it for
+        final publication-grade analyses.
+      </div>
+    </div>
+
+    <div class="param-row">
+      <div><div class="param-name">allele_call_bsr</div></div>
+      <div><span class="param-default">0.6</span></div>
+      <div class="param-desc">
+        BLAST Score Ratio threshold to validate an allele match. Value between
+        0 and 1 — do not change unless you know what you are doing.
+      </div>
+    </div>
+
+    <div class="param-row">
+      <div><div class="param-name">allele_call_minimum_length</div></div>
+      <div><span class="param-default">0</span></div>
+      <div class="param-desc">
+        Minimum allele length in base pairs. <code>0</code> means no filter
+        is applied — all allele lengths are accepted.
+      </div>
+    </div>
+
+    <div class="param-row">
+      <div><div class="param-name">allele_call_translation_table</div></div>
+      <div><span class="param-default">11</span></div>
+      <div class="param-desc">
+        Genetic code used for translation. <code>11</code> is the standard
+        table for bacteria and archaea. Only change for unusual organisms
+        (e.g. Mycoplasma = <code>4</code>).
+      </div>
+    </div>
+
+    <div class="param-row">
+      <div><div class="param-name">allele_call_size_threshold</div></div>
+      <div><span class="param-default">0.2</span></div>
+      <div class="param-desc">
+        Allowed size variation (±20%) relative to the reference allele length.
+        Alleles deviating beyond this threshold will be rejected as ASM or ALM.
+      </div>
+    </div>
+
+    <div class="param-row">
+      <div><div class="param-name">allele_call_cds_input</div></div>
+      <div><span class="param-default">false</span></div>
+      <div class="param-desc">
+        Set to <code>true</code> only if your input files already contain
+        annotated CDS sequences. Leave as <code>false</code> in most cases.
+      </div>
+    </div>
+
+    <div class="param-row">
+      <div><div class="param-name">allele_call_no_inferred</div></div>
+      <div><span class="param-default">false</span></div>
+      <div class="param-desc">
+        If <code>true</code>, disables automatic addition of newly inferred
+        alleles to the schema. Useful for strictly reproducible results across runs.
+      </div>
+    </div>
+  </div>
+
+  <br><br>
+  <!-- ExtractCgMLST -->
+  <div class="param-group">
+    <div class="param-group-title">ExtractCgMLST</div>
+    <div class="param-row">
+      <div><div class="param-name">cgmlst_thresholds</div></div>
+      <div><span class="param-default">[0.95, 0.99, 1]</span></div>
+      <div class="param-desc">
+        List of presence thresholds. <code>0.95</code> means "keep loci present
+        in at least 95% of strains". One output file is generated per threshold.
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ── HOW TO RUN ─────────────────────────────────────── -->
+  <div id="howto" class="section-label">
+    <span class="section-num">03</span>
+    <h2 class="section-title">How to run it on Terra</h2>
+  </div>
+
+  <div class="terra-steps">
+
+    <div class="terra-step">
+      
+      <div class="terra-step-num">1</div>
+      <div class="terra-step-body">
+        <h3>Open your Terra workspace</h3>
+        <p>
+          Go to <a style="color:dodgerblue" href="https://app.terra.bio" target="_blank">app.terra.bio</a> and sign in
+          with your Google account. Select the shared workspace provided by your team.
+        </p>
+      </div>
+    </div>
+
+    <div class="terra-step">
+      <div class="terra-step-num">2</div>
+      <div class="terra-step-body">
+        <h3>Find the workflow</h3>
+        <p>
+          If this is your first time, import it from
+          <a style="color:dodgerblue" href="https://dockstore.org/workflows/github.com/BioinfoMohIL/IsraBact/wgMLST_ChewBBACA_MOH:main?tab=info"
+             target="_blank">Dockstore.org</a>
+          and click <strong>Launch with Terra</strong>.
+        </p>
+        <p>
+          In the workspace menu, click <strong>Workflows</strong>. You will find
+          <code>wgMLST_ChewBBACA_MOH</code> already imported and ready to configure.
+        </p>
+      </div>
+    </div>
+
+    <div class="terra-step">
+      <div class="terra-step-num">3</div>
+      <div class="terra-step-body">
+        <h3>Upload the adapted schema to the workspace bucket</h3>
+
+        <!-- ── Tip success ── -->
+        <div class="tip tip-success">
+          <i class="ti ti-circle-check"></i>
+          <span>
+            <strong>Already done for you.</strong>
+            The workflow automatically selects the correct schema based on the
+            species prefix in your input file names — no manual configuration needed.
+          </span>
+        </div>
+        <br>
+
+        <p>
+          All adapted schemas have been downloaded from
+          <a style="color:dodgerblue" href="https://chewbbaca.online/stats" target="_blank">chewBBACA Schema Stats</a>
+          (Compressed version) and stored in a shared bucket accessible from the workspace:
+        </p>
+
+        <div class="code-block" style="margin-top: 0.8rem;">
+          <pre><span class="k">IMOH-Workspace-Sequencing-Data/datasets/chewbbaca</span></pre>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="terra-step">
+      <div class="terra-step-num">4</div>
+      <div class="terra-step-body">
+        <h3>Configure the inputs</h3>
+        <p>
+          Click on the workflow, then fill in the fields in the interface 
+        </p>
+        <table border="1" style="border-collapse: collapse; width: 100%; text-align: left; font-family: sans-serif;">
+    <thead>
+        <tr style="background-color: #f2f2f2;">
+            <th style="padding: 8px; border: 1px solid #ddd;">Task name</th>
+            <th style="padding: 8px; border: 1px solid #ddd;">Variable</th>
+            <th style="padding: 8px; border: 1px solid #ddd;">Type</th>
+            <th style="padding: 8px; border: 1px solid #ddd;">Input value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="padding: 8px; border: 1px solid #ddd;">wf_chewbbaca</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">assemblies</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">Array[File]</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">this.seq_datas.assembly_fasta</td>
+        </tr>
+        <tr>
+            <td style="padding: 8px; border: 1px solid #ddd;">wf_chewbbaca</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">specie_prefix</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">String</td>
+            <td style="padding: 8px; border: 1px solid #ddd;">"CA"</td>
+        </tr>
+    </tbody>
+</table>
+        <div class="tip">
+          <i class="ti ti-info-circle"></i>
+          <span>
+            All other parameters are defaults .
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="terra-step">
+      <div class="terra-step-num">5</div>
+      <div class="terra-step-body">
+        <h3>Launch and monitor</h3>
+        <p>
+          Click <strong>Run Analysis</strong>. Terra displays the progress of
+          each task in real time. If a task turns red, click on it to read the
+          error log.
+        </p>
+        <div class="tip">
+          <i class="ti ti-clock"></i>
+          <span>
+            Expect 30–90 minutes depending on the number of strains and schema size.
+            Terra can send an email notification when the job completes.
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="terra-step">
+      <div class="terra-step-num">6</div>
+      <div class="terra-step-body">
+        <h3>Retrieve your results</h3>
+        <p>
+          Once complete, output files appear under
+          <strong>Job History</strong> → click the job → <strong>Outputs</strong>.
+          Download them directly from the browser or copy their
+          <code>gs://</code> path for downstream tools.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ── OUTPUTS ───────────────────────────────────────── -->
+  <div id="outputs" class="section-label">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Output files</h2>
+  </div>
+
+  <div class="output-grid">
+    <div class="output-card">
+      <i class="ti ti-table"></i>
+      <div>
+        <h4>chew_alleles</h4>
+        <p>Main TSV table: one row per strain, one column per locus. Contains cleaned allele numbers ready for analysis.</p>
+      </div>
+    </div>
+    <div class="output-card">
+      <i class="ti ti-file-zip"></i>
+      <div>
+        <h4>chew_visualization_zip</h4>
+        <p>Archive with cgMLST results filtered at each threshold — ready for GrapeTree or PHYLOViZ.</p>
+      </div>
+    </div>
+    <div class="output-card">
+      <i class="ti ti-file-text"></i>
+      <div>
+        <h4>fail_logs</h4>
+        <p>Only present if the workflow fails input validation. Contains the error message explaining what went wrong.</p>
+      </div>
+    </div>
+    <div class="output-card">
+      <i class="ti ti-tag"></i>
+      <div>
+        <h4>chew_version</h4>
+        <p>Version string (<code>3.3.10</code>). Useful for traceability and reporting in publications.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert">
+    <i class="ti ti-alert-triangle"></i>
+    <p>
+      You must provide either <code>assemblies</code> (a list of individual files)
+      or <code>assemblies_zipped</code> (a single archive) —
+      <strong>never both at the same time</strong>. The workflow will stop
+      immediately with an error message if both fields are filled in.
+    </p>
+  </div>
+
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<div class="footer">
+  wf_chewbbaca · chewBBACA v3.3.10 · Terra.bio
+  &nbsp;·&nbsp; questions? contact the bioinformatics team
+</div>
+
+</body>
+</html>
