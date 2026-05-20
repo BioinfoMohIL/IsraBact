@@ -207,7 +207,7 @@ workflow assembly {
     File assembly_fasta = assembly_file
     String assembler_used = assembler
 
-    File contigs_gfa = select_first([spades.assembly_gfa, unicycler.assembly_gfa])
+    File? contigs_gfa = select_first([spades.assembly_gfa, unicycler.assembly_gfa])
     File? filtered_contigs_metrics = filter_contigs.assembly_filtering_metrics
     File? pilon_changes = pilon.changes
     File? pilon_vcf = pilon.vcf

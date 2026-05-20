@@ -30,7 +30,7 @@ task unicycler {
 
     output {
         File assembly_fasta = "~{samplename}.fasta"
-        File assembly_gfa = "~{samplename}.gfa"
+        File? assembly_gfa = "~{samplename}.gfa"
         File unicycler_log = "output/unicycler.log"
         String unicycler_version = read_string("VERSION")
         Array[File] unicycler_intermediate_graphs = glob("output/0*.gfa")
