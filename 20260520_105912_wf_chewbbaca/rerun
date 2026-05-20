@@ -1,1 +1,0 @@
-pushd /home/user1/Desktop/programs/wdl/IsraBact && miniwdl run workflows/wgmlst/wf_chewbbaca.wdl --input inputs.json; popd
