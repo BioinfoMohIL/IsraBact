@@ -122,14 +122,13 @@ task allele_calling {
                 Neisseria meningitidis)
                     GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/neisseria_meningitidis/Neisseria_meningitidis_cgMLST_2025-08-01T16_08_32.955509.zip"
                     ;;
-                *)
                 Listeria monocytogenes)
                     GCS_PATH="gs://fc-5d4556f8-3de6-4709-85da-11445772644d/datasets/chewbbaca/listeria/Listeria_wgMLST.zip"
                     ;;
                 *)
-                    echo "[error] Unsupported species: $SPECIES"
-                    exit 1
-                    ;;
+                echo "[error] Unsupported species: $SPECIES"
+                exit 1
+                ;;
             esac
 
             echo "[info] Downloading archive from:"
