@@ -6,8 +6,8 @@ import "../../tasks/task_fail.wdl" as task_fail
 workflow wf_chewbbaca {
     input {
         Array[File] assemblies
-        String species
-        File?   schema_adapted_zip
+        File   schema_adapted
+        File?  schema_adapted_zip
         File? assemblies_zipped
 
 
@@ -83,7 +83,7 @@ workflow wf_chewbbaca {
 
     call task_chewbbaca.allele_calling {
         input:
-            species            = species,
+            schema_adapted = schema_adapted
             schema_adapted_zip = schema_adapted_zip,
             assemblies = assemblies,
             assemblies_zipped = assemblies_zipped,
