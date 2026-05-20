@@ -82,7 +82,6 @@ workflow wf_chewbbaca {
 
     call task_chewbbaca.allele_calling {
         input:
-            prefix = prefix,
             schema_adapted_zip = schema_adapted_zip,
             assemblies = assemblies,
             assemblies_zipped = assemblies_zipped,
