@@ -8,7 +8,7 @@ workflow concatenate_illumina_lanes {
     String samplename
     File read1
     File? read2
-    Int disk_size
+    Int? disk_size
   
   }
   
