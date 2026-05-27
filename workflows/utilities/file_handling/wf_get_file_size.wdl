@@ -16,7 +16,7 @@ workflow concatenate_illumina_lanes {
     input:
       samplename = samplename, 
       read1 = read1,
-      read2 = read2
+      read2 = read2,
       disk_size = disk_size
   }
 
