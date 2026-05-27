@@ -16,7 +16,7 @@ task get_file_size {
   command <<<
     # exit task if anything throws an error (important for proper gzip format)
     set -euo pipefail
-    
+
     exists() { [[ -f $1 ]]; }
 
     cat ~{read1} > "~{samplename}_R1.fastq.gz"
@@ -34,7 +34,6 @@ task get_file_size {
       rev_file_size_mb=$(awk -v size="$rev_file_size" 'BEGIN {printf "%.2f", size / (1024*1024)}')
       echo "$rev_file_size_mb" > rev_size.txt
     fi
-
   >>>
   
   output {
