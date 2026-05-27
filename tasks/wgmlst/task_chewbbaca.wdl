@@ -238,13 +238,13 @@ task extract_cgmlst {
         echo "[1] Extraction of core genome loci"
         chewBBACA.py ExtractCgMLST -i ~{cleaned_results} -o visualization --t ~{sep=' ' cgmlst_thresholds}
 
-        # Utilisation de ComputeMSA (nouveauté v3 mentionnée dans ton texte)
-        # pour recalculer les alignements si nécessaire à l'avenir
         tar -czf visualization.tar.gz visualization
     >>>
 
     output {
         File visualization_zip = "visualization.tar.gz"
+        Array[File] matrixes = glob("visualization/cgMLST*.tsv")
+
     }
 
     runtime {
@@ -504,8 +504,6 @@ task uniprot_finder {
     }
 }
 
-
-
 task compute_msa {
     input {
         String  schema_dir
@@ -552,15 +550,12 @@ task compute_msa {
     }
 }
 
-
-
 task download_schema {
     input {
-        String  species_id         # ex: "9" for E. coli in Chewie-NS
-        String  schema_id          # ex: "1"
+        String  species_id        
+        String  schema_id        
         String  ns_url = "https://chewbbaca.online/api/NS/api/"
-        File?   output_dir_name    # nom du dossier de sortie
-
+        File?   output_dir_name
         Int     disk_gb   = 50
         Int     memory_gb = 8
     }
@@ -590,8 +585,6 @@ task download_schema {
         maxRetries: 2
     }
 }
-
-
 
 task sync_schema {
     input {
@@ -634,8 +627,6 @@ task sync_schema {
         maxRetries: 1
     }
 }
-
-
 
 task ns_stats {
     input {

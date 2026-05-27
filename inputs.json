@@ -3,9 +3,14 @@
   "wf_chewbbaca.assemblies": [
     "test/CN0131_filtered_contigs.fasta",
     "test/CN0132_filtered_contigs.fasta",
-    "test/CN0133_filtered_contigs.fasta"
+    "test/CN0133_filtered_contigs.fasta",
+    "test/CA110356_filtered_contigs.fasta",
+    "test/CA110357_filtered_contigs.fasta",
+    "test/CA114255_filtered_contigs.fasta",
+    "test/CA114538_filtered_contigs.fasta"
   ],
-  "species": "Campylobacter"
+  "specie_prefix": "CA",
+  "generate_tree_preview": true
   
 }
   

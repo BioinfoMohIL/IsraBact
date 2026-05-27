@@ -6,6 +6,7 @@ task get_file_size {
     String samplename
     File read1
     File? read2
+    Int disk_size = 50
    
     String docker = "us-docker.pkg.dev/general-theiagen/theiagen/utility:1.2"
   }
@@ -43,6 +44,7 @@ task get_file_size {
 
   runtime {
     docker: "~{docker}"
+    disks: "local-disk " + disk_size + " SSD"
     preemptible: 1
   }
 }

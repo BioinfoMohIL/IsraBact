@@ -2,6 +2,8 @@ version 1.0
 
 import "../../tasks/wgmlst/task_chewbbaca.wdl" as task_chewbbaca
 import "../../tasks/task_fail.wdl" as task_fail
+import "../../tasks/data_visualization/task_grapetree.wdl" as task_grapetree
+import "../../tasks/data_visualization/task_draw_mst.wdl" as task_draw_mst
 
 workflow wf_chewbbaca {
     input {
@@ -9,6 +11,7 @@ workflow wf_chewbbaca {
         String specie_prefix
         File?   schema_adapted_zip
         File? assemblies_zipped
+        Boolean generate_tree_preview = false
 
 
         ## Optionals ##
@@ -102,11 +105,29 @@ workflow wf_chewbbaca {
             cgmlst_thresholds = cgmlst_thresholds
     }
 
+    if (generate_tree_preview) {
+        
+        # Un seul scatter suffit pour faire l'arbre ET le dessin à la suite
+        scatter (m in extract_cgmlst.matrixes) {
+            call task_grapetree.grapetree {
+                input:
+                    matrix = m
+            }
+
+            # On utilise le résultat de grapetree directement dans le même scatter
+            call task_draw_mst.draw_mst_network {
+                input:
+                    nwk_file = grapetree.tree_newick
+            }
+        }
+    }
+
     output {
         String chew_version = "3.3.10"
         File? fail_logs = fail.fail_logs
         File chew_alleles = allele_calling.calling_alleles_cleaned
         File chew_visualization_zip = extract_cgmlst.visualization_zip
+        Array[File]? mst_pngs = draw_mst_network.mst_png
     }
     
 }
