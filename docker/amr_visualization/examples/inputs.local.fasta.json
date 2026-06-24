@@ -1,0 +1,36 @@
+{
+  "wf_amr_visualization.docker": "bioinfomoh/amr-heatmap:latest",
+  "wf_amr_visualization.resistance_reports": [
+    "examples/inputs/resistance/Kp01_amrfinder.tsv",
+    "examples/inputs/resistance/Kp02_amrfinder.tsv",
+    "examples/inputs/resistance/Kp03_amrfinder.tsv",
+    "examples/inputs/resistance/Kp04_amrfinder.tsv",
+    "examples/inputs/resistance/Kp05_amrfinder.tsv",
+    "examples/inputs/resistance/Kp06_amrfinder.tsv",
+    "examples/inputs/resistance/Kp07_resfinder_pheno_table.tsv",
+    "examples/inputs/resistance/Kp08_resfinder_pheno_table.tsv"
+  ],
+  "wf_amr_visualization.virulence_reports": [
+    "examples/inputs/virulence/Kp01_abricate_vfdb.tsv",
+    "examples/inputs/virulence/Kp02_abricate_vfdb.tsv",
+    "examples/inputs/virulence/Kp03_abricate_vfdb.tsv",
+    "examples/inputs/virulence/Kp04_abricate_vfdb.tsv",
+    "examples/inputs/virulence/Kp05_abricate_vfdb.tsv",
+    "examples/inputs/virulence/Kp06_abricate_vfdb.tsv",
+    "examples/inputs/virulence/Kp07_abricate_vfdb.tsv",
+    "examples/inputs/virulence/Kp08_abricate_vfdb.tsv"
+  ],
+  "wf_amr_visualization.metadata": "examples/inputs/metadata.tsv",
+  "wf_amr_visualization.annotate": [
+    "ST",
+    "species"
+  ],
+  "wf_amr_visualization.min_identity": 90.0,
+  "wf_amr_visualization.min_coverage": 80.0,
+  "wf_amr_visualization.mode": "presence",
+  "wf_amr_visualization.title": "MDR K. pneumoniae",
+  "wf_amr_visualization.collection": "KpMDR",
+  "wf_amr_visualization.core_fasta": "examples/inputs/core.fasta",
+  "wf_amr_visualization.iqtree_model": "GTR+G",
+  "wf_amr_visualization.bootstrap": 1000
+}

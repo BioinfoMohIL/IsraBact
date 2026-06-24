@@ -1,0 +1,8 @@
+Name	Protein id	Contig id	Start	Stop	Strand	Element symbol	Element name	Scope	Type	Subtype	Class	Subclass	Method	Target length	Reference sequence length	% Coverage of reference	% Identity to reference	Alignment length	Closest reference accession	Closest reference name	HMM accession	HMM description
+Kp01	NA	NODE_1	1	900	+	blaTEM-1	blaTEM-1 resistance	core	AMR	AMR	BETA-LACTAM	BETA-LACTAM	BLASTX	300	300	96.24	97.39	300	WP_001	blaTEM-1	NA	NA
+Kp01	NA	NODE_1	1	900	+	tet(A)	tet(A) resistance	core	AMR	AMR	TETRACYCLINE	TETRACYCLINE	BLASTX	300	300	99.36	98.17	300	WP_001	tet(A)	NA	NA
+Kp01	NA	NODE_1	1	900	+	blaCTX-M-15	blaCTX-M-15 resistance	core	AMR	AMR	BETA-LACTAM	BETA-LACTAM	BLASTX	300	300	97.25	97.24	300	WP_001	blaCTX-M-15	NA	NA
+Kp01	NA	NODE_1	1	900	+	oqxA	oqxA resistance	core	AMR	AMR	PHENICOL/QUINOLONE	PHENICOL/QUINOLONE	BLASTX	300	300	99.42	98.65	300	WP_001	oqxA	NA	NA
+Kp01	NA	NODE_1	1	900	+	qnrS1	qnrS1 resistance	core	AMR	AMR	QUINOLONE	QUINOLONE	BLASTX	300	300	99.32	99.46	300	WP_001	qnrS1	NA	NA
+Kp01	NA	NODE_1	1	900	+	fosA	fosA resistance	core	AMR	AMR	FOSFOMYCIN	FOSFOMYCIN	BLASTX	300	300	97.08	97.84	300	WP_001	fosA	NA	NA
+Kp01	NA	NODE_1	1	900	+	arsB	arsB resistance	core	STRESS	STRESS	ARSENIC	ARSENIC	BLASTX	300	300	99.42	98.08	300	WP_001	arsB	NA	NA

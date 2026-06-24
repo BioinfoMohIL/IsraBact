@@ -1,17 +1,40 @@
 {
-  "wf_chewbbaca.schema_adapted_zip": "test/Campylobacter_jejuni_wgMLST_2025-07-31T16_53_57.662910.zip",
-  "wf_chewbbaca.assemblies": [
-    "test/CN0131_filtered_contigs.fasta",
-    "test/CN0132_filtered_contigs.fasta",
-    "test/CN0133_filtered_contigs.fasta",
-    "test/CA110356_filtered_contigs.fasta",
-    "test/CA110357_filtered_contigs.fasta",
-    "test/CA114255_filtered_contigs.fasta",
-    "test/CA114538_filtered_contigs.fasta"
+  "wf_amr_visualization.docker": "bioinfomoh/amr_visualization:1.0",
+
+  "wf_amr_visualization.resistance_reports": [
+    "data/CA110357_amrfinder_all.tsv",
+    "data/CA114720_amrfinder_all.tsv",
+    "data/CA139575_amrfinder_all.tsv",
+    "data/CA140404_amrfinder_all.tsv",
+    "data/CA140705_amrfinder_all.tsv",
+    "data/CA140717_amrfinder_all.tsv"
   ],
-  "specie_prefix": "CA",
-  "generate_tree_preview": true
-  
+
+  "wf_amr_visualization.virulence_reports": [
+    "data/CA110357_abricate_hits.tsv",
+    "data/CA114720_abricate_hits.tsv",
+    "data/CA139575_abricate_hits.tsv",
+    "data/CA140404_abricate_hits.tsv",
+    "data/CA140705_abricate_hits.tsv",
+    "data/CA140717_abricate_hits.tsv"
+  ],
+
+  "wf_amr_visualization.assemblies": [
+    "data/CA110357_filtered_contigs.fasta",
+    "data/CA114720_filtered_contigs.fasta",
+    "data/CA139575_filtered_contigs.fasta",
+    "data/CA140404_filtered_contigs.fasta",
+    "data/CA140705_filtered_contigs.fasta",
+    "data/CA140717_filtered_contigs.fasta"
+  ],
+
+  "wf_amr_visualization.iqtree_model": "GTR+G",
+  "wf_amr_visualization.bootstrap": 1000,
+  "wf_amr_visualization.roary_identity": 95,
+
+  "wf_amr_visualization.min_identity": 90.0,
+  "wf_amr_visualization.min_coverage": 80.0,
+  "wf_amr_visualization.mode": "presence",
+  "wf_amr_visualization.title": "AMR resistome/virulome (n=6)",
+  "wf_amr_visualization.collection": "CA_run"
 }
-  
-  

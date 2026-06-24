@@ -30,8 +30,6 @@ task build_matrix {
             'scope': 'Scope'
         })
 
-
-
         if "~{scope}".lower() == "core":
             df = df[df['Scope'].str.lower() == 'core']
 
