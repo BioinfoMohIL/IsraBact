@@ -1,4 +1,5 @@
 version 1.0
+
 import "../../tasks/assembly/task_spades.wdl" as task_spades
 import "../../tasks/assembly/task_megahit.wdl" as task_megahit
 import "../../tasks/assembly/task_skesa.wdl" as task_skesa
