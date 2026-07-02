@@ -225,7 +225,7 @@ task Detect_Species {
     String sample_id
     
     String docker = "bioinfomoh/specie_detection:1"
-    Int cpu = 16
+    Int cpu = 35
   
   }
 
