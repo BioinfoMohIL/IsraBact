@@ -1,0 +1,27 @@
+
+  # get fastqc version
+fastqc --version | tee VERSION
+    
+# run fastqc: 
+# --extract: uncompress output files
+fastqc \
+  --outdir . \
+  --threads 2 \
+  --extract \
+  /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/NM271_R1.fastq.gz \
+  /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/NM271_R2.fastq.gz
+
+grep "Total Sequences" NM271_R1_fastqc/fastqc_data.txt | cut -f 2 | tee READ1_SEQS
+read1_seqs=$(cat READ1_SEQS)
+grep "Total Sequences" NM271_R2_fastqc/fastqc_data.txt | cut -f 2 | tee READ2_SEQS
+read2_seqs=$(cat READ2_SEQS)
+
+# capture number of read pairs
+if [ "${read1_seqs}" == "${read2_seqs}" ]; then
+  read_pairs=${read1_seqs}
+else
+  read_pairs="Uneven pairs: R1=${read1_seqs}, R2=${read2_seqs}"
+fi
+    
+echo "$read_pairs" | tee READ_PAIRS
+  

@@ -1,0 +1,30 @@
+{
+  "__comment_docker": "Public Docker Hub image (build + push from your Linux box).",
+  "wf_amr_visualization.docker": "bioinfomoh/amr-heatmap:latest",
+  "__comment_lang": "Optional: \"py\" (default) or \"r\" to use the ggtree R figure. For r, set docker_r.",
+  "wf_amr_visualization.lang": "py",
+  "wf_amr_visualization.docker_r": "bioinfomoh/amr-heatmap-r:latest",
+  "__comment_resistance": "MANDATORY. One file per sample, AMRFinder OR ResFinder (auto-detected).",
+  "wf_amr_visualization.resistance_reports": [
+    "gs://my-bucket/amrfinder/Kp01_amrfinder.tsv",
+    "gs://my-bucket/resfinder/Kp02_pheno_table.tsv"
+  ],
+  "__comment_virulence": "OPTIONAL. Abricate vfdb reports, one file per sample.",
+  "wf_amr_visualization.virulence_reports": [
+    "gs://my-bucket/abricate/Kp01_vfdb.tsv",
+    "gs://my-bucket/abricate/Kp02_vfdb.tsv"
+  ],
+  "__comment_phylo": "Provide a precomputed tree, OR a core_fasta to run IQ-TREE.",
+  "wf_amr_visualization.tree": "gs://my-bucket/phylo/core.nwk",
+  "__comment_annot": "Optional: metadata + columns to show next to the tree.",
+  "wf_amr_visualization.metadata": "gs://my-bucket/meta/metadata.tsv",
+  "wf_amr_visualization.annotate_cols": [
+    "ST",
+    "species"
+  ],
+  "wf_amr_visualization.min_identity": 90.0,
+  "wf_amr_visualization.min_coverage": 80.0,
+  "wf_amr_visualization.mode": "presence",
+  "wf_amr_visualization.title": "MDR K. pneumoniae",
+  "wf_amr_visualization.collection": "KpMDR"
+}

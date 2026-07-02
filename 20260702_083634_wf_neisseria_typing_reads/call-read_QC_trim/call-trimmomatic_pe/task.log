@@ -1,0 +1,2 @@
+2026-07-02 08:36:34.907 wdl.w:wf_neisseria_typing_reads.w:call-read_QC_trim.t:call-trimmomatic_pe NOTICE task setup :: name: "trimmomatic_pe", source: "../../tasks/quality_control/read_filtering/task_trimmomatic.wdl", line: 3, column: 1, dir: "/home/user1/Desktop/programs/wdl/IsraBact/20260702_083634_wf_neisseria_typing_reads/call-read_QC_trim/call-trimmomatic_pe", thread: 140059389019712
+2026-07-02 08:36:35.209 wdl.w:wf_neisseria_typing_reads.w:call-read_QC_trim.t:call-trimmomatic_pe WARNING ignored runtime settings :: keys: ["disks", "disk"]

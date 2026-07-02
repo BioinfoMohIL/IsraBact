@@ -29,8 +29,12 @@ workflow wf_amr_visualization {
     String title = "Resistome / virulome"
     String collection = "amr"
 
+    # --- language for parse + plot: "py" (default) or "r" ---
+    String lang = "r"
+
     # --- docker images ---
     String docker                                # python image (parse + plot)
+    String docker_r = "bioinfomoh/amr-heatmap-r:latest"   # R image (ggtree)
     String prokka_docker = "staphb/prokka:1.14.6"
     String roary_docker  = "staphb/roary:3.13.0"
     String iqtree_docker = "staphb/iqtree2:2.1.2"
@@ -45,7 +49,9 @@ workflow wf_amr_visualization {
       min_coverage = min_coverage,
       mode = mode,
       out_prefix = collection,
-      docker = docker
+      lang = lang,
+      docker = docker,
+      docker_r = docker_r
   }
 
   # 2) AMRViz-like phylogeny from assemblies (only if no tree/alignment given)
@@ -87,7 +93,9 @@ workflow wf_amr_visualization {
       annotate_cols = annotate_cols,
       title = title,
       out_prefix = collection + "_heatmap",
-      docker = docker
+      lang = lang,
+      docker = docker,
+      docker_r = docker_r
   }
 
   output {
@@ -98,6 +106,6 @@ workflow wf_amr_visualization {
     File heatmap_pdf = plot_heatmap.pdf
     File heatmap_png = plot_heatmap.png
     File heatmap_svg = plot_heatmap.svg
-    File heatmap_html = plot_heatmap.html
+    Array[File] heatmap_html = plot_heatmap.html   # py: 1 HTML; r: empty
   }
 }

@@ -1,0 +1,6 @@
+{
+  "wf_neisseria_typing_reads.read1": "data/NM271_R1.fastq.gz",
+  "wf_neisseria_typing_reads.read2": "data/NM271_R2.fastq.gz",
+  "wf_neisseria_typing_reads.samplename": "NM271"
+  
+}

@@ -1,0 +1,19 @@
+gene	category	drug_class
+aac(6')-Ib	resistance	AMINOGLYCOSIDE
+arsB	stress	ARSENIC
+blaCTX-M-15	resistance	BETA-LACTAM
+blaSHV-1	resistance	BETA-LACTAM
+blaTEM-1	resistance	BETA-LACTAM
+fimH	virulence	
+fosA	resistance	FOSFOMYCIN
+irp1	virulence	
+merA	stress	MERCURY
+mph(A)	resistance	MACROLIDE
+mrkD	virulence	
+oqxA	resistance	PHENICOL/QUINOLONE
+qnrS1	resistance	QUINOLONE
+rmpA	virulence	
+sul1	resistance	SULFONAMIDE
+tet(A)	resistance	TETRACYCLINE
+wcaG	virulence	
+ybtS	virulence	

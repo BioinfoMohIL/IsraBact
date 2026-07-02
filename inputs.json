@@ -1,6 +1,7 @@
 {
   "wf_amr_visualization.docker": "bioinfomoh/amr_visualization:1.0",
-
+  "wf_amr_visualization.lang": "r",
+  "wf_amr_visualization.docker_r": "bioinfomoh/amr_visualization-r:1.0",
   "wf_amr_visualization.resistance_reports": [
     "data/CA110357_amrfinder_all.tsv",
     "data/CA114720_amrfinder_all.tsv",

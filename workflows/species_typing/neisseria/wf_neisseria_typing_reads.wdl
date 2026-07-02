@@ -126,7 +126,7 @@ workflow wf_neisseria_typing_reads {
 		String seq_platform = assembly.seq_platform
 
         File assembly_fasta = assembly.assembly_fasta
-        File contigs_gfa = assembly.contigs_gfa
+        # File? contigs_gfa = assembly.contigs_gfa
         File? filtered_contigs_metrics = assembly.filtered_contigs_metrics
         String assembler = assembly.assembler_used
         String assembler_version = assembly.assembler_version

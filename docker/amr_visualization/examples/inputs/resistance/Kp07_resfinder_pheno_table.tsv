@@ -1,0 +1,10 @@
+# ResFinder phenotype results.
+# Sample: Kp07_filtered_contigs.fasta
+# 
+# Antimicrobial	Class	WGS-predicted phenotype	Match	Genetic background
+sulfamethoxazole	sulfonamide	Resistant	3	sul1 (sul1_ACC)
+chloramphenicol	phenicol/quinolone	Resistant	3	oqxA (oqxA_ACC)
+fosfomycin	fosfomycin	Resistant	3	fosA (fosA_ACC)
+ampicillin	beta-lactam	Resistant	3	blaCTX-M-15 (blaCTX-M-15_ACC)
+tetracycline	tetracycline	Resistant	3	tet(A) (tet(A)_ACC)
+ampicillin	beta-lactam	Resistant	3	blaTEM-1 (blaTEM-1_ACC)

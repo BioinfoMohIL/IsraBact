@@ -20,7 +20,9 @@ task parse_amr {
     String mode = "presence"
     String out_prefix = "amr"
 
+    String lang = "py"                  # "py" (default) or "r"
     String docker
+    String docker_r = "bioinfomoh/amr-heatmap-r:latest"
     Int cpu = 1
     Int memory_gb = 4
     Int disk_gb = 20
@@ -28,7 +30,7 @@ task parse_amr {
 
   command <<<
     set -euo pipefail
-    parse_amr.py \
+    ~{if lang == "r" then "parse_amr.R" else "parse_amr.py"} \
       --resistance ~{sep=" " resistance_reports} \
       ~{if length(virulence_reports) > 0 then "--virulence" else ""} ~{sep=" " virulence_reports} \
       --min-identity ~{min_identity} \
@@ -42,7 +44,7 @@ task parse_amr {
     File genes  = "~{out_prefix}_matrix.tsv.genes.tsv"
   }
   runtime {
-    docker: docker
+    docker: if lang == "r" then docker_r else docker
     cpu: cpu
     memory: "~{memory_gb} GB"
     disks: "local-disk ~{disk_gb} HDD"
@@ -159,7 +161,9 @@ task plot_heatmap {
     String title = "Resistome / virulome"
     String out_prefix = "amr_heatmap"
 
+    String lang = "py"                  # "py" (default) or "r"
     String docker
+    String docker_r = "bioinfomoh/amr-heatmap-r:latest"
     Int cpu = 1
     Int memory_gb = 4
     Int disk_gb = 20
@@ -167,7 +171,7 @@ task plot_heatmap {
 
   command <<<
     set -euo pipefail
-    plot_heatmap.py \
+    ~{if lang == "r" then "plot_heatmap.R" else "plot_heatmap.py"} \
       --matrix ~{matrix} \
       --genes ~{genes} \
       ~{if defined(tree) then "--tree " + tree else ""} \
@@ -177,17 +181,17 @@ task plot_heatmap {
       --out ~{out_prefix}.pdf \
       --png ~{out_prefix}.png \
       --svg ~{out_prefix}.svg \
-      --html ~{out_prefix}.html
+      ~{if lang == "py" then "--html " + out_prefix + ".html" else ""}
   >>>
 
   output {
     File pdf  = "~{out_prefix}.pdf"
     File png  = "~{out_prefix}.png"
     File svg  = "~{out_prefix}.svg"
-    File html = "~{out_prefix}.html"
+    Array[File] html = glob("~{out_prefix}.html")   # py: 1 file; r: empty
   }
   runtime {
-    docker: docker
+    docker: if lang == "r" then docker_r else docker
     cpu: cpu
     memory: "~{memory_gb} GB"
     disks: "local-disk ~{disk_gb} HDD"

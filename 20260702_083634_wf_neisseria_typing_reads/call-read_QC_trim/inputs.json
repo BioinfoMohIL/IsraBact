@@ -1,0 +1,9 @@
+{
+  "read_QC_trim_pe.read1": "/home/user1/Desktop/programs/wdl/IsraBact/data/NM271_R1.fastq.gz",
+  "read_QC_trim_pe.read2": "/home/user1/Desktop/programs/wdl/IsraBact/data/NM271_R2.fastq.gz",
+  "read_QC_trim_pe.samplename": "NM271",
+  "read_QC_trim_pe.trim_min_length": 75,
+  "read_QC_trim_pe.trim_quality_min_score": 20,
+  "read_QC_trim_pe.trim_window_size": 10,
+  "read_QC_trim_pe.workflow_series": "pathomics"
+}

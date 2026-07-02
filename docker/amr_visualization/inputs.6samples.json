@@ -1,0 +1,37 @@
+{
+  "__comment_docker": "Public Docker Hub image.",
+  "wf_amr_visualization.docker": "bioinfomoh/amr-heatmap:latest",
+
+  "__comment_resistance": "MANDATORY - one file per sample. Mix AMRFinder + ResFinder freely; the parser auto-detects each file.",
+  "wf_amr_visualization.resistance_reports": [
+    "gs://my-bucket/resistance/Kp01_amrfinder.tsv",
+    "gs://my-bucket/resistance/Kp02_amrfinder.tsv",
+    "gs://my-bucket/resistance/Kp03_amrfinder.tsv",
+    "gs://my-bucket/resistance/Kp04_amrfinder.tsv",
+    "gs://my-bucket/resistance/Kp05_resfinder_pheno_table.tsv",
+    "gs://my-bucket/resistance/Kp06_resfinder_pheno_table.tsv"
+  ],
+
+  "__comment_virulence": "OPTIONAL - Abricate vfdb, one file per sample. Remove this whole key if you have no virulence data.",
+  "wf_amr_visualization.virulence_reports": [
+    "gs://my-bucket/virulence/Kp01_abricate_vfdb.tsv",
+    "gs://my-bucket/virulence/Kp02_abricate_vfdb.tsv",
+    "gs://my-bucket/virulence/Kp03_abricate_vfdb.tsv",
+    "gs://my-bucket/virulence/Kp04_abricate_vfdb.tsv",
+    "gs://my-bucket/virulence/Kp05_abricate_vfdb.tsv",
+    "gs://my-bucket/virulence/Kp06_abricate_vfdb.tsv"
+  ],
+
+  "__comment_phylo": "Provide a precomputed tree OR a core_fasta (not both). Leaf names must match the 6 sample IDs.",
+  "wf_amr_visualization.tree": "gs://my-bucket/phylo/core.nwk",
+
+  "__comment_annot": "Optional metadata shown beside the tree.",
+  "wf_amr_visualization.metadata": "gs://my-bucket/meta/metadata.tsv",
+  "wf_amr_visualization.annotate": ["ST", "species"],
+
+  "wf_amr_visualization.min_identity": 90.0,
+  "wf_amr_visualization.min_coverage": 80.0,
+  "wf_amr_visualization.mode": "presence",
+  "wf_amr_visualization.title": "MDR K. pneumoniae (n=6)",
+  "wf_amr_visualization.collection": "KpMDR"
+}

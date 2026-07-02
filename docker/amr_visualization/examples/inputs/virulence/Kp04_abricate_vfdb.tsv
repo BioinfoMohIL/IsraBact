@@ -1,0 +1,4 @@
+#FILE	SEQUENCE	START	END	STRAND	GENE	%COVERAGE	%IDENTITY	DATABASE	ACCESSION	PRODUCT
+Kp04.fasta	c1	10	500	+	mrkD	99.57	94.47	vfdb	VF01	virulence
+Kp04.fasta	c1	10	500	+	fimH	99.37	99.88	vfdb	VF01	virulence
+Kp04.fasta	c1	10	500	+	wcaG	99.55	93.65	vfdb	VF01	virulence

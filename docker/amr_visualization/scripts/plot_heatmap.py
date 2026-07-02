@@ -43,6 +43,7 @@ BAND_LABEL = {
 }
 # left-to-right block order on the heatmap
 CAT_ORDER = ["virulence", "resistance", "stress", "plasmid", "other"]
+INK = "#27333f"   # label text color (slightly dark)
 
 
 # --- rectangular cladogram: tips aligned right, positions match heatmap rows ---
@@ -79,7 +80,7 @@ def draw_cladogram(ax, tree):
                 color="#2c3e50", lw=1.0)
         for c in clade.clades:
             ax.plot([x[clade], x[c]], [y[c], y[c]], color="#2c3e50", lw=1.0)
-    ax.set_xlim(-0.2, root_h + 0.2)
+    ax.set_xlim(-0.2, root_h + max(0.3, root_h * 0.12))
     ax.set_ylim(len(order) - 0.5, -0.5)
     ax.axis("off")
     return order
@@ -142,8 +143,8 @@ def draw_names(ax, order, ylim):
     """Sample names in their own column (no overlap with the tree)."""
     ax.set_xlim(0, 1); ax.set_ylim(*ylim); ax.axis("off")
     for i, s in enumerate(order):
-        ax.text(0.96, i, str(s), ha="right", va="center",
-                fontsize=7, color="#3e4c59")
+        ax.text(0.97, i, str(s), ha="right", va="center",
+                fontsize=7.5, color=INK)
 
 
 def main():
@@ -212,14 +213,14 @@ def main():
 
     # --- layout: [tree] [names] [annot...] [heatmap] ---
     name_chars = max((len(str(s)) for s in order), default=4)
-    widths = ([1.3] if has_tree else []) + [0.06 + 0.018 * name_chars] \
+    widths = ([1.3] if has_tree else []) + [0.2 + 0.13 * name_chars] \
         + [0.10] * len(annot_cols) + [max(4, ncols * 0.22)]
     fig_w = 1.4 + 0.22 * ncols + 0.5 * len(annot_cols) + (1.5 if has_tree else 0) \
-        + 0.09 * name_chars
+        + 0.14 * name_chars
     fig_h = max(3.0, 0.30 * n + 1.4)
     fig = plt.figure(figsize=(fig_w, fig_h))
     fig.patch.set_facecolor("white")
-    gs = fig.add_gridspec(1, len(widths), width_ratios=widths, wspace=0.02)
+    gs = fig.add_gridspec(1, len(widths), width_ratios=widths, wspace=0.05)
 
     ci = 0
     if has_tree:
@@ -239,7 +240,7 @@ def main():
                           facecolor=cmap(code), edgecolor="white", linewidth=0.4))
         axa.set_xlim(0, 1); axa.set_ylim(*ylim); axa.axis("off")
         axa.text(0.5, ytop + bandh / 2, label, ha="center", va="center",
-                 rotation=90, fontsize=7, color="#3e4c59")
+                 rotation=90, fontsize=7, color=INK)
 
     ax = fig.add_subplot(gs[0, ci])
     draw_cells(ax, present, col_cats)
@@ -247,7 +248,7 @@ def main():
     ax.set_xlim(-0.5, ncols - 0.5)
     ax.set_ylim(*ylim)
     ax.set_xticks(range(ncols))
-    ax.set_xticklabels(col_order, fontsize=7, rotation=90)
+    ax.set_xticklabels(col_order, fontsize=7.5, rotation=90, color=INK)
     ax.tick_params(axis="x", length=0)
     ax.set_yticks([])
     for spine in ax.spines.values():
