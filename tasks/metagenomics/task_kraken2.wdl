@@ -40,6 +40,22 @@ task kraken2 {
             exit 1
         fi
 
+        echo "PWD:"
+        pwd
+
+        echo "Before extract:"
+        ls -lah
+
+        mkdir -p kraken_db
+
+        tar -xzf "~{kraken_db}" -C kraken_db
+
+        echo "After extract:"
+        ls -lah kraken_db
+
+        echo "Deep scan:"
+        find kraken_db -type f | head
+
         tar -xzf "~{kraken_db}" -C kraken_db
 
         echo "DB Contents:"
