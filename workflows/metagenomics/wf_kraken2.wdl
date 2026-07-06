@@ -21,7 +21,7 @@ workflow wf_kraken2 {
     input:
         read1 = read1,
         read2 = read2,
-        sample_id = sample_id
+        sample_id = sample_id,
         kraken_db_path = task_unzip.decompressed_dir_path
   }
 
