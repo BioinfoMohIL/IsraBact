@@ -6,7 +6,7 @@ task kraken2 {
     File read1
     File  read2
     String sample_id
-    File kraken_db = "gs://theiagen-public-resources-rp/reference_data/databases/kraken2/k2_viral-refseq_human-GRCh38_20260220.tar.gz"
+    File kraken_db = "gs://fc-5d4556f8-3de6-4709-85da-11445772644d/db/minikraken2_v2_8GB_201904_UPDATE.zip"
     
     # String docker = "bioinfomoh/specie_detection:1"
     String docker = "us-docker.pkg.dev/general-theiagen/theiagen/kraken2:2.17.1"
