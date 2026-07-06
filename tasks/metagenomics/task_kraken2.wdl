@@ -16,6 +16,8 @@ task kraken2 {
   }
 
   command <<<
+        set -euo pipefail
+
         mode=""
         compressed=""
 
@@ -31,43 +33,33 @@ task kraken2 {
             compressed="--gzip-compressed"
         fi
 
-        echo "KRaken DB input:"
-        ls -lh "~{kraken_db}" || true
-        file "~{kraken_db}" || true
-
-        if [ ! -s "~{kraken_db}" ]; then
-            echo "ERROR: DB file missing or empty"
-            exit 1
-        fi
-
-        echo "PWD:"
-        pwd
-
-        echo "Before extract:"
-        ls -lah
 
         mkdir -p kraken_db
 
-        tar -xzf "~{kraken_db}" -C kraken_db
+        echo "Extracting DB..."
 
-        echo "After extract:"
-        ls -lah kraken_db
+        if [[ "~{kraken_db}" == *.zip ]]; then
+            unzip "~{kraken_db}" -d kraken_db
+        elif [[ "~{kraken_db}" == *.tar.gz ]]; then
+            tar -xzf "~{kraken_db}" -C kraken_db
+        else
+            echo "Unknown DB format"
+            exit 1
+        fi
 
-        echo "Deep scan:"
-        find kraken_db -type f | head
+        echo "Checking DB..."
+        find kraken_db -name "taxo.k2d" -o -name "*.k2d"
 
-        tar -xzf "~{kraken_db}" -C kraken_db
+        DB_PATH=$(find kraken_db -type f -name "taxo.k2d" | xargs dirname)
 
-        echo "DB Contents:"
-        find kraken_db -maxdepth 2
-
+        echo "DB_PATH=$DB_PATH"
 
         # Run Kraken2
         echo "Running Kraken2..."
 
         kraken2 -v | awk '/Kraken/ {print "Kraken v" $3}' | tee VERSION
         # /app/db/kraken_db
-        kraken2 $mode $compressed --threads "~{cpu}" --use-names --db kraken_db \
+        kraken2 $mode $compressed --threads "~{cpu}" --use-names --db "$DB_PATH" \
             --report "~{sample_id}_report.txt" --paired "~{read1}" "~{read2}" --output -
 
         detected=$(awk -F'\t' '$4 == "S" {gsub(/^[ \t]+/, "", $6); print $6; exit}' "~{sample_id}_report.txt")
