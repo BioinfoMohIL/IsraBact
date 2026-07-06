@@ -8,6 +8,12 @@ workflow wf_kraken2 {
     File read1
     File read2
     String sample_id
+    File kraken_db = "gs://fc-5d4556f8-3de6-4709-85da-11445772644d/db/minikraken2_v2_8GB_201904_UPDATE.zip"
+  }
+
+  call task_unzip {
+    input:
+        archive_file = kraken_db
   }
 
   call task_kraken.kraken2 {
@@ -15,6 +21,7 @@ workflow wf_kraken2 {
         read1 = read1,
         read2 = read2,
         sample_id = sample_id
+        kraken_db_path = task_unzip.decompressed_dir_path
   }
 
   output {

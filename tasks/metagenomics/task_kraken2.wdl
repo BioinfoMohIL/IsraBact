@@ -6,7 +6,7 @@ task kraken2 {
     File read1
     File  read2
     String sample_id
-    File kraken_db = "gs://fc-5d4556f8-3de6-4709-85da-11445772644d/db/minikraken2_v2_8GB_201904_UPDATE.zip"
+    String kraken_db_path
     
     # String docker = "bioinfomoh/specie_detection:1"
     String docker = "us-docker.pkg.dev/general-theiagen/theiagen/kraken2:2.17.1"
@@ -33,33 +33,15 @@ task kraken2 {
             compressed="--gzip-compressed"
         fi
 
-
-        mkdir -p kraken_db
-
-        echo "Extracting DB..."
-
-        if [[ "~{kraken_db}" == *.zip ]]; then
-            unzip "~{kraken_db}" -d kraken_db
-        elif [[ "~{kraken_db}" == *.tar.gz ]]; then
-            tar -xzf "~{kraken_db}" -C kraken_db
-        else
-            echo "Unknown DB format"
-            exit 1
-        fi
-
         echo "Checking DB..."
-        find kraken_db -name "taxo.k2d" -o -name "*.k2d"
-
-        DB_PATH=$(find kraken_db -type f -name "taxo.k2d" | xargs dirname)
-
-        echo "DB_PATH=$DB_PATH"
+        find ~{kraken_db_path} -name "taxo.k2d" -o -name "*.k2d"
 
         # Run Kraken2
         echo "Running Kraken2..."
 
         kraken2 -v | awk '/Kraken/ {print "Kraken v" $3}' | tee VERSION
         # /app/db/kraken_db
-        kraken2 $mode $compressed --threads "~{cpu}" --use-names --db "$DB_PATH" \
+        kraken2 $mode $compressed --threads "~{cpu}" --use-names --db ~{kraken_db_path} \
             --report "~{sample_id}_report.txt" --paired "~{read1}" "~{read2}" --output -
 
         detected=$(awk -F'\t' '$4 == "S" {gsub(/^[ \t]+/, "", $6); print $6; exit}' "~{sample_id}_report.txt")
