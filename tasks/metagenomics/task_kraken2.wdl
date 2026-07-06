@@ -31,6 +31,15 @@ task kraken2 {
             compressed="--gzip-compressed"
         fi
 
+        echo "KRaken DB input:"
+        ls -lh "~{kraken_db}" || true
+        file "~{kraken_db}" || true
+
+        if [ ! -s "~{kraken_db}" ]; then
+            echo "ERROR: DB file missing or empty"
+            exit 1
+        fi
+
         tar -xzf "~{kraken_db}" -C kraken_db
 
         echo "DB Contents:"
