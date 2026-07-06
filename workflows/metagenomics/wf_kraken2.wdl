@@ -1,6 +1,7 @@
 version 1.0
 
 import "../../tasks/metagenomics/task_kraken2.wdl" as task_kraken
+import "../../tasks/utilities/file_handling/decompress_file.wdl" as task_unzip 
 
 workflow wf_kraken2 {
   
@@ -11,7 +12,7 @@ workflow wf_kraken2 {
     File kraken_db = "gs://fc-5d4556f8-3de6-4709-85da-11445772644d/db/minikraken2_v2_8GB_201904_UPDATE.zip"
   }
 
-  call task_unzip {
+  call task_unzip.decompress{
     input:
         archive_file = kraken_db
   }
