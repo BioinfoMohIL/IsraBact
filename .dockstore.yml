@@ -6,7 +6,7 @@ workflows:
   
   - name: Species_Detection_PerSample_MOH
     subclass: WDL
-    primaryDescriptorPath: /workflows/metagenomics/wf_species_detection_bs.wdl
+    primaryDescriptorPath: /workflows/metagenomics/wf_kraken2.wdl
 
   - name: Basespace_Fetcher_MOH
     subclass: WDL
@@ -92,11 +92,9 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/epidemyology/diphtheria/wf_diphteria_scan.wdl
 
-
   - name: Assembly_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/utilities/wf_assembly.wdl
-
 
   - name: Unzip_Into_Bucket_Helper_MOH
     subclass: WDL

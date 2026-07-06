@@ -1,13 +1,16 @@
 version 1.0
 
 
-task detect_species {
+task kraken2 {
   input {
     File read1
-    File? read2
+    File  read2
     String sample_id
+    File kraken_db = "gs://theiagen-public-resources-rp/reference_data/databases/kraken2/k2_viral-refseq_human-GRCh38_20260220.tar.gz"
     
-    String docker = "bioinfomoh/specie_detection:1"
+    # String docker = "bioinfomoh/specie_detection:1"
+    String docker = "us-docker.pkg.dev/general-theiagen/theiagen/kraken2:2.17.1"
+
     Int cpu = 20
   
   }
@@ -28,12 +31,18 @@ task detect_species {
             compressed="--gzip-compressed"
         fi
 
+        tar -xzf "~{kraken_db}" -C kraken_db
+
+        echo "DB Contents:"
+        find kraken_db -maxdepth 2
+
+
         # Run Kraken2
         echo "Running Kraken2..."
 
         kraken2 -v | awk '/Kraken/ {print "Kraken v" $3}' | tee VERSION
-
-        kraken2 $mode $compressed --threads "~{cpu}" --use-names --db /app/db/kraken_db \
+        # /app/db/kraken_db
+        kraken2 $mode $compressed --threads "~{cpu}" --use-names --db kraken_db \
             --report "~{sample_id}_report.txt" --paired "~{read1}" "~{read2}" --output -
 
         detected=$(awk -F'\t' '$4 == "S" {gsub(/^[ \t]+/, "", $6); print $6; exit}' "~{sample_id}_report.txt")

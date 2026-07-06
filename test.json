@@ -1,5 +1,5 @@
 {
-  "wf_species_detection_bs.access_token":"4acb4557c76940d99ed57dfd3212d423",
-  "wf_species_detection_bs.api_server": "https://api.basespace.illumina.com",
-  "wf_species_detection_bs.basespace_collection_id": "N_027"
+  "wf_kraken2.read1": "data/NM271_R1.fastq.gz",
+  "wf_kraken2.read2": "data/NM271_R2.fastq.gz",
+  "wf_kraken2.sample_id": "NM271"
 }
