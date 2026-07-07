@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Species Detection Per Sample — Terra Workflow Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --ink:#0F2438;
+    --paper:#EDF2F1;
+    --surface:#FFFFFF;
+    --line: #D7E0DD;
+    --text: #142A32;
+    --muted: #5C7278;
+
+    --teal:#177A6C;
+    --teal-soft:#E4F1EE;
+    --blue:#2C6FA6;
+    --blue-soft:#E7EFF6;
+    --amber:#C17A2B;
+    --amber-soft:#FBEEDF;
+    --violet:#6E4FA6;
+    --violet-soft:#EFEAF7;
+
+    --radius: 10px;
+    --mono: 'JetBrains Mono', Consolas, monospace;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', "Segoe UI", Arial, sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    font-family:var(--body);
+    background:var(--paper);
+    color:var(--text);
+    line-height:1.65;
+  }
+
+  /* ---------- Layout shell ---------- */
+
+  .shell{
+    display:grid;
+    grid-template-columns: 260px minmax(0,1fr);
+    max-width:1240px;
+    margin:0 auto;
+  }
+
+  nav.toc{
+    position:sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+    padding:32px 20px 32px 32px;
+    overflow-y:auto;
+    border-right:1px solid var(--line);
+  }
+
+  .toc-brand{
+    font-family:var(--mono);
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    color:var(--muted);
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+
+  .toc-lineage{
+    font-family:var(--mono);
+    font-size:0.74rem;
+    color:var(--teal);
+    margin-bottom:28px;
+    line-height:1.5;
+  }
+
+  .toc-lineage b{color:var(--ink);}
+
+  nav.toc ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+
+  nav.toc li{margin-bottom:2px;}
+
+  nav.toc a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:9px 10px;
+    border-radius:8px;
+    text-decoration:none;
+    color:var(--text);
+    font-size:0.89rem;
+    font-weight:500;
+    border-left:3px solid transparent;
+    transition:background .15s ease, border-color .15s ease;
+  }
+
+  nav.toc a .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--line);
+    flex-shrink:0;
+  }
+
+  nav.toc a:hover{background:var(--surface);}
+
+  nav.toc a.active{
+    background:var(--surface);
+    border-left-color:var(--teal);
+    color:var(--ink);
+    font-weight:600;
+  }
+
+  nav.toc a.active .dot{background:var(--teal);}
+
+  main{padding:0 48px 80px;}
+
+  /* ---------- Hero ---------- */
+
+  header.hero{
+    padding:64px 0 40px;
+    border-bottom:1px solid var(--line);
+  }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:0.76rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin-bottom:14px;
+  }
+
+  h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:2.6rem;
+    line-height:1.12;
+    color:var(--ink);
+    margin:0 0 16px;
+    letter-spacing:-0.01em;
+  }
+
+  .lede{
+    max-width:640px;
+    color:var(--muted);
+    font-size:1.05rem;
+    margin-bottom:28px;
+  }
+
+  .lede strong{color:var(--text);}
+
+  .lineage-chip{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--mono);
+    font-size:0.82rem;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:100px;
+    padding:8px 16px;
+    color:var(--muted);
+  }
+
+  .lineage-chip b{color:var(--ink); font-weight:600;}
+  .lineage-chip span.sep{color:var(--line);}
+
+  /* ---------- Sections ---------- */
+
+  section{padding:56px 0;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:8px;
+  }
+
+  h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:1.55rem;
+    color:var(--ink);
+    margin:0;
+  }
+
+  .ruler{
+    flex:1;
+    height:1px;
+    background-image: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 12px);
+  }
+
+  h3{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:1.05rem;
+    color:var(--text);
+    margin:28px 0 10px;
+  }
+
+  p{margin:0 0 14px;}
+
+  a{color:var(--blue); text-decoration:none; border-bottom:1px solid transparent;}
+  a:hover{border-bottom-color:var(--blue);}
+
+  code{
+    font-family:var(--mono);
+    font-size:0.87em;
+    background:var(--blue-soft);
+    color:#1c4d70;
+    padding:2px 6px;
+    border-radius:5px;
+  }
+
+  pre{
+    font-family:var(--mono);
+    font-size:0.85rem;
+    background:var(--ink);
+    color:#DCE7E4;
+    padding:18px 20px;
+    border-radius:var(--radius);
+    overflow-x:auto;
+    position:relative;
+    line-height:1.7;
+  }
+
+  pre .path-line{color:#8FD9C4;}
+  pre .comment{color:#7A93A0;}
+
+  .copy-btn{
+    position:absolute;
+    top:10px;right:10px;
+    font-family:var(--mono);
+    font-size:0.68rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:#B9C9C5;
+    background:rgba(255,255,255,0.07);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:6px;
+    padding:5px 10px;
+    cursor:pointer;
+  }
+
+  .copy-btn:hover{background:rgba(255,255,255,0.14); color:#fff;}
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    margin-top:14px;
+  }
+
+  th{
+    background:#F3F7F6;
+    font-family:var(--display);
+    font-weight:600;
+    font-size:0.85rem;
+    text-align:left;
+    color:var(--ink);
+  }
+
+  td, th{padding:12px 16px; border-bottom:1px solid var(--line);}
+  tr:last-child td{border-bottom:none;}
+
+  td code{background:var(--teal-soft); color:#0F5548;}
+
+  ul, ol{padding-left:22px; margin:0 0 14px;}
+  li{margin-bottom:6px;}
+
+  /* ---------- Callout boxes ---------- */
+
+  .box{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-left:4px solid var(--teal);
+    border-radius:var(--radius);
+    padding:26px 28px;
+  }
+
+  .box.warning{border-left-color:var(--amber); background:linear-gradient(180deg, var(--amber-soft) 0%, var(--surface) 90px);}
+  .box.success{border-left-color:var(--teal);}
+
+  /* ---------- Quick start / read-pileup steps ---------- */
+
+  .steps{display:flex; flex-direction:column; gap:0;}
+
+  .step{
+    display:grid;
+    grid-template-columns:56px minmax(0,1fr);
+    gap:20px;
+    padding:22px 0;
+    border-top:1px solid var(--line);
+  }
+
+  .step:first-child{border-top:none; padding-top:6px;}
+
+  .step-rail{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+  }
+
+  .step-num{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:0.78rem;
+    color:var(--ink);
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:6px;
+    width:32px;height:32px;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  .pileup{
+    display:flex;
+    gap:2px;
+    height:34px;
+    align-items:flex-end;
+  }
+
+  .pileup span{
+    width:4px;
+    border-radius:2px 2px 0 0;
+    display:block;
+  }
+
+  .step h3{margin:2px 0 8px;}
+
+  .tag{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:0.68rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:3px 8px;
+    border-radius:5px;
+    margin-bottom:8px;
+  }
+
+  .step[data-c="teal"] .step-num{border-color:var(--teal); color:var(--teal);}
+  .step[data-c="blue"] .step-num{border-color:var(--blue); color:var(--blue);}
+  .step[data-c="amber"] .step-num{border-color:var(--amber); color:var(--amber);}
+  .step[data-c="violet"] .step-num{border-color:var(--violet); color:var(--violet);}
+
+  .step[data-c="teal"] .tag{background:var(--teal-soft); color:#0F5548;}
+  .step[data-c="blue"] .tag{background:var(--blue-soft); color:#1c4d70;}
+  .step[data-c="amber"] .tag{background:var(--amber-soft); color:#8A5A1E;}
+  .step[data-c="violet"] .tag{background:var(--violet-soft); color:#4E3579;}
+
+  .launch{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--ink);
+    color:#fff;
+    padding:11px 26px;
+    border-radius:100px;
+    font-weight:600;
+    font-family:var(--display);
+    font-size:0.92rem;
+    letter-spacing:0.01em;
+  }
+
+  .launch::before{content:"▶"; font-size:0.7em;}
+
+  /* ---------- Tree diagram ---------- */
+
+  .filetree{
+    font-family:var(--mono);
+    font-size:0.85rem;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:18px 22px;
+    color:var(--text);
+  }
+
+  .filetree .dir{color:var(--teal); font-weight:600;}
+  .filetree .leaf{color:var(--muted);}
+
+  /* ---------- Result example ---------- */
+
+  .result-card{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+
+  .result-cell{
+    background:var(--surface);
+    padding:20px;
+  }
+
+  .result-cell .label{
+    font-family:var(--mono);
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--muted);
+    margin-bottom:8px;
+  }
+
+  .result-cell .value{
+    font-family:var(--mono);
+    font-size:1rem;
+    color:var(--ink);
+    font-weight:600;
+  }
+
+  footer{
+    padding:32px 0 0;
+    font-family:var(--mono);
+    font-size:0.78rem;
+    color:var(--muted);
+  }
+
+  @media (max-width: 860px){
+    .shell{grid-template-columns:1fr;}
+    nav.toc{
+      position:relative; height:auto; border-right:none; border-bottom:1px solid var(--line);
+      padding:20px 24px;
+    }
+    nav.toc ul{display:flex; flex-wrap:wrap; gap:4px;}
+    main{padding:0 22px 60px;}
+    header.hero{padding:36px 0 28px;}
+    h1{font-size:2rem;}
+    .result-card{grid-template-columns:1fr;}
+    .step{grid-template-columns:44px minmax(0,1fr);}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <nav class="toc">
+    <div class="toc-brand">BioinfoMohIL / Terra guide</div>
+    <div class="toc-lineage"><b>Kingdom</b> Workflow ▸ <b>Phylum</b> Terra ▸ <b>Class</b> WDL ▸ <b>Species</b> Kraken2</div>
+    <ul>
+      <li><a href="#quick-start" class="dot"><span class="dot"></span>Quick start</a></li>
+      <li><a href="#workflow-description"><span class="dot"></span>Workflow description</a></li>
+      <li><a href="#database"><span class="dot"></span>Kraken2 database</a></li>
+      <li><a href="#docker"><span class="dot"></span>Docker environment</a></li>
+      <li><a href="#compute"><span class="dot"></span>Compute resources</a></li>
+      <li><a href="#outputs"><span class="dot"></span>Outputs</a></li>
+      <li><a href="#example"><span class="dot"></span>Expected result</a></li>
+      <li><a href="#troubleshooting"><span class="dot"></span>Troubleshooting</a></li>
+      <li><a href="#automation"><span class="dot"></span>Automation</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <header class="hero">
+      <div class="eyebrow">Terra · WDL · Kraken2</div>
+      <h1>Species Detection Per Sample</h1>
+      <p class="lede">
+        Reference guide for running <strong>Species_Detection_PerSample_MOH</strong> on Terra —
+        Kraken2-based taxonomic classification of sequencing reads, from BaseSpace import to detected species.
+      </p>
+      <div class="lineage-chip">
+        <b>read1 + read2</b><span class="sep">→</span><b>Kraken2 2.17.1</b><span class="sep">→</span><b>kraken2_species_detected</b>
+      </div>
+    </header>
+
+    <section id="quick-start">
+      <div class="section-head"><h2>🧬 Quick start</h2><div class="ruler"></div></div>
+
+      <div class="steps">
+
+        <div class="step" data-c="teal">
+          <div class="step-rail">
+            <div class="step-num">01</div>
+            <div class="pileup">
+              <span style="height:60%;background:var(--teal)"></span>
+              <span style="height:100%;background:var(--teal)"></span>
+              <span style="height:40%;background:var(--teal)"></span>
+            </div>
+          </div>
+          <div>
+            <span class="tag">Select workflow</span>
+            <h3>Find the workflow in Terra</h3>
+            <p>In Terra, select <code>Species_Detection_PerSample_MOH</code>. It's available from either repository:</p>
+            <ul>
+              <li>Dockstore: <a href="https://dockstore.org/workflows/github.com/BioinfoMohIL/IsraBact/Species_Detection_PerSample_MOH:main?tab=info">Species_Detection_PerSample_MOH</a></li>
+              <li>GitHub: <a href="https://github.com/BioinfoMohIL/IsraBact/tree/main/workflows/metagenomics/wf_kraken2.wdl">wf_kraken2.wdl</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step" data-c="blue">
+          <div class="step-rail">
+            <div class="step-num">02</div>
+            <div class="pileup">
+              <span style="height:80%;background:var(--blue)"></span>
+              <span style="height:50%;background:var(--blue)"></span>
+              <span style="height:90%;background:var(--blue)"></span>
+            </div>
+          </div>
+          <div>
+            <span class="tag">Import reads</span>
+            <h3>Get sequencing reads into the workspace</h3>
+            <p>Species detection needs FASTQ files already present in the Terra workspace. If they aren't there yet:</p>
+            <ol>
+              <li>Run the <strong>Basespace_Fetcher_MOH</strong> workflow.</li>
+              <li>Wait until FASTQ files are successfully imported.</li>
+              <li>Open the Terra workspace Data table.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="step" data-c="amber">
+          <div class="step-rail">
+            <div class="step-num">03</div>
+            <div class="pileup">
+              <span style="height:45%;background:var(--amber)"></span>
+              <span style="height:100%;background:var(--amber)"></span>
+              <span style="height:65%;background:var(--amber)"></span>
+            </div>
+          </div>
+          <div>
+            <span class="tag">Configure</span>
+            <h3>Select samples and configure inputs</h3>
+            <p>From the Data table, select the samples to analyze. The default sample identifier is <code>tmp_id</code>.</p>
+            <table>
+              <tr><th>Workflow input</th><th>Description</th></tr>
+              <tr><td><code>read1</code></td><td>Forward paired-end FASTQ file (R1)</td></tr>
+              <tr><td><code>read2</code></td><td>Reverse paired-end FASTQ file (R2)</td></tr>
+              <tr><td><code>sample_id</code></td><td>Sample identifier (default: <code>tmp_id</code>)</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="step" data-c="violet">
+          <div class="step-rail">
+            <div class="step-num">04</div>
+            <div class="pileup">
+              <span style="height:100%;background:var(--violet)"></span>
+              <span style="height:70%;background:var(--violet)"></span>
+              <span style="height:100%;background:var(--violet)"></span>
+            </div>
+          </div>
+          <div>
+            <span class="tag">Launch</span>
+            <h3>Launch execution</h3>
+            <p><span class="launch">Launch</span></p>
+            <p style="margin-top:14px;">Terra will automatically:</p>
+            <ul>
+              <li>Create the Google Cloud Batch job.</li>
+              <li>Allocate computing resources.</li>
+              <li>Pull the Kraken2 Docker image.</li>
+              <li>Download and prepare the Kraken2 database.</li>
+              <li>Run species classification.</li>
+              <li>Store results in the workspace.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="workflow-description">
+      <div class="section-head"><h2>Workflow description</h2><div class="ruler"></div></div>
+      <p>The workflow performs species detection using <strong>Kraken2</strong>. Input sequencing reads are classified against a predefined Kraken2 database.</p>
+      <h3>Automatically detected</h3>
+      <ul>
+        <li>Paired-end reads.</li>
+        <li>Compressed FASTQ files (<code>.gz</code>).</li>
+        <li>The Kraken2 database location.</li>
+      </ul>
+    </section>
+
+    <section id="database">
+      <div class="section-head"><h2>Kraken2 database</h2><div class="ruler"></div></div>
+      <p>The Kraken2 database is stored in the Terra workspace Google Cloud bucket. Users do not need to upload or manage the database manually.</p>
+      <pre><span class="path-line">gs://fc-5d4556f8-3de6-4709-85da-11445772644d/db/</span>
+<span class="comment">minikraken2_v2_8GB_201904_UPDATE.tar.gz</span><button class="copy-btn" onclick="copyText(this,'gs://fc-5d4556f8-3de6-4709-85da-11445772644d/db/minikraken2_v2_8GB_201904_UPDATE.tar.gz')">Copy path</button></pre>
+      <h3>During execution</h3>
+      <ol>
+        <li>The database archive is downloaded automatically.</li>
+        <li>The archive is extracted locally on the compute VM.</li>
+        <li>Kraken2 runs using the extracted database.</li>
+      </ol>
+    </section>
+
+    <section id="docker">
+      <div class="section-head"><h2>Docker environment</h2><div class="ruler"></div></div>
+      <p>The workflow uses Kraken2 version 2.17.1 from Google Artifact Registry:</p>
+      <pre><span class="path-line">us-docker.pkg.dev/general-theiagen/theiagen/kraken2:2.17.1</span><button class="copy-btn" onclick="copyText(this,'us-docker.pkg.dev/general-theiagen/theiagen/kraken2:2.17.1')">Copy</button></pre>
+      <p>Using Google Artifact Registry avoids Docker Hub pull-rate limitations during large Terra executions.</p>
+    </section>
+
+    <section id="compute">
+      <div class="section-head"><h2>Compute resources</h2><div class="ruler"></div></div>
+      <table>
+        <tr><th>Resource</th><th>Configuration</th></tr>
+        <tr><td>CPU</td><td>20 cores</td></tr>
+        <tr><td>Memory</td><td>32 GB RAM</td></tr>
+        <tr><td>Disk</td><td>100 GB SSD</td></tr>
+        <tr><td>Preemptible VM</td><td>Disabled</td></tr>
+      </table>
+    </section>
+
+    <section id="outputs">
+      <div class="section-head"><h2>Outputs</h2><div class="ruler"></div></div>
+      <table>
+        <tr><th>Output</th><th>Description</th></tr>
+        <tr><td><code>kraken2_version</code></td><td>Kraken2 software version used during execution.</td></tr>
+        <tr><td><code>kraken2_report</code></td><td>Complete Kraken2 taxonomic classification report.</td></tr>
+        <tr><td><code>kraken2_species_detected</code></td><td>Detected species extracted automatically from the Kraken2 report.</td></tr>
+      </table>
+    </section>
+
+    <section id="example">
+      <div class="section-head"><h2>Expected result example</h2><div class="ruler"></div></div>
+      <div class="result-card">
+        <div class="result-cell">
+          <div class="label">Kraken version</div>
+          <div class="value">v2.17.1</div>
+        </div>
+        <div class="result-cell">
+          <div class="label">Sample</div>
+          <div class="value">CA114538</div>
+        </div>
+        <div class="result-cell">
+          <div class="label">Detected species</div>
+          <div class="value">Detected organism name</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="troubleshooting">
+      <div class="section-head"><h2>⚠️ Troubleshooting</h2><div class="ruler"></div></div>
+      <div class="box warning">
+        <h3 style="margin-top:0;">Kraken database error</h3>
+        <p>If Kraken2 reports:</p>
+        <pre>database does not contain necessary file taxo.k2d</pre>
+        <p>The database directory is incorrect. The folder provided to Kraken2 must contain:</p>
+        <div class="filetree">
+<span class="dir">kraken_db/</span>
+└── <span class="dir">minikraken2_v2_8GB_201904_UPDATE/</span>
+&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="leaf">hash.k2d</span>
+&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="leaf">taxo.k2d</span>
+&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="leaf">opts.k2d</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="automation" style="border-bottom:none;">
+      <div class="section-head"><h2>Workflow automation</h2><div class="ruler"></div></div>
+      <div class="box success">
+        <p style="margin:0;">The workflow is designed for non-technical users. After FASTQ import, users only need to select samples and click <strong>Launch</strong>. All database handling, computation setup, and Kraken2 execution are automated.</p>
+      </div>
+    </section>
+
+    <footer>
+      Maintained by BioinfoMohIL — Terra / WDL Kraken2 Species Detection Pipeline
+    </footer>
+
+  </main>
+
+</div>
+
+<script>
+  function copyText(btn, text){
+    navigator.clipboard.writeText(text).then(function(){
+      var original = btn.textContent;
+      btn.textContent = "Copied";
+      setTimeout(function(){ btn.textContent = original; }, 1500);
+    });
+  }
+
+  (function(){
+    var links = document.querySelectorAll('nav.toc a');
+    var sections = Array.prototype.slice.call(document.querySelectorAll('main section'));
+    if(!('IntersectionObserver' in window)) return;
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var id = entry.target.getAttribute('id');
+        var link = document.querySelector('nav.toc a[href="#' + id + '"]');
+        if(!link) return;
+        if(entry.isIntersecting){
+          links.forEach(function(l){ l.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+    sections.forEach(function(s){ observer.observe(s); });
+  })();
+</script>
+
+</body>
+</html>
