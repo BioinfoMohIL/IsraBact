@@ -47,6 +47,4 @@ task task_trana {
     docker: "quay.io/biocontainers/nextflow:latest"
   }
 
-  cpu: 4
-  memory: "16G"
 }
