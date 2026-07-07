@@ -62,7 +62,7 @@ task kraken2 {
 
         kraken2 -v | awk '/Kraken/ {print "Kraken v" $3}' | tee VERSION
         # /app/db/kraken_db
-        kraken2 $mode $compressed --threads "~{cpu}" --use-names --db kraken_db \
+        kraken2 $mode $compressed --threads "~{cpu}" --use-names --db kraken_db/minikraken2_v2_8GB_201904_UPDATE \
             --report "~{sample_id}_report.txt" --paired "~{read1}" "~{read2}" --output -
 
         detected=$(awk -F'\t' '$4 == "S" {gsub(/^[ \t]+/, "", $6); print $6; exit}' "~{sample_id}_report.txt")
