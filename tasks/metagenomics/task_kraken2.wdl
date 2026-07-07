@@ -6,7 +6,7 @@ task kraken2 {
     File read1
     File  read2
     String sample_id
-    String kraken_db_path
+    File kraken_db = "gs://fc-5d4556f8-3de6-4709-85da-11445772644d/db/minikraken2_v2_8GB_201904_UPDATE.tar.gz"
     
     # String docker = "bioinfomoh/specie_detection:1"
     String docker = "us-docker.pkg.dev/general-theiagen/theiagen/kraken2:2.17.1"
@@ -16,8 +16,6 @@ task kraken2 {
   }
 
   command <<<
-        set -euo pipefail
-
         mode=""
         compressed=""
 
@@ -33,15 +31,38 @@ task kraken2 {
             compressed="--gzip-compressed"
         fi
 
-        echo "Checking DB..."
-        find ~{kraken_db_path} -name "taxo.k2d" -o -name "*.k2d"
+        echo "Kraken DB input:"
+        ls -lh "~{kraken_db}" || true
+        file "~{kraken_db}" || true
+
+        if [ ! -s "~{kraken_db}" ]; then
+            echo "ERROR: DB file missing or empty"
+            exit 1
+        fi
+
+
+        mkdir -p kraken_db
+
+        tar -xzf "~{kraken_db}" -C kraken_db
+
+        echo "After extract:"
+        ls -lah kraken_db
+
+        echo "Deep scan:"
+        find kraken_db -type f | head
+
+        tar -xzf "~{kraken_db}" -C kraken_db
+
+        echo "DB Contents:"
+        find kraken_db -maxdepth 2
+
 
         # Run Kraken2
         echo "Running Kraken2..."
 
         kraken2 -v | awk '/Kraken/ {print "Kraken v" $3}' | tee VERSION
         # /app/db/kraken_db
-        kraken2 $mode $compressed --threads "~{cpu}" --use-names --db ~{kraken_db_path} \
+        kraken2 $mode $compressed --threads "~{cpu}" --use-names --db kraken_db \
             --report "~{sample_id}_report.txt" --paired "~{read1}" "~{read2}" --output -
 
         detected=$(awk -F'\t' '$4 == "S" {gsub(/^[ \t]+/, "", $6); print $6; exit}' "~{sample_id}_report.txt")
