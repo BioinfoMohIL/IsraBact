@@ -19,6 +19,9 @@ workflow wf_rasusa_workflow {
     Int min_coverage = 10
     Int min_proportion = 40
 
+    Boolean force = false
+
+
   }
 
   call task_screen.check_reads as raw_check_reads{
@@ -36,7 +39,7 @@ workflow wf_rasusa_workflow {
     
   }
 
-  if (raw_check_reads.read_screen != "PASS") {
+  if (raw_check_reads.read_screen != "PASS" || force) {
 
     call fetch_genome_length {
         input:
