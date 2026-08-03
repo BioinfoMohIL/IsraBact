@@ -224,7 +224,7 @@ task Detect_Species {
     File? read2
     String sample_id
     
-    String docker = "bioinfomoh/specie_detection:1"
+    # String docker = "bioinfomoh/specie_detection:1"
     String docker = "ghcr.io/bioinfomohil/species_detection:1.0"
     Int cpu = 16
   
