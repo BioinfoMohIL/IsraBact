@@ -1,8 +1,8 @@
 version: 1.2
 workflows:
-  # - name: Species_Detection_MOH
-  #   subclass: WDL
-  #   primaryDescriptorPath: /workflows/metagenomics/wf_species_detection_bs_reads.wdl
+  - name: Species_Detection_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/metagenomics/wf_species_detection_bs_reads.wdl
   
   - name: Species_Detection_PerSample_MOH
     subclass: WDL
