@@ -103,3 +103,8 @@ workflows:
   - name: wgMLST_ChewBBACA_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/wgmlst/wf_chewbbaca.wdl
+
+  - name: Plasmid_Detection_MobSuite_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/gene_typing/plasmid_detection/wf_plasmid_detection.wdl
+

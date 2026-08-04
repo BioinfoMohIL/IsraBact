@@ -1,5 +1,5 @@
 {
-  "wf_kraken2.read1": "data/NM271_R1.fastq.gz",
-  "wf_kraken2.read2": "data/NM271_R2.fastq.gz",
-  "wf_kraken2.sample_id": "NM271"
+  "wf_plasmid_detection.assembly_fasta": "data/SH033793_filtered_contigs.fasta",
+  "wf_plasmid_detection.samplename": "SH033793"
+
 }

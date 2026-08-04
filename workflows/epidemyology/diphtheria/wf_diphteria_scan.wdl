@@ -21,7 +21,7 @@ workflow wf_diphtheria_scan {
         Boolean tree = false
         Boolean update_db = true
 
-        Int threads = 16
+        Int threads = 20
     }
 
     Array[File] input_files = flatten([

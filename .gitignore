@@ -1,2 +1,5 @@
 *.gz
 test
+data
+_LAST
+*.json
