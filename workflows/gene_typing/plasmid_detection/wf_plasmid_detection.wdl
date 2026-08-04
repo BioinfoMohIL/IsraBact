@@ -9,6 +9,11 @@ import "task_mobsuite.wdl" as mobsuite_t
 ## Reference outil: https://github.com/phac-nml/mob-suite
 
 workflow wf_plasmid_detection {
+  meta {
+    description: "MOB-suite (mob_recon) reconstructs and types plasmid sequences from draft or complete bacterial genome assemblies - (https://github.com/phac-nml/mob-suite)."
+    author: "David Maimoun"
+  }
+
   input {
     File   assembly_fasta
     String samplename
@@ -117,7 +122,5 @@ workflow wf_plasmid_detection {
     File   mobsuite_plasmids_tarball = mob_recon.plasmids_tarball
   }
 
-  meta {
-    description: "Detection et typage de plasmides via MOB-suite (mob_recon), un sample a la fois."
-  }
+ 
 }
