@@ -121,8 +121,6 @@ task mob_recon {
     MOB_EXIT=$?
     set -e
 
-    echo "$MOB_EXIT" > MOB_RECON_EXIT_CODE
-
     # Normalise les noms de sortie attendus meme si mob_recon a echoue avant
     # de tout generer, pour que les outputs WDL restent valides (fichiers vides).
     touch ~{out_dir}/contig_report.txt
@@ -141,15 +139,18 @@ task mob_recon {
     # Regroupe tous les fasta de plasmides en une seule archive tar, meme si vide
     tar -czf ~{samplename}_plasmids.tar.gz -C ~{out_dir} $(cd ~{out_dir} && ls plasmid_*.fasta 2>/dev/null) 2>/dev/null || tar -czf ~{samplename}_plasmids.tar.gz --files-from=/dev/null
 
-    if [ "$MOB_EXIT" -ne 0 ]; then
+    if [ "$MOB_EXIT" -eq 0 ]; then
+      echo "SUCCESS" > MOB_RECON_STATUS
+    else
+      echo "FAILED" > MOB_RECON_STATUS
       echo "mob_recon a retourne un code d'erreur (~{samplename}): $MOB_EXIT" >&2
     fi
   >>>
 
   output {
-    String mob_suite_version   = read_string("VERSION")
-    Int    mob_recon_exit_code = read_int("MOB_RECON_EXIT_CODE")
-    Int    plasmid_count       = read_int("PLASMID_COUNT")
+    String mob_suite_version = read_string("VERSION")
+    String mob_recon_status  = read_string("MOB_RECON_STATUS")  # "SUCCESS" ou "FAILED"
+    Int    plasmid_count     = read_int("PLASMID_COUNT")
 
     File   contig_report       = "~{out_dir}/contig_report.txt"
     File   mobtyper_report     = "~{out_dir}/mobtyper_results.txt"
