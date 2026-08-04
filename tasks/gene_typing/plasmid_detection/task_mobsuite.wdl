@@ -128,8 +128,11 @@ task mob_recon {
     touch ~{out_dir}/contig_report.txt
     touch ~{out_dir}/mobtyper_results.txt
     touch ~{out_dir}/mge.report.txt
-    touch ~{out_dir}/biomarkers.blast.txt
     touch ~{out_dir}/chromosome.fasta
+    # biomarkers.blast.txt n'est PAS touch ici : mob_recon ne l'ecrit que si des
+    # biomarqueurs plasmidiques sont detectes (sinon il ne le cree jamais). On
+    # laisse donc son absence refleter un vrai "0 biomarqueur" plutot qu'un
+    # fichier vide artificiel.
 
     # Nombre de plasmides detectes = nombre de fichiers plasmid_*.fasta
     PLASMID_COUNT=$(ls ~{out_dir}/plasmid_*.fasta 2>/dev/null | wc -l || true)
@@ -151,7 +154,7 @@ task mob_recon {
     File   contig_report       = "~{out_dir}/contig_report.txt"
     File   mobtyper_report     = "~{out_dir}/mobtyper_results.txt"
     File   mge_report          = "~{out_dir}/mge.report.txt"
-    File   biomarker_report    = "~{out_dir}/biomarkers.blast.txt"
+    File?  biomarker_report    = "~{out_dir}/biomarkers.blast.txt"  # null si mob_recon n'a rien detecte
     File   chromosome_fasta    = "~{out_dir}/chromosome.fasta"
     File   plasmids_tarball    = "~{samplename}_plasmids.tar.gz"
   }
