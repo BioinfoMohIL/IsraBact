@@ -9,7 +9,7 @@ workflow wf_plasmid_detection {
     description: "MOB-suite (mob_recon) reconstructs and types plasmid sequences from draft or complete bacterial genome assemblies - (https://github.com/phac-nml/mob-suite)."
     author: "David Maimoun"
   }
-  
+
   input {
     File   assembly_fasta
     String samplename
@@ -106,19 +106,16 @@ workflow wf_plasmid_detection {
   }
 
   output {
-    String mob_suite_version   = mob_recon.mob_suite_version
-    Int    mob_recon_exit_code = mob_recon.mob_recon_exit_code
-    Int    plasmid_count       = mob_recon.plasmid_count
+    String mobsuite_version   = mob_recon.mob_suite_version
+    Int    mobsuite_mob_recon_exit_code = mob_recon.mob_recon_exit_code
+    Int    mobsuite_plasmid_count       = mob_recon.plasmid_count
 
-    File   contig_report       = mob_recon.contig_report
-    File   mobtyper_report     = mob_recon.mobtyper_report
-    File   mge_report          = mob_recon.mge_report
-    File   biomarker_report    = mob_recon.biomarker_report
-    File   chromosome_fasta    = mob_recon.chromosome_fasta
-    File   plasmids_tarball    = mob_recon.plasmids_tarball
+    File   mobsuite_contig_report       = mob_recon.contig_report
+    File   mobsuite_mobtyper_report     = mob_recon.mobtyper_report
+    File   mobsuite_mge_report          = mob_recon.mge_report
+    File   mobsuite_biomarker_report    = mob_recon.biomarker_report
+    File   mobsuite_chromosome_fasta    = mob_recon.chromosome_fasta
+    File   mobsuite_plasmids_tarball    = mob_recon.plasmids_tarball
   }
 
-  meta {
-    description: "Detection et typage de plasmides via MOB-suite (mob_recon), un sample a la fois."
-  }
 }
