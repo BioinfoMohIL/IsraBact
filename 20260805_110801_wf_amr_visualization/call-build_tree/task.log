@@ -1,6 +1,0 @@
-2026-08-05 11:13:28.726 wdl.w:wf_amr_visualization.t:call-build_tree NOTICE task setup :: name: "build_tree", source: "../../tasks/data_visualization/task_amr_visualization.wdl", line: 122, column: 1, dir: "/home/user1/Desktop/programs/wdl/IsraBact/20260805_110801_wf_amr_visualization/call-build_tree", thread: 140139428869696
-2026-08-05 11:13:28.765 wdl.w:wf_amr_visualization.t:call-build_tree WARNING ignored runtime settings :: keys: ["disks"]
-2026-08-05 11:13:28.798 wdl.w:wf_amr_visualization.t:call-build_tree NOTICE docker image :: tag: "staphb/iqtree2:2.1.2", id: "sha256:a660378760db013e9463a3cf0413f5909c7350b7ea33bb62407b5c05319c6e6b", RepoDigest: "staphb/iqtree2@sha256:af0408fcf62984fba278d7bd626fa7fab51dc144a3a0c6d5354a662f660e9f82"
-2026-08-05 11:13:30.490 wdl.w:wf_amr_visualization.t:call-build_tree NOTICE docker task running :: service: "n7vj10bhav06", task: "ahr863sm4o", node: "no3gik2thg", message: "started"
-2026-08-05 11:13:32.284 wdl.w:wf_amr_visualization.t:call-build_tree NOTICE docker task exit :: state: "complete", exit_code: 0
-2026-08-05 11:13:33.042 wdl.w:wf_amr_visualization.t:call-build_tree NOTICE done

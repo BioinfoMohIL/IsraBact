@@ -1,6 +1,0 @@
-2026-08-05 11:11:02.694 wdl.w:wf_amr_visualization.t:call-pangenome NOTICE task setup :: name: "pangenome", source: "../../tasks/data_visualization/task_amr_visualization.wdl", line: 89, column: 1, dir: "/home/user1/Desktop/programs/wdl/IsraBact/20260805_110801_wf_amr_visualization/call-pangenome", thread: 140139479225920
-2026-08-05 11:11:02.711 wdl.w:wf_amr_visualization.t:call-pangenome WARNING ignored runtime settings :: keys: ["disks"]
-2026-08-05 11:11:02.734 wdl.w:wf_amr_visualization.t:call-pangenome NOTICE docker image :: tag: "staphb/roary:3.13.0", id: "sha256:a8285216e44180c04c30943ea8f2eb5740b39386ef7d1a38338fe9b4f81fb590", RepoDigest: "staphb/roary@sha256:ed4428775092c06cc57531fb000529decc8f94d8635afa10b04b254718359ce5"
-2026-08-05 11:11:04.971 wdl.w:wf_amr_visualization.t:call-pangenome NOTICE docker task running :: service: "ebc4hsdkjhhm", task: "4c37d1cdju", node: "no3gik2thg", message: "started"
-2026-08-05 11:13:27.940 wdl.w:wf_amr_visualization.t:call-pangenome NOTICE docker task exit :: state: "complete", exit_code: 0
-2026-08-05 11:13:28.722 wdl.w:wf_amr_visualization.t:call-pangenome NOTICE done

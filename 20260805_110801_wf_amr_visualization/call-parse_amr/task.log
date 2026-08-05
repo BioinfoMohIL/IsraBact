@@ -1,6 +1,0 @@
-2026-08-05 11:08:01.021 wdl.w:wf_amr_visualization.t:call-parse_amr NOTICE task setup :: name: "parse_amr", source: "../../tasks/data_visualization/task_amr_visualization.wdl", line: 14, column: 1, dir: "/home/user1/Desktop/programs/wdl/IsraBact/20260805_110801_wf_amr_visualization/call-parse_amr", thread: 140139479225920
-2026-08-05 11:08:01.520 wdl.w:wf_amr_visualization.t:call-parse_amr WARNING ignored runtime settings :: keys: ["disks"]
-2026-08-05 11:08:01.602 wdl.w:wf_amr_visualization.t:call-parse_amr NOTICE docker image :: tag: "bioinfomoh/amr_visualization-r:1.0", id: "sha256:ac1c58971f49f53eb6f92e0cc8cbb137c7ccba8a221bf55c04f0545d5a234217", RepoDigest: "bioinfomoh/amr_visualization-r@sha256:01474730bb8774ac5721e06becf54144dac059f270b6d9ea142aa9c4fbe2fa15"
-2026-08-05 11:08:03.542 wdl.w:wf_amr_visualization.t:call-parse_amr NOTICE docker task running :: service: "upmvhesg5w8b", task: "wrgdpmx1a6", node: "no3gik2thg", message: "started"
-2026-08-05 11:08:05.399 wdl.w:wf_amr_visualization.t:call-parse_amr NOTICE docker task exit :: state: "complete", exit_code: 0
-2026-08-05 11:08:06.051 wdl.w:wf_amr_visualization.t:call-parse_amr NOTICE done

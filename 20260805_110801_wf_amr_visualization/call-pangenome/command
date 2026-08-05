@@ -1,6 +1,0 @@
-
-set -euo pipefail
-roary -e --mafft -p 4 -i 95 -f roary_out /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA110357.gff /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA114720.gff /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA139575.gff /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA140404.gff /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA140705.gff /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA140717.gff
-cp roary_out/core_gene_alignment.aln core_gene_alignment.aln
-cp roary_out/gene_presence_absence.csv gene_presence_absence.csv
-  

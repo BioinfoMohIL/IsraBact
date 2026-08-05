@@ -1,7 +1,0 @@
-2026-08-05 11:08:01.035 wdl.w:wf_amr_visualization.t:call-annotate_asm-3-CA140404_filtere NOTICE task setup :: name: "annotate", source: "../../tasks/data_visualization/task_amr_visualization.wdl", line: 59, column: 1, dir: "/home/user1/Desktop/programs/wdl/IsraBact/20260805_110801_wf_amr_visualization/call-annotate_asm-3-CA140404_filtere", thread: 140139445655104
-2026-08-05 11:08:01.480 wdl.w:wf_amr_visualization.t:call-annotate_asm-3-CA140404_filtere NOTICE docker swarm resources :: workers: 1, max_cpus: 40, max_mem_bytes: 67159334912, total_cpus: 40, total_mem_bytes: 67159334912
-2026-08-05 11:08:01.485 wdl.w:wf_amr_visualization.t:call-annotate_asm-3-CA140404_filtere WARNING ignored runtime settings :: keys: ["disks"]
-2026-08-05 11:08:01.524 wdl.w:wf_amr_visualization.t:call-annotate_asm-3-CA140404_filtere NOTICE docker image :: tag: "staphb/prokka:1.14.6", id: "sha256:071a092371791e68f168d61e40f702e5960c8a6e7165318c69588b65f35db07f", RepoDigest: "staphb/prokka@sha256:6bb2522e077ef08a8be7a3856fe80372ede3b832becba0728e1ddbe83d89a042"
-2026-08-05 11:08:03.484 wdl.w:wf_amr_visualization.t:call-annotate_asm-3-CA140404_filtere NOTICE docker task running :: service: "zhj8oeqv9m8r", task: "yr8iybwop5", node: "no3gik2thg", message: "started"
-2026-08-05 11:11:02.064 wdl.w:wf_amr_visualization.t:call-annotate_asm-3-CA140404_filtere NOTICE docker task exit :: state: "complete", exit_code: 0
-2026-08-05 11:11:02.691 wdl.w:wf_amr_visualization.t:call-annotate_asm-3-CA140404_filtere NOTICE done
