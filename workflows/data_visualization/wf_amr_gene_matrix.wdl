@@ -14,13 +14,13 @@ import "../../tasks/data_visualization/task_build_gene_matrix.wdl" as tasks
 
 workflow wf_amr_gene_matrix {
   input {
-    Array[File] abricate_reports
+    Array[File] abricate_hits_reports
     Array[File] amrfinder_reports
   }
 
   call tasks.build_gene_matrix as abricate_matrix {
     input:
-      tsv_reports = abricate_reports,
+      tsv_reports = abricate_hits_reports,
       gene_column = "GENE",
       source_name = "abricate"
   }
