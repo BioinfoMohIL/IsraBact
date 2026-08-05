@@ -1,0 +1,7 @@
+2026-08-04 12:18:16.958 wdl.w:wf_plasmid_detection.t:call-mob_recon NOTICE task setup :: name: "mob_recon", source: "../../../tasks/gene_typing/plasmid_detection/task_mobsuite.wdl", line: 13, column: 1, dir: "/home/user1/Desktop/programs/wdl/IsraBact/20260804_121816_wf_plasmid_detection/call-mob_recon", thread: 139755104953920
+2026-08-04 12:18:17.190 wdl.w:wf_plasmid_detection.t:call-mob_recon NOTICE docker swarm resources :: workers: 1, max_cpus: 40, max_mem_bytes: 67159334912, total_cpus: 40, total_mem_bytes: 67159334912
+2026-08-04 12:18:17.197 wdl.w:wf_plasmid_detection.t:call-mob_recon WARNING ignored runtime settings :: keys: ["disks", "continueOnReturnCode"]
+2026-08-04 12:18:17.220 wdl.w:wf_plasmid_detection.t:call-mob_recon NOTICE docker image :: tag: "staphb/mob-suite:3.1.9", id: "sha256:527cd88e6b873969c113c0fbe331ef38aa12ffdc7014ede7c492ace2a04060fa", RepoDigest: "staphb/mob-suite@sha256:fe05a1576fbf20fb1654cada703a64230d1eaf9db605304c8d5c294a0f9205bc"
+2026-08-04 12:18:18.667 wdl.w:wf_plasmid_detection.t:call-mob_recon NOTICE docker task running :: service: "kxb12t2124wh", task: "4t211pvco3", node: "no3gik2thg", message: "started"
+2026-08-04 12:32:23.442 wdl.w:wf_plasmid_detection.t:call-mob_recon NOTICE docker task exit :: state: "complete", exit_code: 0
+2026-08-04 12:32:24.095 wdl.w:wf_plasmid_detection.t:call-mob_recon NOTICE done

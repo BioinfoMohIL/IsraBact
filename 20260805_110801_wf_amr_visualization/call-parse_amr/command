@@ -1,0 +1,10 @@
+
+set -euo pipefail
+parse_amr.R \
+  --resistance /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA110357_amrfinder_all.tsv /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA114720_amrfinder_all.tsv /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA139575_amrfinder_all.tsv /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA140404_amrfinder_all.tsv /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA140705_amrfinder_all.tsv /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA140717_amrfinder_all.tsv \
+  --virulence /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA110357_abricate_hits.tsv /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA114720_abricate_hits.tsv /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA139575_abricate_hits.tsv /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA140404_abricate_hits.tsv /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA140705_abricate_hits.tsv /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA140717_abricate_hits.tsv \
+  --min-identity 90.000000 \
+  --min-coverage 80.000000 \
+  --mode presence \
+  --out CA_run_matrix.tsv
+  

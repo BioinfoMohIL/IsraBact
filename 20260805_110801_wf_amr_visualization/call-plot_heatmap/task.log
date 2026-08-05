@@ -1,0 +1,6 @@
+2026-08-05 11:13:33.049 wdl.w:wf_amr_visualization.t:call-plot_heatmap NOTICE task setup :: name: "plot_heatmap", source: "../../tasks/data_visualization/task_amr_visualization.wdl", line: 154, column: 1, dir: "/home/user1/Desktop/programs/wdl/IsraBact/20260805_110801_wf_amr_visualization/call-plot_heatmap", thread: 140139454047808
+2026-08-05 11:13:33.067 wdl.w:wf_amr_visualization.t:call-plot_heatmap WARNING ignored runtime settings :: keys: ["disks"]
+2026-08-05 11:13:33.089 wdl.w:wf_amr_visualization.t:call-plot_heatmap NOTICE docker image :: tag: "bioinfomoh/amr_visualization-r:1.0", id: "sha256:ac1c58971f49f53eb6f92e0cc8cbb137c7ccba8a221bf55c04f0545d5a234217", RepoDigest: "bioinfomoh/amr_visualization-r@sha256:01474730bb8774ac5721e06becf54144dac059f270b6d9ea142aa9c4fbe2fa15"
+2026-08-05 11:13:34.621 wdl.w:wf_amr_visualization.t:call-plot_heatmap NOTICE docker task running :: service: "qvlynbhefx14", task: "o0f8vnp299", node: "no3gik2thg", message: "started"
+2026-08-05 11:13:41.118 wdl.w:wf_amr_visualization.t:call-plot_heatmap NOTICE docker task exit :: state: "complete", exit_code: 0
+2026-08-05 11:13:41.700 wdl.w:wf_amr_visualization.t:call-plot_heatmap NOTICE done

@@ -1,0 +1,70 @@
+
+    set -euo pipefail
+
+    pip install --quiet --no-cache-dir pandas openpyxl
+
+    python3 <<'PYEOF'
+import os
+import pandas as pd
+
+files = """/mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA110357_amrfinder_all.tsv
+/mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA114720_amrfinder_all.tsv
+/mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA139575_amrfinder_all.tsv
+/mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA140404_amrfinder_all.tsv
+/mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA140705_amrfinder_all.tsv
+/mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA140717_amrfinder_all.tsv""".strip().split("\n")
+gene_col = "Element symbol"
+source_name = "amrfinder"
+
+presence = {}   # Key -> set(genes)
+all_genes = set()
+
+for f in files:
+    f = f.strip()
+    if not f:
+        continue
+    basename = os.path.basename(f)
+    key = basename.split("_")[0]
+
+    df = pd.read_csv(f, sep="\t", dtype=str, comment=None)
+    df.columns = [c.strip().lstrip("#") for c in df.columns]
+
+    if gene_col not in df.columns:
+        raise ValueError(
+            f"Colonne '{gene_col}' introuvable dans {basename}. "
+            f"Colonnes disponibles: {list(df.columns)}"
+        )
+
+    genes = set(df[gene_col].dropna().astype(str).str.strip())
+    genes.discard("")
+
+    presence.setdefault(key, set())
+    presence[key] |= genes
+    all_genes |= genes
+
+keys_sorted = sorted(presence.keys())
+genes_sorted = sorted(all_genes)
+
+yesno_rows = []
+binary_rows = []
+for k in keys_sorted:
+    yesno_row = {"Key": k}
+    binary_row = {"Key": k}
+    for g in genes_sorted:
+        present = g in presence[k]
+        yesno_row[g] = "YES" if present else "NO"
+        binary_row[g] = 1 if present else 0
+    yesno_rows.append(yesno_row)
+    binary_rows.append(binary_row)
+
+cols = ["Key"] + genes_sorted
+yesno_df = pd.DataFrame(yesno_rows, columns=cols)
+binary_df = pd.DataFrame(binary_rows, columns=cols)
+
+yesno_df.to_csv(f"{source_name}_matrix_yesno.tsv", sep="\t", index=False)
+binary_df.to_csv(f"{source_name}_matrix_binary.tsv", sep="\t", index=False)
+
+yesno_df.to_excel(f"{source_name}_matrix_yesno.xlsx", index=False)
+binary_df.to_excel(f"{source_name}_matrix_binary.xlsx", index=False)
+PYEOF
+  

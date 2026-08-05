@@ -1,0 +1,5 @@
+
+set -euo pipefail
+prokka --cpus 2 --outdir prokka_out --prefix "CA110357" --force /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA110357_filtered_contigs.fasta
+cp prokka_out/"CA110357".gff CA110357.gff
+  

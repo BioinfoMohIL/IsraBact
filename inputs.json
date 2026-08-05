@@ -1,8 +1,6 @@
 {
-  "wf_amr_visualization.docker": "bioinfomoh/amr_visualization:1.0",
-  "wf_amr_visualization.lang": "r",
-  "wf_amr_visualization.docker_r": "bioinfomoh/amr_visualization-r:1.0",
-  "wf_amr_visualization.resistance_reports": [
+
+  "wf_amr_gene_matrix.amrfinder_reports": [
     "data/CA110357_amrfinder_all.tsv",
     "data/CA114720_amrfinder_all.tsv",
     "data/CA139575_amrfinder_all.tsv",
@@ -11,31 +9,12 @@
     "data/CA140717_amrfinder_all.tsv"
   ],
 
-  "wf_amr_visualization.virulence_reports": [
+  "wf_amr_gene_matrix.abricate_reports": [
     "data/CA110357_abricate_hits.tsv",
     "data/CA114720_abricate_hits.tsv",
     "data/CA139575_abricate_hits.tsv",
     "data/CA140404_abricate_hits.tsv",
     "data/CA140705_abricate_hits.tsv",
     "data/CA140717_abricate_hits.tsv"
-  ],
-
-  "wf_amr_visualization.assemblies": [
-    "data/CA110357_filtered_contigs.fasta",
-    "data/CA114720_filtered_contigs.fasta",
-    "data/CA139575_filtered_contigs.fasta",
-    "data/CA140404_filtered_contigs.fasta",
-    "data/CA140705_filtered_contigs.fasta",
-    "data/CA140717_filtered_contigs.fasta"
-  ],
-
-  "wf_amr_visualization.iqtree_model": "GTR+G",
-  "wf_amr_visualization.bootstrap": 1000,
-  "wf_amr_visualization.roary_identity": 95,
-
-  "wf_amr_visualization.min_identity": 90.0,
-  "wf_amr_visualization.min_coverage": 80.0,
-  "wf_amr_visualization.mode": "presence",
-  "wf_amr_visualization.title": "AMR resistome/virulome (n=6)",
-  "wf_amr_visualization.collection": "CA_run"
+  ]
 }

@@ -1,0 +1,7 @@
+2026-08-05 11:37:33.136 wdl.w:wf_amr_gene_matrix.t:call-abricate_matrix NOTICE task setup :: name: "build_gene_matrix", source: "../../tasks/data_visualization/task_build_gene_matrix.wdl", line: 16, column: 1, dir: "/home/user1/Desktop/programs/wdl/IsraBact/20260805_113733_wf_amr_gene_matrix/call-abricate_matrix", thread: 140480055887424
+2026-08-05 11:37:33.384 wdl.w:wf_amr_gene_matrix.t:call-abricate_matrix NOTICE docker swarm resources :: workers: 1, max_cpus: 40, max_mem_bytes: 67159334912, total_cpus: 40, total_mem_bytes: 67159334912
+2026-08-05 11:37:33.390 wdl.w:wf_amr_gene_matrix.t:call-abricate_matrix WARNING ignored runtime settings :: keys: ["disks"]
+2026-08-05 11:37:43.708 wdl.w:wf_amr_gene_matrix.t:call-abricate_matrix NOTICE docker image :: tag: "python:3.11-slim", id: "sha256:245f9d32fabaec22e749aa5cfef79996088135e9d4410f4e7ebe133c2be98132", RepoDigest: "python@sha256:a25f6aeb42924b56064742e12e8b563c7eb07f1ef18e49a806784680f32d8cfe"
+2026-08-05 11:37:44.914 wdl.w:wf_amr_gene_matrix.t:call-abricate_matrix NOTICE docker task running :: service: "baiszc7qogr5", task: "rxw8ov9n4m", node: "no3gik2thg", message: "started"
+2026-08-05 11:38:04.933 wdl.w:wf_amr_gene_matrix.t:call-abricate_matrix NOTICE docker task exit :: state: "complete", exit_code: 0
+2026-08-05 11:38:05.628 wdl.w:wf_amr_gene_matrix.t:call-abricate_matrix NOTICE done

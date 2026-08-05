@@ -107,4 +107,9 @@ workflows:
   - name: Plasmid_Detection_MobSuite_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/gene_typing/plasmid_detection/wf_plasmid_detection.wdl
+  
+  - name: AMR_Gene_Matrix_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/data_visualization/wf_amr_gene_matrix.wdl
+
 

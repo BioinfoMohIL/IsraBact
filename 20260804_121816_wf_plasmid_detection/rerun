@@ -1,0 +1,1 @@
+pushd /home/user1/Desktop/programs/wdl/IsraBact && miniwdl run workflows/gene_typing/plasmid_detection/wf_plasmid_detection.wdl --input test.json; popd

@@ -1,0 +1,5 @@
+
+set -euo pipefail
+iqtree2 -s /mnt/miniwdl_task_container/work/_miniwdl_inputs/0/core_gene_alignment.aln -m GTR+G -B 1000 -T 4 --prefix CA_run
+cp CA_run.treefile CA_run.nwk
+  

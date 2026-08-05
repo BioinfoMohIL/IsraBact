@@ -1,0 +1,71 @@
+sample_id	molecule_type	primary_cluster_id	secondary_cluster_id	contig_id	size	gc	md5	circularity_status	rep_type(s)	rep_type_accession(s)	relaxase_type(s)	relaxase_type_accession(s)	mpf_type	mpf_type_accession(s)	orit_type(s)	orit_accession(s)	predicted_mobility	mash_nearest_neighbor	mash_neighbor_distance	mash_neighbor_identification	repetitive_dna_id	repetitive_dna_type	filtering_reason
+SH033793	chromosome	-	-	NODE_109_length_238_cov_2.024845	238	0.5504201680672269	78ce0e80dd7c5ce7341c71f4d611128a	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_10_length_187941_cov_310.101632	187941	0.4982095444847053	da174b1f634e06ead84292bd2e81bc51	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_115_length_236_cov_295.886792	236	0.5296610169491526	e3f47b166bebb05428691e8cd81eef0f	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_11_length_179993_cov_310.320177	179993	0.5169367697632685	9ecc8728860f3b03693e97762a221d08	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_123_length_233_cov_3.217949	233	0.5407725321888412	f16acb28361980f0b8b7ccf7a5db7de2	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_125_length_231_cov_133.766234	231	0.6883116883116883	81f765b65a3e5a931f3af0149deaf001	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_12_length_151334_cov_307.190755	151334	0.5166783406240502	1a52ce4c456dc21aac5e4c26fc51b76d	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_135_length_221_cov_186.527778	221	0.6334841628959276	27b1fb9ca6bad8b47758d8787ff486db	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_136_length_221_cov_124.277778	221	0.7647058823529411	d26bb0e3a65506000674c689007cfb16	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_137_length_214_cov_322.861314	214	0.5	b85c087c893aff3bf8c015afd672c3a3	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_138_length_212_cov_196.511111	212	0.6745283018867925	17e993d45de698c8a35b84a19284f2cf	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_139_length_210_cov_198.586466	210	0.6952380952380952	56632fcce48a67b4491f651009d9382a	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_13_length_150298_cov_307.179216	150298	0.5260149835659822	e0f17bc7826063420448e67bf0074d16	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_140_length_207_cov_215.492308	207	0.6231884057971014	439e9e27dfaf212447373ce22ee85e17	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_14_length_145512_cov_306.106102	145512	0.5118890538237396	0572aba69e2101653274717630752f70	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_15_length_118297_cov_288.888987	118297	0.5291934706712765	de6ed5d648a0af0fbc150ab8ee1029ce	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_16_length_104634_cov_311.783372	104634	0.5155876674885792	063ee9ede642b0d09a349ad03d79101f	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_17_length_92455_cov_305.789820	92455	0.530701422313558	2b12e874d82f4e221045656cf45cd2a8	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_18_length_79302_cov_309.237640	79302	0.5266197573831681	5b4509c5fdd235be5c4ea2ec1cd56c80	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_19_length_73951_cov_283.229242	73951	0.533096239401766	4758643058750df951a55fe47dfb79e2	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_1_length_727900_cov_295.875380	727900	0.5151243302651463	b1c421ef09235a2634c6aee60136b9db	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_20_length_61016_cov_293.795386	61016	0.5156680215025568	d22c9a76acfcca813035e6aba0183b0e	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_21_length_53477_cov_313.395056	53477	0.5111356284009948	47d62dadf289428c874aee7b02df7d48	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_22_length_45300_cov_312.459479	45300	0.5207726269315673	4019ad8363f3007197455d3f577eef5e	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	plasmid	AC305	AL439	NODE_23_length_33656_cov_1433.754132	33656	0.43276087473258856	703af2cc21a26835acbba4a4cb1c934c	not tested	IncX1	000215__KC853434_00019	MOBP	NC_019047_00022	MPF_T,MPF_T,MPF_T,MPF_T,MPF_T	NC_023277_00163,NC_019047_00030,NC_019047_00031,NC_019047_00032,NC_019047_00035	-	-	-	CP037995	0.00058191	Salmonella enterica subsp. enterica serovar Brancaster	-	-	-
+SH033793	chromosome	-	-	NODE_24_length_32306_cov_304.701852	32306	0.5330279205101219	a6d8b3e149d6886750c9713bd59f8fef	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_25_length_26153_cov_318.185535	26153	0.5069016938783314	a1d6ade79956624f9056f425fec57aaf	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_26_length_11356_cov_317.351450	11356	0.4865269461077844	61587c355f3e8e50dd31825ddb5af762	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	plasmid	AC305	AL439	NODE_27_length_6037_cov_866.243792	6037	0.6125559052509525	505d3b16483d2dc09214922d1d905c85	not tested	-	-	-	-	-	-	-	-	-	CP037995	0.00058191	Salmonella enterica subsp. enterica serovar Brancaster	-	-	-
+SH033793	plasmid	AD337	AM869	NODE_28_length_5984_cov_3052.438124	5984	0.5095254010695187	5a8c8e17c202705c7e0168888ce629b9	not tested	-	-	MOBP	NC_017723_00002	-	-	-	-	-	CP033826	0.000167546	Klebsiella sp. FDAARGOS_511	-	-	-
+SH033793	chromosome	-	-	NODE_29_length_4378_cov_321.166240	4378	0.49588853357697577	dc76114f5dbc902985ec0237e8f458ba	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_2_length_573291_cov_301.833598	573291	0.5213722175997879	7225ef2b8fb599fe0568ec43cc0339fc	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_30_length_2930_cov_292.579741	2930	0.6767918088737201	7af9bfeb9a86116962c3c6e293a5a79e	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	plasmid	AB038	AJ574	NODE_31_length_2341_cov_5826.720848	2341	0.5151644596326356	664bfd0971bf4bf42c7c55691c4a0fb3	not tested	rep_cluster_2335	KU302809_00001	-	-	-	-	MOBP	HQ328804	-	CP030193	0.000215742	Salmonella enterica	-	-	-
+SH033793	plasmid	AC305	AL439	NODE_32_length_2058_cov_1317.196870	2058	0.4557823129251701	2f73e605e97b46b1b0e47964209523ae	not tested	-	-	-	-	-	-	-	-	-	CP037995	0.00058191	Salmonella enterica subsp. enterica serovar Brancaster	KX711879	ISEc51	repetitve element
+SH033793	plasmid	AC305	AL439	NODE_33_length_1969_cov_1063.484672	1969	0.5363128491620112	4cc371ab4ac48bc2f15c1eb448d3b10a	not tested	-	-	-	-	-	-	-	-	-	CP037995	0.00058191	Salmonella enterica subsp. enterica serovar Brancaster	AF174129	IS3000	repetitve element
+SH033793	chromosome	-	-	NODE_34_length_1819_cov_1897.363949	1819	0.5327102803738317	d01531d02ccbd0e8489b58c8af274068	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_35_length_1229_cov_612.113715	1229	0.516680227827502	e0fddb6ca6c6699c7e57803555b26bf5	not tested	-	-	-	-	-	-	-	-	-	-	-	-	KU870980	ISEhe3	repetitve element
+SH033793	chromosome	-	-	NODE_36_length_1214_cov_1909.097625	1214	0.5362438220757826	9954f56fd3682130b2507f35368b5a5d	not tested	-	-	-	-	-	-	-	-	-	-	-	-	CP016586.1	23s-rRNA	repetitve element
+SH033793	chromosome	-	-	NODE_37_length_896_cov_1300.340659	896	0.5055803571428571	d84b1a66ddd295347b5dffef469676ac	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_38_length_887_cov_622.540741	887	0.5445321307779031	2cf09ef3c2223b35e0574d732af3446b	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_39_length_779_cov_3949.576923	779	0.5224646983311938	7fd438194c07816cd4ed1fb4e018e376	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_3_length_458597_cov_305.137898	458597	0.5244800990848174	97573b5c35327ae043eaaa74a3eaa193	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_40_length_661_cov_2116.426370	661	0.5521936459909228	897fc928aac579aedbe211d3ca8b4622	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_41_length_547_cov_229.468085	547	0.6380255941499086	dbe31d04eb4b5b194cf9afd5a8bccd03	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_42_length_521_cov_195.653153	521	0.6660268714011516	d8879f9ebcd7ad9bb29d6037b16b8819	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_43_length_501_cov_857.313679	501	0.4930139720558882	390cfb86273872c7834e824b2feb9639	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_44_length_473_cov_209.868687	473	0.6469344608879493	934b313ab2136f8d981dd2863578a5d8	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_45_length_468_cov_265.634271	468	0.5341880341880342	599437cf5ca078d52b73ea2bc64da452	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_46_length_410_cov_175.747748	410	0.5	8209526e7432a318bbdb788fde0af79d	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_47_length_407_cov_224.957576	407	0.6363636363636364	c51c9080ed49bbf9e13af5da00a33235	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_4_length_375821_cov_301.447555	375821	0.5249786467493833	f63f8b7229d34a43dfd52f0f7c4d50a6	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_50_length_359_cov_383.773050	359	0.6601671309192201	f027d9d7a3a80acba89e0daf757c61dd	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_52_length_341_cov_318.844697	341	0.5190615835777126	ad3f82a69c4899e2645ac2eef8e54937	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_53_length_332_cov_445.113725	332	0.6234939759036144	1e0997258e293cabc29338936ddd8348	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_54_length_306_cov_252.624454	306	0.5392156862745098	ea581c0520cb384586dc5ef30bac8a13	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_55_length_302_cov_269.284444	302	0.5066225165562914	32fb18b22ed6599d8d5198a6e08cd836	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_56_length_299_cov_189.698198	299	0.6354515050167224	c2cd7746f1aea3acff1a969a513fb734	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_57_length_297_cov_303.268182	297	0.5589225589225589	653098eaaaa0ed153eecf10c2aba25a9	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_58_length_288_cov_245.407583	288	0.5451388888888888	64ffbc39b562c771fba8322b80666b6e	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_59_length_286_cov_242.468900	286	0.5034965034965035	e6cb19967b863dfe3bbff4aa88dc7697	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_5_length_262450_cov_298.937596	262450	0.5144522766241189	8aef30b696a758cf3ea2f86aaf096b60	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_66_length_270_cov_227.170984	270	0.4962962962962963	3ed81698744f5efd16982f6a069f02ca	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_6_length_231654_cov_295.455119	231654	0.5363386775104251	034a01cb42507b5c919886263a7acad7	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_74_length_264_cov_135.112299	264	0.625	06c5c2265050b8cde2aaf21342a8a091	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_7_length_225830_cov_289.222456	225830	0.5190010184652172	ac53e20f13688752eaa71801fa07b0d5	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_8_length_211356_cov_279.240232	211356	0.5414371960105225	e48af6a8bf8c42633686b2f04038d662	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_92_length_251_cov_171.086207	251	0.6812749003984063	d8d1bb382cfe1c7f45109253ad98dd94	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_98_length_248_cov_2.309942	248	0.4798387096774194	242183912731ff9da4fe0e9bc37e3ecc	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+SH033793	chromosome	-	-	NODE_9_length_207356_cov_321.213669	207356	0.5092642604988522	6870ad20ddbbcc4a80909cb7946d3b27	not tested	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
