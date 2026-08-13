@@ -80,7 +80,7 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/utilities/file_handling/wf_get_file_size.wdl
   
-  - name: RASUSA_For_All_MOH
+  - name: RASUSA_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/standalone_modules/wf_rasusa_all.wdl
 
