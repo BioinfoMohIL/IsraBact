@@ -1,6 +1,6 @@
 version 1.0
 
-import "../../../tasks/data_visualization/task_build_gene_matrix.wdl" as tasks
+import "../../tasks/data_visualization/task_build_gene_matrix.wdl" as tasks
 
 ## wf_amr_gene_matrix.wdl
 ##
