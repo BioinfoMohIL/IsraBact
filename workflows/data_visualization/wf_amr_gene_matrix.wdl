@@ -21,7 +21,7 @@ import "../../../tasks/data_visualization/task_build_gene_matrix.wdl" as tasks
 
 workflow wf_amr_gene_matrix {
   input {
-    Array[File]? abricate_reports
+    Array[File]? abricate_hits_reports
     Array[File]? amrfinder_amr_reports
     Array[File]? amrfinder_stress_reports
     Array[File]? amrfinder_virulence_reports
