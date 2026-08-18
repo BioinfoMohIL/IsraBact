@@ -89,8 +89,8 @@ cols = ["Key"] + genes_sorted
 yesno_df = pd.DataFrame(yesno_rows, columns=cols)
 binary_df = pd.DataFrame(binary_rows, columns=cols)
 
-yesno_df.to_csv(f"{source_name}_matrix_yesno.tsv", sep="\t", index=False)
-binary_df.to_csv(f"{source_name}_matrix_binary.tsv", sep="\t", index=False)
+# yesno_df.to_csv(f"{source_name}_matrix_yesno.tsv", sep="\t", index=False)
+# binary_df.to_csv(f"{source_name}_matrix_binary.tsv", sep="\t", index=False)
 
 yesno_df.to_excel(f"{source_name}_matrix_yesno.xlsx", index=False)
 binary_df.to_excel(f"{source_name}_matrix_binary.xlsx", index=False)
