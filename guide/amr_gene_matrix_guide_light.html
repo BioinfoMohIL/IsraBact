@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>wf_amr_gene_matrix — Quick-start Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f7f9fa;
+    --bg-panel: #ffffff;
+    --bg-panel-2: #eef3f5;
+    --line: #dde5e9;
+    --line-soft: #e6edf0;
+    --teal: #0d9488;
+    --teal-dim: #99d6cd;
+    --blue: #2563eb;
+    --ink: #101a20;
+    --ink-dim: #51636c;
+    --ink-faint: #8a9aa3;
+    --amber: #b06f0a;
+    --yes: #0d9488;
+    --no: #c3ced3;
+    --radius: 10px;
+    --shadow: 0 1px 2px rgba(16,26,32,0.04), 0 8px 20px -12px rgba(16,26,32,0.10);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  code, .mono{ font-family: 'JetBrains Mono', monospace; }
+
+  /* background genomic grid texture */
+  body::before{
+    content:"";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size: 42px 42px;
+    opacity: 0.65;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 90%);
+  }
+
+  a{ color: var(--teal); }
+
+  .wrap{
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+    position: sticky;
+    top: 0;
+    background: rgba(247,249,250,0.86);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+  }
+  .topbar .wrap{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ display:flex; align-items:center; gap:10px; font-size: 14px; color: var(--ink-dim); }
+  .brand .dot{ width:8px; height:8px; border-radius:50%; background: var(--teal); box-shadow: 0 0 12px var(--teal); }
+  .brand b{ color: var(--ink); font-weight:600; }
+  nav.toplinks{ display:flex; gap: 22px; font-size: 13px; }
+  nav.toplinks a{ color: var(--ink-faint); text-decoration:none; letter-spacing:.02em; }
+  nav.toplinks a:hover{ color: var(--teal); }
+
+  /* ---------- hero ---------- */
+  .hero{ padding: 76px 0 56px; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing:.08em; text-transform: uppercase;
+    color: var(--teal); border:1px solid var(--teal-dim);
+    background: rgba(45,212,191,0.07);
+    padding: 5px 12px; border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  h1{
+    font-size: 44px;
+    line-height: 1.12;
+    margin: 0 0 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  h1 .wf{ color: var(--teal); font-family:'JetBrains Mono', monospace; font-weight:600; font-size: 0.72em; display:block; margin-top:6px; }
+  .lede{ font-size: 17px; color: var(--ink-dim); max-width: 620px; margin: 0 0 34px; }
+
+  .hero-matrix{
+    margin-top: 10px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg-panel);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero-matrix .hm-head{
+    display:flex; align-items:center; gap:8px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--line);
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11.5px; color: var(--ink-faint);
+  }
+  .hero-matrix .hm-head .lights{ display:flex; gap:5px; margin-right:6px; }
+  .hero-matrix .hm-head .lights span{ width:8px; height:8px; border-radius:50%; background: var(--line); }
+  .hm-grid{
+    display:grid;
+    grid-template-columns: 96px repeat(8, 1fr);
+    font-family:'JetBrains Mono', monospace;
+    font-size: 11px;
+  }
+  .hm-grid .c{
+    padding: 9px 6px;
+    text-align:center;
+    border-bottom: 1px solid var(--line-soft);
+    border-right: 1px solid var(--line-soft);
+    color: var(--ink-faint);
+  }
+  .hm-grid .rowlabel{ text-align:left; padding-left:14px; color: var(--ink-dim); }
+  .hm-grid .hcell{ color: var(--ink-faint); text-transform:uppercase; font-size:10px; background: var(--bg-panel-2); }
+  .hm-grid .yes{ color: var(--teal); font-weight:600; }
+  .hm-grid .no{ color: var(--ink-faint); opacity:.5; }
+
+  /* ---------- sections ---------- */
+  section{ padding: 54px 0; border-top: 1px solid var(--line); }
+  .kicker{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing:.1em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 10px;
+  }
+  h2{ font-size: 26px; margin: 0 0 14px; font-weight: 600; }
+  .section-lede{ color: var(--ink-dim); max-width: 640px; margin-bottom: 30px; }
+
+  /* overview cards */
+  .cards{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .card{
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    box-shadow: var(--shadow);
+  }
+  .card h3{ margin:0 0 6px; font-size:15px; color: var(--ink); }
+  .card p{ margin:0; font-size: 13.5px; color: var(--ink-dim); }
+  .card .tag{ font-family:'JetBrains Mono',monospace; font-size:11px; color: var(--blue); display:block; margin-bottom:8px; }
+
+  /* inputs table */
+  table{ width:100%; border-collapse: collapse; font-size: 14px; }
+  th, td{ text-align:left; padding: 12px 14px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
+  th{ font-family:'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing:.06em; color: var(--ink-faint); font-weight: 500; }
+  td .fname{ font-family:'JetBrains Mono', monospace; color: var(--teal); font-size: 13px; }
+  td .desc{ color: var(--ink-dim); font-size: 13px; }
+  .pill{
+    display:inline-block; font-family:'JetBrains Mono', monospace; font-size:10.5px;
+    padding: 2px 8px; border-radius: 999px; border:1px solid var(--line);
+    color: var(--ink-faint);
+  }
+
+  /* steps */
+  .steps{ counter-reset: step; display:flex; flex-direction:column; gap: 0; }
+  .step{
+    display:grid; grid-template-columns: 44px 1fr; gap: 18px;
+    padding: 22px 0; border-bottom: 1px solid var(--line-soft);
+    position: relative;
+  }
+  .step:last-child{ border-bottom:none; }
+  .step .num{
+    counter-increment: step;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 13px; color: var(--teal);
+    width: 34px; height:34px; border-radius:50%;
+    border: 1px solid var(--teal-dim);
+    display:flex; align-items:center; justify-content:center;
+    background: rgba(45,212,191,0.06);
+  }
+  .step .num::before{ content: counter(step); }
+  .step h3{ margin: 4px 0 8px; font-size: 16px; }
+  .step p{ margin:0; color: var(--ink-dim); font-size: 14px; }
+  .step .snippet{
+    margin-top: 12px;
+    background: #050c14;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-family:'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-dim);
+    overflow-x:auto;
+  }
+  .step .snippet .k{ color: var(--blue); }
+  .step .snippet .v{ color: var(--teal); }
+  .step .snippet .c{ color: var(--ink-faint); }
+
+  /* outputs */
+  .outputs-group{ margin-bottom: 22px; border:1px solid var(--line); border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow); }
+  .outputs-group summary{
+    list-style: none; cursor: pointer;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 15px 18px; background: var(--bg-panel);
+    font-family:'JetBrains Mono', monospace; font-size: 13.5px; color: var(--ink);
+  }
+  .outputs-group summary::-webkit-details-marker{ display:none; }
+  .outputs-group summary::after{
+    content:"+"; color: var(--teal); font-size:18px; transition: transform .2s;
+  }
+  .outputs-group[open] summary::after{ transform: rotate(45deg); }
+  .outputs-group summary .src-tag{ color: var(--ink-faint); font-weight:400; margin-left:10px; }
+  .outputs-list{ padding: 4px 18px 16px; background: var(--bg); }
+  .outputs-list div{
+    display:flex; justify-content:space-between; gap:12px;
+    padding: 9px 0; border-bottom: 1px dashed var(--line-soft);
+    font-size: 13.5px;
+  }
+  .outputs-list div:last-child{ border-bottom:none; }
+  .outputs-list .fn{ font-family:'JetBrains Mono', monospace; color: var(--teal); }
+  .outputs-list .desc{ color: var(--ink-faint); text-align:right; }
+
+  /* callout */
+  .callout{
+    display:flex; gap: 14px;
+    background: var(--bg-panel);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--amber);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    font-size: 13.5px;
+    color: var(--ink-dim);
+    margin-top: 18px;
+    box-shadow: var(--shadow);
+  }
+  .callout b{ color: var(--ink); }
+  .callout .icon{ color: var(--amber); font-family:'JetBrains Mono',monospace; font-size:16px; }
+
+  footer{
+    padding: 40px 0 60px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-faint);
+    font-size: 13px;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  footer .mono{ color: var(--ink-faint); }
+
+  @media (max-width: 720px){
+    h1{ font-size: 32px; }
+    .cards{ grid-template-columns: 1fr; }
+    .hm-grid{ grid-template-columns: 70px repeat(5, 1fr); font-size:10px; }
+    .hm-grid .c:nth-child(n+7){ display:none; }
+    nav.toplinks{ display:none; }
+    footer{ flex-direction:column; align-items:flex-start; gap:8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span> MOH Bioinformatics <b>&middot; Workflow Guide</b></div>
+    <nav class="toplinks">
+      <a href="#overview">Overview</a>
+      <a href="#inputs">Inputs</a>
+      <a href="#run">How to run</a>
+      <a href="#outputs">Outputs</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section class="hero" id="overview">
+    <span class="eyebrow">Terra &middot; WDL v1.0</span>
+    <h1>Gene presence/absence matrices, straight from your reports.
+      <span class="wf">wf_amr_gene_matrix</span>
+    </h1>
+    <p class="lede">
+      Turns per-strain AbriCate and AMRFinderPlus reports into clean, ready-to-share
+      YES/NO and binary matrices — one row per strain, one column per gene.
+      Run all four sources at once, or just the one you need.
+    </p>
+
+    <div class="hero-matrix">
+      <div class="hm-head"><span class="lights"><span></span><span></span><span></span></span> amrfinder_amr_matrix_yesno.tsv</div>
+      <div class="hm-grid">
+        <div class="c hcell rowlabel">Key</div>
+        <div class="c hcell">gyrA_T86I</div>
+        <div class="c hcell">tet(L)</div>
+        <div class="c hcell">tet(O)</div>
+        <div class="c hcell">erm(B)</div>
+        <div class="c hcell">aad9</div>
+        <div class="c hcell">aadD1</div>
+        <div class="c hcell">aadE</div>
+        <div class="c hcell">blaOXA</div>
+
+        <div class="c rowlabel">CA116948</div>
+        <div class="c yes">YES</div><div class="c no">NO</div><div class="c yes">YES</div><div class="c yes">YES</div><div class="c yes">YES</div><div class="c no">NO</div><div class="c yes">YES</div><div class="c no">NO</div>
+
+        <div class="c rowlabel">CA117687</div>
+        <div class="c no">NO</div><div class="c no">NO</div><div class="c yes">YES</div><div class="c yes">YES</div><div class="c yes">YES</div><div class="c no">NO</div><div class="c yes">YES</div><div class="c no">NO</div>
+
+        <div class="c rowlabel">CA121013</div>
+        <div class="c yes">YES</div><div class="c yes">YES</div><div class="c no">NO</div><div class="c yes">YES</div><div class="c no">NO</div><div class="c yes">YES</div><div class="c no">NO</div><div class="c no">NO</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker">What it does</div>
+    <h2>One workflow, four independent gene sources</h2>
+    <p class="section-lede">
+      Each source is processed on its own. Skip the ones you don't need —
+      the workflow only runs the tasks for inputs you actually provide.
+    </p>
+    <div class="cards">
+      <div class="card">
+        <span class="tag">abricate_results_tsvs</span>
+        <h3>AbriCate — virulence</h3>
+        <p>Virulence gene hits from AbriCate, matched on the <code>GENE</code> column.</p>
+      </div>
+      <div class="card">
+        <span class="tag">amrfinder_amr_reports</span>
+        <h3>AMRFinderPlus — resistance</h3>
+        <p>Resistance genes only, from the AMRFinderPlus <code>amr_report</code>.</p>
+      </div>
+      <div class="card">
+        <span class="tag">amrfinder_stress_reports</span>
+        <h3>AMRFinderPlus — stress</h3>
+        <p>Stress-response genes only, from the <code>stress_report</code>.</p>
+      </div>
+      <div class="card">
+        <span class="tag">amrfinder_virulence_reports</span>
+        <h3>AMRFinderPlus — virulence</h3>
+        <p>Virulence genes only, from the <code>virulence_report</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="inputs">
+    <div class="kicker">Inputs</div>
+    <h2>4 inputs, all optional</h2>
+    <p class="section-lede">
+      Every input is an <code class="mono">Array[File]</code> — one report per strain.
+      Provide any combination; omitted inputs are simply skipped.
+    </p>
+    <table>
+      <thead>
+        <tr><th>Input</th><th>Source</th><th>Gene column used</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="fname">abricate_results_tsvs</span></td>
+          <td class="desc">AbriCate hits (virulence)</td>
+          <td><span class="pill">GENE</span></td>
+        </tr>
+        <tr>
+          <td><span class="fname">amrfinder_amr_reports</span></td>
+          <td class="desc">AMRFinderPlus <code>amr_report</code></td>
+          <td><span class="pill">Element symbol</span></td>
+        </tr>
+        <tr>
+          <td><span class="fname">amrfinder_stress_reports</span></td>
+          <td class="desc">AMRFinderPlus <code>stress_report</code></td>
+          <td><span class="pill">Element symbol</span></td>
+        </tr>
+        <tr>
+          <td><span class="fname">amrfinder_virulence_reports</span></td>
+          <td class="desc">AMRFinderPlus <code>virulence_report</code></td>
+          <td><span class="pill">Element symbol</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <span class="icon">&#9432;</span>
+      <div><b>How strains are identified:</b> the strain name (the <code class="mono">Key</code> in every output) is taken from each file's name — everything before the first underscore. <code class="mono">CA116948_amrfinder_amr_report.tsv</code> becomes strain <code class="mono">CA116948</code>. Keep that naming convention when you export from Theiagen.</div>
+    </div>
+  </section>
+
+  <section id="run">
+    <div class="kicker">How to run</div>
+    <h2>On Terra</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num"></div>
+        <div>
+          <h3>Build a sample set</h3>
+          <p>The workflow's inputs are <code class="mono">Array[File]</code>, so they need a set, not individual samples. In <b>Data</b>, select the samples you want → <b>Edit</b> → <b>Save selection as set</b>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num"></div>
+        <div>
+          <h3>Select your inputs</h3>
+          <p>Go to <b>Workflows</b> and select <span class="mono">wf_amr_gene_matrix</span>. Double-check your set is selected, then map only the report columns you actually need — leave the rest blank.</p>
+        </div>
+      </div>
+      <!-- <div class="step">
+        <div class="num"></div>
+        <div>
+          <h3>Run</h3>
+          <p>Click <b>Run analysis</b>. Each source you filled in runs as its own independent step.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num"></div>
+        <div>
+          <h3>Download the matrices</h3>
+          <p>Once the job succeeds, grab the <code class="mono">.xlsx</code> files straight from the job outputs — ready to open in Excel, no extra formatting needed.</p>
+        </div>
+      </div> -->
+    </div>
+  </section>
+
+  <section id="outputs">
+    <div class="kicker">Outputs</div>
+    <h2>5 files per source you run</h2>
+    <p class="section-lede">Click a source to see exactly what it produces.</p>
+
+    <details class="outputs-group" open>
+      <summary>abricate_results_tsvs <span class="src-tag">&mdash; virulence</span></summary>
+      <div class="outputs-list">
+        <div><span class="fn">abricate_matrix_yesno.tsv / .xlsx</span><span class="desc">Presence/absence, YES / NO</span></div>
+        <div><span class="fn">abricate_matrix_binary.tsv / .xlsx</span><span class="desc">Same matrix, as 0 / 1</span></div>
+        <div><span class="fn">abricate_concatenated.tsv</span><span class="desc">All raw input rows, with a Key column</span></div>
+      </div>
+    </details>
+
+    <details class="outputs-group">
+      <summary>amrfinder_amr_reports <span class="src-tag">&mdash; resistance</span></summary>
+      <div class="outputs-list">
+        <div><span class="fn">amrfinder_amr_matrix_yesno.tsv / .xlsx</span><span class="desc">Presence/absence, YES / NO</span></div>
+        <div><span class="fn">amrfinder_amr_matrix_binary.tsv / .xlsx</span><span class="desc">Same matrix, as 0 / 1</span></div>
+        <div><span class="fn">amrfinder_amr_concatenated.tsv</span><span class="desc">All raw input rows, with a Key column</span></div>
+      </div>
+    </details>
+
+    <details class="outputs-group">
+      <summary>amrfinder_stress_reports <span class="src-tag">&mdash; stress</span></summary>
+      <div class="outputs-list">
+        <div><span class="fn">amrfinder_stress_matrix_yesno.tsv / .xlsx</span><span class="desc">Presence/absence, YES / NO</span></div>
+        <div><span class="fn">amrfinder_stress_matrix_binary.tsv / .xlsx</span><span class="desc">Same matrix, as 0 / 1</span></div>
+        <div><span class="fn">amrfinder_stress_concatenated.tsv</span><span class="desc">All raw input rows, with a Key column</span></div>
+      </div>
+    </details>
+
+    <details class="outputs-group">
+      <summary>amrfinder_virulence_reports <span class="src-tag">&mdash; virulence</span></summary>
+      <div class="outputs-list">
+        <div><span class="fn">amrfinder_virulence_matrix_yesno.tsv / .xlsx</span><span class="desc">Presence/absence, YES / NO</span></div>
+        <div><span class="fn">amrfinder_virulence_matrix_binary.tsv / .xlsx</span><span class="desc">Same matrix, as 0 / 1</span></div>
+        <div><span class="fn">amrfinder_virulence_concatenated.tsv</span><span class="desc">All raw input rows, with a Key column</span></div>
+      </div>
+    </details>
+
+    <div class="callout">
+      <span class="icon">&#9432;</span>
+      <div>Any input left empty simply produces no outputs for that source — nothing fails, nothing is padded with blanks.</div>
+    </div>
+  </section>
+
+  <footer>
+    <span>wf_amr_gene_matrix &middot; MOH Bioinformatics</span>
+    <span class="mono">questions &rarr; davidmaimoun@hotmail.com</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
