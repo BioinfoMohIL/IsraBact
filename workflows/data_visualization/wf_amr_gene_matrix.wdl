@@ -5,7 +5,7 @@ import "../../tasks/data_visualization/task_build_gene_matrix.wdl" as tasks
 ## wf_amr_gene_matrix.wdl
 ##
 ## 4 inputs optionnels, tous independants les uns des autres :
-##   - abricate_reports             : rapports AbriCate (genes de virulence)
+##   - abricate_hits_reports             : rapports AbriCate (genes de virulence)
 ##   - amrfinder_amr_reports        : rapports AMRFinderPlus - genes de resistance (amr_report)
 ##   - amrfinder_stress_reports     : rapports AMRFinderPlus - genes de stress (stress_report)
 ##   - amrfinder_virulence_reports  : rapports AMRFinderPlus - genes de virulence (virulence_report)
@@ -27,10 +27,10 @@ workflow wf_amr_gene_matrix {
     Array[File]? amrfinder_virulence_reports
   }
 
-  if (defined(abricate_reports)) {
+  if (defined(abricate_hits_reports)) {
     call tasks.build_gene_matrix as abricate_matrix {
       input:
-        tsv_reports = select_first([abricate_reports]),
+        tsv_reports = select_first([abricate_hits_reports]),
         gene_column = "GENE",
         source_name = "abricate"
     }
