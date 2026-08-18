@@ -25,10 +25,6 @@ task build_gene_matrix {
                                  #   ex: "abricate", "amrfinder_amr", "amrfinder_stress",
                                  #       "amrfinder_virulence"
 
-    Int mem_gb = 4
-    Int cpu = 1
-    Int disk_gb = 20
-    String docker = "python:3.11-slim"
   }
 
   command <<<
@@ -114,9 +110,10 @@ task build_gene_matrix {
   }
 
   runtime {
-    docker: docker
-    memory: mem_gb + " GB"
-    cpu: cpu
-    disks: "local-disk " + disk_gb + " HDD"
+    docker: "python:3.11-slim"
+    memory: "4 GB"
+    cpu: 4
+    disks: "local-disk 20 HDD"
   }
 }
+
