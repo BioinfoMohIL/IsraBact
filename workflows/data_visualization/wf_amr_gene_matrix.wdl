@@ -3,7 +3,7 @@ version 1.0
 import "../../tasks/data_visualization/task_build_gene_matrix.wdl" as tasks
 
 ## 4 optional inputs, all independent from one another:
-##   - abricate_reports             : AbriCate reports (virulence genes)
+##   - abricate_hits_reports             : AbriCate reports (virulence genes)
 ##   - amrfinder_amr_reports        : AMRFinderPlus reports - resistance genes (amr_report)
 ##   - amrfinder_stress_reports     : AMRFinderPlus reports - stress genes (stress_report)
 ##   - amrfinder_virulence_reports  : AMRFinderPlus reports - virulence genes (virulence_report)
