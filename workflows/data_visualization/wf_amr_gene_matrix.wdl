@@ -65,29 +65,29 @@ workflow wf_amr_gene_matrix {
 
   output {
     # AbriCate
-    File? abricate_matrix_yesno_tsv    = abricate_matrix.matrix_yesno_tsv
-    File? abricate_matrix_binary_tsv   = abricate_matrix.matrix_binary_tsv
+    # File? abricate_matrix_yesno_tsv    = abricate_matrix.matrix_yesno_tsv
+    # File? abricate_matrix_binary_tsv   = abricate_matrix.matrix_binary_tsv
     File? abricate_matrix_yesno_xlsx   = abricate_matrix.matrix_yesno_xlsx
     File? abricate_matrix_binary_xlsx  = abricate_matrix.matrix_binary_xlsx
     File? abricate_concatenated_tsv    = abricate_matrix.concatenated_tsv
 
     # AMRFinderPlus - resistance (amr)
-    File? amrfinder_amr_matrix_yesno_tsv    = amrfinder_amr_matrix.matrix_yesno_tsv
-    File? amrfinder_amr_matrix_binary_tsv   = amrfinder_amr_matrix.matrix_binary_tsv
+    # File? amrfinder_amr_matrix_yesno_tsv    = amrfinder_amr_matrix.matrix_yesno_tsv
+    # File? amrfinder_amr_matrix_binary_tsv   = amrfinder_amr_matrix.matrix_binary_tsv
     File? amrfinder_amr_matrix_yesno_xlsx   = amrfinder_amr_matrix.matrix_yesno_xlsx
     File? amrfinder_amr_matrix_binary_xlsx  = amrfinder_amr_matrix.matrix_binary_xlsx
     File? amrfinder_amr_concatenated_tsv    = amrfinder_amr_matrix.concatenated_tsv
 
     # AMRFinderPlus - stress
-    File? amrfinder_stress_matrix_yesno_tsv    = amrfinder_stress_matrix.matrix_yesno_tsv
-    File? amrfinder_stress_matrix_binary_tsv   = amrfinder_stress_matrix.matrix_binary_tsv
+    # File? amrfinder_stress_matrix_yesno_tsv    = amrfinder_stress_matrix.matrix_yesno_tsv
+    # File? amrfinder_stress_matrix_binary_tsv   = amrfinder_stress_matrix.matrix_binary_tsv
     File? amrfinder_stress_matrix_yesno_xlsx   = amrfinder_stress_matrix.matrix_yesno_xlsx
     File? amrfinder_stress_matrix_binary_xlsx  = amrfinder_stress_matrix.matrix_binary_xlsx
     File? amrfinder_stress_concatenated_tsv    = amrfinder_stress_matrix.concatenated_tsv
 
     # AMRFinderPlus - virulence
-    File? amrfinder_virulence_matrix_yesno_tsv    = amrfinder_virulence_matrix.matrix_yesno_tsv
-    File? amrfinder_virulence_matrix_binary_tsv   = amrfinder_virulence_matrix.matrix_binary_tsv
+    # File? amrfinder_virulence_matrix_yesno_tsv    = amrfinder_virulence_matrix.matrix_yesno_tsv
+    # File? amrfinder_virulence_matrix_binary_tsv   = amrfinder_virulence_matrix.matrix_binary_tsv
     File? amrfinder_virulence_matrix_yesno_xlsx   = amrfinder_virulence_matrix.matrix_yesno_xlsx
     File? amrfinder_virulence_matrix_binary_xlsx  = amrfinder_virulence_matrix.matrix_binary_xlsx
     File? amrfinder_virulence_concatenated_tsv    = amrfinder_virulence_matrix.concatenated_tsv

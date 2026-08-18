@@ -112,8 +112,8 @@ BOOT
   >>>
 
   output {
-    File matrix_yesno_tsv    = "~{source_name}_matrix_yesno.tsv"
-    File matrix_binary_tsv   = "~{source_name}_matrix_binary.tsv"
+    # File matrix_yesno_tsv    = "~{source_name}_matrix_yesno.tsv"
+    # File matrix_binary_tsv   = "~{source_name}_matrix_binary.tsv"
     File matrix_yesno_xlsx   = "~{source_name}_matrix_yesno.xlsx"
     File matrix_binary_xlsx  = "~{source_name}_matrix_binary.xlsx"
     File concatenated_tsv    = "~{source_name}_concatenated.tsv"
