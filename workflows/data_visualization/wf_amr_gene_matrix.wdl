@@ -1,46 +1,95 @@
 version 1.0
 
-import "../../tasks/data_visualization/task_build_gene_matrix.wdl" as tasks
+import "../../../tasks/data_visualization/task_build_gene_matrix.wdl" as tasks
 
 ## wf_amr_gene_matrix.wdl
 ##
-## Prend en entree, pour un lot de souches :
-##   - abricate_reports  : Array[File] des rapports AbriCate (genes de virulence)
-##   - amrfinder_reports : Array[File] des rapports AMRFinderPlus (resistance/stress/virulence)
+## 4 inputs optionnels, tous independants les uns des autres :
+##   - abricate_reports             : rapports AbriCate (genes de virulence)
+##   - amrfinder_amr_reports        : rapports AMRFinderPlus - genes de resistance (amr_report)
+##   - amrfinder_stress_reports     : rapports AMRFinderPlus - genes de stress (stress_report)
+##   - amrfinder_virulence_reports  : rapports AMRFinderPlus - genes de virulence (virulence_report)
 ##
-## Pour chaque source, produit 2 matrices "souche x gene" (TSV + XLSX) :
-##   - YES / NO  (presence/absence)
-##   - 0 / 1     (binaire)
+## Seuls les inputs fournis sont traites : si un input est omis, la task correspondante
+## n'est pas executee et ses outputs restent vides. Cela permet par exemple de ne
+## generer qu'une matrice de virulence sans avoir a fournir les 3 autres.
+##
+## Pour chaque input fourni, produit :
+##   - matrice YES/NO   (TSV + XLSX)
+##   - matrice binaire  (TSV + XLSX)
+##   - un fichier concatenant les rapports bruts d'entree (avec colonne Key)
 
 workflow wf_amr_gene_matrix {
   input {
-    Array[File] abricate_results
-    Array[File] amrfinder_reports
+    Array[File]? abricate_reports
+    Array[File]? amrfinder_amr_reports
+    Array[File]? amrfinder_stress_reports
+    Array[File]? amrfinder_virulence_reports
   }
 
-  call tasks.build_gene_matrix as abricate_matrix {
-    input:
-      tsv_reports = abricate_results,
-      gene_column = "GENE",
-      source_name = "abricate"
+  if (defined(abricate_reports)) {
+    call tasks.build_gene_matrix as abricate_matrix {
+      input:
+        tsv_reports = select_first([abricate_reports]),
+        gene_column = "GENE",
+        source_name = "abricate"
+    }
   }
 
-  call tasks.build_gene_matrix as amrfinder_matrix {
-    input:
-      tsv_reports = amrfinder_reports,
-      gene_column = "Element symbol",
-      source_name = "amrfinder"
+  if (defined(amrfinder_amr_reports)) {
+    call tasks.build_gene_matrix as amrfinder_amr_matrix {
+      input:
+        tsv_reports = select_first([amrfinder_amr_reports]),
+        gene_column = "Element symbol",
+        source_name = "amrfinder_amr"
+    }
+  }
+
+  if (defined(amrfinder_stress_reports)) {
+    call tasks.build_gene_matrix as amrfinder_stress_matrix {
+      input:
+        tsv_reports = select_first([amrfinder_stress_reports]),
+        gene_column = "Element symbol",
+        source_name = "amrfinder_stress"
+    }
+  }
+
+  if (defined(amrfinder_virulence_reports)) {
+    call tasks.build_gene_matrix as amrfinder_virulence_matrix {
+      input:
+        tsv_reports = select_first([amrfinder_virulence_reports]),
+        gene_column = "Element symbol",
+        source_name = "amrfinder_virulence"
+    }
   }
 
   output {
-    File amr_gene_matrix_abricate_yesno_tsv    = abricate_matrix.matrix_yesno_tsv
-    File amr_gene_matrix_abricate_binary_tsv   = abricate_matrix.matrix_binary_tsv
-    File amr_gene_matrix_abricate_yesno_xl     = abricate_matrix.matrix_yesno_xlsx
-    File amr_gene_matrix_abricate_binary_xl    = abricate_matrix.matrix_binary_xlsx
+    # AbriCate
+    File? abricate_matrix_yesno_tsv    = abricate_matrix.matrix_yesno_tsv
+    File? abricate_matrix_binary_tsv   = abricate_matrix.matrix_binary_tsv
+    File? abricate_matrix_yesno_xlsx   = abricate_matrix.matrix_yesno_xlsx
+    File? abricate_matrix_binary_xlsx  = abricate_matrix.matrix_binary_xlsx
+    File? abricate_concatenated_tsv    = abricate_matrix.concatenated_tsv
 
-    File amr_gene_matrix_amrfinder_yesno_tsv   = amrfinder_matrix.matrix_yesno_tsv
-    File amr_gene_matrix_amrfinder_binary_tsv  = amrfinder_matrix.matrix_binary_tsv
-    File amr_gene_matrix_amrfinder_yesno_xl    = amrfinder_matrix.matrix_yesno_xlsx
-    File amr_gene_matrix_amrfinder_binary_xl   = amrfinder_matrix.matrix_binary_xlsx
+    # AMRFinderPlus - resistance (amr)
+    File? amrfinder_amr_matrix_yesno_tsv    = amrfinder_amr_matrix.matrix_yesno_tsv
+    File? amrfinder_amr_matrix_binary_tsv   = amrfinder_amr_matrix.matrix_binary_tsv
+    File? amrfinder_amr_matrix_yesno_xlsx   = amrfinder_amr_matrix.matrix_yesno_xlsx
+    File? amrfinder_amr_matrix_binary_xlsx  = amrfinder_amr_matrix.matrix_binary_xlsx
+    File? amrfinder_amr_concatenated_tsv    = amrfinder_amr_matrix.concatenated_tsv
+
+    # AMRFinderPlus - stress
+    File? amrfinder_stress_matrix_yesno_tsv    = amrfinder_stress_matrix.matrix_yesno_tsv
+    File? amrfinder_stress_matrix_binary_tsv   = amrfinder_stress_matrix.matrix_binary_tsv
+    File? amrfinder_stress_matrix_yesno_xlsx   = amrfinder_stress_matrix.matrix_yesno_xlsx
+    File? amrfinder_stress_matrix_binary_xlsx  = amrfinder_stress_matrix.matrix_binary_xlsx
+    File? amrfinder_stress_concatenated_tsv    = amrfinder_stress_matrix.concatenated_tsv
+
+    # AMRFinderPlus - virulence
+    File? amrfinder_virulence_matrix_yesno_tsv    = amrfinder_virulence_matrix.matrix_yesno_tsv
+    File? amrfinder_virulence_matrix_binary_tsv   = amrfinder_virulence_matrix.matrix_binary_tsv
+    File? amrfinder_virulence_matrix_yesno_xlsx   = amrfinder_virulence_matrix.matrix_yesno_xlsx
+    File? amrfinder_virulence_matrix_binary_xlsx  = amrfinder_virulence_matrix.matrix_binary_xlsx
+    File? amrfinder_virulence_concatenated_tsv    = amrfinder_virulence_matrix.concatenated_tsv
   }
 }
