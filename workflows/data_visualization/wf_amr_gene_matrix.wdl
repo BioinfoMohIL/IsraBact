@@ -2,22 +2,22 @@ version 1.0
 
 import "../../tasks/data_visualization/task_build_gene_matrix.wdl" as tasks
 
-## wf_amr_gene_matrix.wdl
+## 4 optional inputs, all independent from one another:
+##   - abricate_reports             : AbriCate reports (virulence genes)
+##   - amrfinder_amr_reports        : AMRFinderPlus reports - resistance genes (amr_report)
+##   - amrfinder_stress_reports     : AMRFinderPlus reports - stress genes (stress_report)
+##   - amrfinder_virulence_reports  : AMRFinderPlus reports - virulence genes (virulence_report)
 ##
-## 4 inputs optionnels, tous independants les uns des autres :
-##   - abricate_hits_reports             : rapports AbriCate (genes de virulence)
-##   - amrfinder_amr_reports        : rapports AMRFinderPlus - genes de resistance (amr_report)
-##   - amrfinder_stress_reports     : rapports AMRFinderPlus - genes de stress (stress_report)
-##   - amrfinder_virulence_reports  : rapports AMRFinderPlus - genes de virulence (virulence_report)
+## Only the inputs that are provided get processed: if an input is omitted, the
+## corresponding task is not run and its outputs stay empty. This makes it possible,
+## for example, to generate only a virulence matrix without having to supply the
+## other 3 inputs.
 ##
-## Seuls les inputs fournis sont traites : si un input est omis, la task correspondante
-## n'est pas executee et ses outputs restent vides. Cela permet par exemple de ne
-## generer qu'une matrice de virulence sans avoir a fournir les 3 autres.
-##
-## Pour chaque input fourni, produit :
-##   - matrice YES/NO   (TSV + XLSX)
-##   - matrice binaire  (TSV + XLSX)
-##   - un fichier concatenant les rapports bruts d'entree (avec colonne Key)
+## For each input provided, produces:
+##   - YES/NO matrix   (TSV + XLSX)
+##   - binary matrix   (TSV + XLSX)
+##   - a file concatenating the raw input reports (with a Key column)
+
 
 workflow wf_amr_gene_matrix {
   input {
