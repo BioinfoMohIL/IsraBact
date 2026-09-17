@@ -151,9 +151,14 @@ task mob_recon {
 
     if [ "$MOB_EXIT" -eq 0 ]; then
       echo "SUCCESS" > MOB_RECON_STATUS
+    elif [ "$MOB_EXIT" -eq 255 ]; then
+        echo "FAILED" > MOB_RECON_STATUS
+        echo "mob_recon returned 255 - likely transient database initialization/download error" >&2
+
+        exit 255
     else
-      echo "FAILED" > MOB_RECON_STATUS
-      echo "mob_recon returned a non-zero exit code (~{samplename}): $MOB_EXIT" >&2
+        echo "FAILED" > MOB_RECON_STATUS
+        echo "mob_recon returned a non-zero exit code (~{samplename}): $MOB_EXIT" >&2
     fi
   >>>
 

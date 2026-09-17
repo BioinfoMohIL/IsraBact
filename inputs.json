@@ -1,20 +1,5 @@
 {
 
-  "wf_amr_gene_matrix.amrfinder_reports": [
-    "data/CA110357_amrfinder_all.tsv",
-    "data/CA114720_amrfinder_all.tsv",
-    "data/CA139575_amrfinder_all.tsv",
-    "data/CA140404_amrfinder_all.tsv",
-    "data/CA140705_amrfinder_all.tsv",
-    "data/CA140717_amrfinder_all.tsv"
-  ],
-
-  "wf_amr_gene_matrix.abricate_reports": [
-    "data/CA110357_abricate_hits.tsv",
-    "data/CA114720_abricate_hits.tsv",
-    "data/CA139575_abricate_hits.tsv",
-    "data/CA140404_abricate_hits.tsv",
-    "data/CA140705_abricate_hits.tsv",
-    "data/CA140717_abricate_hits.tsv"
-  ]
+  "wf_plasmid_detection.assembly_fasta":"data/SH036875_filtered_contigs.fasta",
+  "wf_plasmid_detection.samplename":"SH036875"
 }
