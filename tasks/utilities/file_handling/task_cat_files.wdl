@@ -1,3 +1,5 @@
+version 1.0
+
 task cat_files {
   input {
     Array[File] files_to_cat
