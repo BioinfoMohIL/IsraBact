@@ -177,7 +177,6 @@ task mob_recon {
     disks: "local-disk ~{disk_size} SSD"
     preemptible: 1
     maxRetries: 1
-    continueOnReturnCode: true
   }
 
   meta {
