@@ -1,6 +1,6 @@
 version 1.0
 
-import "task_mobsuite.wdl" as mobsuite_t
+import "../../../tasks/gene_typing/plasmid_detection/task_mobsuite.wdl" as mobsuite_t
 
 ## Workflow: Plasmid_Detection_PerSample_MOH
 ## Detects and types plasmids via MOB-suite (mob_recon) from a contig assembly.
