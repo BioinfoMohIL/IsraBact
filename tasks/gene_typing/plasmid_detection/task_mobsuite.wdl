@@ -181,7 +181,7 @@ task mob_recon {
     memory: "~{memory} GB"
     disks: "local-disk ~{disk_size} SSD"
     preemptible: 1
-    maxRetries: 1
+    maxRetries: 2
   }
 
   meta {
