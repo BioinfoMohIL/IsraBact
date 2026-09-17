@@ -112,4 +112,10 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/data_visualization/wf_amr_gene_matrix.wdl
 
+  - name: Concatenate_Columns_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/utilities/file_handling/wf_concatenate_columns.wdl
+
+
+
 
