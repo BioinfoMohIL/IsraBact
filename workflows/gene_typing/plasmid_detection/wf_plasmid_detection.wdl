@@ -1,19 +1,14 @@
 version 1.0
 
-import "../../../tasks/gene_typing/plasmid_detection/task_mobsuite.wdl" as mobsuite_t
+import "task_mobsuite.wdl" as mobsuite_t
 
 ## Workflow: Plasmid_Detection_PerSample_MOH
-## Detection et typage de plasmides via MOB-suite (mob_recon) a partir d'un
-## assemblage de contigs. Concu pour Terra/GCP Batch, single-click, un sample
-## a la fois (comme wf_species_detection_bs).
-## Reference outil: https://github.com/phac-nml/mob-suite
+## Detects and types plasmids via MOB-suite (mob_recon) from a contig assembly.
+## Built for Terra/GCP Batch, single-click, one sample at a time (same pattern
+## as wf_species_detection_bs).
+## Tool reference: https://github.com/phac-nml/mob-suite
 
 workflow wf_plasmid_detection {
-  meta {
-    description: "MOB-suite (mob_recon) reconstructs and types plasmid sequences from draft or complete bacterial genome assemblies - (https://github.com/phac-nml/mob-suite)."
-    author: "David Maimoun"
-  }
-
   input {
     File   assembly_fasta
     String samplename
@@ -111,7 +106,7 @@ workflow wf_plasmid_detection {
 
   output {
     String mobsuite_version         = mob_recon.mob_suite_version
-    String mobsuite_status          = mob_recon.mob_recon_status  
+    String mobsuite_status          = mob_recon.mob_recon_status  # "SUCCESS" or "FAILED"
     Int    mobsuite_plasmid_count   = mob_recon.plasmid_count
 
     File   mobsuite_contig_report   = mob_recon.contig_report
@@ -122,5 +117,8 @@ workflow wf_plasmid_detection {
     File   mobsuite_plasmids_tarball = mob_recon.plasmids_tarball
   }
 
- 
+  meta {
+    description: "MOB-suite (mob_recon) reconstructs and types plasmid sequences from draft or complete bacterial genome assemblies - (https://github.com/phac-nml/mob-suite)."
+    author: "David Maimoun"
+  }
 }
