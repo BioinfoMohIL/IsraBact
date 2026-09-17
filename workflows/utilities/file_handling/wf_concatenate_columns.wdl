@@ -22,7 +22,7 @@ workflow wf_concatenate_column_content {
     input:
   }
   output {
-    String concatenate_column_content_version = version_capture.phb_version
+    String concatenate_column_content_version = version_capture.version
     String concatenate_column_content_analysis_date = version_capture.date
 
     File concatenated_files = cat_files.concatenated_files
