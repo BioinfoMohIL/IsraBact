@@ -47,11 +47,16 @@ task neisseria_typing {
         String bast_type = read_string("results/bast_type.txt") 
         String bexsero_cross_reactivity = read_string("results/bexsero_cross_reactivity.txt") 
         String trumenba_cross_reactivity = read_string("results/trumenba_cross_reactivity.txt") 
+
+        String mlst_profile        = read_string("results/mlst_profile.txt")
+        String bast_profile        = read_string("results/bast_profile.txt")
+        String finetyping_profile  = read_string("results/finetyping_profile.txt")
+
         
     }
 
     runtime {
-        docker: "bioinfomoh/neisseria_typing:1"
+        docker: "bioinfomoh/neisseria_typing:1.1"
         memory: "8 GB"
         maxRetries: 1
 

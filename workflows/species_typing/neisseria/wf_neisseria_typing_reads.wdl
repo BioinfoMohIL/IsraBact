@@ -180,6 +180,10 @@ workflow wf_neisseria_typing_reads {
         String genogroup = serogrouping.genogroup
   
         File? nt_loci_best_matches = typing.best_matches_tar
+
+        String mlst_profile        = typing.mlst_profile
+        String bast_profile        = typing.bast_profile
+        String finetyping_profile  = typing.finetyping_profile
     }
    
     

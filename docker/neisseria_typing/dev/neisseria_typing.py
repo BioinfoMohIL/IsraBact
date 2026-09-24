@@ -1,414 +1,301 @@
 #!/usr/bin/env python3
-import os
-import json
-from datetime import date
+"""Typage de Neisseria meningitidis (MLST, BAST/MenDeVAR, finetyping) via l'API REST de PubMLST.
+
+Appelé par la tâche WDL `neisseria_typing`.
+"""
 import argparse
+import base64
+import json
+import logging
+import os
+import sys
+import time
+import urllib.error
+import urllib.request
+from datetime import date
+
 import pandas as pd
 
-EMPTY_VALUE        = '?'
+# --------------------------------------------------------------------------- #
+# Constantes
+# --------------------------------------------------------------------------- #
+EMPTY_VALUE = '?'
+API_ROOT = 'https://rest.pubmlst.org/db/pubmlst_neisseria_seqdef'
+API_TIMEOUT = 60      # secondes
+API_RETRIES = 3
 
-COL_DATE           = 'date'
-COL_SAMPLE         = 'sample'
+SCHEME_ID = {'mlst': '1', 'finetyping': '2', 'bast': '53'}
 
-KEY_ST             = 'st'
-KEY_CC             = 'clonal_complex'
-KEY_EXACT_MATCHES  = 'exact_matches'
-KEY_BEST_MATCHES   = 'best_match'
-KEY_ALLELE_ID      = 'allele_id'
-KEY_FIELDS         = 'fields'
-KEY_BAST           = "bast"
-KEY_BAST_TYPE      = 'bast_type'
-KEY_NADA_PEPTIDE   = 'NadA_peptide'
-KEY_BEXERO         = 'bexsero_cross_reactivity'
-KEY_TRUMENBA       = 'trumenba_cross_reactivity'
+# Loci de chaque typage (ordre = ordre d'affichage dans les colonnes "profile")
+MLST_LOCI = ['abcZ', 'adk', 'aroE', 'fumC', 'gdh', 'pdhC', 'pgm']
+BAST_LOCI = ['fHbp_peptide', 'NHBA_peptide', 'NadA_peptide', 'PorA_VR1', 'PorA_VR2']
+FINETYPING_LOCI = ['PorA_VR1', 'PorA_VR2', 'FetA_VR']
 
-# keys name from pubmlt db output json
-DB_NADA_PEPTIDE    = 'NadA_peptide'
-DB_KEY_BEXERO      = "MenDeVAR_Bexsero_reactivity"
-DB_KEY_TRUMENBA    = "MenDeVAR_Trumenba_reactivity"
-DB_ST              = 'ST'
-DB_CC              = 'clonal_complex'
-DB_BAST_TYPE       = 'BAST'
-
-TYPE_NADA          = 'nadA'
-TYPE_LOCUS         = 'locus'
-TYPE_MLST          = 'mlst'
-TYPE_BAST          = 'bast'
-TYPE_FINETYPING    = 'finetyping'
-
-URL_LOCUS  = 'https://rest.pubmlst.org/db/pubmlst_neisseria_seqdef/loci'
-URL_SCHEME = 'https://rest.pubmlst.org/db/pubmlst_neisseria_seqdef/schemes'
-URL_NADA   ="https://rest.pubmlst.org/db/pubmlst_neisseria_seqdef/loci/NadA_peptide/sequence"
-
-NADA_PEPTIDE_COL = 'NadA_peptide'
-
-BEXERO = "bexsero_cross_reactivity"
-TRUMENBA = "trumenba_cross_reactivity"
-
-SAMPLE_FIELD = 'sample'
-SEROGROUP_FIELD = 'serogroup'
-GENOGROUP_FIELD = 'genogroup'
-SEROGROUP_RESULT_FILE_PATH = os.path.join('serogroup','serogroup_results.json')
-
-db_id  = {
-    'mlst': "1", 'bast': "53", 'finetyping': "2", 'nadA': '46',
-    'B': '36', 'A': '29', 'C': '37', 'E': '35', 'H': '32', 'L': '33', 'W': '38',
-    'X': '30', 'Y': '39', 'Z': '31'
+# Colonnes récapitulatives : nom de colonne -> loci concaténés (séparés par une virgule)
+PROFILES = {
+    'mlst_profile': MLST_LOCI,
+    'bast_profile': BAST_LOCI,
+    'finetyping_profile': FINETYPING_LOCI,
 }
 
-alleles = {
-    'bast':["fHbp_peptide", "NHBA_peptide", "NadA_peptide", "PorA_VR1", "PorA_VR2"],
-    'mlst':['abcZ', 'adk', 'aroE', 'fumC', 'gdh', 'pdhC', 'pgm'] ,
-    'finetyping': ['FetA_VR']
+# Tous les loci (sans doublon, ordre conservé)
+ALL_LOCI = list(dict.fromkeys(MLST_LOCI + BAST_LOCI + FINETYPING_LOCI))
+
+# Champs "fields" renvoyés par PubMLST -> colonnes du rapport
+FIELD_MAP = {
+    'mlst': {'ST': 'st', 'clonal_complex': 'clonal_complex'},
+    'bast': {
+        'BAST': 'bast_type',
+        'MenDeVAR_Bexsero_reactivity': 'bexsero_cross_reactivity',
+        'MenDeVAR_Trumenba_reactivity': 'trumenba_cross_reactivity',
+    },
 }
+BAST_COLUMNS = list(FIELD_MAP['bast'].values())
 
-alleles_bast = ["fHbp_peptide", "NHBA_peptide", "NadA_peptide", "PorA_VR1", "PorA_VR2"]
-alleles_mlst = ['abcZ', 'adk', 'aroE', 'fumC', 'gdh', 'pdhC', 'pgm']
+# Ordre des colonnes du CSV (les nouvelles colonnes sont à la fin pour ne rien décaler)
+COLUMNS = (
+    ['date', 'sample', 'st', 'clonal_complex']
+    + MLST_LOCI + ['FetA_VR']
+    + ['bast_type', 'fHbp_peptide', 'NHBA_peptide', 'NadA_peptide', 'PorA_VR1', 'PorA_VR2',
+       'bexsero_cross_reactivity', 'trumenba_cross_reactivity']
+    + list(PROFILES)
+)
 
-columns_ordered = [
-    COL_DATE, COL_SAMPLE, KEY_ST, KEY_CC,
-    'abcZ', 'adk', 'aroE', 'fumC', 'gdh', 'pdhC', 'pgm','FetA_VR', 
-    KEY_BAST_TYPE, "fHbp_peptide", "NHBA_peptide", KEY_NADA_PEPTIDE, 
-    "PorA_VR1", "PorA_VR2", KEY_BEXERO, KEY_TRUMENBA
-] 
+log = logging.getLogger('neisseria_typing')
 
-wd      = os.path.dirname(os.path.realpath(__file__))
-dev_dir = os.path.join(wd, 'dev')
 
-def fetch_value_if_key(data, key):
-    return data[key] if key in data else ''
+# --------------------------------------------------------------------------- #
+# Utilitaires
+# --------------------------------------------------------------------------- #
+def is_missing(value):
+    return value in (None, '', EMPTY_VALUE)
 
-def fetch_fields_values(data, type, dict):
-    fields = data[KEY_FIELDS]
 
-    if type == TYPE_MLST:
-        dict[KEY_ST] = fetch_value_if_key(fields, DB_ST)
-        dict[KEY_CC] = fetch_value_if_key(fields, DB_CC)
+def save_json(path, content):
+    with open(path, 'w') as f:
+        json.dump(content, f, indent=2)
 
-    elif type == TYPE_BAST:
-        dict[KEY_BAST_TYPE] = fetch_value_iR@gn@r@11f_key(fields, DB_BAST_TYPE)
-        dict[KEY_BEXERO] = fetch_value_if_key(fields, DB_KEY_BEXERO)
-        dict[KEY_TRUMENBA] = fetch_value_if_key(fields, DB_KEY_TRUMENBA)
-    
-# Fetch types alleles values
-def fetch_allele_id(file, dict, type=None, locus=None, dict_best_matches=None):
-    if os.path.isfile(file):
-        f = open(file)
-        data = json.load(f)
-        f.close()
 
-        is_exact_matches = KEY_EXACT_MATCHES in data and len(data[KEY_EXACT_MATCHES]) > 0
+def read_assembly_b64(path):
+    with open(path, 'rb') as f:
+        return base64.b64encode(f.read()).decode()
 
-        if is_exact_matches:
-            for i in data[KEY_EXACT_MATCHES]:
-                dict[i] = data[KEY_EXACT_MATCHES][i][0][KEY_ALLELE_ID]
-            
-            if KEY_FIELDS in data:
-                fetch_fields_values(data, type, dict)
-            return True
-        # If locus, that means the script has to fetch the value for each loci separatly
-        # We can get exact matches or best matches
-        elif type == TYPE_LOCUS:
-            if is_exact_matches and len(data[KEY_EXACT_MATCHES]) > 0:
-                for i in data[KEY_EXACT_MATCHES]:
-                    dict[locus] = data[KEY_EXACT_MATCHES][i][0][KEY_ALLELE_ID]
-            elif KEY_BEST_MATCHES in data:
-                dict_best_matches[locus] = data[KEY_BEST_MATCHES][KEY_ALLELE_ID]
-            return False
-        else:
-            return False
 
-    else:
-        return False
+def post_json(url, payload):
+    """POST JSON avec quelques essais en cas d'erreur réseau / 5xx.
 
-def fetch_bast(bast_alleles, dict, out_dir): 
-    loci = populate_url(bast_alleles, dict)
-    
-    cmd = f'''
-        curl -s -H "Content-Type: application/json" \
-        -X POST "{URL_SCHEME}/{str(db_id['bast'])}/designations" \
-        '''
-    cmd+= "-d '{\"designations\": { " + loci + " }}' > " + out_dir + "/bast_type.json"
-   
-    os.system(cmd)
-
-    return get_bast_from_data(out_dir + "/bast_type.json", dict)
-
-def get_bast_from_data(file, dict): 
-    if os.path.isfile(file):
-        f = open(file)
-        data = json.load(f) 
-        f.close()
-        
-        if KEY_FIELDS in data:
-            fetch_fields_values(data, TYPE_BAST, dict)
-        else:
-            dict[KEY_BAST_TYPE] = EMPTY_VALUE
-            dict[KEY_BEXERO]    = EMPTY_VALUE
-            dict[KEY_TRUMENBA]  = EMPTY_VALUE
-
-def get_db_url(type, locus=None):
-    if type == TYPE_LOCUS:
-        return f"{URL_LOCUS}/{locus}/sequence"
-    elif type == TYPE_NADA:
-        return URL_NADA
-    else:
-        return f"{URL_SCHEME}/{db_id[type]}/sequence"
-
-def get_profile(type, sequence, out_file, locus=None):
-   
-    cmd="(echo -n '{\"base64\":true,\"sequence\": \"';base64 "
-    cmd+=f"\"{sequence}\""
-    cmd+="; echo '\"}') | "
-    cmd+=f"""
-        curl -s \
-        -H "Content-Type: application/json" \
-        -X POST {get_db_url(type, locus)} \
-        -d @-  | jq . > {out_file} 
+    Une réponse 4xx (ex. 404 = pas de correspondance) est renvoyée telle quelle :
+    ce n'est pas un crash, le corps JSON est exploitable.
     """
+    body = json.dumps(payload).encode()
+    last_error = None
 
-    try:
-        os.system(cmd)
-    except Exception as e:
-        exit(f'Cannot get profile {type}\n{e}')
-     
-def populate_url(data, al):
-    str = ''
-    for val in data:
-        if val in al:
-            str += '"'+ val +'":[{"allele":"' + al[val] + '"}],'
-    return str[:-1]
+    for attempt in range(1, API_RETRIES + 1):
+        request = urllib.request.Request(
+            url, data=body, method='POST', headers={'Content-Type': 'application/json'})
+        try:
+            with urllib.request.urlopen(request, timeout=API_TIMEOUT) as response:
+                return json.load(response)
+        except urllib.error.HTTPError as err:
+            if err.code < 500:
+                return json.loads(err.read() or '{}')
+            last_error = err
+        except (urllib.error.URLError, TimeoutError) as err:
+            last_error = err
 
-def check_if_locus_missing(data, alleles):
-    missing_values = []
-   
-    for gene, locus in alleles.items():
-        for loci in locus:
-            if not loci in data:
-                missing_values.append(loci)
-    return missing_values
+        if attempt < API_RETRIES:
+            time.sleep(2 * attempt)
 
-def get_value_back(type, locus, sequence, out_file):
-    get_profile(type, sequence, out_file, locus)
+    raise last_error
 
-def populate_file(type, file, content):
-    with open(file, type) as f:
-        f.write(f'{content}\n')
 
-def populate_empty_values(keys, values=''):
-    k = ''
-    for key in keys:
-        k += f",{key}"
-        values += ','
-    return k, values
+def sequence_url(kind, locus=None):
+    if kind == 'locus':
+        return f'{API_ROOT}/loci/{locus}/sequence'
+    return f'{API_ROOT}/schemes/{SCHEME_ID[kind]}/sequence'
 
-def combine_keys(*elements):
-    combined_list = []
-    for element in elements:
-        if isinstance(element, list):
-            combined_list.extend(element)
-        else:
-            combined_list.append(element)
-            
-    return combined_list
 
-def combine_type_keys(type):
-    if type == TYPE_MLST:
-        return combine_keys(KEY_ST, KEY_CC, alleles[TYPE_MLST])
-    elif type == TYPE_BAST:
-        return alleles[TYPE_BAST]
-    elif type == TYPE_FINETYPING:
-        return alleles[TYPE_FINETYPING]
+def query_pubmlst(url, sequence_b64, out_file):
+    """Envoie l'assemblage à PubMLST et garde la réponse brute sur disque."""
+    result = post_json(url, {'base64': True, 'sequence': sequence_b64})
+    save_json(out_file, result)
+    return result
 
-def populate_empty_values(data):
-    for k in columns_ordered:
-        if k not in data:
-            data[k] = EMPTY_VALUE
 
-def create_report(df, file_name):
-    df.to_csv(file_name, index=False)
+# --------------------------------------------------------------------------- #
+# Lecture des réponses
+# --------------------------------------------------------------------------- #
+def store_exact_matches(result, data):
+    """Copie les allèles exacts dans `data`. Renvoie True s'il y en avait."""
+    exact = result.get('exact_matches') or {}
+    for locus, hits in exact.items():
+        data[locus] = hits[0]['allele_id']
+    return bool(exact)
 
-def typing(assembly, output_dir, output_filename, files_name=None, log_file=None):
-    data = {}
+
+def store_fields(result, kind, data):
+    """Copie les champs du schéma (ST, CC, BAST, MenDeVAR...) dans `data`."""
+    fields = result['fields']
+    for db_key, column in FIELD_MAP[kind].items():
+        data[column] = fields.get(db_key, EMPTY_VALUE)
+
+
+def type_scheme(kind, sequence_b64, out_file, data):
+    """Requête un schéma complet (mlst / bast / finetyping). True si identifié."""
+    result = query_pubmlst(sequence_url(kind), sequence_b64, out_file)
+
+    if not store_exact_matches(result, data):
+        return False
+    if 'fields' in result and kind in FIELD_MAP:
+        store_fields(result, kind, data)
+    return True
+
+
+def confirm_bast(data, out_dir):
+    """Redemande BAST + MenDeVAR à partir des allèles déjà trouvés (NadA doit valoir au moins "0")."""
+    designations = {
+        locus: [{'allele': data[locus]}] for locus in BAST_LOCI if not is_missing(data.get(locus))
+    }
+    result = post_json(f"{API_ROOT}/schemes/{SCHEME_ID['bast']}/designations",
+                       {'designations': designations})
+    save_json(os.path.join(out_dir, 'bast_type.json'), result)
+
+    if 'fields' in result:
+        store_fields(result, 'bast', data)
+    else:
+        for column in BAST_COLUMNS:
+            data[column] = EMPTY_VALUE
+
+
+def build_profile(data, loci):
+    """'2,3,4,3,8,4,6' ; un locus manquant vaut '?' ; tout manquant -> '?'."""
+    values = [EMPTY_VALUE if is_missing(data.get(locus)) else str(data[locus]) for locus in loci]
+    if all(value == EMPTY_VALUE for value in values):
+        return EMPTY_VALUE
+    return ','.join(values)
+
+
+# --------------------------------------------------------------------------- #
+# Typage d'un échantillon
+# --------------------------------------------------------------------------- #
+def typing(assembly, sample, output_dir, output_filename, split):
+    data = {'date': date.today().strftime('%d-%m-%Y'), 'sample': sample}
     best_matches = {}
-    current_date = date.today().strftime("%d-%m-%Y")
-    sample = os.path.basename(assembly).split('.')[0]
-    
-    data[COL_DATE]   = current_date
-    data[COL_SAMPLE] = sample
+    failed = set()
+    sequence_b64 = read_assembly_b64(assembly)
 
-    msg = f'''
-    ---------------------
-    
-        {sample}
-    
-    ---------------------
-    '''
-    log_msg = msg
-    print(msg)
+    log.info(f'\n---------------------\n    {sample}\n---------------------')
 
-    for type in [TYPE_MLST, TYPE_BAST, TYPE_FINETYPING]:
-        print(f'\n[Running] : {type}')
-        out_file = os.path.join(output_dir, f"{sample}_{type}.json")
-        
+    # 1) Les trois schémas
+    for kind in ('mlst', 'bast', 'finetyping'):
+        log.info(f'[Running] {kind}')
+        out_file = os.path.join(output_dir, f'{sample}_{kind}.json')
         try:
-            get_profile(type, assembly, out_file)
+            identified = type_scheme(kind, sequence_b64, out_file, data)
+            log.info(f'✔️ {kind}' if identified else f'✖️ Cannot fetch {kind}')
+        except Exception as err:
+            failed.add(kind)
+            log.error(f'Error in fetching {kind}: {err}')
 
-            is_identified = fetch_allele_id(out_file, data, type)
-            
-            if is_identified:
-                msg = f'✔️ {type}'
-                log_msg += msg
-            else:
-                msg = f"✖️ Cannot fetch {type}"
-                log_msg += msg
-            print(msg)
+    # 2) Loci manquants : on les redemande un par un
+    missing_loci = [locus for locus in ALL_LOCI if is_missing(data.get(locus))]
+    if missing_loci:
+        log.info(f'Missing {missing_loci}...')
 
-        except Exception as e:
-            print(f'Error in fetching {type}\n{e}')
-            
-            keys = combine_type_keys(type)
-            
-            for k in keys:
-                data[k] = EMPTY_VALUE
-
-    # If locus missing, we will request the db locus by locus (one the missing ones)
-    # On only the loci of MLST, because we already double check bast and nada pedtide
-    missing_locus = check_if_locus_missing(data, alleles)
-
-    if missing_locus:
-        print(f'\nMissing {missing_locus}...')
-        for locus in missing_locus:
-            
-            out_file=os.path.join(output_dir, f"{sample}_{locus}.json")
-
-            try:
-                get_value_back(
-                    type=TYPE_LOCUS,
-                    locus=locus,
-                    sequence=assembly,
-                    out_file=out_file
-                )
-                msg = f'Fetched {locus}!'
-            except Exception as e:
-                msg = f'✖️ Cannot fetch the missing {locus}\n--> {e}'
-                print(msg)
-            
-            fetch_allele_id(
-                file=out_file, 
-                dict=data, 
-                dict_best_matches=best_matches, 
-                type=TYPE_LOCUS, 
-                locus=locus)
-
-            log_msg += msg
-
-    if (KEY_NADA_PEPTIDE not in data) or (data[KEY_NADA_PEPTIDE] == EMPTY_VALUE):
-        data[KEY_NADA_PEPTIDE] = "0"
-  
-    # Sometime you cannot get bast type and MendeVar from the bast request (the 'fields' key
-    # in the json file)
-    # So we need to call a separate request
-    # !We have to get a NadA Pedtide value (0 or something) to get Bast type, and MendeVar
-    if any((key not in data) or (data[key] == EMPTY_VALUE) for key in [KEY_BAST_TYPE, KEY_BEXERO, KEY_TRUMENBA]):
-        print('\n[Confirm BAST type and MenDeVar]')
-        
+    for locus in missing_loci:
+        out_file = os.path.join(output_dir, f'{sample}_{locus}.json')
         try:
-            fetch_bast(alleles_bast, data, output_dir)
-            
-            msg = ''
-        
-            if data[KEY_BAST_TYPE] != EMPTY_VALUE:
-                msg += f"✔️ Bast Type, "
-            else:
-                msg += "✖️ Bast Type, "
-            
-            if data[KEY_BEXERO] != EMPTY_VALUE:
-                msg += f"✔️ Bexero, "
-            else:
-                msg += "✖️ Bexsero, "
-            
-            if data[KEY_TRUMENBA] != EMPTY_VALUE:
-                msg += f"✔️ Trumenba "
-            else:
-                msg += "✖️ Trumenba"
+            result = query_pubmlst(sequence_url('locus', locus), sequence_b64, out_file)
+        except Exception as err:
+            log.error(f'✖️ Cannot fetch the missing {locus}: {err}')
+            continue
 
-        except Exception as e:
-            msg += f"\n✖️ No confirm Bast \n{e}"
-        
-        log_msg += msg
-        print(msg)
+        if store_exact_matches(result, data):
+            log.info(f'Fetched {locus}!')
+        elif 'best_match' in result:
+            best_matches[locus] = result['best_match'].get('allele_id')
 
-    os.system(f'echo "{sample}: {data}" >> {log_file}')
-    
-    # Check if might be a new strain, i.e, you have all the MLST alleles, but no ST type 
-    if 'st' not in data:
-        mlst_values = [data.get(locus) for locus in alleles['mlst']]
-        if all(mlst_values):
-            print("- [MLST] Full profile but no ST assignment; it must be new!")
-            data['st'] = 'new'
-    
-    # Set empty all value we couln't fetch
-    populate_empty_values(data)
+    # 3) NadA absent = "0" (nécessaire pour obtenir le BAST)
+    if is_missing(data.get('NadA_peptide')):
+        data['NadA_peptide'] = '0'
 
+    # 4) BAST / MenDeVAR parfois absents de la première réponse -> requête de confirmation
+    if any(is_missing(data.get(column)) for column in BAST_COLUMNS):
+        log.info('[Confirm BAST type and MenDeVar]')
+        try:
+            confirm_bast(data, output_dir)
+        except Exception as err:
+            log.error(f'✖️ Cannot confirm BAST: {err}')
 
-    df = pd.DataFrame([data])[columns_ordered]
+        status = {'Bast Type': 'bast_type', 'Bexsero': 'bexsero_cross_reactivity',
+                  'Trumenba': 'trumenba_cross_reactivity'}
+        log.info(', '.join(f"{'✔️' if not is_missing(data.get(col)) else '✖️'} {label}"
+                           for label, col in status.items()))
 
-    # If using WDL, need create txt files for each alleles to fetch the value 
-    # at WDL output. So we need to create a txt file for each value
-    if files_name:
-        # Assume single row (e.g., from Neisseria typing results)
-        data = df.iloc[0].to_dict()
+    # 5) Profil MLST complet mais pas de ST -> probablement une nouvelle souche
+    if ('mlst' not in failed and is_missing(data.get('st'))
+            and not any(is_missing(data.get(locus)) for locus in MLST_LOCI)):
+        log.info('- [MLST] Full profile but no ST assignment; it must be new!')
+        data['st'] = 'new'
 
-        if args.split:
-            for col in columns_ordered:
-                with open(f"{output_dir}/{col}.txt", "w") as f:
-                    f.write(f"{data.get(col, 'NA')}\n")
+    # 6) Colonnes récapitulatives, puis valeurs vides -> '?'
+    for column, loci in PROFILES.items():
+        data[column] = build_profile(data, loci)
 
-        
-    create_report(df, f'{output_dir}/{output_filename}')
-   
-    if best_matches is not None:
-        df_bm = pd.DataFrame([best_matches])
-        create_report(df_bm, f'{output_dir}/{sample}_best_matches.csv')
+    for column in COLUMNS:
+        if is_missing(data.get(column)):
+            data[column] = EMPTY_VALUE
 
-    if log_file:
-        populate_file('a', log_file, log_msg)
+    log.info(f'{sample}: {data}')
 
-   
-parser = argparse.ArgumentParser()
-parser.add_argument("--input", dest="input", required=True, help="Here your sample assembly (one fasta file or a fastas directory path)")
-parser.add_argument("--output", dest="output_dir", required=True, help="Here your destination directory")
-parser.add_argument("--output_csv_file", dest="output_file", required=True, help="Here your typing report csv filename")
-parser.add_argument("--log-file", dest="log_file", default='logs.txt', required=False, help="Here your log file")
-parser.add_argument('--files', help="Comma-separated keys", required=True)
-parser.add_argument('--split', action='store_true', help="Output one file per key")
+    # 7) Sorties
+    row = {column: data[column] for column in COLUMNS}
 
-args = parser.parse_args()
-output_dir = args.output_dir
-my_input = args.input
+    if split:  # un fichier .txt par colonne, lu par le WDL
+        for column, value in row.items():
+            with open(os.path.join(output_dir, f'{column}.txt'), 'w') as f:
+                f.write(f'{value}\n')
+
+    pd.DataFrame([row]).to_csv(os.path.join(output_dir, output_filename), index=False)
+    pd.DataFrame([best_matches]).to_csv(os.path.join(output_dir, f'{sample}_best_matches.csv'), index=False)
 
 
-if not os.path.isfile(my_input):
-    exit('Input not valid (path folder of fastas or one fasta file)')
+# --------------------------------------------------------------------------- #
+# CLI
+# --------------------------------------------------------------------------- #
+def parse_args():
+    parser = argparse.ArgumentParser(description='Neisseria typing (MLST, BAST, finetyping) via PubMLST')
+    parser.add_argument('--input', required=True, help='Assembly FASTA file')
+    parser.add_argument('--output', dest='output_dir', required=True, help='Destination directory')
+    parser.add_argument('--output_csv_file', dest='output_file', required=True, help='Typing report CSV filename')
+    parser.add_argument('--log-file', dest='log_file', default='logs.txt', help='Log filename (in the output directory)')
+    parser.add_argument('--sample', default=None,
+                        help='Sample name (default: input filename up to the first dot)')
+    parser.add_argument('--split', action='store_true', help='Also write one .txt file per column')
+    parser.add_argument('--files', help='Deprecated and ignored (kept so existing WDL calls still work)')
+    return parser.parse_args()
 
-if not os.path.exists(output_dir):
-    os.makedirs(output_dir, exist_ok=True)
 
-log_file = os.path.join(output_dir, args.log_file) if args.log_file else None
-
-try:
-    os.makedirs(output_dir, exist_ok=True) 
-except Exception as e:
-    print(f'Error in creating sample folder\n{e}')
-
-files = args.files.split(',')
-
-typing(
-    assembly=my_input,
-    output_dir=output_dir,
-    log_file=log_file,
-    output_filename=args.output_file,
-    files_name=files
+def setup_logging(log_path):
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(message)s',
+        handlers=[logging.StreamHandler(sys.stdout), logging.FileHandler(log_path, mode='a', encoding='utf-8')],
     )
 
+
+def main():
+    args = parse_args()
+
+    if not os.path.isfile(args.input):
+        sys.exit(f'Input not valid (expected one fasta file): {args.input}')
+
+    os.makedirs(args.output_dir, exist_ok=True)
+    setup_logging(os.path.join(args.output_dir, args.log_file))
+
+    sample = args.sample or os.path.basename(args.input).split('.')[0]
+    typing(args.input, sample, args.output_dir, args.output_file, args.split)
+
+
+if __name__ == '__main__':
+    main()
