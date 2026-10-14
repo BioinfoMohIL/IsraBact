@@ -1,1 +1,0 @@
-pushd /home/user1/Desktop/programs/wdl/IsraBact && miniwdl run workflows/resistance/campylobacter/wf_campycarba.wdl --input test.json; popd

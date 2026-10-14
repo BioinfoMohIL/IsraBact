@@ -1,4 +1,0 @@
-blaOXA-61_locus_ref.fasta
-campycarba_kb.tsv
-porA_mature_ref.faa
-MEM=NO_SPECIFIC_EVIDENCE; ETP=NO_SPECIFIC_EVIDENCE; IMP=NO_EFFECT_REPORTED
