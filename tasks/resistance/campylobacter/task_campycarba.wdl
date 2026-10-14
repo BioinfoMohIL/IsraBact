@@ -33,8 +33,7 @@ task campycarba {
       --oxa-ref  "~{if defined(oxa_reference_fasta) then select_first([oxa_reference_fasta]) else '/opt/campycarba/blaOXA-61_locus_ref.fasta'}" \
       --kb       "~{if defined(knowledge_base_tsv) then select_first([knowledge_base_tsv]) else '/opt/campycarba/campycarba_kb.tsv'}" \
       --species  "~{species}" \
-      ~{"--bam " + bam} \
-      --outdir out
+      ~{"--bam " + bam} --outdir out
   >>>
 
   output {
