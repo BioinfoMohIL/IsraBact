@@ -19,7 +19,13 @@ task campycarba {
   }
 
   command <<<
-    ls /opt/campycarba
+    echo "=== IMAGE DIAGNOSTIC ==="
+    cat /etc/hostname
+    ls -lah /opt/campycarba/
+    echo "=== REFERENCE FILES ==="
+    find /opt/campycarba -maxdepth 2 -type f
+    echo "=== RUNNING PROGRAM ==="
+    which campycarba
     set -euo pipefail
     mkdir -p out
     campycarba --assembly "~{assembly_fasta}" --sample   "~{samplename}" \

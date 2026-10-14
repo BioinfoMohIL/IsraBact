@@ -1,0 +1,6 @@
+2026-10-14 15:02:14.277 wdl.w:wf_campycarba.t:call-campycarba NOTICE task setup :: name: "campycarba", source: "../../../tasks/resistance/campylobacter/task_campycarba.wdl", line: 3, column: 1, dir: "/home/user1/Desktop/programs/wdl/IsraBact/20261014_150214_wf_campycarba/call-campycarba", thread: 140106893891136
+2026-10-14 15:02:14.493 wdl.w:wf_campycarba.t:call-campycarba NOTICE docker swarm resources :: workers: 1, max_cpus: 40, max_mem_bytes: 67159347200, total_cpus: 40, total_mem_bytes: 67159347200
+2026-10-14 15:02:14.496 wdl.w:wf_campycarba.t:call-campycarba WARNING ignored runtime settings :: keys: ["disks"]
+2026-10-14 15:02:14.519 wdl.w:wf_campycarba.t:call-campycarba NOTICE docker image :: tag: "bioinfomoh/campycarba:1.0", id: "sha256:92c0f0d9666d5d7f200b2cee054cc855342ad4b7ab1ccab54aee22667e255ae0", RepoDigest: "bioinfomoh/campycarba@sha256:a565f20c08b758f1d225c6f8ce60c54a4bc8e2788a2982620890f7b76b47cc00"
+2026-10-14 15:02:16.283 wdl.w:wf_campycarba.t:call-campycarba NOTICE docker task exit :: state: "complete", exit_code: 0
+2026-10-14 15:02:16.918 wdl.w:wf_campycarba.t:call-campycarba NOTICE done

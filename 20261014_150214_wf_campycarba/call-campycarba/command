@@ -1,0 +1,12 @@
+
+ls /opt/campycarba
+set -euo pipefail
+mkdir -p out
+campycarba --assembly "/mnt/miniwdl_task_container/work/_miniwdl_inputs/0/CA142766_filtered_contigs.fasta" --sample   "CA142766" \
+  --porA-ref "/opt/campycarba/porA_mature_ref.faa" \
+  --oxa-ref  "/opt/campycarba/blaOXA-61_locus_ref.fasta" \
+  --kb       "/opt/campycarba/campycarba_kb.tsv" \
+  --species  "Campylobacter jejuni" \
+   \
+  --outdir out
+  

@@ -1,0 +1,25 @@
+sample	gene	feature	variant	in_region_of_interest	kb_id	evidence	comment
+CA142766	porA	aa_substitution	p.T115L	True		uncatalogued	Substitution inside a Ca2+-pocket/constriction-zone region; effect not catalogued
+CA142766	porA	aa_substitution	p.G121A	True		uncatalogued	Substitution inside a Ca2+-pocket/constriction-zone region; effect not catalogued
+CA142766	porA	aa_substitution	p.N151M	True		uncatalogued	Substitution inside a Ca2+-pocket/constriction-zone region; effect not catalogued
+CA142766	porA	aa_substitution	p.T152A	True		uncatalogued	Substitution inside a Ca2+-pocket/constriction-zone region; effect not catalogued
+CA142766	porA	aa_substitution	p.D153A	True		uncatalogued	Substitution inside a Ca2+-pocket/constriction-zone region; effect not catalogued
+CA142766	porA	aa_substitution	p.T154E	True		uncatalogued	Substitution inside a Ca2+-pocket/constriction-zone region; effect not catalogued
+CA142766	porA	aa_substitution	p.E155Q	True		uncatalogued	Substitution inside a Ca2+-pocket/constriction-zone region; effect not catalogued
+CA142766	porA	aa_substitution	p.I158L	True		uncatalogued	Substitution inside a Ca2+-pocket/constriction-zone region; effect not catalogued
+CA142766	porA	aa_substitution	p.N314V	True		uncatalogued	Substitution inside a Ca2+-pocket/constriction-zone region; effect not catalogued
+CA142766	porA	aa_substitution	p.T315V	True		uncatalogued	Substitution inside a Ca2+-pocket/constriction-zone region; effect not catalogued
+CA142766	porA	aa_substitution	p.L316I	True		uncatalogued	Substitution inside a Ca2+-pocket/constriction-zone region; effect not catalogued
+CA142766	porA	aa_substitution	p.V319Q	True		uncatalogued	Substitution inside a Ca2+-pocket/constriction-zone region; effect not catalogued
+CA142766	porA	indel	p.26del(G)	False		uncatalogued	Protein indel outside the Ca2+-pocket regions; not catalogued
+CA142766	porA	indel	p.29_30del(GY)	False		uncatalogued	Protein indel outside the Ca2+-pocket regions; not catalogued
+CA142766	porA	indel	p.156_157insA	True		uncatalogued	Protein indel inside the Ca2+-pocket regions; not catalogued
+CA142766	porA	indel	p.163_166del(KLFN)	False		uncatalogued	Protein indel outside the Ca2+-pocket regions; not catalogued
+CA142766	porA	indel	p.177_181del(QDGTL)	False		uncatalogued	Protein indel outside the Ca2+-pocket regions; not catalogued
+CA142766	porA	indel	p.187del(Y)	False		uncatalogued	Protein indel outside the Ca2+-pocket regions; not catalogued
+CA142766	porA	indel	p.255_256del(KS)	False		uncatalogued	Protein indel outside the Ca2+-pocket regions; not catalogued
+CA142766	porA	indel	p.260_277del(IIATEYVGGVGTDVTGEE)	False		uncatalogued	Protein indel outside the Ca2+-pocket regions; not catalogued
+CA142766	porA	indel	p.323_324insSL	False		uncatalogued	Protein indel outside the Ca2+-pocket regions; not catalogued
+CA142766	porA	indel	p.376_377insHLG	False		uncatalogued	Protein indel outside the Ca2+-pocket regions; not catalogued
+CA142766	blaOXA	promoter_snv	-100C>T	True		uncatalogued	Promoter SNV; effect on expression not catalogued
+CA142766	blaOXA	promoter_snv	-57G>T	True	oxa61_promoter_-57G>T	experimental_allelic_exchange	Restores the TATA box (GAAAAT>TAAAAT). Present in all 12 isolates of Nunes 2023, including carbapenem-susceptible ones (A1-A3, A7); expression boost ~239x in C. jejuni vs ~18x in C. coli
