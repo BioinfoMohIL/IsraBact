@@ -3,7 +3,7 @@ version 1.0
 # CampyCarba: carbapenem-resistance mechanism detector for Campylobacter assemblies.
 # The script is installed in the Docker image as /bin/campycarba and the knowledge base
 # as /opt/campycarba/campycarba_kb.tsv (see Dockerfile).
-import '../../../tasks/resistance/task_campycarba.wdl' as task_campycarba
+import '../../../tasks/resistance/campylobacter/task_campycarba.wdl' as task_campycarba
 
 workflow wf_campycarba {
   input {
