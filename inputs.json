@@ -1,5 +1,35 @@
-{
 
-  "wf_plasmid_detection.assembly_fasta":"data/SH036875_filtered_contigs.fasta",
-  "wf_plasmid_detection.samplename":"SH036875"
+{
+  "wf_microbedecoder.samplename": "SH037149",
+  "wf_microbedecoder.genbank_file": "data/SH037149.gbff",
+  "wf_microbedecoder.ko_annotator": "kofamscan",
+  "wf_microbedecoder.kofam_profiles_tar": "data/profiles.tar.gz",
+  "wf_microbedecoder.kofam_ko_list": "data/ko_list.gz",
+  "wf_microbedecoder.species_name": "Salmonella enterica",
+  "wf_microbedecoder.taxonomy_system": "NCBI",
+  "wf_microbedecoder.traits_to_predict": [
+    "Type of metabolism (FAPROTAX)",
+    "Type of metabolism (Fermentation Explorer)",
+    "Metabolites utilized (BacDive)",
+    "Enzyme activity (BacDive)",
+    "Oxygen tolerance (BacDive)",
+    "Gram stain (BacDive)",
+    "Motility (BacDive)"
+  ],
+  "wf_microbedecoder.reference_network": "Fermentation of glucose",
+  "wf_microbedecoder.model_names": [
+    "Fermentation (type of metabolism)",
+    "Aerobic chemoheterotrophy (type of metabolism)",
+    "Nitrate reduction (type of metabolism)",
+    "Anaerobe (oxygen tolerance)",
+    "Aerobe (oxygen tolerance)",
+    "Gram negative (gram stain)",
+    "Motility positive (motility)",
+    "Acetate (end product)",
+    "Lactate (end product)",
+    "Ethanol (end product)",
+    "Formate (end product)",
+    "H2 (end product)",
+    "Succinate (end product)"
+  ]
 }

@@ -116,6 +116,9 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/utilities/file_handling/wf_concatenate_columns.wdl
 
+  - name: CampyCarba_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/resistance/campylobacter/wf_campycarba.wdl
 
 
 
