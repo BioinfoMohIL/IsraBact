@@ -6,11 +6,11 @@ workflow wf_campycarba {
   input {
     File assembly_fasta
     String sample_name
+    String species
 
     File ?porA_reference_faa
     File? oxa_reference_fasta
     File? knowledge_base_tsv
-    String species = "unknown"
     File? bam
     String? docker
   }

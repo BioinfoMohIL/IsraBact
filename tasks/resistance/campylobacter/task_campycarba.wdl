@@ -4,11 +4,11 @@ task campycarba {
   input {
     File assembly_fasta
     String sample_name
+    String species
 
     File? porA_reference_faa          # MATURE MOMP protein (position 1 = first residue after the signal peptide)
     File? oxa_reference_fasta         # blaOXA-61 locus: upstream region + CDS; header must contain cds_start=N
     File? knowledge_base_tsv         # defaults to the copy baked into the image
-    String species = "unknown"
     File? bam                        # optional: coordinate-sorted BAM mapped to assembly_fasta (read-depth duplication check)
     String docker = "bioinfomoh/campycarba:1.0"
     
