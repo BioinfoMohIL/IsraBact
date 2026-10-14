@@ -1,5 +1,6 @@
 {
-  "wf_plasmid_detection.assembly_fasta": "data/SH033793_filtered_contigs.fasta",
-  "wf_plasmid_detection.samplename": "SH033793"
+  "wf_campycarba.assembly_fasta": "data/CA142766_filtered_contigs.fasta",
+  "wf_campycarba.samplename": "CA142766",
+  "wf_campycarba.species": "Campylobacter jejuni"
 
 }

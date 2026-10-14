@@ -3,7 +3,7 @@ version 1.0
 task campycarba {
   input {
     File assembly_fasta
-    String sample_name
+    String samplename
     String species
 
     File? porA_reference_faa          # MATURE MOMP protein (position 1 = first residue after the signal peptide)
@@ -19,11 +19,10 @@ task campycarba {
   }
 
   command <<<
+    ls /opt/campycarba
     set -euo pipefail
     mkdir -p out
-    campycarba \
-      --assembly "~{assembly_fasta}" \
-      --sample   "~{sample_name}" \
+    campycarba --assembly "~{assembly_fasta}" --sample   "~{samplename}" \
       --porA-ref "~{if defined(porA_reference_faa) then select_first([porA_reference_faa]) else '/opt/campycarba/porA_mature_ref.faa'}" \
       --oxa-ref  "~{if defined(oxa_reference_fasta) then select_first([oxa_reference_fasta]) else '/opt/campycarba/blaOXA-61_locus_ref.fasta'}" \
       --kb       "~{if defined(knowledge_base_tsv) then select_first([knowledge_base_tsv]) else '/opt/campycarba/campycarba_kb.tsv'}" \
@@ -33,10 +32,10 @@ task campycarba {
   >>>
 
   output {
-    File summary_tsv  = "out/~{sample_name}_summary.tsv"
-    File variants_tsv = "out/~{sample_name}_variants.tsv"
-    File report_txt   = "out/~{sample_name}_report.txt"
-    String status     = read_string("out/~{sample_name}_status.txt")
+    File summary_tsv  = "out/~{samplename}_summary.tsv"
+    File variants_tsv = "out/~{samplename}_variants.tsv"
+    File report_txt   = "out/~{samplename}_report.txt"
+    String status     = read_string("out/~{samplename}_status.txt")
     # Alignments / translated ORF for a visual check in MEGA, AliView or Jalview (empty if the gene was not found)
     Array[File] alignment_files = flatten([glob("out/*_alignment.fasta"), glob("out/*_porA_protein.faa")])
   }
