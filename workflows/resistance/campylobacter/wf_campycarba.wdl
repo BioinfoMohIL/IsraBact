@@ -6,12 +6,13 @@ workflow wf_campycarba {
   input {
     File assembly_fasta
     String sample_name
-    File porA_reference_faa
-    File oxa_reference_fasta
+
+    File ?porA_reference_faa
+    File? oxa_reference_fasta
     File? knowledge_base_tsv
     String species = "unknown"
     File? bam
-    String docker
+    String? docker
   }
 
   call task_campycarba.campycarba {
