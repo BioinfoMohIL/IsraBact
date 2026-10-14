@@ -32,5 +32,7 @@ workflow wf_campycarba {
     File campycarba_variants_tsv = campycarba.variants_tsv
     File campycarba_report_txt   = campycarba.report_txt
     String campycarba_status     = campycarba.status
+    Array[File] campycarba_alignment_files = campycarba.alignment_files
+
   }
 }

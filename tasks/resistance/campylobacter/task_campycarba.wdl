@@ -37,6 +37,8 @@ task campycarba {
     File variants_tsv = "out/~{sample_name}_variants.tsv"
     File report_txt   = "out/~{sample_name}_report.txt"
     String status     = read_string("out/~{sample_name}_status.txt")
+    # Alignments / translated ORF for a visual check in MEGA, AliView or Jalview (empty if the gene was not found)
+    Array[File] alignment_files = flatten([glob("out/*_alignment.fasta"), glob("out/*_porA_protein.faa")])
   }
 
   runtime {
