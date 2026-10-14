@@ -10,7 +10,7 @@ task campycarba {
     File? knowledge_base_tsv         # defaults to the copy baked into the image
     String species = "unknown"
     File? bam                        # optional: coordinate-sorted BAM mapped to assembly_fasta (read-depth duplication check)
-    String docker = "bioinfomoh/campycarba:0.1"
+    String docker = "bioinfomoh/campycarba:1.0"
     
     Int cpu = 4
     Int memory_gb = 4
