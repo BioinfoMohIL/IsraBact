@@ -1,6 +1,6 @@
 {
-  "wf_campycarba.assembly_fasta": "data/CA142766_filtered_contigs.fasta",
-  "wf_campycarba.samplename": "CA142766",
-  "wf_campycarba.species": "Campylobacter jejuni"
+  "wf_campycarba.assembly_fasta": "data/SRR_R.fasta",
+  "wf_campycarba.samplename": "SRR_R",
+  "wf_campycarba.species": "jejuni"
 
 }

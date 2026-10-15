@@ -119,6 +119,9 @@ workflows:
   - name: CampyCarba_MOH
     subclass: WDL
     primaryDescriptorPath: /workflows/resistance/campylobacter/wf_campycarba.wdl
-
+    
+  - name: MicrobeDecoder_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/species_detection/functional_profiling/wf_microbedecoder.wdl
 
 

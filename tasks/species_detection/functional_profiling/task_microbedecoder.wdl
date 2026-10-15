@@ -1,18 +1,17 @@
 version 1.0
 
-# Microbe Decoder (tjhackmann/microbedecoder) en mode headless, apres TheiaProk (Bakta ou Prokka).
-# L'image est une app R Shiny : on charge son code avec initialize_session()
-# puis on appelle les memes fonctions que l'API Plumber du repo.
+# Microbe Decoder (tjhackmann/microbedecoder) in headless mode, after TheiaProk (Bakta or Prokka).
+# The image is an R Shiny app: its code is loaded with initialize_session(),
+# then the same functions as the repo's Plumber API are called.
 
 # ---------------------------------------------------------------------------
-# 1) Proteines : .faa direct, ou extraction depuis un GenBank (.gbff Bakta / .gbk Prokka)
+# 1) Proteins: .faa as is, or extracted from a GenBank file (.gbff Bakta / .gbk Prokka)
 # ---------------------------------------------------------------------------
 task prepare_proteins {
   input {
-    File? proteins_faa
-    File? genbank_file
+    File input_proteins   # .faa (Bakta/Prokka) OR GenBank (.gbff Bakta / .gbk Prokka): format is detected automatically
     String samplename
-    String ko_annotator   # verifie ici : "kofamscan" ou "eggnog"
+    String ko_annotator   # checked here: "kofamscan" or "eggnog"
 
     String docker = "ubuntu:22.04"
     Int cpu = 1
@@ -25,15 +24,17 @@ task prepare_proteins {
 
     case "~{ko_annotator}" in
       kofamscan|eggnog) ;;
-      *) echo "ko_annotator doit etre 'kofamscan' ou 'eggnog' (recu: ~{ko_annotator})" >&2; exit 1 ;;
+      *) echo "ko_annotator must be 'kofamscan' or 'eggnog' (got: ~{ko_annotator})" >&2; exit 1 ;;
     esac
 
-    FAA="~{default="" proteins_faa}"
-    GBK="~{default="" genbank_file}"
+    IN="~{input_proteins}"
 
-    if [ -n "$FAA" ]; then
-      cp "$FAA" "~{samplename}_proteins.faa"
-    elif [ -n "$GBK" ]; then
+    # Format detection on the first non-empty line: ">" = FASTA, "LOCUS" = GenBank
+    FIRST="$(grep -m1 -v '^[[:space:]]*$' "$IN" || true)"
+
+    if [[ "$FIRST" == ">"* ]]; then
+      cp "$IN" "~{samplename}_proteins.faa"
+    elif [[ "$FIRST" == LOCUS* ]]; then
       awk '
         /^     [^ ]/ { incds = ($1 == "CDS"); intrans = 0; if (incds) locus = ""; next }
         incds && /\/locus_tag=/ { match($0, /"[^"]*"/); locus = substr($0, RSTART + 1, RLENGTH - 2); next }
@@ -46,14 +47,14 @@ task prepare_proteins {
         intrans { s = $0; gsub(/ /, "", s)
           if (s ~ /"$/) { gsub(/"/, "", s); print ">" locus; print buf s; intrans = 0 }
           else buf = buf s }
-      ' "$GBK" > "~{samplename}_proteins.faa"
+      ' "$IN" > "~{samplename}_proteins.faa"
     else
-      echo "Fournir proteins_faa (.faa de Bakta/Prokka) ou genbank_file (.gbff/.gbk)" >&2
+      echo "Unrecognized format for input_proteins: expected .faa (starts with '>') or GenBank .gbff/.gbk (starts with 'LOCUS')" >&2
       exit 1
     fi
 
-    [ -s "~{samplename}_proteins.faa" ] || { echo "Aucune proteine trouvee" >&2; exit 1; }
-    echo "Proteines: $(grep -c '>' "~{samplename}_proteins.faa")"
+    [ -s "~{samplename}_proteins.faa" ] || { echo "No proteins found" >&2; exit 1; }
+    echo "Proteins: $(grep -c '>' "~{samplename}_proteins.faa")"
   >>>
 
   output {
@@ -71,17 +72,17 @@ task prepare_proteins {
 }
 
 # ---------------------------------------------------------------------------
-# 2a) KO avec KofamScan (defaut) : base KOfam = profiles.tar.gz + ko_list(.gz)
-#     telechargeables sur ftp://ftp.genome.jp/pub/db/kofam/
+# 2a) KO annotation with KofamScan (default): KOfam database = profiles.tar.gz + ko_list(.gz)
+#     downloadable from ftp://ftp.genome.jp/pub/db/kofam/
 # ---------------------------------------------------------------------------
 task kofamscan_ko {
   input {
     File proteins_faa
     String samplename
     File kofam_profiles_tar     # profiles.tar.gz
-    File kofam_ko_list          # ko_list.gz (ou ko_list decompresse)
+    File kofam_ko_list          # ko_list.gz (or uncompressed ko_list)
 
-    String docker = "quay.io/biocontainers/kofamscan:1.3.0--hdfd78af_2"   # a verifier avec docker pull
+    String docker = "quay.io/biocontainers/kofamscan:1.3.0--hdfd78af_2"   # check with docker pull
     Int cpu = 8
     Int memory_gb = 16
     Int disk_size_gb = 50
@@ -99,7 +100,7 @@ task kofamscan_ko {
     esac
 
     HAL="$(find kofam -name prokaryote.hal | head -n 1)"
-    [ -n "$HAL" ] || { echo "prokaryote.hal introuvable dans profiles.tar.gz" >&2; exit 1; }
+    [ -n "$HAL" ] || { echo "prokaryote.hal not found in profiles.tar.gz" >&2; exit 1; }
 
     exec_annotation \
       -p "$HAL" \
@@ -109,10 +110,10 @@ task kofamscan_ko {
       -o kofam_mapper.txt \
       "~{proteins_faa}"
 
-    # mapper : "gene<TAB>KO" (les genes sans KO n'ont qu'une colonne)
+    # mapper: "gene<TAB>KO" (genes without a KO have only one column)
     awk -F'\t' -v g="~{samplename}" '$2 ~ /^K[0-9][0-9][0-9][0-9][0-9]$/ { print g "\t" $2 }' kofam_mapper.txt | sort -u > ko_rows.tsv
 
-    [ -s ko_rows.tsv ] || { echo "Aucun KO trouve" >&2; exit 1; }
+    [ -s ko_rows.tsv ] || { echo "No KO found" >&2; exit 1; }
     { printf 'Genome\tKO\n'; cat ko_rows.tsv; } > "~{samplename}_gene_functions.tsv"
   >>>
 
@@ -132,7 +133,7 @@ task kofamscan_ko {
 }
 
 # ---------------------------------------------------------------------------
-# 2b) KO avec eggNOG-mapper (option) : sur les proteines (pas de prodigal)
+# 2b) KO annotation with eggNOG-mapper (option): run on proteins (no prodigal)
 # ---------------------------------------------------------------------------
 task eggnog_ko {
   input {
@@ -176,7 +177,7 @@ task eggnog_ko {
         }
       }' "out/~{samplename}.emapper.annotations" | sort -u > ko_rows.tsv
 
-    [ -s ko_rows.tsv ] || { echo "Aucun KO trouve" >&2; exit 1; }
+    [ -s ko_rows.tsv ] || { echo "No KO found" >&2; exit 1; }
     { printf 'Genome\tKO\n'; cat ko_rows.tsv; } > "~{samplename}_gene_functions.tsv"
   >>>
 
@@ -196,13 +197,13 @@ task eggnog_ko {
 }
 
 # ---------------------------------------------------------------------------
-# 3) Microbe Decoder - taxonomie (optionnelle) : a partir d'un nom d'espece (GAMBIT)
+# 3) Microbe Decoder - taxonomy (optional): from a species name (GAMBIT)
 # ---------------------------------------------------------------------------
 task microbedecoder_taxonomy {
   input {
-    String species_name                 # ex: gambit_predicted_taxon = "Salmonella enterica"
+    String species_name                 # e.g. gambit_predicted_taxon = "Salmonella enterica"
     Array[String] traits_to_predict = ["Type of metabolism (FAPROTAX)"]
-    String system_taxonomy = "NCBI"     # LPSN, GTDB, NCBI ou Bergey
+    String system_taxonomy = "NCBI"     # LPSN, GTDB, NCBI or Bergey
     Boolean ignore_NA = true
     Boolean match_all_ranks = false
     Boolean ignore_species = false
@@ -221,7 +222,7 @@ task microbedecoder_taxonomy {
     OUT="$(pwd)/results"
     mkdir -p "$OUT"
 
-    # Mini-tableau au format DADA2 : seuls Genus et Species (epithete) sont remplis
+    # Mini table in DADA2 format: only Genus and Species (epithet) are filled in
     SPECIES="~{species_name}"
     GENUS="$(echo "$SPECIES" | awk '{print $1}')"
     EPITHET="$(echo "$SPECIES" | awk '{print $2}')"
@@ -253,7 +254,7 @@ task microbedecoder_taxonomy {
     query <- validate_and_read_file(file_path = taxa_file)
     query[] <- lapply(query, function(x) { x <- trimws(as.character(x)); x[x == ""] <- NA; x })
     query_taxa <- process_uploaded_taxonomy(query)
-    if (is.null(query_taxa)) stop("Format de taxonomie non reconnu.")
+    if (is.null(query_taxa)) stop("Unrecognized taxonomy format.")
 
     result <- compute_taxonomy_predictions(
       data              = load_database(),
@@ -296,7 +297,7 @@ task microbedecoder_taxonomy {
 }
 
 # ---------------------------------------------------------------------------
-# 4) Microbe Decoder - reseaux metaboliques
+# 4) Microbe Decoder - metabolic networks
 # ---------------------------------------------------------------------------
 task microbedecoder_networks {
   input {
@@ -304,7 +305,10 @@ task microbedecoder_networks {
     Array[String] selected_organisms = []
 
     String reference_network = "Fermentation of glucose"
-    # Si vides, les valeurs par defaut du reseau choisi sont utilisees
+    # Custom network (CSV with columns name, eq, way, ec, ko, md): takes priority over reference_network.
+    # If substrates / products are empty, all metabolites of the network (except cofactors) are tested.
+    File? reference_network_file
+    # If empty (database network only), the defaults of the chosen network are used
     Array[String] substrates = []
     Array[String] products = []
     Array[String] unbalanced_intermediates = []
@@ -327,7 +331,7 @@ task microbedecoder_networks {
     args <- commandArgs(trailingOnly = TRUE)
     gf_file <- args[1]; organisms_file <- args[2]; reference_network <- args[3]
     substrates_file <- args[4]; products_file <- args[5]; unbalanced_file <- args[6]
-    all_subunits <- as.logical(args[7]); out_dir <- args[8]; prefix <- args[9]
+    all_subunits <- as.logical(args[7]); out_dir <- args[8]; prefix <- args[9]; ref_file <- args[10]
 
     setwd("/srv/shiny-server")
     Sys.setlocale("LC_ALL", "C")
@@ -340,27 +344,48 @@ task microbedecoder_networks {
       else write.table(df, path, sep = "\t", quote = FALSE, row.names = FALSE)
     }
     read_lines_clean <- function(f) { x <- trimws(readLines(f, warn = FALSE)); x[nzchar(x)] }
+    custom_network <- nzchar(ref_file)
+    if (custom_network) {
+      ref_net <- validate_reference_network(validate_and_read_file(file_path = ref_file))
+      if (!is.data.frame(ref_net)) stop("Invalid reference network: required columns are name, eq, way, ec, ko, md.")
+    } else {
+      ref_net <- get_reference_network_from_database(reference_network)
+    }
+    # Cofactors: database defaults (for a custom network: those of "Fermentation of glucose")
+    unbalanced <- read_lines_clean(unbalanced_file)
+    if (length(unbalanced) == 0) {
+      unbalanced <- get_metabolite_selections(
+        selected_network = if (custom_network) "Fermentation of glucose" else reference_network,
+        metabolite_col = "default_unbalanced_intermediates")
+    }
+    # Custom network without substrates/products: all metabolites of the network (except cofactors)
+    all_metabolites <- character(0)
+    if (custom_network) {
+      all_metabolites <- setdiff(unique(get_metabolite_names(ref_net$eq)), unbalanced)
+    }
     pick <- function(f, col) {
       x <- read_lines_clean(f)
-      if (length(x) > 0) x else get_metabolite_selections(selected_network = reference_network, metabolite_col = col)
+      if (length(x) > 0) return(x)
+      if (custom_network) return(all_metabolites)
+      get_metabolite_selections(selected_network = reference_network, metabolite_col = col)
     }
 
     organisms <- read_lines_clean(organisms_file)
     if (nzchar(gf_file)) {
       gene_functions <- process_uploaded_gene_functions(validate_and_read_file(file_path = gf_file))
-      if (is.null(gene_functions)) stop("Format de fonctions genetiques non reconnu.")
+      if (is.null(gene_functions)) stop("Unrecognized gene functions format.")
     } else if (length(organisms) > 0) {
       gene_functions <- get_gene_functions_from_database(organisms)
     } else {
-      stop("Fournir gene_functions_file ou selected_organisms.")
+      stop("Provide gene_functions_file or selected_organisms.")
     }
 
     result <- compute_network_predictions(
-      reference_network        = get_reference_network_from_database(reference_network),
+      reference_network        = ref_net,
       gene_functions           = gene_functions,
       substrates               = pick(substrates_file, "default_substrates"),
       products                 = pick(products_file, "default_products"),
-      unbalanced_intermediates = pick(unbalanced_file, "default_unbalanced_intermediates"),
+      unbalanced_intermediates = unbalanced,
       all_subunits             = all_subunits
     )
 
@@ -379,7 +404,8 @@ task microbedecoder_networks {
       "~{write_lines(products)}" \
       "~{write_lines(unbalanced_intermediates)}" \
       "~{all_subunits}" \
-      "$OUT" "~{samplename}"
+      "$OUT" "~{samplename}" \
+      "~{default="" reference_network_file}"
   >>>
 
   output {
@@ -405,7 +431,7 @@ task microbedecoder_ml {
   input {
     File? gene_functions_file
     Array[String] selected_organisms = []
-    # Noms exacts des modeles, ex: "Fermentation (type of metabolism)", "Anaerobe (oxygen tolerance)"
+    # Exact model names, e.g. "Fermentation (type of metabolism)", "Anaerobe (oxygen tolerance)"
     Array[String] model_names = ["Fermentation (type of metabolism)", "Methanogenesis (type of metabolism)"]
     String samplename = "microbedecoder"
 
@@ -442,11 +468,11 @@ task microbedecoder_ml {
     model_names <- read_lines_clean(models_file)
     if (nzchar(gf_file)) {
       gene_functions <- process_uploaded_gene_functions(validate_and_read_file(file_path = gf_file))
-      if (is.null(gene_functions)) stop("Format de fonctions genetiques non reconnu.")
+      if (is.null(gene_functions)) stop("Unrecognized gene functions format.")
     } else if (length(organisms) > 0) {
       gene_functions <- get_gene_functions_from_database(organisms)
     } else {
-      stop("Fournir gene_functions_file ou selected_organisms.")
+      stop("Provide gene_functions_file or selected_organisms.")
     }
 
     model_paths <- get_model_paths_from_database(model_names, model_path_config = model_path_config)
