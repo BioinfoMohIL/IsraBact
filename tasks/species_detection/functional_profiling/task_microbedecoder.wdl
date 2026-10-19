@@ -12,11 +12,6 @@ task prepare_proteins {
     File input_proteins   # .faa (Bakta/Prokka) OR GenBank (.gbff Bakta / .gbk Prokka): format is detected automatically
     String samplename
     String ko_annotator   # checked here: "kofamscan" or "eggnog"
-
-    String docker = "ubuntu:22.04"
-    Int cpu = 1
-    Int memory_gb = 2
-    Int disk_size_gb = 10
   }
 
   command <<<
@@ -62,10 +57,10 @@ task prepare_proteins {
   }
 
   runtime {
-    docker: docker
-    cpu: cpu
-    memory: "~{memory_gb} GB"
-    disks: "local-disk ~{disk_size_gb} SSD"
+    docker: "ubuntu:22.04"
+    cpu: 1
+    memory: "2 GB"
+    disks: "local-disk 10 SSD"
     preemptible: 1
     maxRetries: 1
   }
@@ -81,12 +76,6 @@ task kofamscan_ko {
     String samplename
     File kofam_profiles_tar     # profiles.tar.gz
     File kofam_ko_list          # ko_list.gz (or uncompressed ko_list)
-
-    String docker = "quay.io/biocontainers/kofamscan:1.3.0--hdfd78af_2"   # check with docker pull
-    Int cpu = 8
-    Int memory_gb = 16
-    Int disk_size_gb = 50
-    Int preemptible = 1
   }
 
   command <<<
@@ -105,7 +94,7 @@ task kofamscan_ko {
     exec_annotation \
       -p "$HAL" \
       -k kofam/ko_list \
-      --cpu ~{cpu} \
+      --cpu 8 \
       -f mapper \
       -o kofam_mapper.txt \
       "~{proteins_faa}"
@@ -123,11 +112,11 @@ task kofamscan_ko {
   }
 
   runtime {
-    docker: docker
-    cpu: cpu
-    memory: "~{memory_gb} GB"
-    disks: "local-disk ~{disk_size_gb} SSD"
-    preemptible: preemptible
+    docker: "quay.io/biocontainers/kofamscan:1.3.0--hdfd78af_2"
+    cpu: 8
+    memory: "16 GB"
+    disks: "local-disk 50 SSD"
+    preemptible: 1
     maxRetries: 1
   }
 }
@@ -142,12 +131,6 @@ task eggnog_ko {
     File eggnog_db              # eggnog.db
     File eggnog_dmnd            # eggnog_proteins.dmnd
     File eggnog_taxa_db         # eggnog.taxa.db
-
-    String docker = "quay.io/biocontainers/eggnog-mapper:2.1.12--pyhdfd78af_0"
-    Int cpu = 8
-    Int memory_gb = 32
-    Int disk_size_gb = 200
-    Int preemptible = 1
   }
 
   command <<<
@@ -164,7 +147,7 @@ task eggnog_ko {
       -m diamond \
       --data_dir eggnog_data \
       --output "~{samplename}" --output_dir out \
-      --cpu ~{cpu} --override
+      --cpu 8 --override
 
     awk -F'\t' -v g="~{samplename}" '
       /^#query/ { for (i = 1; i <= NF; i++) if ($i == "KEGG_ko") c = i; next }
@@ -187,11 +170,11 @@ task eggnog_ko {
   }
 
   runtime {
-    docker: docker
-    cpu: cpu
-    memory: "~{memory_gb} GB"
-    disks: "local-disk ~{disk_size_gb} SSD"
-    preemptible: preemptible
+    docker: "quay.io/biocontainers/eggnog-mapper:2.1.12--pyhdfd78af_0"
+    cpu: 8
+    memory: "32 GB"
+    disks: "local-disk 200 SSD"
+    preemptible: 1
     maxRetries: 1
   }
 }
@@ -201,20 +184,13 @@ task eggnog_ko {
 # ---------------------------------------------------------------------------
 task microbedecoder_taxonomy {
   input {
+    String samplename
     String species_name                 # e.g. gambit_predicted_taxon = "Salmonella enterica"
-    Array[String] traits_to_predict = ["Type of metabolism (FAPROTAX)"]
-    String system_taxonomy = "NCBI"     # LPSN, GTDB, NCBI or Bergey
-    Boolean ignore_NA = true
-    Boolean match_all_ranks = false
-    Boolean ignore_species = false
-    String query_string = ""
-    String samplename = "microbedecoder"
-
-    String docker = "tjhackmann/microbedecoder:latest"
-    Int cpu = 2
-    Int memory_gb = 8
-    Int disk_size_gb = 30
-    Int preemptible = 1
+    Array[String] traits_to_predict
+    String system_taxonomy              # LPSN, GTDB, NCBI or Bergey
+    Boolean ignore_NA
+    Boolean match_all_ranks
+    Boolean ignore_species
   }
 
   command <<<
@@ -234,8 +210,8 @@ task microbedecoder_taxonomy {
     args <- commandArgs(trailingOnly = TRUE)
     taxa_file <- args[1]; traits_file <- args[2]; system_taxonomy <- args[3]
     ignore_NA <- as.logical(args[4]); match_all_ranks <- as.logical(args[5])
-    ignore_species <- as.logical(args[6]); query_string <- args[7]
-    out_dir <- args[8]; prefix <- args[9]
+    ignore_species <- as.logical(args[6])
+    out_dir <- args[7]; prefix <- args[8]
 
     setwd("/srv/shiny-server")
     Sys.setlocale("LC_ALL", "C")
@@ -259,7 +235,7 @@ task microbedecoder_taxonomy {
     result <- compute_taxonomy_predictions(
       data              = load_database(),
       query_taxa        = query_taxa,
-      query_string      = if (nzchar(query_string)) query_string else NULL,
+      query_string      = NULL,
       traits_to_predict = traits,
       ignore_NA         = ignore_NA,
       match_all_ranks   = match_all_ranks,
@@ -276,7 +252,6 @@ task microbedecoder_taxonomy {
       "~{write_lines(traits_to_predict)}" \
       "~{system_taxonomy}" \
       "~{ignore_NA}" "~{match_all_ranks}" "~{ignore_species}" \
-      "~{query_string}" \
       "$OUT" "~{samplename}"
   >>>
 
@@ -287,11 +262,11 @@ task microbedecoder_taxonomy {
   }
 
   runtime {
-    docker: docker
-    cpu: cpu
-    memory: "~{memory_gb} GB"
-    disks: "local-disk ~{disk_size_gb} SSD"
-    preemptible: preemptible
+    docker: "tjhackmann/microbedecoder:latest"
+    cpu: 8
+    memory: "8 GB"
+    disks: "local-disk 30 SSD"
+    preemptible: 1
     maxRetries: 1
   }
 }
@@ -301,8 +276,8 @@ task microbedecoder_taxonomy {
 # ---------------------------------------------------------------------------
 task microbedecoder_networks {
   input {
-    File? gene_functions_file
-    Array[String] selected_organisms = []
+    File gene_functions_file
+    String samplename
 
     String reference_network = "Fermentation of glucose"
     # Custom network (CSV with columns name, eq, way, ec, ko, md): takes priority over reference_network.
@@ -313,13 +288,6 @@ task microbedecoder_networks {
     Array[String] products = []
     Array[String] unbalanced_intermediates = []
     Boolean all_subunits = true
-    String samplename = "microbedecoder"
-
-    String docker = "tjhackmann/microbedecoder:latest"
-    Int cpu = 2
-    Int memory_gb = 16
-    Int disk_size_gb = 30
-    Int preemptible = 1
   }
 
   command <<<
@@ -329,9 +297,9 @@ task microbedecoder_networks {
 
     cat > run_networks.R <<'RSCRIPT'
     args <- commandArgs(trailingOnly = TRUE)
-    gf_file <- args[1]; organisms_file <- args[2]; reference_network <- args[3]
-    substrates_file <- args[4]; products_file <- args[5]; unbalanced_file <- args[6]
-    all_subunits <- as.logical(args[7]); out_dir <- args[8]; prefix <- args[9]; ref_file <- args[10]
+    gf_file <- args[1]; reference_network <- args[2]
+    substrates_file <- args[3]; products_file <- args[4]; unbalanced_file <- args[5]
+    all_subunits <- as.logical(args[6]); out_dir <- args[7]; prefix <- args[8]; ref_file <- args[9]
 
     setwd("/srv/shiny-server")
     Sys.setlocale("LC_ALL", "C")
@@ -370,15 +338,8 @@ task microbedecoder_networks {
       get_metabolite_selections(selected_network = reference_network, metabolite_col = col)
     }
 
-    organisms <- read_lines_clean(organisms_file)
-    if (nzchar(gf_file)) {
-      gene_functions <- process_uploaded_gene_functions(validate_and_read_file(file_path = gf_file))
-      if (is.null(gene_functions)) stop("Unrecognized gene functions format.")
-    } else if (length(organisms) > 0) {
-      gene_functions <- get_gene_functions_from_database(organisms)
-    } else {
-      stop("Provide gene_functions_file or selected_organisms.")
-    }
+    gene_functions <- process_uploaded_gene_functions(validate_and_read_file(file_path = gf_file))
+    if (is.null(gene_functions)) stop("Unrecognized gene functions format.")
 
     result <- compute_network_predictions(
       reference_network        = ref_net,
@@ -397,8 +358,7 @@ task microbedecoder_networks {
     RSCRIPT
 
     Rscript run_networks.R \
-      "~{default="" gene_functions_file}" \
-      "~{write_lines(selected_organisms)}" \
+      "~{gene_functions_file}" \
       "~{reference_network}" \
       "~{write_lines(substrates)}" \
       "~{write_lines(products)}" \
@@ -415,11 +375,11 @@ task microbedecoder_networks {
   }
 
   runtime {
-    docker: docker
-    cpu: cpu
-    memory: "~{memory_gb} GB"
-    disks: "local-disk ~{disk_size_gb} SSD"
-    preemptible: preemptible
+    docker: "tjhackmann/microbedecoder:latest"
+    cpu: 8
+    memory: "16 GB"
+    disks: "local-disk 30 SSD"
+    preemptible: 1
     maxRetries: 1
   }
 }
@@ -429,17 +389,10 @@ task microbedecoder_networks {
 # ---------------------------------------------------------------------------
 task microbedecoder_ml {
   input {
-    File? gene_functions_file
-    Array[String] selected_organisms = []
+    File gene_functions_file
+    String samplename
     # Exact model names, e.g. "Fermentation (type of metabolism)", "Anaerobe (oxygen tolerance)"
-    Array[String] model_names = ["Fermentation (type of metabolism)", "Methanogenesis (type of metabolism)"]
-    String samplename = "microbedecoder"
-
-    String docker = "tjhackmann/microbedecoder:latest"
-    Int cpu = 2
-    Int memory_gb = 16
-    Int disk_size_gb = 30
-    Int preemptible = 1
+    Array[String] model_names
   }
 
   command <<<
@@ -449,8 +402,8 @@ task microbedecoder_ml {
 
     cat > run_ml.R <<'RSCRIPT'
     args <- commandArgs(trailingOnly = TRUE)
-    gf_file <- args[1]; organisms_file <- args[2]; models_file <- args[3]
-    out_dir <- args[4]; prefix <- args[5]
+    gf_file <- args[1]; models_file <- args[2]
+    out_dir <- args[3]; prefix <- args[4]
 
     setwd("/srv/shiny-server")
     Sys.setlocale("LC_ALL", "C")
@@ -464,16 +417,9 @@ task microbedecoder_ml {
     }
     read_lines_clean <- function(f) { x <- trimws(readLines(f, warn = FALSE)); x[nzchar(x)] }
 
-    organisms   <- read_lines_clean(organisms_file)
     model_names <- read_lines_clean(models_file)
-    if (nzchar(gf_file)) {
-      gene_functions <- process_uploaded_gene_functions(validate_and_read_file(file_path = gf_file))
-      if (is.null(gene_functions)) stop("Unrecognized gene functions format.")
-    } else if (length(organisms) > 0) {
-      gene_functions <- get_gene_functions_from_database(organisms)
-    } else {
-      stop("Provide gene_functions_file or selected_organisms.")
-    }
+    gene_functions <- process_uploaded_gene_functions(validate_and_read_file(file_path = gf_file))
+    if (is.null(gene_functions)) stop("Unrecognized gene functions format.")
 
     model_paths <- get_model_paths_from_database(model_names, model_path_config = model_path_config)
 
@@ -488,8 +434,7 @@ task microbedecoder_ml {
     RSCRIPT
 
     Rscript run_ml.R \
-      "~{default="" gene_functions_file}" \
-      "~{write_lines(selected_organisms)}" \
+      "~{gene_functions_file}" \
       "~{write_lines(model_names)}" \
       "$OUT" "~{samplename}"
   >>>
@@ -500,11 +445,11 @@ task microbedecoder_ml {
   }
 
   runtime {
-    docker: docker
-    cpu: cpu
-    memory: "~{memory_gb} GB"
-    disks: "local-disk ~{disk_size_gb} SSD"
-    preemptible: preemptible
+    docker: "tjhackmann/microbedecoder:latest"
+    cpu: 8
+    memory: "16 GB"
+    disks: "local-disk 30 SSD"
+    preemptible: 1
     maxRetries: 1
   }
 }

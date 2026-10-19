@@ -5,7 +5,6 @@ import "../../../tasks/species_detection/functional_profiling/task_microbedecode
 workflow wf_microbedecoder {
   input {
     String samplename
-    String docker = "tjhackmann/microbedecoder:latest"
 
     # --- Proteins: .faa OR GenBank (.gbff/.gbk), the format is detected automatically ---
     File input_proteins
@@ -18,18 +17,9 @@ workflow wf_microbedecoder {
     File? eggnog_dmnd            # eggnog_proteins.dmnd
     File? eggnog_taxa_db         # eggnog.taxa.db
 
-    # --- Taxonomy (optional): set species_name to enable it ---
-    String? species_name         # e.g. gambit_predicted_taxon
-    String taxonomy_system = "NCBI"
-    Array[String] traits_to_predict = ["Type of metabolism (FAPROTAX)"]
-    Boolean ignore_NA = true
-    Boolean match_all_ranks = false
-    Boolean ignore_species = false
-
     # --- Metabolic networks (all optional, nothing set = no network is run) ---
-    # "arr_" prefix: keeps these inputs at the top of the optional inputs list in Terra
-    Array[String]? arr_reference_networks        # names of networks from the built-in database (one run per network)
-    Array[File]? arr_reference_network_files     # custom network CSV files (one run per file)
+    Array[String]? reference_networks        # names of networks from the built-in database (one run per network)
+    Array[File]? reference_network_files     # custom network CSV files (one run per file)
     # Shared by all networks: leave empty to use the defaults of each network
     Array[String] substrates = []
     Array[String] products = []
@@ -39,6 +29,14 @@ workflow wf_microbedecoder {
     # --- Machine learning (optional: unset or empty = no ML) ---
     # e.g. ["Fermentation (type of metabolism)", "Anaerobe (oxygen tolerance)"]
     Array[String]? model_names
+
+    # --- Taxonomy (optional): set species_name to enable it ---
+    String? species_name         # e.g. gambit_predicted_taxon
+    String taxonomy_system = "NCBI"
+    Array[String] traits_to_predict = ["Type of metabolism (FAPROTAX)"]
+    Boolean ignore_NA = true
+    Boolean match_all_ranks = false
+    Boolean ignore_species = false
   }
 
   meta {
@@ -80,7 +78,7 @@ workflow wf_microbedecoder {
   File ko_table = select_first([kofamscan_ko.gene_functions_tsv, eggnog_ko.gene_functions_tsv])
 
   # Networks from the built-in database (by name)
-  scatter (net in select_first([arr_reference_networks, no_strings])) {
+  scatter (net in select_first([reference_networks, no_strings])) {
     call tasks.microbedecoder_networks as networks_db {
       input:
         gene_functions_file = ko_table,
@@ -89,13 +87,12 @@ workflow wf_microbedecoder {
         products = products,
         unbalanced_intermediates = unbalanced_intermediates,
         all_subunits = all_subunits,
-        samplename = samplename + "_" + sub(net, "[^A-Za-z0-9]+", "_"),
-        docker = docker
+        samplename = samplename + "_" + sub(net, "[^A-Za-z0-9]+", "_")
     }
   }
 
   # Custom networks (CSV files)
-  scatter (f in select_first([arr_reference_network_files, no_files])) {
+  scatter (f in select_first([reference_network_files, no_files])) {
     call tasks.microbedecoder_networks as networks_custom {
       input:
         gene_functions_file = ko_table,
@@ -104,8 +101,7 @@ workflow wf_microbedecoder {
         products = products,
         unbalanced_intermediates = unbalanced_intermediates,
         all_subunits = all_subunits,
-        samplename = samplename + "_" + sub(basename(f, ".csv"), "[^A-Za-z0-9]+", "_"),
-        docker = docker
+        samplename = samplename + "_" + sub(basename(f, ".csv"), "[^A-Za-z0-9]+", "_")
     }
   }
 
@@ -115,8 +111,7 @@ workflow wf_microbedecoder {
       input:
         gene_functions_file = ko_table,
         model_names = select_first([model_names, no_strings]),
-        samplename = samplename,
-        docker = docker
+        samplename = samplename
     }
   }
 
@@ -129,8 +124,7 @@ workflow wf_microbedecoder {
         ignore_NA = ignore_NA,
         match_all_ranks = match_all_ranks,
         ignore_species = ignore_species,
-        samplename = samplename,
-        docker = docker
+        samplename = samplename
     }
   }
 
