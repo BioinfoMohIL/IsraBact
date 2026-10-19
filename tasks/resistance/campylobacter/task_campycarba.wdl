@@ -23,8 +23,8 @@ task campycarba {
     campycarba --help > /dev/null
     mkdir -p out
 
-    cat oxa_reference_fasta
-    
+    cat ~{oxa_reference_fasta}
+
     campycarba \
       --assembly "~{assembly_fasta}" \
       --sample "~{samplename}" \
