@@ -6,23 +6,23 @@ workflow wf_campycarba {
   input {
     File assembly_fasta
     String samplename
-    String species
+    String species                    # e.g. "Campylobacter jejuni" or "Campylobacter coli"
 
-    File ?porA_reference_faa
+    File? porA_reference_faa
     File? oxa_reference_fasta
     File? knowledge_base_tsv
     File? bam
-    String? docker
+    String docker = "bioinfomoh/campycarba:1.1"
   }
 
   call task_campycarba.campycarba {
     input:
       assembly_fasta = assembly_fasta,
       samplename = samplename,
+      species = species,
       porA_reference_faa = porA_reference_faa,
       oxa_reference_fasta = oxa_reference_fasta,
       knowledge_base_tsv = knowledge_base_tsv,
-      species = species,
       bam = bam,
       docker = docker
   }
@@ -33,6 +33,5 @@ workflow wf_campycarba {
     File campycarba_report_txt   = campycarba.report_txt
     String campycarba_status     = campycarba.status
     Array[File] campycarba_alignment_files = campycarba.alignment_files
-
   }
 }
