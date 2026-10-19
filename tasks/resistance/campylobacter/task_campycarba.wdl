@@ -22,6 +22,7 @@ task campycarba {
     campycarba --help > /dev/null
     mkdir -p out
 
+    echo "Hello"
     cat /opt/campycarba/jejuni/blaOXA-61_locus_ref.fasta
 
     campycarba \
