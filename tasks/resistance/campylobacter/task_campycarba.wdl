@@ -22,7 +22,7 @@ task campycarba {
     campycarba --help > /dev/null
     mkdir -p out
 
-    cat /opt/campycarba/jejuni/porA_mature_ref.faa 
+    cat /opt/campycarba/jejuni/blaOXA-61_locus_ref.fasta
 
     campycarba \
       --assembly "~{assembly_fasta}" \
