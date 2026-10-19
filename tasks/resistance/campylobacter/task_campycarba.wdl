@@ -19,11 +19,10 @@ task campycarba {
   }
 
   command <<<
-    set -euo pipefail
     campycarba --help > /dev/null
     mkdir -p out
 
-    cat ~{oxa_reference_fasta}
+    cat /opt/campycarba/jejuni/porA_mature_ref.faa 
 
     campycarba \
       --assembly "~{assembly_fasta}" \
