@@ -10,7 +10,7 @@ task campycarba {
     File? oxa_reference_fasta         # optional override: blaOXA-61 locus (upstream + CDS); header must contain cds_start=N
     File? knowledge_base_tsv          # defaults to the copy baked into the image
     File? bam                         # optional: coordinate-sorted BAM mapped to assembly_fasta (read-depth duplication check)
-    String docker = "bioinfomoh/campycarba:1.2"
+    String docker = "bioinfomoh/campycarba:1.0"
 
     Int cpu = 4
     Int memory_gb = 4
