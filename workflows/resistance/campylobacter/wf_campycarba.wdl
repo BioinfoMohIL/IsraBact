@@ -17,7 +17,7 @@ workflow wf_campycarba {
     File? oxa_reference_fasta
     File? knowledge_base_tsv
     File? bam
-    String docker = "bioinfomoh/campycarba:1.2"
+    String docker = "bioinfomoh/campycarba:1.0"
   }
 
   call task_campycarba.campycarba {
