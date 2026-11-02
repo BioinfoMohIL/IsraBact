@@ -10,7 +10,8 @@ task campycarba {
     File? oxa_reference_fasta         # optional override: blaOXA-61 locus (upstream + CDS); header must contain cds_start=N
     File? knowledge_base_tsv          # defaults to the copy baked into the image
     File? bam                         # optional: coordinate-sorted BAM mapped to assembly_fasta (read-depth duplication check)
-    String docker = "bioinfomoh/campycarba:1.0"
+    # NEW TAG for every rebuild (never reuse one: Terra keeps what it pulled for a tag). Must be the image built with the current campycarba.py
+    String docker = "bioinfomoh/campycarba:1.1"
 
     Int cpu = 4
     Int memory_gb = 4
@@ -20,7 +21,12 @@ task campycarba {
 
   command <<<
     set -euo pipefail
-    campycarba --help > /dev/null
+    # fail early and clearly if the script baked into the image is older than this task
+    if ! campycarba --help | grep -q -- '--ref-dir'; then
+      echo "ERROR: the campycarba script in image ~{docker} is outdated (no --ref-dir). Rebuild the image with the current campycarba.py, push it under a NEW tag and set 'docker' to that tag." >&2
+      exit 1
+    fi
+    grep -m1 '^VERSION' "$(command -v campycarba)" || true
     mkdir -p out
     campycarba \
       --assembly "~{assembly_fasta}" \
@@ -49,5 +55,4 @@ task campycarba {
     disks: "local-disk ~{disk_size_gb} HDD"
     preemptible: preemptible
   }
-  
 }
