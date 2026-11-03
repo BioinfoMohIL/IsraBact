@@ -14,7 +14,7 @@ task blastn_gene {
     String sample_name
     Float min_identity = 90.0         # % identite minimum
     Float min_coverage = 80.0         # % du gene couvert minimum
-    Float evalue = 1e-10
+    String evalue = "1e-10"            # String pour eviter la notation scientifique (non supportee par le parser WDL 1.0)
     String docker = "ncbi/blast:2.15.0"
     Int cpu = 2
     Int memory_gb = 4
