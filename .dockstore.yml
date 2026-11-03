@@ -124,4 +124,8 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/species_detection/functional_profiling/wf_microbedecoder.wdl
 
+  - name: Gene_Presence_Checker_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/utilities/wf_gene_presence_check.wdl
+
 
