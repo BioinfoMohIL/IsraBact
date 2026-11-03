@@ -13,11 +13,11 @@ workflow wf_gene_presence_check {
   }
 
   input {
-    File assembly                     # assemblage du sample (fasta, non compresse)
-    File gene_fasta                   # sequence nucleotidique du gene a chercher
-    String? sample_name               # optionnel, sinon deduit du nom du fichier
-    Float min_identity = 90.0         # % identite minimum (a ajuster selon le gene/la question)
-    Float min_coverage = 80.0         # % du gene couvert minimum
+    File assembly                     
+    File gene_fasta                   
+    String? sample_name               
+    Float min_identity = 90.0 
+    Float min_coverage = 80.0        
   }
 
   String name = select_first([sample_name, sub(basename(assembly), "\\.(fasta|fa|fna|fas)$", "")])
