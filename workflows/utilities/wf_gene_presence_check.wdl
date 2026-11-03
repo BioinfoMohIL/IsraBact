@@ -32,8 +32,8 @@ workflow wf_gene_presence_check {
   }
 
   output {
-    String gene_status = blastn_gene.gene_status
-    File summary_tsv = blastn_gene.summary
-    File blast_tsv = blastn_gene.blast_tsv
+    String  gene_pres_gene_status = blastn_gene.gene_status
+    File    gene_pres_summary_tsv = blastn_gene.summary
+    File    gene_pres_blast_tsv = blastn_gene.blast_tsv
   }
 }
