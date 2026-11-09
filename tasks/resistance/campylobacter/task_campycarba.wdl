@@ -26,15 +26,27 @@ task campycarba {
       echo "ERROR: the campycarba script in image ~{docker} is outdated (no --ref-dir). Rebuild the image with the current campycarba.py, push it under a NEW tag and set 'docker' to that tag." >&2
       exit 1
     fi
+
+    SPECIES=$(echo "~{species}" | tr '[:upper:]' '[:lower:]')
+
+    if [[ "$SPECIES" == *"jejuni"* ]]; then
+        SPECIES="jejuni"
+    elif [[ "$SPECIES" == *"coli"* ]]; then
+        SPECIES="coli"
+    else
+        echo "ERROR: Unknown Campylobacter species: ~{species}" >&2
+        exit 1
+    fi
+
     grep -m1 '^VERSION' "$(command -v campycarba)" || true
     mkdir -p out
     campycarba \
       --assembly "~{assembly_fasta}" \
       --sample "~{samplename}" \
-      --species "~{species}" \
+      --species "$SPECIES" \
       --kb "~{if defined(knowledge_base_tsv) then select_first([knowledge_base_tsv]) else '/opt/campycarba/campycarba_kb.tsv'}" \
-      ~{if defined(porA_reference_faa) then "--porA-ref '" + select_first([porA_reference_faa]) + "'" else ""} \
-      ~{if defined(oxa_reference_fasta) then "--oxa-ref '" + select_first([oxa_reference_fasta]) + "'" else ""} \
+      --porA-ref "~{if defined(porA_reference_faa) then select_first([porA_reference_faa]) else '/opt/campycarba/${SPECIES}/porA_mature_ref.faa'}" \
+      --oxa-ref  "~{if defined(oxa_reference_fasta)  then select_first([oxa_reference_fasta]) else '/opt/campycarba/${SPECIES}/blaOXA-61_locus_ref.fasta'}" \
       ~{if defined(bam) then "--bam '" + select_first([bam]) + "'" else ""} \
       --outdir out
   >>>
