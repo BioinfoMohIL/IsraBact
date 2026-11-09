@@ -38,17 +38,20 @@ task campycarba {
         exit 1
     fi
 
+    POR_A_REF="/opt/campycarba/${SPECIES}/porA_mature_ref.faa"
+    OXA_REF="/opt/campycarba/${SPECIES}/blaOXA-61_locus_ref.fasta"
+
     grep -m1 '^VERSION' "$(command -v campycarba)" || true
     mkdir -p out
     campycarba \
-      --assembly "~{assembly_fasta}" \
-      --sample "~{samplename}" \
-      --species "$SPECIES" \
-      --kb "~{if defined(knowledge_base_tsv) then select_first([knowledge_base_tsv]) else '/opt/campycarba/campycarba_kb.tsv'}" \
-      --porA-ref "~{if defined(porA_reference_faa) then select_first([porA_reference_faa]) else '/opt/campycarba/${SPECIES}/porA_mature_ref.faa'}" \
-      --oxa-ref  "~{if defined(oxa_reference_fasta)  then select_first([oxa_reference_fasta]) else '/opt/campycarba/${SPECIES}/blaOXA-61_locus_ref.fasta'}" \
-      ~{if defined(bam) then "--bam '" + select_first([bam]) + "'" else ""} \
-      --outdir out
+    --assembly "~{assembly_fasta}" \
+    --sample "~{samplename}" \
+    --species "$SPECIES" \
+    --kb "~{if defined(knowledge_base_tsv) then select_first([knowledge_base_tsv]) else '/opt/campycarba/campycarba_kb.tsv'}" \
+    --porA-ref "$POR_A_REF" \
+    --oxa-ref "$OXA_REF" \
+    ~{if defined(bam) then "--bam '" + select_first([bam]) + "'" else ""} \
+    --outdir out
   >>>
 
   output {
