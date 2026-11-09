@@ -26,32 +26,17 @@ task campycarba {
       echo "ERROR: the campycarba script in image ~{docker} is outdated (no --ref-dir). Rebuild the image with the current campycarba.py, push it under a NEW tag and set 'docker' to that tag." >&2
       exit 1
     fi
-
-    SPECIES=$(echo "~{species}" | tr '[:upper:]' '[:lower:]')
-
-    if [[ "$SPECIES" == *"jejuni"* ]]; then
-        SPECIES="jejuni"
-    elif [[ "$SPECIES" == *"coli"* ]]; then
-        SPECIES="coli"
-    else
-        echo "ERROR: Unknown Campylobacter species: ~{species}" >&2
-        exit 1
-    fi
-
-    POR_A_REF="/opt/campycarba/${SPECIES}/porA_mature_ref.faa"
-    OXA_REF="/opt/campycarba/${SPECIES}/blaOXA-61_locus_ref.fasta"
-
     grep -m1 '^VERSION' "$(command -v campycarba)" || true
     mkdir -p out
     campycarba \
-    --assembly "~{assembly_fasta}" \
-    --sample "~{samplename}" \
-    --species "$SPECIES" \
-    --kb "~{if defined(knowledge_base_tsv) then select_first([knowledge_base_tsv]) else '/opt/campycarba/campycarba_kb.tsv'}" \
-    --porA-ref "$POR_A_REF" \
-    --oxa-ref "$OXA_REF" \
-    ~{if defined(bam) then "--bam '" + select_first([bam]) + "'" else ""} \
-    --outdir out
+      --assembly "~{assembly_fasta}" \
+      --sample "~{samplename}" \
+      --species "~{species}" \
+      --kb "~{if defined(knowledge_base_tsv) then select_first([knowledge_base_tsv]) else '/opt/campycarba/campycarba_kb.tsv'}" \
+      ~{if defined(porA_reference_faa) then "--porA-ref '" + select_first([porA_reference_faa]) + "'" else ""} \
+      ~{if defined(oxa_reference_fasta) then "--oxa-ref '" + select_first([oxa_reference_fasta]) + "'" else ""} \
+      ~{if defined(bam) then "--bam '" + select_first([bam]) + "'" else ""} \
+      --outdir out
   >>>
 
   output {
