@@ -21,6 +21,8 @@ workflow wf_kraken2 {
         String kraken2_version = kraken2.version
         File kraken2_report = kraken2.report
         String kraken2_species_detected = kraken2.species_detected
+        String kraken2_top_taxa = kraken2.top_taxa
+        String kraken2_match = kraken2.kraken2_match
     }
 }
   
