@@ -104,18 +104,19 @@ task kraken2 {
             fi
         done
 
-        # --- Match logic ---
+                # --- Match logic ---
         if [ -z "$expected" ] || [ -z "$genus" ]; then
             match="??"
         elif [[ "$expected" == *" "* ]]; then
             # species-level expectation
-            if [ "$species" == "$expected" ]; then match="v"; else match="${species:-??}"; fi
+            if [ "$species" == "$expected" ]; then match="v"; else match="xxx"; fi
         else
             # genus-level expectation
-            if [ "$genus" == "$expected" ]; then match="v"; else match="${species:-$genus}"; fi
+            if [ "$genus" == "$expected" ]; then match="v"; else match="xxx"; fi
         fi
 
         echo "$match" > match.txt
+
     >>>
 
     output {
