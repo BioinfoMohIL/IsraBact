@@ -25,7 +25,8 @@ task campycarba {
       echo "ERROR: the campycarba script in image ~{docker} is outdated (no --ref-dir). Rebuild the image with the current campycarba.py, push it under a NEW tag and set 'docker' to that tag." >&2
       exit 1
     fi
-    grep -m1 '^VERSION' "$(command -v campycarba)" || true
+    grep -m1 '^VERSION' "$(command -v campycarba)" | tee VERSION || true
+
     mkdir -p out
     campycarba \
       --assembly "~{assembly_fasta}" \
@@ -39,11 +40,11 @@ task campycarba {
   >>>
 
   output {
+    String version    = read_string("VERSION")
     File summary_tsv  = "out/~{samplename}_summary.tsv"
     File variants_tsv = "out/~{samplename}_variants.tsv"
     File report_txt   = "out/~{samplename}_report.txt"
     String status     = read_string("out/~{samplename}_status.txt")
-    # Alignments / translated ORF for a visual check in MEGA, AliView or Jalview (empty if the gene was not found)
     Array[File] alignment_files = flatten([glob("out/*_alignment.fasta"), glob("out/*_porA_protein.faa")])
   }
 

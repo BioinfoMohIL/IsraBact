@@ -47,6 +47,7 @@ workflow wf_campycarba {
   }
 
   output {
+    String campycarba_version    = campycarba.version
     File campycarba_summary_tsv  = campycarba.summary_tsv
     File campycarba_variants_tsv = campycarba.variants_tsv
     File campycarba_report_txt   = campycarba.report_txt
