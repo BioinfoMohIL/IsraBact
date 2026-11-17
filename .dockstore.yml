@@ -129,3 +129,8 @@ workflows:
     primaryDescriptorPath: /workflows/utilities/wf_gene_presence_check.wdl
 
 
+  - name: Species_Classifier_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/ml/strain_classifier.wdl
+
+

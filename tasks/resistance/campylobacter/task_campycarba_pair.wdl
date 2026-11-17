@@ -10,7 +10,7 @@ task campycarba_pair {
 
     File? porA_reference_faa                   # optional overrides (same files as for campycarba)
     File? oxa_reference_fasta
-    String docker = "bioinfomoh/campycarba:1.5"
+    String docker = "bioinfomoh/campycarba:1.0"
 
     Int cpu = 2
     Int memory_gb = 4
