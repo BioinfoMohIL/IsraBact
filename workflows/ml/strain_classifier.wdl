@@ -25,7 +25,7 @@ workflow strain_classifier_train {
     Float  threshold   = 0.5
     Boolean drop_unlabeled = true   # true = ignorer les échantillons sans espèce reconnue
     File?  groups_csv            # optionnel: CSV sample,group (run/batch)
-    String docker
+    String docker = "bioinfomoh/strain-clf:0.1"
   }
 
   scatter (i in range(length(read1))) {
