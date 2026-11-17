@@ -23,8 +23,9 @@ workflow strain_classifier_train {
     Int    max_reads   = 100000
     Int    folds       = 5
     Float  threshold   = 0.5
+    Boolean drop_unlabeled = true   # true = ignorer les échantillons sans espèce reconnue
     File?  groups_csv            # optionnel: CSV sample,group (run/batch)
-    String docker = "bioinfomoh/strain-clf:0.1"
+    String docker
   }
 
   scatter (i in range(length(read1))) {
@@ -54,6 +55,7 @@ workflow strain_classifier_train {
       max_reads     = max_reads,
       folds         = folds,
       threshold     = threshold,
+      drop_unlabeled = drop_unlabeled,
       groups_csv    = groups_csv,
       docker        = docker
   }
@@ -113,6 +115,7 @@ task train {
     Int    max_reads
     Int    folds
     Float  threshold
+    Boolean drop_unlabeled = false
     File?  groups_csv
     String docker
   }
@@ -130,6 +133,7 @@ task train {
     python3 train.py \
       --features_tsv manifest.tsv --output out \
       --k ~{k} --max_reads ~{max_reads} --folds ~{folds} --threshold ~{threshold} \
+      ~{if drop_unlabeled then "--drop_unlabeled" else ""} \
       ~{"--groups_csv " + groups_csv} \
       | tee cv_report.txt
   >>>
