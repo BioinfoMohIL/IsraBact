@@ -133,4 +133,8 @@ workflows:
     subclass: WDL
     primaryDescriptorPath: /workflows/ml/strain_classifier.wdl
 
+  - name: Path_Checker_MOH
+    subclass: WDL
+    primaryDescriptorPath: /workflows/utilities/file_handling/check_path_exist.wdl
+
 
