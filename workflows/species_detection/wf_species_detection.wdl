@@ -53,8 +53,6 @@ workflow wf_species_detection {
   }
 
   output {
-    Array[String] sp_detection_species_detected = detect.sp_detection_species_detected
-    Array[String] sp_detection_match            = detect.sp_detection_match
     Array[String] sp_detection_scanner          = detect.sp_detection_scanner
     Array[File]   sp_detection_report           = detect.sp_detection_report
     File?         sp_detection_plate_check      = plate_check.report_xlsx
