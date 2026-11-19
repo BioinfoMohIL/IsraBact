@@ -1,8 +1,8 @@
 version 1.0
 
 import "../../tasks/metagenomics/task_kraken2.wdl" as task_kraken
-import "../../tasks/metagenomics/task_ml_species.wdl" as task_ml
-import "../../tasks/metagenomics/task_species_match.wdl" as task_match
+import "../../tasks/species_detection/task_ml_species.wdl" as task_ml
+import "../../tasks/utilities/task_species_match.wdl" as task_match
 
 workflow wf_species_detection_per_sample {
 
