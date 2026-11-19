@@ -1,21 +1,23 @@
 version 1.0
 
-# Compare l'espèce détectée (par kraken2 OU par le ML) à l'espèce attendue d'après le préfixe
-# du nom d'échantillon. Logique extraite telle quelle de task_kraken2.
+# Compares the detected species (kraken2 OR the ML model) with the species expected from the
+# prefix of the sample name. Shared by both scanners.
 #
-#   match = "v"    : conforme à l'attendu
-#           "xxx"  : différent
-#           "??"   : indéterminable (préfixe inconnu, ou rien détecté)
+#   match = "v"    : as expected
+#           "~"    : approximately: same genus but a different species (kraken2 is not always precise)
+#           "xxx"  : different
+#           "??"   : cannot be decided (unknown prefix, or nothing detected / ML answered UNKNOWN)
 #
-# Attendu sans espace (ex. "Salmonella")              -> comparé au GENRE détecté
-# Attendu avec espace (ex. "Listeria monocytogenes")  -> comparé à l'ESPÈCE détectée
-# Préfixe: le plus long d'abord (VIB avant V, F-EC avant EC), sur le nom en majuscules.
+# Expected name without a space (e.g. "Salmonella")             -> compared with the detected GENUS
+# Expected name with a space (e.g. "Listeria monocytogenes")    -> compared with the detected SPECIES
+#                                                                   (same genus only -> "~")
+# Prefix: longest first (VIB before V, F-EC before EC), on the upper-cased sample name.
 
 task species_match {
   input {
     String sample_id
-    String detected_genus      # "" si rien n'a été détecté (ou si le ML répond UNKNOWN)
-    String detected_species    # nom complet de l'espèce détectée
+    String detected_genus      # "" if nothing was detected (or the ML model answered UNKNOWN)
+    String detected_species    # full name of the detected species
     String docker = "ubuntu:22.04"
   }
 
@@ -66,7 +68,13 @@ task species_match {
         match="??"
     elif [[ "$expected" == *" "* ]]; then
         # species-level expectation
-        if [ "$species" == "$expected" ]; then match="v"; else match="xxx"; fi
+        if [ "$species" == "$expected" ]; then
+            match="v"
+        elif [ "$genus" == "${expected%% *}" ]; then
+            match="~"      # same genus, different species
+        else
+            match="xxx"
+        fi
     else
         # genus-level expectation
         if [ "$genus" == "$expected" ]; then match="v"; else match="xxx"; fi
@@ -78,7 +86,7 @@ task species_match {
 
   output {
     String match            = read_string("match.txt")
-    String expected_species = read_string("expected.txt")   # "NA" si le préfixe est inconnu
+    String expected_species = read_string("expected.txt")   # "NA" if the prefix is unknown
   }
 
   runtime {

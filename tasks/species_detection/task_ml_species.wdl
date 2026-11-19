@@ -1,17 +1,17 @@
 version 1.0
 
-# Détection d'espèce par le modèle ML (k-mers canoniques + RandomForest) pour UN échantillon.
-# Les scripts (kmer_utils.py, predict_one.py) ET le modèle (strain_model.pkl) sont dans l'image Docker
-# (/opt/species_prediction), voir Dockerfile. `ml_model` n'est utile que pour tester un autre modèle.
-# Les sorties ont la même forme que celles de task_kraken2 pour pouvoir être interchangées.
+# Species detection with the ML model (canonical k-mers + RandomForest) for ONE sample.
+# The scripts (kmer_utils.py, predict_one.py) AND the model (strain_model.pkl) are inside the Docker
+# image (/opt/species_prediction), see the Dockerfile. `ml_model` is only needed to try another model.
+# The outputs have the same shape as the outputs of task_kraken2 so that they are interchangeable.
 
 task ml_species_predict {
   input {
     File   read1
     File   read2
-    File?  ml_model                       # optionnel: remplace le modèle intégré à l'image
+    File?  ml_model                       # optional: replaces the model built into the image
     String sample_id
-    Float? threshold                      # vide = seuil enregistré dans le modèle
+    Float? threshold                      # empty = threshold stored in the model
     String docker = "bioinfomoh/species-prediction:0.1"
     Int    disk_gb = ceil(size(read1, "GB") + size(read2, "GB")) + 10
   }
@@ -28,9 +28,9 @@ task ml_species_predict {
   output {
     String version          = read_string("version.txt")
     File   report           = "report.tsv"
-    String species_detected = read_string("species.txt")     # espèce, ou UNKNOWN si confiance < seuil
-    String top_taxa         = read_string("top_taxa.txt")    # 3 meilleures espèces avec leur probabilité
-    String genus_detected   = read_string("genus.txt")       # genre, "" si UNKNOWN (pour task_species_match)
+    String species_detected = read_string("species.txt")     # species, or UNKNOWN if confidence < threshold
+    String top_taxa         = read_string("top_taxa.txt")    # 3 best species with their probability
+    String genus_detected   = read_string("genus.txt")       # genus, "" if UNKNOWN (for task_species_match)
   }
 
   runtime {
