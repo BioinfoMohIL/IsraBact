@@ -68,54 +68,9 @@ task kraken2 {
         # Kept for backward compatibility
         echo "${species}" > "~{sample_id}_detected.txt"
 
-        # --- Expected species from sample prefix ---
-        declare -A EXPECTED=(
-            ["SH"]="Salmonella"
-            ["SO"]="Salmonella"
-            ["LC"]="Listeria monocytogenes"
-            ["LF"]="Listeria monocytogenes"
-            ["SG"]="Shigella"
-            ["CA"]="Campylobacter"
-            ["VIB"]="Vibrio"
-            ["V"]="Vibrio"
-            ["EC"]="Escherichia coli"
-            ["F-EC"]="Escherichia coli"
-            ["SA"]="Staphylococcus aureus"
-            ["BP"]="Bordetella pertussis"
-            ["ST"]="Streptococcus"
-            ["SP"]="Streptococcus pneumoniae"
-            ["LG"]="Legionella pneumophila"
-            ["LW"]="Legionella pneumophila"
-            ["CB"]="Corynebacterium diphtheriae"
-            ["HI"]="Haemophilus influenzae"
-            ["NM"]="Neisseria meningitidis"
-            ["M"]="Neisseria meningitidis"
-        )
+        # Genus alone, used by task_species_match (kraken2 and ML share the same match logic)
+        echo "${genus}" > genus.txt
 
-        sid="~{sample_id}"
-        sid="${sid^^}"
-        expected=""
-
-        # Longest prefix first (so VIB wins over V, F-EC over EC...)
-        for k in $(printf '%s\n' "${!EXPECTED[@]}" | awk '{print length($0), $0}' | sort -rn | cut -d' ' -f2); do
-            if [[ "$sid" == "$k"* ]]; then
-                expected="${EXPECTED[$k]}"
-                break
-            fi
-        done
-
-                # --- Match logic ---
-        if [ -z "$expected" ] || [ -z "$genus" ]; then
-            match="??"
-        elif [[ "$expected" == *" "* ]]; then
-            # species-level expectation
-            if [ "$species" == "$expected" ]; then match="v"; else match="xxx"; fi
-        else
-            # genus-level expectation
-            if [ "$genus" == "$expected" ]; then match="v"; else match="xxx"; fi
-        fi
-
-        echo "$match" > match.txt
 
     >>>
 
@@ -124,7 +79,7 @@ task kraken2 {
         File report = "~{sample_id}_report.txt"
         String species_detected = read_string("~{sample_id}_detected.txt")
         String top_taxa = read_string("top_taxa.txt")
-        String kraken2_match = read_string("match.txt")
+        String genus_detected = read_string("genus.txt")
     }
 
     runtime {
