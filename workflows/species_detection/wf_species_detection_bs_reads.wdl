@@ -56,11 +56,17 @@ workflow wf_species_detection_bs {
             species_detected_list = Detect_Species.sample_detected
     }
 
+    call SummarizeSpecies {
+        input:
+            sample_detected_csv = MergeReports.species_detected
+    }
+
     output {
         String version = Detect_Species.version[0]
         File reads_list = GetReadsList.reads_list
         Array[String] samples_name = GetReadsList.samples_name
         File species_detected = MergeReports.species_detected
+        String species_detected_sum   = SummarizeSpecies.summary
     
     }
 
@@ -345,5 +351,49 @@ task MergeReports {
     runtime {
         docker: "ubuntu:20.04"
 
+    }
+}
+
+
+task SummarizeSpecies {
+    input {
+        File sample_detected_csv
+    }
+
+    command <<<
+        MATCH=$(awk -F',' 'NR>1 && $3=="+" {n++} END {print n+0}' "~{sample_detected_csv}")
+
+        NOMATCH=$(awk -F',' 'NR>1 && $3=="xxx" {n++} END {print n+0}' "~{sample_detected_csv}")
+
+        UNKNOWN=$(awk -F',' 'NR>1 && $3=="??" {n++} END {print n+0}' "~{sample_detected_csv}")
+
+        if [ "$MATCH" -gt 0 ] && [ "$NOMATCH" -eq 0 ] && [ "$UNKNOWN" -eq 0 ]; then
+            echo "ALL MATCHED!" > summary.txt
+        else
+            SUMMARY=""
+
+            [ "$MATCH" -gt 0 ] && SUMMARY="MATCH: $MATCH"
+
+            if [ "$NOMATCH" -gt 0 ]; then
+                [ -n "$SUMMARY" ] && SUMMARY="$SUMMARY,"
+                SUMMARY="${SUMMARY}NOMATCH: $NOMATCH"
+            fi
+
+            if [ "$UNKNOWN" -gt 0 ]; then
+                [ -n "$SUMMARY" ] && SUMMARY="$SUMMARY,"
+                SUMMARY="${SUMMARY}UNKNOWN: $UNKNOWN"
+            fi
+
+            echo "$SUMMARY" > summary.txt
+        fi
+    >>>
+
+    output {
+        String summary = read_string("summary.txt")
+    }
+
+    runtime {
+        docker: "ubuntu:latest"
+        cpu: 1
     }
 }
