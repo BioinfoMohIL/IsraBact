@@ -17,6 +17,8 @@ workflow wf_species_detection_bs {
         File?   ml_model
         Float?  ml_threshold
         String  docker = "ghcr.io/bioinfomohil/species_detection:2.0"
+        File?   plate_check_script    # optional: plate_check.py from a bucket
+        String? plate_check_docker    # optional: another image (with python3) for the plate check only
     }
 
     meta {
@@ -73,7 +75,9 @@ workflow wf_species_detection_bs {
             use_ml = use_ml,
             ml_model = ml_model,
             ml_threshold = ml_threshold,
-            docker = docker
+            docker = docker,
+            plate_check_script = plate_check_script,
+            plate_check_docker = plate_check_docker
     }
 
     output {

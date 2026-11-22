@@ -19,6 +19,7 @@ task plate_check {
     Array[String] sample_ids           # same order as species_detected
     Array[String] species_detected
     String        output_name = "plate_check.xlsx"
+    File?         plate_check_script   # optional: plate_check.py from a bucket (any image with python3 then works)
     String        docker = "ghcr.io/bioinfomoh/species_detection:2.0"
   }
 
@@ -27,7 +28,7 @@ task plate_check {
     { printf 'sample_id\tspecies_detected\n'; \
       paste ~{write_lines(sample_ids)} ~{write_lines(species_detected)}; } > results.tsv
 
-    if python3 /opt/species_prediction/plate_check.py \
+    if python3 ~{default="/opt/species_prediction/plate_check.py" plate_check_script} \
          --sending "~{sending_file}" \
          --results results.tsv --id-col sample_id --species-col species_detected \
          --out "~{output_name}" 2> err.txt; then

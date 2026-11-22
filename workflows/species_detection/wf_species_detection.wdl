@@ -36,7 +36,13 @@ workflow wf_species_detection {
     Boolean use_ml = false
     File?   ml_model
     Float?  ml_threshold
-    String  docker = "ghcr.io/bioinfomoh/species_detection:2.0"
+    String  docker = "ghcr.io/bioinfomoh/species_detection:2.0"       # ML + (default) plate check
+
+    # Plate check on another image: set plate_check_script (plate_check.py in a bucket, stdlib only) and
+    # plate_check_docker (any image with python3). If a step cannot start on the VM (e.g. image not
+    # pullable) the workflow fails, so this lets the report be produced with a safer image.
+    File?   plate_check_script
+    String? plate_check_docker
   }
 
   String scanner = if use_ml then "ML" else "kraken2"
@@ -75,7 +81,8 @@ workflow wf_species_detection {
         sending_file = select_first([sending_file]),
         sample_ids = sample_ids,
         species_detected = detect.sp_detection_species_detected,
-        docker = docker
+        plate_check_script = plate_check_script,
+        docker = select_first([plate_check_docker, docker])
     }
   }
 

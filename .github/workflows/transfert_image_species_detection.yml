@@ -1,11 +1,14 @@
-name: Build species_detection image (GHCR)
+name: Build species_detection image (Docker Hub)
+
+# Builds the image from this repo and pushes it to Docker Hub (the registry Terra pulls without problem).
+# Needs 2 repository secrets: DOCKERHUB_USERNAME (bioinfomoh) and DOCKERHUB_TOKEN (a Docker Hub access token).
 
 on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Image tag"
-        default: "2.0"
+        description: "Image tag (use a NEW tag for each change, never overwrite one)"
+        default: "2.1"
   push:
     paths:                       # rebuild when one of the baked-in files changes
       - Dockerfile
@@ -15,29 +18,29 @@ on:
       - specie_detection.sh
       - strain_model.pkl
 
+env:
+  IMAGE: bioinfomoh/species-detection
+
 jobs:
   build_push:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
       - uses: actions/checkout@v4
         with:
           lfs: true              # in case strain_model.pkl is stored with Git LFS (GitHub refuses files > 100 MB)
 
-      - name: Login to ghcr.io
+      - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Image name (lower case)
-        run: echo "IMAGE=ghcr.io/$(echo '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')/species_detection" >> "$GITHUB_ENV"
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - uses: docker/build-push-action@v6
         with:
           context: .
+          platforms: linux/amd64
           push: true
-          tags: ${{ env.IMAGE }}:${{ inputs.tag || '2.0' }}
+          provenance: false      # no attestation manifest: Terra could not pull images built with it
+          sbom: false
+          tags: |
+            ${{ env.IMAGE }}:${{ inputs.tag || github.sha }}
