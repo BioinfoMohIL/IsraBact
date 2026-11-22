@@ -37,7 +37,7 @@ workflow wf_species_detection_per_sample {
         ml_model = ml_model,          # empty = model built into the image
         sample_id = sample_id,
         threshold = ml_threshold,
-        docker = ml_docker
+        docker = docker
     }
   }
 
