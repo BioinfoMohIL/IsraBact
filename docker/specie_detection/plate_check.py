@@ -52,7 +52,7 @@ KNOWN_SPECIES = [
     "Salmonella enterica", "Listeria monocytogenes", "Staphylococcus aureus",
     "Streptococcus pneumoniae", "Escherichia coli", "Campylobacter coli", "Campylobacter jejuni",
     "Legionella pneumophila", "Haemophilus influenzae", "Corynebacterium diphtheriae",
-    "Vibrio alginolyticus", "Vibrio cholerae", "Bordetella pertussis", "Neisseria meningitidis",
+    "Vibrio alginolyticus", "Vibrio cholerae", "Bordetella pertussis", "Neisseria meningitidis", "Neisseria gonorrhoeae",
     "Shigella flexneri", "Shigella sonnei", "Shigella boydii", "Shigella dysenteriae",
 ]
 

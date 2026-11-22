@@ -49,6 +49,7 @@ task species_match {
         ["CB"]="Corynebacterium diphtheriae"
         ["HI"]="Haemophilus influenzae"
         ["NM"]="Neisseria meningitidis"
+        ["NG"]="Neisseria gonorrhoeae"
         ["M"]="Neisseria meningitidis"
     )
 

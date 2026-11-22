@@ -1,20 +1,30 @@
 version 1.0
 
+import "wf_species_detection.wdl" as detection
+
+# BaseSpace version of the species detection: it only fetches the reads from BaseSpace, then runs
+# wf_species_detection (same detection, same match logic, same report/summary/plate check as in Terra).
+
 workflow wf_species_detection_bs {
     input {
-        String basespace_collection_id 
+        String basespace_collection_id
         String api_server
         String access_token
         String? sample_prefix
-        File? sending_file
+
+        File?   sending_file          # if set, the plate check xlsx is also produced
+        Boolean use_ml = false        # false = kraken2, true = ML model
+        File?   ml_model
+        Float?  ml_threshold
+        String  docker = "ghcr.io/bioinfomohil/species_detection:2.0"
     }
 
     meta {
-        description: "Check whether the sequenced samples in Basespace Illumina correspond to the expected species using Kraken2."
+        description: "Check whether the sequenced samples in Basespace Illumina correspond to the expected species (kraken2 or ML)."
         author: "David Maimoun"
         organization : "MOH"
         email: "david.maimoun@moh.gov.il"
-        version: "1.0"
+        version: "2.0"
     }
 
     parameter_meta {
@@ -23,6 +33,7 @@ workflow wf_species_detection_bs {
         basespace_collection_id: "Samplename in the Basespace platform (for ex, EC001, NM005 , = our entity id)"
         sample_prefix: "Optional, to fetch only specific species according to your samplename prefix, for ex 'EC' for ecoli (useful for testing)"
         sending_file: "Optional, the lab sending file (.xlsx). If set, a plate check xlsx is also produced (one sheet per plate). A failure of the plate check does not fail the workflow."
+        use_ml: "false (default) = kraken2, true = ML model"
     }
 
     call GetReadsList {
@@ -31,10 +42,9 @@ workflow wf_species_detection_bs {
             access_token = access_token,
             api_server = api_server,
             sample_prefix = select_first([sample_prefix, ""])
-
     }
 
-    scatter(sample_name in GetReadsList.samples_name) {
+    scatter (sample_name in GetReadsList.samples_name) {
         call FetchReads {
           input:
             basespace_sample_name = sample_name,
@@ -43,45 +53,41 @@ workflow wf_species_detection_bs {
             access_token = access_token
         }
 
-        call Detect_Species {
-            input:
-                read1 = FetchReads.read1,
-                read2 = FetchReads.read2,
-                sample_id = sample_name
+        # only the samples for which both reads were downloaded go to the detection
+        if (defined(FetchReads.read1) && defined(FetchReads.read2)) {
+            String found_id = sample_name
+            File   found_r1 = select_first([FetchReads.read1])
+            File   found_r2 = select_first([FetchReads.read2])
         }
-        
-    }
-
-    call MergeReports {
-        input:
-            species_detected_list = Detect_Species.sample_detected
-    }
-
-    call SummarizeSpecies {
-        input:
-            sample_detected_csv = MergeReports.species_detected
-    }
-
-    if (defined(sending_file)) {
-        call PlateCheck {
-            input:
-                sending_file = select_first([sending_file]),
-                species_detected_csv = MergeReports.species_detected
+        if (!(defined(FetchReads.read1) && defined(FetchReads.read2))) {
+            String missing_id = sample_name
         }
+    }
+
+    call detection.wf_species_detection as detect {
+        input:
+            read1 = select_all(found_r1),
+            read2 = select_all(found_r2),
+            sample_ids = select_all(found_id),
+            sending_file = sending_file,
+            use_ml = use_ml,
+            ml_model = ml_model,
+            ml_threshold = ml_threshold,
+            docker = docker
     }
 
     output {
-        String version = Detect_Species.version[0]
-        File reads_list = GetReadsList.reads_list
-        Array[String] samples_name = GetReadsList.samples_name
-        File species_detected = MergeReports.species_detected
-        String species_detected_sum   = SummarizeSpecies.summary
-        File? plate_check_xlsx        = PlateCheck.report_xlsx      # only if sending_file is set (empty if it failed)
-        String? plate_check_status    = PlateCheck.status           # "OK" or "FAILED: reason"
+        File          reads_list               = GetReadsList.reads_list
+        Array[String] samples_name             = GetReadsList.samples_name
+        Array[String] samples_without_reads    = select_all(missing_id)   # not in the report
+        String        sp_detection_scanner     = detect.sp_detection_scanner
+        File          sp_detection_report      = detect.sp_detection_report
+        String        sp_detection_summary     = detect.sp_detection_summary
+        File?         sp_detection_plate_check = detect.sp_detection_plate_check
+        String?       sp_detection_plate_status = detect.sp_detection_plate_status
     }
-
 }
-  
+
 task GetReadsList {
     input {  
         String basespace_collection_id
@@ -231,223 +237,4 @@ task FetchReads {
         maxRetries: 1
         
   }
-}
-
-
-task Detect_Species {
-  input {
-    File? read1
-    File? read2
-    String sample_id
-    
-    # String docker = "bioinfomoh/specie_detection:1"
-    String docker = "ghcr.io/bioinfomohil/species_detection:2.0"
-    Int cpu = 16
-  
-  }
-
-  command <<<
-        mode=""
-        compressed=""
-
-        if [ ! -s "~{read1}" ]; then
-            echo "~{sample_id} not found" > "~{sample_id}.report"
-            echo "~{sample_id},not_found,xxx" > species_detected.csv        
-        else
-            # Check if paired mode should be used
-            if ! [ -z "~{read2}" ]; then
-                echo "Reads are paired..."
-                mode="--paired"
-            fi
-
-            # Determine if reads are compressed
-            if [[ "~{read1}" == *.gz ]]; then
-                echo "Reads are compressed..."
-                compressed="--gzip-compressed"
-            fi
-
-            # Run Kraken2
-            kraken2 -v | awk '/Kraken/ {print "Kraken v" $3}' | tee VERSION
-
-            echo "Running Kraken2..."
-            kraken2 $mode $compressed --threads "~{cpu}" --use-names --db /app/db/kraken_db \
-                --report "~{sample_id}.report" --paired "~{read1}" "~{read2}" --output -
-
-            echo "~{sample_id}" > ~{sample_id}_sample_detected.csv
-            
-            declare -A species
-            species["NM"]="Neisseria Meningitidis"
-            species["NG"]="Neisseria Gonorrhoeae"
-            species["HI"]="Haemophilus Influenzae"
-            species["SH"]="Salmonella"
-            species["SO"]="Salmonella"
-            species["LC"]="Listeria monocytogenes"
-            species["LF"]="Listeria monocytogenes"
-            species["SG"]="Shigella"
-            species["CA"]="Campylobacter"
-            species["VIB"]="Vibrio"
-            species["V"]="Vibrio"
-            species["EC"]="Escherichia coli"
-            species["SA"]="Staphylococcus aureus"
-            species["BP"]="Bordetella pertussis"
-            species["SP"]="Streptococcus pneumoniae"
-            species["ST"]="Streptococcus pyogenes"
-            species["ST"]="Streptococcus agalactiae"
-            species["LG"]="Legionella pneumophila"
-            species["LW"]="Legionella pneumophila"
-            species["CB"]="Corynebacterium diphtheriae"
-            species["HI"]="Haemophilus influenzae"
-            species["NM"]="Neisseria meningitidis"
-            species["M" ]="Neisseria meningitidis" 
-
-            prefix=$(echo "~{sample_id}" | grep -o '^[^0-9]*')
-
-            # Extract detected species from report
-            detected=$(awk -F'\t' '$4 == "S" {gsub(/^[ \t]+/, "", $6); print $6; exit}' "~{sample_id}.report")
-
-            # Convert both to lowercase for case-insensitive comparison
-            detected_lower=$(echo "$detected" | tr '[:upper:]' '[:lower:]')
-            expected_lower=$(echo "${species[$prefix]}" | tr '[:upper:]' '[:lower:]')
-
-            if [[ "$prefix" == "ST" && "$detected" == *"Streptococcus"* ]]; then
-                # handle ST samples (can be pyogenes or agalactiae)
-                echo "Met ST , and detected Streptococcus"
-                echo "~{sample_id},${detected},+" > ~{sample_id}_sample_detected.csv
-
-            elif [[ "$prefix" == "SG" && "$detected" == "Escherichia coli" ]]; then
-                # handle Shigella (SG) - Kraken detect it as EC
-                echo "~{sample_id},${detected},??" > ~{sample_id}_sample_detected.csv
-
-            elif [[ "$detected_lower" == *"$expected_lower"* ]]; then
-                echo "~{sample_id},${detected},+" > ~{sample_id}_sample_detected.csv
-
-            else   
-                if [[ -n "${detected}" && "${detected}" != "" ]]; then
-                    echo "~{sample_id},${detected},xxx" > ~{sample_id}_sample_detected.csv
-                else
-                    echo "~{sample_id},,xxx" > ~{sample_id}_sample_detected.csv
-                fi
-            fi
-        fi
-    >>>
-
-    output {
-        String version = read_string("VERSION")
-        File report = "~{sample_id}.report"
-        String sample_detected = read_string("~{sample_id}_sample_detected.csv")
-    }
-
-    runtime {
-        docker: docker
-        cpu: cpu
-    }
-}
-
-task MergeReports {
-    input {
-        Array[String] species_detected_list
-    }
-
-    command <<<
-        echo "Sample,Detected,Match" > species_detected.csv
-        echo "~{sep='\n' species_detected_list}" >> species_detected.csv
-        
-    >>>
-
-    output { 
-        File species_detected = "species_detected.csv"
-    }
-
-    runtime {
-        docker: "ubuntu:20.04"
-
-    }
-}
-
-
-task SummarizeSpecies {
-    input {
-        File sample_detected_csv
-    }
-
-    command <<<
-        MATCH=$(awk -F',' 'NR>1 && $3=="+" {n++} END {print n+0}' "~{sample_detected_csv}")
-
-        NOMATCH=$(awk -F',' 'NR>1 && $3=="xxx" {n++} END {print n+0}' "~{sample_detected_csv}")
-
-        UNKNOWN=$(awk -F',' 'NR>1 && $3=="??" {n++} END {print n+0}' "~{sample_detected_csv}")
-
-        if [ "$MATCH" -gt 0 ] && [ "$NOMATCH" -eq 0 ] && [ "$UNKNOWN" -eq 0 ]; then
-            echo "ALL MATCHED!" > summary.txt
-        else
-            SUMMARY=""
-
-            [ "$MATCH" -gt 0 ] && SUMMARY="MATCH: $MATCH"
-
-            if [ "$NOMATCH" -gt 0 ]; then
-                [ -n "$SUMMARY" ] && SUMMARY="$SUMMARY,"
-                SUMMARY="${SUMMARY}NOMATCH: $NOMATCH"
-            fi
-
-            if [ "$UNKNOWN" -gt 0 ]; then
-                [ -n "$SUMMARY" ] && SUMMARY="$SUMMARY,"
-                SUMMARY="${SUMMARY}UNKNOWN: $UNKNOWN"
-            fi
-
-            echo "$SUMMARY" > summary.txt
-        fi
-    >>>
-
-    output {
-        String summary = read_string("summary.txt")
-    }
-
-    runtime {
-        docker: "ubuntu:latest"
-        cpu: 1
-    }
-}
-
-
-# Plate check: compares the report (Sample,Detected,Match) with the sending file, one sheet per plate.
-# Not blocking: if plate_check.py fails, the task still succeeds (status = "FAILED: ...", no xlsx),
-# so the report and the summary are kept. The xlsx can then be made with plate_check_app.py (Streamlit).
-task PlateCheck {
-    input {
-        File   sending_file
-        File   species_detected_csv      # Sample,Detected,Match
-        String output_name = "plate_check.xlsx"
-        String docker = "ghcr.io/bioinfomohil/species_detection:2.0"
-    }
-
-    command <<<
-        set -uo pipefail
-
-        if python3 /opt/species_prediction/plate_check.py \
-             --sending "~{sending_file}" \
-             --results "~{species_detected_csv}" --id-col Sample --species-col Detected \
-             --out "~{output_name}" 2> err.txt; then
-            echo "OK" > status.txt
-        else
-            cat err.txt >&2
-            echo "WARNING: plate check failed, the workflow continues without it" >&2
-            rm -f "~{output_name}"
-            echo "FAILED: $(tail -n 1 err.txt | tr -d '\n' | cut -c1-200)" > status.txt
-        fi
-        exit 0
-    >>>
-
-    output {
-        File?  report_xlsx = "~{output_name}"
-        String status      = read_string("status.txt")
-    }
-
-    runtime {
-        docker: docker
-        cpu: 1
-        memory: "2 GB"
-        disks: "local-disk 10 HDD"
-        preemptible: 2
-        maxRetries: 1
-    }
 }
