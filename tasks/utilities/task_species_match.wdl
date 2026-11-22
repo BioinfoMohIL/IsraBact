@@ -6,7 +6,8 @@ version 1.0
 #   match = "v"    : as expected
 #           "~"    : approximately: same genus but a different species (kraken2 is not always precise)
 #           "xxx"  : different
-#           "??"   : cannot be decided (unknown prefix, or nothing detected / ML answered UNKNOWN)
+#           "??"   : cannot be decided (unknown prefix, nothing detected / ML answered UNKNOWN,
+#                  or Shigella detected as E. coli: kraken2 confuses them, not an error of ours)
 #
 # Expected name without a space (e.g. "Salmonella")             -> compared with the detected GENUS
 # Expected name with a space (e.g. "Listeria monocytogenes")    -> compared with the detected SPECIES
@@ -66,6 +67,8 @@ task species_match {
     # --- Match logic ---
     if [ -z "$expected" ] || [ -z "$genus" ]; then
         match="??"
+    elif [ "$expected" == "Shigella" ] && [ "$species" == "Escherichia coli" ]; then
+        match="??"         # Shigella is detected as E. coli (known confusion), not an error of ours
     elif [[ "$expected" == *" "* ]]; then
         # species-level expectation
         if [ "$species" == "$expected" ]; then

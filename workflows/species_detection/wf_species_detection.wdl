@@ -27,7 +27,7 @@ workflow wf_species_detection {
     Boolean use_ml = false
     File?   ml_model
     Float?  ml_threshold
-    String  ml_docker = "bioinfomoh/species-prediction:1.0"
+    String  ml_docker = "bioinfomoh/species-detection:2.0"
   }
 
   scatter (i in range(length(sample_ids))) {

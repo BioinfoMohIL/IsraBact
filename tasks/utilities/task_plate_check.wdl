@@ -13,7 +13,7 @@ task plate_check {
     Array[String] sample_ids           # same order as species_detected
     Array[String] species_detected
     String        output_name = "plate_check.xlsx"
-    String        docker = "bioinfomoh/species-prediction:0.1"
+    String        docker = "bioinfomoh/species-detection:2.0"
   }
 
   command <<<

@@ -17,7 +17,7 @@ workflow wf_species_detection_per_sample {
     Boolean use_ml = false        # false = kraken2 (default), true = ML model
     File?   ml_model              # optional: replaces the model built into the image (strain_model.pkl)
     Float?  ml_threshold          # empty = threshold stored in the model
-    String  ml_docker = "bioinfomoh/species-prediction:0.1"
+    String  docker = "bioinfomoh/species-detection:2.0"
   }
 
   if (!use_ml) {
