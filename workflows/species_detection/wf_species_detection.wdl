@@ -39,7 +39,7 @@ workflow wf_species_detection {
         use_ml = use_ml,
         ml_model = ml_model,
         ml_threshold = ml_threshold,
-        ml_docker = docker
+        docker = docker
     }
   }
 
