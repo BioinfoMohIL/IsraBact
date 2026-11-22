@@ -1,46 +1,30 @@
-name: Build species_detection image (Docker Hub)
-
-# Builds the image from this repo and pushes it to Docker Hub (the registry Terra pulls without problem).
-# Needs 2 repository secrets: DOCKERHUB_USERNAME (bioinfomoh) and DOCKERHUB_TOKEN (a Docker Hub access token).
-
+name: Copy species-detection image to GHCR
 on:
   workflow_dispatch:
     inputs:
+      source:
+        description: "Docker Hub image to copy"
+        default: "bioinfomoh/species-detection:2.0"
       tag:
-        description: "Image tag (use a NEW tag for each change, never overwrite one)"
-        default: "2.1"
-  push:
-    paths:                       # rebuild when one of the baked-in files changes
-      - Dockerfile
-      - kmer_utils.py
-      - predict_one.py
-      - plate_check.py
-      - specie_detection.sh
-      - strain_model.pkl
-
-env:
-  IMAGE: bioinfomoh/species-detection
+        description: "Tag on GHCR"
+        default: "2.0"
 
 jobs:
-  build_push:
+  copy_image:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: docker/login-action@v3
         with:
-          lfs: true              # in case strain_model.pkl is stored with Git LFS (GitHub refuses files > 100 MB)
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - uses: docker/build-push-action@v6
-        with:
-          context: .
-          platforms: linux/amd64
-          push: true
-          provenance: false      # no attestation manifest: Terra could not pull images built with it
-          sbom: false
-          tags: |
-            ${{ env.IMAGE }}:${{ inputs.tag || github.sha }}
+      - name: Pull, tag and push
+        run: |
+          OWNER_LC=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          docker pull "${{ inputs.source }}"
+          docker tag  "${{ inputs.source }}" "ghcr.io/${OWNER_LC}/species_detection:${{ inputs.tag }}"
+          docker push "ghcr.io/${OWNER_LC}/species_detection:${{ inputs.tag }}"
