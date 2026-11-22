@@ -1,8 +1,8 @@
 version 1.0
 
 import "wf_species_detection_per_sample.wdl" as per_sample
-import "../../tasks/metagenomics/task_species_report.wdl" as task_report
-import "../../tasks/metagenomics/task_plate_check.wdl" as task_plate
+import "../../tasks/utilities/task_species_report.wdl" as task_report
+import "../../tasks/utilities/task_plate_check.wdl" as task_plate
 
 # Species detection for a SET of samples (run on a sample_set). It runs wf_species_detection_per_sample
 # on every sample, then returns ONE report for the whole run plus a one-line summary, instead of
