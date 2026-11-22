@@ -19,7 +19,7 @@ task plate_check {
     Array[String] sample_ids           # same order as species_detected
     Array[String] species_detected
     String        output_name = "plate_check.xlsx"
-    String        docker = "bioinfomoh/species-detection:2.0"
+    String        docker = "ghcr.io/bioinfomoh/species_detection:2.0"
   }
 
   command <<<

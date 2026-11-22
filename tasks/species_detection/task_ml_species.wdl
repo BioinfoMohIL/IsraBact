@@ -12,7 +12,7 @@ task ml_species_predict {
     File?  ml_model                       # optional: replaces the model built into the image
     String sample_id
     Float? threshold                      # empty = threshold stored in the model
-    String docker = "bioinfomoh/species-prediction:0.1"
+    String docker = "ghcr.io/bioinfomoh/species_detection:2.0"
     Int    disk_gb = ceil(size(read1, "GB") + size(read2, "GB")) + 10
   }
 

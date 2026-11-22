@@ -36,7 +36,7 @@ workflow wf_species_detection {
     Boolean use_ml = false
     File?   ml_model
     Float?  ml_threshold
-    String  docker = "bioinfomoh/species-detection:2.0"
+    String  docker = "ghcr.io/bioinfomoh/species_detection:2.0"
   }
 
   String scanner = if use_ml then "ML" else "kraken2"
@@ -74,7 +74,8 @@ workflow wf_species_detection {
       input:
         sending_file = select_first([sending_file]),
         sample_ids = sample_ids,
-        species_detected = detect.sp_detection_species_detected
+        species_detected = detect.sp_detection_species_detected,
+        docker = docker
     }
   }
 

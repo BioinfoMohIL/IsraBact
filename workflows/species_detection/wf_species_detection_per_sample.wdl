@@ -1,8 +1,8 @@
 version 1.0
 
 import "../../tasks/metagenomics/task_kraken2.wdl" as task_kraken
-import "../../tasks/species_detection/task_ml_species.wdl" as task_ml
-import "../../tasks/utilities/task_species_match.wdl" as task_match
+import "../../tasks/metagenomics/task_ml_species.wdl" as task_ml
+import "../../tasks/metagenomics/task_species_match.wdl" as task_match
 
 # Species detection for ONE sample, with kraken2 (default) or with the ML model (use_ml = true).
 # The match against the species expected from the sample prefix is the same for both scanners.
@@ -17,7 +17,7 @@ workflow wf_species_detection_per_sample {
     Boolean use_ml = false        # false = kraken2 (default), true = ML model
     File?   ml_model              # optional: replaces the model built into the image (strain_model.pkl)
     Float?  ml_threshold          # empty = threshold stored in the model
-    String  docker = "bioinfomoh/species-detection:2.0"
+    String  docker = "ghcr.io/bioinfomoh/species_detection:2.0"
   }
 
   if (!use_ml) {

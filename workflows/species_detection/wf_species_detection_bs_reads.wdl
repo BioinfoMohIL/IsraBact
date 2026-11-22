@@ -6,7 +6,7 @@ workflow wf_species_detection_bs {
         String api_server
         String access_token
         String? sample_prefix
-
+        File? sending_file
     }
 
     meta {
@@ -22,6 +22,7 @@ workflow wf_species_detection_bs {
         access_token: "Illumina Basespace access token"
         basespace_collection_id: "Samplename in the Basespace platform (for ex, EC001, NM005 , = our entity id)"
         sample_prefix: "Optional, to fetch only specific species according to your samplename prefix, for ex 'EC' for ecoli (useful for testing)"
+        sending_file: "Optional, the lab sending file (.xlsx). If set, a plate check xlsx is also produced (one sheet per plate). A failure of the plate check does not fail the workflow."
     }
 
     call GetReadsList {
@@ -61,13 +62,22 @@ workflow wf_species_detection_bs {
             sample_detected_csv = MergeReports.species_detected
     }
 
+    if (defined(sending_file)) {
+        call PlateCheck {
+            input:
+                sending_file = select_first([sending_file]),
+                species_detected_csv = MergeReports.species_detected
+        }
+    }
+
     output {
         String version = Detect_Species.version[0]
         File reads_list = GetReadsList.reads_list
         Array[String] samples_name = GetReadsList.samples_name
         File species_detected = MergeReports.species_detected
         String species_detected_sum   = SummarizeSpecies.summary
-    
+        File? plate_check_xlsx        = PlateCheck.report_xlsx      # only if sending_file is set (empty if it failed)
+        String? plate_check_status    = PlateCheck.status           # "OK" or "FAILED: reason"
     }
 
 }
@@ -231,7 +241,7 @@ task Detect_Species {
     String sample_id
     
     # String docker = "bioinfomoh/specie_detection:1"
-    String docker = "ghcr.io/bioinfomohil/species_detection:1.0"
+    String docker = "ghcr.io/bioinfomohil/species_detection:2.0"
     Int cpu = 16
   
   }
@@ -395,5 +405,49 @@ task SummarizeSpecies {
     runtime {
         docker: "ubuntu:latest"
         cpu: 1
+    }
+}
+
+
+# Plate check: compares the report (Sample,Detected,Match) with the sending file, one sheet per plate.
+# Not blocking: if plate_check.py fails, the task still succeeds (status = "FAILED: ...", no xlsx),
+# so the report and the summary are kept. The xlsx can then be made with plate_check_app.py (Streamlit).
+task PlateCheck {
+    input {
+        File   sending_file
+        File   species_detected_csv      # Sample,Detected,Match
+        String output_name = "plate_check.xlsx"
+        String docker = "ghcr.io/bioinfomohil/species_detection:2.0"
+    }
+
+    command <<<
+        set -uo pipefail
+
+        if python3 /opt/species_prediction/plate_check.py \
+             --sending "~{sending_file}" \
+             --results "~{species_detected_csv}" --id-col Sample --species-col Detected \
+             --out "~{output_name}" 2> err.txt; then
+            echo "OK" > status.txt
+        else
+            cat err.txt >&2
+            echo "WARNING: plate check failed, the workflow continues without it" >&2
+            rm -f "~{output_name}"
+            echo "FAILED: $(tail -n 1 err.txt | tr -d '\n' | cut -c1-200)" > status.txt
+        fi
+        exit 0
+    >>>
+
+    output {
+        File?  report_xlsx = "~{output_name}"
+        String status      = read_string("status.txt")
+    }
+
+    runtime {
+        docker: docker
+        cpu: 1
+        memory: "2 GB"
+        disks: "local-disk 10 HDD"
+        preemptible: 2
+        maxRetries: 1
     }
 }
