@@ -1,10 +1,13 @@
 name: Copy species-detection image to GHCR
+
 on:
   workflow_dispatch:
     inputs:
       source:
+        description: "Docker Hub image to copy"
         default: "bioinfomoh/species-detection:2.0"
       tag:
+        description: "Tag on GHCR"
         default: "2.0"
 
 jobs:
@@ -19,7 +22,9 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - run: |
+
+      - name: Pull, tag and push
+        run: |
           OWNER_LC=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
           docker pull "${{ inputs.source }}"
           docker tag  "${{ inputs.source }}" "ghcr.io/${OWNER_LC}/species_detection:${{ inputs.tag }}"
