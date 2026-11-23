@@ -85,7 +85,7 @@ task serogrouping {
 
 
     runtime {
-        docker: "bioinfomoh/nm_completion_analysis:1.0"
+        docker: "bioinfomoh/nm_completion_analysis:1"
         cpu: 8
         maxRetries: 1
 
