@@ -81,6 +81,7 @@ task serogrouping {
         String genogroup = read_string("~{samplename}_genogroup.txt")
     }
 
+
     runtime {
         docker: "bioinfomoh/nm_completion_analysis:1"
         cpu: 8
