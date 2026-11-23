@@ -156,6 +156,7 @@ workflow wf_neisseria_typing_reads {
         # Typing
         # File typing_results = typing.typing_results
         String neisseria_typing_version = typing.version
+        String neisseria_typing_date = typing.date
 
         String fHbp_peptide = typing.fHbp_peptide
         String NHBA_peptide = typing.NHBA_peptide
