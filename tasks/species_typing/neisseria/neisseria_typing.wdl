@@ -56,7 +56,7 @@ task neisseria_typing {
     }
 
     runtime {
-        docker: "bioinfomoh/neisseria_typing:1.1"
+        docker: "bioinfomoh/neisseria_typing:1.0"
         memory: "8 GB"
         maxRetries: 1
 

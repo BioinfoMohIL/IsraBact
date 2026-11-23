@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Typage de Neisseria meningitidis (MLST, BAST/MenDeVAR, finetyping) via l'API REST de PubMLST.
+"""Neisseria meningitidis typing (MLST, BAST/MenDeVAR, finetyping) through the PubMLST REST API.
 
-Appelé par la tâche WDL `neisseria_typing`.
+Called by the WDL task `neisseria_typing`.
 """
 import argparse
 import base64
+import http.client
 import json
 import logging
 import os
@@ -17,31 +18,32 @@ from datetime import date
 import pandas as pd
 
 # --------------------------------------------------------------------------- #
-# Constantes
+# Constants
 # --------------------------------------------------------------------------- #
-EMPTY_VALUE = '?'
+EMPTY_VALUE = '?'      # unknown / not retrieved
+NADA_NOVEL = 'novel?'  # nadA hit without an exact allele: gene probably present, allele not in PubMLST
 API_ROOT = 'https://rest.pubmlst.org/db/pubmlst_neisseria_seqdef'
-API_TIMEOUT = 60      # secondes
+API_TIMEOUT = 300     # seconds without any response (a BLAST on a whole genome can be slow)
 API_RETRIES = 3
 
 SCHEME_ID = {'mlst': '1', 'finetyping': '2', 'bast': '53'}
 
-# Loci de chaque typage (ordre = ordre d'affichage dans les colonnes "profile")
+# Loci of each typing scheme (order = order of the values in the "profile" columns)
 MLST_LOCI = ['abcZ', 'adk', 'aroE', 'fumC', 'gdh', 'pdhC', 'pgm']
 BAST_LOCI = ['fHbp_peptide', 'NHBA_peptide', 'NadA_peptide', 'PorA_VR1', 'PorA_VR2']
 FINETYPING_LOCI = ['PorA_VR1', 'PorA_VR2', 'FetA_VR']
 
-# Colonnes récapitulatives : nom de colonne -> loci concaténés (séparés par une virgule)
+# Summary columns: column name -> loci joined with commas
 PROFILES = {
     'mlst_profile': MLST_LOCI,
     'bast_profile': BAST_LOCI,
     'finetyping_profile': FINETYPING_LOCI,
 }
 
-# Tous les loci (sans doublon, ordre conservé)
+# All loci (no duplicates, order kept)
 ALL_LOCI = list(dict.fromkeys(MLST_LOCI + BAST_LOCI + FINETYPING_LOCI))
 
-# Champs "fields" renvoyés par PubMLST -> colonnes du rapport
+# "fields" returned by PubMLST -> report columns
 FIELD_MAP = {
     'mlst': {'ST': 'st', 'clonal_complex': 'clonal_complex'},
     'bast': {
@@ -52,7 +54,7 @@ FIELD_MAP = {
 }
 BAST_COLUMNS = list(FIELD_MAP['bast'].values())
 
-# Ordre des colonnes du CSV (les nouvelles colonnes sont à la fin pour ne rien décaler)
+# CSV column order (the summary columns come last so existing columns do not shift)
 COLUMNS = (
     ['date', 'sample', 'st', 'clonal_complex']
     + MLST_LOCI + ['FetA_VR']
@@ -65,7 +67,7 @@ log = logging.getLogger('neisseria_typing')
 
 
 # --------------------------------------------------------------------------- #
-# Utilitaires
+# Helpers
 # --------------------------------------------------------------------------- #
 def is_missing(value):
     return value in (None, '', EMPTY_VALUE)
@@ -82,10 +84,10 @@ def read_assembly_b64(path):
 
 
 def post_json(url, payload):
-    """POST JSON avec quelques essais en cas d'erreur réseau / 5xx.
+    """POST JSON, retried on network errors, 5xx and 429.
 
-    Une réponse 4xx (ex. 404 = pas de correspondance) est renvoyée telle quelle :
-    ce n'est pas un crash, le corps JSON est exploitable.
+    Any other 4xx response (e.g. 404 = no match) is returned as is, it is not a crash.
+    If its body is not JSON, {} is returned.
     """
     body = json.dumps(payload).encode()
     last_error = None
@@ -97,10 +99,14 @@ def post_json(url, payload):
             with urllib.request.urlopen(request, timeout=API_TIMEOUT) as response:
                 return json.load(response)
         except urllib.error.HTTPError as err:
-            if err.code < 500:
-                return json.loads(err.read() or '{}')
+            if err.code < 500 and err.code != 429:
+                try:
+                    return json.loads(err.read())
+                except ValueError:
+                    return {}
             last_error = err
-        except (urllib.error.URLError, TimeoutError) as err:
+        except (urllib.error.URLError, TimeoutError, ConnectionError,
+                http.client.HTTPException, ValueError) as err:
             last_error = err
 
         if attempt < API_RETRIES:
@@ -116,32 +122,50 @@ def sequence_url(kind, locus=None):
 
 
 def query_pubmlst(url, sequence_b64, out_file):
-    """Envoie l'assemblage à PubMLST et garde la réponse brute sur disque."""
+    """Send the assembly to PubMLST and keep the raw response on disk."""
     result = post_json(url, {'base64': True, 'sequence': sequence_b64})
     save_json(out_file, result)
-    return result
+    return result if isinstance(result, dict) else {}
 
 
 # --------------------------------------------------------------------------- #
-# Lecture des réponses
+# Reading the responses
 # --------------------------------------------------------------------------- #
-def store_exact_matches(result, data):
-    """Copie les allèles exacts dans `data`. Renvoie True s'il y en avait."""
-    exact = result.get('exact_matches') or {}
-    for locus, hits in exact.items():
-        data[locus] = hits[0]['allele_id']
-    return bool(exact)
+def store_exact_matches(result, data, locus=None):
+    """Copy the exact allele matches into `data`. Returns True if there were any.
+
+    PubMLST returns two shapes:
+      - scheme query: {"abcZ": [{"allele_id": "2"}], "adk": [...]}  (dict)
+      - locus query:  [{"allele_id": "2", ...}]                      (list, `locus` required)
+    """
+    exact = result.get('exact_matches')
+    if not exact:
+        return False
+
+    if isinstance(exact, dict):
+        pairs = [(name, hits[0]) for name, hits in exact.items() if hits]
+    elif locus:
+        pairs = [(locus, exact[0])]
+    else:
+        return False
+
+    found = False
+    for name, hit in pairs:
+        if hit.get('allele_id') is not None:
+            data[name] = str(hit['allele_id'])
+            found = True
+    return found
 
 
 def store_fields(result, kind, data):
-    """Copie les champs du schéma (ST, CC, BAST, MenDeVAR...) dans `data`."""
+    """Copy the scheme fields (ST, CC, BAST, MenDeVAR...) into `data`."""
     fields = result['fields']
     for db_key, column in FIELD_MAP[kind].items():
         data[column] = fields.get(db_key, EMPTY_VALUE)
 
 
 def type_scheme(kind, sequence_b64, out_file, data):
-    """Requête un schéma complet (mlst / bast / finetyping). True si identifié."""
+    """Query a whole scheme (mlst / bast / finetyping). Returns True if identified."""
     result = query_pubmlst(sequence_url(kind), sequence_b64, out_file)
 
     if not store_exact_matches(result, data):
@@ -151,24 +175,26 @@ def type_scheme(kind, sequence_b64, out_file, data):
     return True
 
 
-def confirm_bast(data, out_dir):
-    """Redemande BAST + MenDeVAR à partir des allèles déjà trouvés (NadA doit valoir au moins "0")."""
-    designations = {
-        locus: [{'allele': data[locus]}] for locus in BAST_LOCI if not is_missing(data.get(locus))
-    }
-    result = post_json(f"{API_ROOT}/schemes/{SCHEME_ID['bast']}/designations",
-                       {'designations': designations})
-    save_json(os.path.join(out_dir, 'bast_type.json'), result)
+def lookup_designations(kind, loci, data, out_dir):
+    """Ask scheme `kind` for the fields (ST, BAST...) matching the alleles already known.
 
-    if 'fields' in result:
-        store_fields(result, 'bast', data)
-    else:
-        for column in BAST_COLUMNS:
-            data[column] = EMPTY_VALUE
+    Returns {column: value} (empty if PubMLST does not know this profile).
+    """
+    designations = {
+        locus: [{'allele': str(data[locus])}] for locus in loci if not is_missing(data.get(locus))
+    }
+    result = post_json(f"{API_ROOT}/schemes/{SCHEME_ID[kind]}/designations",
+                       {'designations': designations})
+    save_json(os.path.join(out_dir, f'{kind}_type.json'), result)
+
+    found = {}
+    if isinstance(result, dict) and 'fields' in result:
+        store_fields(result, kind, found)
+    return found
 
 
 def build_profile(data, loci):
-    """'2,3,4,3,8,4,6' ; un locus manquant vaut '?' ; tout manquant -> '?'."""
+    """'2,3,4,3,8,4,6' ; a missing locus is '?' ; everything missing -> '?'."""
     values = [EMPTY_VALUE if is_missing(data.get(locus)) else str(data[locus]) for locus in loci]
     if all(value == EMPTY_VALUE for value in values):
         return EMPTY_VALUE
@@ -176,9 +202,9 @@ def build_profile(data, loci):
 
 
 # --------------------------------------------------------------------------- #
-# Typage d'un échantillon
+# Typing of one sample
 # --------------------------------------------------------------------------- #
-def typing(assembly, sample, output_dir, output_filename, split):
+def type_sample(assembly, sample, output_dir, output_filename, split):
     data = {'date': date.today().strftime('%d-%m-%Y'), 'sample': sample}
     best_matches = {}
     failed = set()
@@ -186,7 +212,7 @@ def typing(assembly, sample, output_dir, output_filename, split):
 
     log.info(f'\n---------------------\n    {sample}\n---------------------')
 
-    # 1) Les trois schémas
+    # 1) The three schemes
     for kind in ('mlst', 'bast', 'finetyping'):
         log.info(f'[Running] {kind}')
         out_file = os.path.join(output_dir, f'{sample}_{kind}.json')
@@ -197,48 +223,76 @@ def typing(assembly, sample, output_dir, output_filename, split):
             failed.add(kind)
             log.error(f'Error in fetching {kind}: {err}')
 
-    # 2) Loci manquants : on les redemande un par un
+    # 2) Missing loci: query them one by one
+    #    (unless the 3 schemes failed: PubMLST is unreachable, no point insisting locus by locus)
     missing_loci = [locus for locus in ALL_LOCI if is_missing(data.get(locus))]
+    if missing_loci and len(failed) == 3:
+        log.error('PubMLST unreachable: skipping locus-by-locus queries')
+        missing_loci = []
     if missing_loci:
         log.info(f'Missing {missing_loci}...')
 
+    failed_loci = set()
     for locus in missing_loci:
         out_file = os.path.join(output_dir, f'{sample}_{locus}.json')
         try:
             result = query_pubmlst(sequence_url('locus', locus), sequence_b64, out_file)
         except Exception as err:
+            failed_loci.add(locus)
             log.error(f'✖️ Cannot fetch the missing {locus}: {err}')
             continue
 
-        if store_exact_matches(result, data):
+        best = result.get('best_match')
+        if store_exact_matches(result, data, locus):
             log.info(f'Fetched {locus}!')
-        elif 'best_match' in result:
-            best_matches[locus] = result['best_match'].get('allele_id')
+        elif isinstance(best, dict):
+            best_matches[locus] = best.get('allele_id')
+            log.info(f"{locus}: no exact match, best match allele {best.get('allele_id')} "
+                     f"(identity {best.get('identity')}%)")
 
-    # 3) NadA absent = "0" (nécessaire pour obtenir le BAST)
-    if is_missing(data.get('NadA_peptide')):
-        data['NadA_peptide'] = '0'
+    # 3) NadA without an exact allele (only if PubMLST actually answered):
+    #    - no hit at all          -> "0"  (gene absent; also required to look up the BAST)
+    #    - best match but no exact -> "novel?" (gene probably present, allele not in the database)
+    if (is_missing(data.get('NadA_peptide'))
+            and 'bast' not in failed and 'NadA_peptide' not in failed_loci):
+        data['NadA_peptide'] = NADA_NOVEL if 'NadA_peptide' in best_matches else '0'
 
-    # 4) BAST / MenDeVAR parfois absents de la première réponse -> requête de confirmation
+    # 4) BAST / MenDeVAR are sometimes missing from the first response -> confirmation request
     if any(is_missing(data.get(column)) for column in BAST_COLUMNS):
-        log.info('[Confirm BAST type and MenDeVar]')
+        if data.get('NadA_peptide') == NADA_NOVEL:
+            log.info('[BAST] NadA has no exact allele (novel?): BAST cannot be assigned')
+        else:
+            log.info('[Confirm BAST type and MenDeVar]')
+            try:
+                found = lookup_designations('bast', BAST_LOCI, data, output_dir)
+                # only fill what is missing: a value already found is never overwritten by '?'
+                for column in BAST_COLUMNS:
+                    if is_missing(data.get(column)):
+                        data[column] = found.get(column, EMPTY_VALUE)
+            except Exception as err:
+                log.error(f'✖️ Cannot confirm BAST: {err}')
+
+            status = {'Bast Type': 'bast_type', 'Bexsero': 'bexsero_cross_reactivity',
+                      'Trumenba': 'trumenba_cross_reactivity'}
+            log.info(', '.join(f"{'✔️' if not is_missing(data.get(col)) else '✖️'} {label}"
+                               for label, col in status.items()))
+
+    # 5) Full MLST profile but no ST: ask PubMLST before concluding it is a new strain
+    if is_missing(data.get('st')) and not any(is_missing(data.get(locus)) for locus in MLST_LOCI):
         try:
-            confirm_bast(data, output_dir)
+            found = lookup_designations('mlst', MLST_LOCI, data, output_dir)
         except Exception as err:
-            log.error(f'✖️ Cannot confirm BAST: {err}')
+            log.error(f'✖️ Cannot confirm ST: {err}')   # unknown, not "new"
+        else:
+            if is_missing(found.get('st')):
+                log.info('- [MLST] Full profile but no ST assignment; it must be new!')
+                data['st'] = 'new'
+            else:
+                log.info(f"- [MLST] ST found from the full profile: {found['st']}")
+                data['st'] = found['st']
+                data['clonal_complex'] = found.get('clonal_complex', EMPTY_VALUE)
 
-        status = {'Bast Type': 'bast_type', 'Bexsero': 'bexsero_cross_reactivity',
-                  'Trumenba': 'trumenba_cross_reactivity'}
-        log.info(', '.join(f"{'✔️' if not is_missing(data.get(col)) else '✖️'} {label}"
-                           for label, col in status.items()))
-
-    # 5) Profil MLST complet mais pas de ST -> probablement une nouvelle souche
-    if ('mlst' not in failed and is_missing(data.get('st'))
-            and not any(is_missing(data.get(locus)) for locus in MLST_LOCI)):
-        log.info('- [MLST] Full profile but no ST assignment; it must be new!')
-        data['st'] = 'new'
-
-    # 6) Colonnes récapitulatives, puis valeurs vides -> '?'
+    # 6) Summary columns, then empty values -> '?'
     for column, loci in PROFILES.items():
         data[column] = build_profile(data, loci)
 
@@ -248,10 +302,10 @@ def typing(assembly, sample, output_dir, output_filename, split):
 
     log.info(f'{sample}: {data}')
 
-    # 7) Sorties
+    # 7) Outputs
     row = {column: data[column] for column in COLUMNS}
 
-    if split:  # un fichier .txt par colonne, lu par le WDL
+    if split:  # one .txt file per column, read by the WDL
         for column, value in row.items():
             with open(os.path.join(output_dir, f'{column}.txt'), 'w') as f:
                 f.write(f'{value}\n')
@@ -294,7 +348,7 @@ def main():
     setup_logging(os.path.join(args.output_dir, args.log_file))
 
     sample = args.sample or os.path.basename(args.input).split('.')[0]
-    typing(args.input, sample, args.output_dir, args.output_file, args.split)
+    type_sample(args.input, sample, args.output_dir, args.output_file, args.split)
 
 
 if __name__ == '__main__':
