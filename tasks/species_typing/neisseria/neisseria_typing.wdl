@@ -8,7 +8,7 @@ task neisseria_typing {
     command <<<
         mkdir results
 
-        echo "NeisseriaTyping v1.2" > VERSION
+        echo "NeisseriaTyping v1.0" > VERSION
         date +%Y-%m-%d > DATE
 
         val=("st" "cc" "FetA_VR" "bast_type" "fHbp_peptide" "NHBA_peptide" "NadA_peptide" "PorA_VR1" "PorA_VR2" "abcZ" "adk" "aroE" "fumC" "gdh" "pdhC" "pgm" "bexsero_cross_reactivity" "trumenba_cross_reactivity")
@@ -85,7 +85,7 @@ task serogrouping {
 
 
     runtime {
-        docker: "bioinfomoh/nm_completion_analysis:1"
+        docker: "bioinfomoh/nm_completion_analysis:1.0"
         cpu: 8
         maxRetries: 1
 
