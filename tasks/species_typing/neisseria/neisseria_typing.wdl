@@ -3,6 +3,8 @@ version 1.0
 task neisseria_typing {
     input {
         File assembly
+        String pubmlst_api_key = ""
+
     }
     
     command <<<
@@ -15,6 +17,8 @@ task neisseria_typing {
 
         # Join them into a comma-separated string for argparse
         files_arg=$(IFS=, ; echo "${val[*]}")
+
+        export PUBMLST_API_KEY='~{pubmlst_api_key}'
 
         neisseria_typing --input ~{assembly} --output results --output_csv_file typing_report.csv --files "$files_arg" --split
         echo "Exit code: $?"
@@ -69,6 +73,7 @@ task serogrouping {
     input {
         String samplename
         File assembly
+
     }
 
     command <<<

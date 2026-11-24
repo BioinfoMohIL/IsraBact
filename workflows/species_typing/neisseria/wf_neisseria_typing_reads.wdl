@@ -17,6 +17,7 @@ workflow wf_neisseria_typing_reads {
 		String samplename
 		File read1
 		File read2  
+        String pubmlst_api_key
         File? reference
 		# If nextseq lanes
         # File? read1_lane2
@@ -89,7 +90,8 @@ workflow wf_neisseria_typing_reads {
 
     call nm_typing.neisseria_typing as typing {
 		input:
-			assembly = assembly.assembly_fasta
+			assembly = assembly.assembly_fasta,
+            pubmlst_api_key = pubmlst_api_key
     }
 
     call nm_typing.serogrouping as serogrouping {

@@ -9,6 +9,7 @@ import http.client
 import json
 import logging
 import os
+import random
 import sys
 import time
 import urllib.error
@@ -25,6 +26,7 @@ NADA_NOVEL = 'novel?'  # nadA hit without an exact allele: gene probably present
 API_ROOT = 'https://rest.pubmlst.org/db/pubmlst_neisseria_seqdef'
 API_TIMEOUT = 300     # seconds without any response (a BLAST on a whole genome can be slow)
 API_RETRIES = 3
+API_KEY = None   # personal PubMLST API key, sent as the X-API-Key header (set in main)
 
 SCHEME_ID = {'mlst': '1', 'finetyping': '2', 'bast': '53'}
 
@@ -83,10 +85,35 @@ def read_assembly_b64(path):
         return base64.b64encode(f.read()).decode()
 
 
-def post_json(url, payload):
-    """POST JSON, retried on network errors, 5xx and 429.
+def wait_before_retry(attempt, url, reason):
+    """Log the failed attempt and sleep (growing delay + jitter so parallel jobs do not retry in sync)."""
+    delay = 10 * attempt + random.uniform(0, 5)
+    log.warning(f"Attempt {attempt}/{API_RETRIES} failed on {url.replace(API_ROOT, '')} "
+                f"({reason}); retrying in {delay:.0f}s")
+    time.sleep(delay)
 
-    Any other 4xx response (e.g. 404 = no match) is returned as is, it is not a crash.
+
+def fail_auth(code, detail):
+    """Authentication problems stop the whole run: every following query would fail the same way."""
+    log.error(f'HTTP {code} from PubMLST: {detail}')
+    sys.exit(f'PubMLST refused the request (HTTP {code}): a valid personal API key is required. '
+             'Provide it with --api-key-file or the PUBMLST_API_KEY environment variable. Nothing was typed.')
+
+
+def request_headers():
+    headers = {'Content-Type': 'application/json'}
+    if API_KEY:
+        headers['X-API-Key'] = API_KEY
+    return headers
+
+
+def post_json(url, payload):
+    """POST JSON, retried on network errors, 5xx and 429 (with a jittered, growing delay).
+
+    401/403 (authentication required or refused) stop the whole run with a clear message:
+    every following query would fail the same way, and "?" everywhere must never look like a result.
+    Any other 4xx response (e.g. 404 = no match) is returned as is, but logged as a warning
+    so that a silent API error is never mistaken for "no result".
     If its body is not JSON, {} is returned.
     """
     body = json.dumps(payload).encode()
@@ -94,23 +121,27 @@ def post_json(url, payload):
 
     for attempt in range(1, API_RETRIES + 1):
         request = urllib.request.Request(
-            url, data=body, method='POST', headers={'Content-Type': 'application/json'})
+            url, data=body, method='POST', headers=request_headers())
         try:
             with urllib.request.urlopen(request, timeout=API_TIMEOUT) as response:
                 return json.load(response)
         except urllib.error.HTTPError as err:
+            raw = err.read()
+            if err.code in (401, 403):
+                fail_auth(err.code, f"{url.replace(API_ROOT, '')} {raw[:200]!r}")
             if err.code < 500 and err.code != 429:
+                log.warning(f"HTTP {err.code} from PubMLST ({url.replace(API_ROOT, '')}): {raw[:200]!r}")
                 try:
-                    return json.loads(err.read())
+                    return json.loads(raw)
                 except ValueError:
                     return {}
-            last_error = err
+            last_error, reason = err, f'HTTP {err.code}'
         except (urllib.error.URLError, TimeoutError, ConnectionError,
                 http.client.HTTPException, ValueError) as err:
-            last_error = err
+            last_error, reason = err, f'{type(err).__name__}: {err}'
 
         if attempt < API_RETRIES:
-            time.sleep(2 * attempt)
+            wait_before_retry(attempt, url, reason)
 
     raise last_error
 
@@ -313,6 +344,11 @@ def type_sample(assembly, sample, output_dir, output_filename, split):
     pd.DataFrame([row]).to_csv(os.path.join(output_dir, output_filename), index=False)
     pd.DataFrame([best_matches]).to_csv(os.path.join(output_dir, f'{sample}_best_matches.csv'), index=False)
 
+    # PubMLST could not be queried at all: the files above are empty, so fail loudly
+    # (a row full of "?" must never look like a normal result)
+    if len(failed) == 3:
+        sys.exit('PubMLST could not be queried (the 3 schemes failed): results are empty.')
+
 
 # --------------------------------------------------------------------------- #
 # CLI
@@ -325,6 +361,9 @@ def parse_args():
     parser.add_argument('--log-file', dest='log_file', default='logs.txt', help='Log filename (in the output directory)')
     parser.add_argument('--sample', default=None,
                         help='Sample name (default: input filename up to the first dot)')
+    parser.add_argument('--api-key-file', default=None,
+                        help='Text file containing your personal PubMLST API key '
+                             '(else the PUBMLST_API_KEY environment variable is used)')
     parser.add_argument('--split', action='store_true', help='Also write one .txt file per column')
     parser.add_argument('--files', help='Deprecated and ignored (kept so existing WDL calls still work)')
     return parser.parse_args()
@@ -338,14 +377,29 @@ def setup_logging(log_path):
     )
 
 
+def load_api_key(path):
+    """API key from --api-key-file, else from PUBMLST_API_KEY. Never logged."""
+    key = os.environ.get('PUBMLST_API_KEY', '')
+    if path:
+        if not os.path.isfile(path):
+            sys.exit(f'API key file not found: {path}')
+        with open(path) as f:
+            key = f.read()
+    return key.strip() or None
+
+
 def main():
     args = parse_args()
 
     if not os.path.isfile(args.input):
         sys.exit(f'Input not valid (expected one fasta file): {args.input}')
 
+    global API_KEY
+    API_KEY = load_api_key(args.api_key_file)
+
     os.makedirs(args.output_dir, exist_ok=True)
     setup_logging(os.path.join(args.output_dir, args.log_file))
+    log.info('PubMLST API key: ' + ('provided' if API_KEY else 'NOT provided (sequence queries will be refused)'))
 
     sample = args.sample or os.path.basename(args.input).split('.')[0]
     type_sample(args.input, sample, args.output_dir, args.output_file, args.split)

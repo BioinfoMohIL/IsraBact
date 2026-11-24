@@ -86,7 +86,7 @@ def fetch_fields_values(data, type, dict):
         dict[KEY_CC] = fetch_value_if_key(fields, DB_CC)
 
     elif type == TYPE_BAST:
-        dict[KEY_BAST_TYPE] = fetch_value_iR@gn@r@11f_key(fields, DB_BAST_TYPE)
+        dict[KEY_BAST_TYPE] = fetch_value_if_key(fields, DB_BAST_TYPE)
         dict[KEY_BEXERO] = fetch_value_if_key(fields, DB_KEY_BEXERO)
         dict[KEY_TRUMENBA] = fetch_value_if_key(fields, DB_KEY_TRUMENBA)
     

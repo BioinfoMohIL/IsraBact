@@ -1,37 +1,5 @@
 {
-  "wf_microbedecoder.samplename": "SO20450",
-  "wf_microbedecoder.genbank_file": "data/SO20450.gbff",
-  "wf_microbedecoder.ko_annotator": "kofamscan",
-  "wf_microbedecoder.kofam_profiles_tar": "data/profiles.tar.gz",
-  "wf_microbedecoder.kofam_ko_list": "data/ko_list.gz",
-  "wf_microbedecoder.taxonomy_system": "NCBI",
-  "wf_microbedecoder.traits_to_predict": [
-    "Type of metabolism (FAPROTAX)",
-    "Type of metabolism (Fermentation Explorer)",
-    "Metabolites utilized (BacDive)",
-    "Enzyme activity (BacDive)",
-    "Oxygen tolerance (BacDive)",
-    "Gram stain (BacDive)",
-    "Motility (BacDive)"
-  ],
-  "wf_microbedecoder.reference_networks": [],
-  "wf_microbedecoder.reference_network_files": [
-    "data/kegg_galactose_lactose_orthology.csv", 
-    "data/kegg_cytrate_orthology.csv"
-  ],
-  "wf_microbedecoder.model_names": [
-    "Fermentation (type of metabolism)",
-    "Aerobic chemoheterotrophy (type of metabolism)",
-    "Nitrate reduction (type of metabolism)",
-    "Anaerobe (oxygen tolerance)",
-    "Aerobe (oxygen tolerance)",
-    "Gram negative (gram stain)",
-    "Motility positive (motility)",
-    "Acetate (end product)",
-    "Lactate (end product)",
-    "Ethanol (end product)",
-    "Formate (end product)",
-    "H2 (end product)",
-    "Succinate (end product)"
-  ]
+  "wf_neisseria_typing_reads.read1":"data/NM247_S122_L001_R1_001.fastq.gz",
+  "wf_neisseria_typing_reads.read2":"data/NM247_S122_L001_R2_001.fastq.gz",
+  "wf_neisseria_typing_reads.samplename":"NM247"
 }
