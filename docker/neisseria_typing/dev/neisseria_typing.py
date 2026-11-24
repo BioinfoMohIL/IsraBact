@@ -22,7 +22,8 @@ import pandas as pd
 # Constants
 # --------------------------------------------------------------------------- #
 EMPTY_VALUE = '?'      # unknown / not retrieved
-NADA_NOVEL = 'novel?'  # nadA hit without an exact allele: gene probably present, allele not in PubMLST
+NADA_NOVEL = 'novel?'  # only with --nada-novel-min-identity: strong nadA hit without an exact allele
+NADA_MIN_IDENTITY = None   # None (default) = no exact nadA allele -> '0', like PubMLST's own BAST profiles
 API_ROOT = 'https://rest.pubmlst.org/db/pubmlst_neisseria_seqdef'
 API_TIMEOUT = 300     # seconds without any response (a BLAST on a whole genome can be slow)
 API_RETRIES = 3
@@ -224,6 +225,16 @@ def lookup_designations(kind, loci, data, out_dir):
     return found
 
 
+def nada_is_novel(identity):
+    """True only when the opt-in threshold is set and the best match reaches it."""
+    if NADA_MIN_IDENTITY is None:
+        return False
+    try:
+        return float(identity) >= NADA_MIN_IDENTITY
+    except (TypeError, ValueError):
+        return False
+
+
 def build_profile(data, loci):
     """'2,3,4,3,8,4,6' ; a missing locus is '?' ; everything missing -> '?'."""
     values = [EMPTY_VALUE if is_missing(data.get(locus)) else str(data[locus]) for locus in loci]
@@ -264,6 +275,7 @@ def type_sample(assembly, sample, output_dir, output_filename, split):
         log.info(f'Missing {missing_loci}...')
 
     failed_loci = set()
+    best_identity = {}
     for locus in missing_loci:
         out_file = os.path.join(output_dir, f'{sample}_{locus}.json')
         try:
@@ -278,15 +290,18 @@ def type_sample(assembly, sample, output_dir, output_filename, split):
             log.info(f'Fetched {locus}!')
         elif isinstance(best, dict):
             best_matches[locus] = best.get('allele_id')
+            best_identity[locus] = best.get('identity')
             log.info(f"{locus}: no exact match, best match allele {best.get('allele_id')} "
                      f"(identity {best.get('identity')}%)")
 
-    # 3) NadA without an exact allele (only if PubMLST actually answered):
-    #    - no hit at all          -> "0"  (gene absent; also required to look up the BAST)
-    #    - best match but no exact -> "novel?" (gene probably present, allele not in the database)
+    # 3) NadA without an exact allele (only if PubMLST actually answered) -> "0" (needed to look up the BAST).
+    #    The API also returns weak "best matches" (e.g. paralogous adhesins) that PubMLST does not count as
+    #    nadA: isolates with the same fHbp/NHBA/PorA profile get NadA 0 and a BAST in PubMLST. So a best
+    #    match alone never changes the result. Opt-in: --nada-novel-min-identity N marks "novel?" only when
+    #    the best match has an identity >= N (BAST is then not looked up).
     if (is_missing(data.get('NadA_peptide'))
             and 'bast' not in failed and 'NadA_peptide' not in failed_loci):
-        data['NadA_peptide'] = NADA_NOVEL if 'NadA_peptide' in best_matches else '0'
+        data['NadA_peptide'] = NADA_NOVEL if nada_is_novel(best_identity.get('NadA_peptide')) else '0'
 
     # 4) BAST / MenDeVAR are sometimes missing from the first response -> confirmation request
     if any(is_missing(data.get(column)) for column in BAST_COLUMNS):
@@ -364,6 +379,9 @@ def parse_args():
     parser.add_argument('--api-key-file', default=None,
                         help='Text file containing your personal PubMLST API key '
                              '(else the PUBMLST_API_KEY environment variable is used)')
+    parser.add_argument('--nada-novel-min-identity', type=float, default=None,
+                        help="Opt-in: report NadA as 'novel?' (and skip the BAST lookup) when the best nadA "
+                             "match has at least this %% identity. Default: off (no exact allele -> '0')")
     parser.add_argument('--split', action='store_true', help='Also write one .txt file per column')
     parser.add_argument('--files', help='Deprecated and ignored (kept so existing WDL calls still work)')
     return parser.parse_args()
@@ -394,8 +412,9 @@ def main():
     if not os.path.isfile(args.input):
         sys.exit(f'Input not valid (expected one fasta file): {args.input}')
 
-    global API_KEY
+    global API_KEY, NADA_MIN_IDENTITY
     API_KEY = load_api_key(args.api_key_file)
+    NADA_MIN_IDENTITY = args.nada_novel_min_identity
 
     os.makedirs(args.output_dir, exist_ok=True)
     setup_logging(os.path.join(args.output_dir, args.log_file))
