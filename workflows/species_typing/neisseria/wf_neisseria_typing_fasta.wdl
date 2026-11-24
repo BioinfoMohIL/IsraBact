@@ -28,7 +28,7 @@ workflow wf_neisseria_typing_fasta {
   }
 
   output {
-      File typing_results = typing.typing_results
+      File nt_report = typing.typing_results
       String neisseria_typing_version = typing.version
       String st = typing.st 
       String bast_type = typing.bast_type
