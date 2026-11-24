@@ -22,7 +22,6 @@ workflow wf_neisseria_typing_fasta {
     call nm_typing.neisseria_typing as typing {
       input:
         assembly = assembly_fasta,
-        samplename = samplename
     }
     call nm_typing.serogrouping as serogrouping {
       input:
