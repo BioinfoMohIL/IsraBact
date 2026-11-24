@@ -1,0 +1,455 @@
+version 1.0
+
+# Microbe Decoder (tjhackmann/microbedecoder) in headless mode, after TheiaProk (Bakta or Prokka).
+# The image is an R Shiny app: its code is loaded with initialize_session(),
+# then the same functions as the repo's Plumber API are called.
+
+# ---------------------------------------------------------------------------
+# 1) Proteins: .faa as is, or extracted from a GenBank file (.gbff Bakta / .gbk Prokka)
+# ---------------------------------------------------------------------------
+task prepare_proteins {
+  input {
+    File input_proteins   # .faa (Bakta/Prokka) OR GenBank (.gbff Bakta / .gbk Prokka): format is detected automatically
+    String samplename
+    String ko_annotator   # checked here: "kofamscan" or "eggnog"
+  }
+
+  command <<<
+    set -euo pipefail
+
+    case "~{ko_annotator}" in
+      kofamscan|eggnog) ;;
+      *) echo "ko_annotator must be 'kofamscan' or 'eggnog' (got: ~{ko_annotator})" >&2; exit 1 ;;
+    esac
+
+    IN="~{input_proteins}"
+
+    # Format detection on the first non-empty line: ">" = FASTA, "LOCUS" = GenBank
+    FIRST="$(grep -m1 -v '^[[:space:]]*$' "$IN" || true)"
+
+    if [[ "$FIRST" == ">"* ]]; then
+      cp "$IN" "~{samplename}_proteins.faa"
+    elif [[ "$FIRST" == LOCUS* ]]; then
+      awk '
+        /^     [^ ]/ { incds = ($1 == "CDS"); intrans = 0; if (incds) locus = ""; next }
+        incds && /\/locus_tag=/ { match($0, /"[^"]*"/); locus = substr($0, RSTART + 1, RLENGTH - 2); next }
+        incds && /\/translation="/ {
+          s = $0; sub(/.*\/translation="/, "", s); gsub(/ /, "", s)
+          if (s ~ /"$/) { gsub(/"/, "", s); print ">" locus; print s }
+          else { buf = s; intrans = 1 }
+          next
+        }
+        intrans { s = $0; gsub(/ /, "", s)
+          if (s ~ /"$/) { gsub(/"/, "", s); print ">" locus; print buf s; intrans = 0 }
+          else buf = buf s }
+      ' "$IN" > "~{samplename}_proteins.faa"
+    else
+      echo "Unrecognized format for input_proteins: expected .faa (starts with '>') or GenBank .gbff/.gbk (starts with 'LOCUS')" >&2
+      exit 1
+    fi
+
+    [ -s "~{samplename}_proteins.faa" ] || { echo "No proteins found" >&2; exit 1; }
+    echo "Proteins: $(grep -c '>' "~{samplename}_proteins.faa")"
+  >>>
+
+  output {
+    File proteins = "~{samplename}_proteins.faa"
+  }
+
+  runtime {
+    docker: "ubuntu:22.04"
+    cpu: 1
+    memory: "2 GB"
+    disks: "local-disk 10 SSD"
+    preemptible: 1
+    maxRetries: 1
+  }
+}
+
+# ---------------------------------------------------------------------------
+# 2a) KO annotation with KofamScan (default): KOfam database = profiles.tar.gz + ko_list(.gz)
+#     downloadable from ftp://ftp.genome.jp/pub/db/kofam/
+# ---------------------------------------------------------------------------
+task kofamscan_ko {
+  input {
+    File proteins_faa
+    String samplename
+    File kofam_profiles_tar     # profiles.tar.gz
+    File kofam_ko_list          # ko_list.gz (or uncompressed ko_list)
+  }
+
+  command <<<
+    set -euo pipefail
+
+    mkdir -p kofam
+    tar -xzf "~{kofam_profiles_tar}" -C kofam
+    case "~{kofam_ko_list}" in
+      *.gz) gunzip -c "~{kofam_ko_list}" > kofam/ko_list ;;
+      *)    cp "~{kofam_ko_list}" kofam/ko_list ;;
+    esac
+
+    HAL="$(find kofam -name prokaryote.hal | head -n 1)"
+    [ -n "$HAL" ] || { echo "prokaryote.hal not found in profiles.tar.gz" >&2; exit 1; }
+
+    exec_annotation \
+      -p "$HAL" \
+      -k kofam/ko_list \
+      --cpu 8 \
+      -f mapper \
+      -o kofam_mapper.txt \
+      "~{proteins_faa}"
+
+    # mapper: "gene<TAB>KO" (genes without a KO have only one column)
+    awk -F'\t' -v g="~{samplename}" '$2 ~ /^K[0-9][0-9][0-9][0-9][0-9]$/ { print g "\t" $2 }' kofam_mapper.txt | sort -u > ko_rows.tsv
+
+    [ -s ko_rows.tsv ] || { echo "No KO found" >&2; exit 1; }
+    { printf 'Genome\tKO\n'; cat ko_rows.tsv; } > "~{samplename}_gene_functions.tsv"
+  >>>
+
+  output {
+    File gene_functions_tsv = "~{samplename}_gene_functions.tsv"
+    File kofam_raw = "kofam_mapper.txt"
+  }
+
+  runtime {
+    docker: "quay.io/biocontainers/kofamscan:1.3.0--hdfd78af_2"
+    cpu: 8
+    memory: "16 GB"
+    disks: "local-disk 50 SSD"
+    preemptible: 1
+    maxRetries: 1
+  }
+}
+
+# ---------------------------------------------------------------------------
+# 2b) KO annotation with eggNOG-mapper (option): run on proteins (no prodigal)
+# ---------------------------------------------------------------------------
+task eggnog_ko {
+  input {
+    File proteins_faa
+    String samplename
+    File eggnog_db              # eggnog.db
+    File eggnog_dmnd            # eggnog_proteins.dmnd
+    File eggnog_taxa_db         # eggnog.taxa.db
+  }
+
+  command <<<
+    set -euo pipefail
+
+    mkdir -p eggnog_data out
+    ln -s "~{eggnog_db}" eggnog_data/eggnog.db
+    ln -s "~{eggnog_dmnd}" eggnog_data/eggnog_proteins.dmnd
+    ln -s "~{eggnog_taxa_db}" eggnog_data/eggnog.taxa.db
+
+    emapper.py \
+      -i "~{proteins_faa}" \
+      --itype proteins \
+      -m diamond \
+      --data_dir eggnog_data \
+      --output "~{samplename}" --output_dir out \
+      --cpu 8 --override
+
+    awk -F'\t' -v g="~{samplename}" '
+      /^#query/ { for (i = 1; i <= NF; i++) if ($i == "KEGG_ko") c = i; next }
+      /^#/ { next }
+      c && $c != "-" && $c != "" {
+        n = split($c, a, ",")
+        for (i = 1; i <= n; i++) {
+          k = a[i]; sub(/^ko:/, "", k)
+          if (k ~ /^K[0-9][0-9][0-9][0-9][0-9]$/) print g "\t" k
+        }
+      }' "out/~{samplename}.emapper.annotations" | sort -u > ko_rows.tsv
+
+    [ -s ko_rows.tsv ] || { echo "No KO found" >&2; exit 1; }
+    { printf 'Genome\tKO\n'; cat ko_rows.tsv; } > "~{samplename}_gene_functions.tsv"
+  >>>
+
+  output {
+    File gene_functions_tsv = "~{samplename}_gene_functions.tsv"
+    File emapper_annotations = "out/~{samplename}.emapper.annotations"
+  }
+
+  runtime {
+    docker: "quay.io/biocontainers/eggnog-mapper:2.1.12--pyhdfd78af_0"
+    cpu: 8
+    memory: "32 GB"
+    disks: "local-disk 200 SSD"
+    preemptible: 1
+    maxRetries: 1
+  }
+}
+
+# ---------------------------------------------------------------------------
+# 3) Microbe Decoder - taxonomy (optional): from a species name (GAMBIT)
+# ---------------------------------------------------------------------------
+task microbedecoder_taxonomy {
+  input {
+    String samplename
+    String species_name                 # e.g. gambit_predicted_taxon = "Salmonella enterica"
+    Array[String] traits_to_predict
+    String system_taxonomy              # LPSN, GTDB, NCBI or Bergey
+    Boolean ignore_NA
+    Boolean match_all_ranks
+    Boolean ignore_species
+  }
+
+  command <<<
+    set -euo pipefail
+    OUT="$(pwd)/results"
+    mkdir -p "$OUT"
+
+    # Mini table in DADA2 format: only Genus and Species (epithet) are filled in
+    SPECIES="~{species_name}"
+    GENUS="$(echo "$SPECIES" | awk '{print $1}')"
+    EPITHET="$(echo "$SPECIES" | awk '{print $2}')"
+    case "$EPITHET" in sp*|"") EPITHET="" ;; esac
+    TAXA="$(pwd)/~{samplename}_query_taxa.csv"
+    printf 'Phylum,Class,Order,Family,Genus,Species\n,,,,%s,%s\n' "$GENUS" "$EPITHET" > "$TAXA"
+
+    cat > run_taxonomy.R <<'RSCRIPT'
+    args <- commandArgs(trailingOnly = TRUE)
+    taxa_file <- args[1]; traits_file <- args[2]; system_taxonomy <- args[3]
+    ignore_NA <- as.logical(args[4]); match_all_ranks <- as.logical(args[5])
+    ignore_species <- as.logical(args[6])
+    out_dir <- args[7]; prefix <- args[8]
+
+    setwd("/srv/shiny-server")
+    Sys.setlocale("LC_ALL", "C")
+    source("functions/sessionFunctions.R")
+    initialize_session(app_dir = getwd(), verbose = FALSE)
+
+    write_table <- function(x, path) {
+      df <- tryCatch(as.data.frame(x), error = function(e) NULL)
+      if (is.null(df)) writeLines(capture.output(print(x)), path)
+      else write.table(df, path, sep = "\t", quote = FALSE, row.names = FALSE)
+    }
+
+    traits <- trimws(readLines(traits_file, warn = FALSE))
+    traits <- traits[nzchar(traits)]
+
+    query <- validate_and_read_file(file_path = taxa_file)
+    query[] <- lapply(query, function(x) { x <- trimws(as.character(x)); x[x == ""] <- NA; x })
+    query_taxa <- process_uploaded_taxonomy(query)
+    if (is.null(query_taxa)) stop("Unrecognized taxonomy format.")
+
+    result <- compute_taxonomy_predictions(
+      data              = load_database(),
+      query_taxa        = query_taxa,
+      query_string      = NULL,
+      traits_to_predict = traits,
+      ignore_NA         = ignore_NA,
+      match_all_ranks   = match_all_ranks,
+      ignore_species    = ignore_species,
+      system_taxonomy   = system_taxonomy
+    )
+
+    saveRDS(result, file.path(out_dir, paste0(prefix, "_taxonomy.rds")))
+    write_table(result$probabilities, file.path(out_dir, paste0(prefix, "_taxonomy_predictions.tsv")))
+    RSCRIPT
+
+    Rscript run_taxonomy.R \
+      "$TAXA" \
+      "~{write_lines(traits_to_predict)}" \
+      "~{system_taxonomy}" \
+      "~{ignore_NA}" "~{match_all_ranks}" "~{ignore_species}" \
+      "$OUT" "~{samplename}"
+  >>>
+
+  output {
+    File predictions_tsv = "results/~{samplename}_taxonomy_predictions.tsv"
+    File result_rds = "results/~{samplename}_taxonomy.rds"
+    File query_taxa_csv = "~{samplename}_query_taxa.csv"
+  }
+
+  runtime {
+    docker: "tjhackmann/microbedecoder:latest"
+    cpu: 8
+    memory: "8 GB"
+    disks: "local-disk 30 SSD"
+    preemptible: 1
+    maxRetries: 1
+  }
+}
+
+# ---------------------------------------------------------------------------
+# 4) Microbe Decoder - metabolic networks
+# ---------------------------------------------------------------------------
+task microbedecoder_networks {
+  input {
+    File gene_functions_file
+    String samplename
+
+    String reference_network = "Fermentation of glucose"
+    # Custom network (CSV with columns name, eq, way, ec, ko, md): takes priority over reference_network.
+    # If substrates / products are empty, all metabolites of the network (except cofactors) are tested.
+    File? reference_network_file
+    # If empty (database network only), the defaults of the chosen network are used
+    Array[String] substrates = []
+    Array[String] products = []
+    Array[String] unbalanced_intermediates = []
+    Boolean all_subunits = true
+  }
+
+  command <<<
+    set -euo pipefail
+    OUT="$(pwd)/results"
+    mkdir -p "$OUT"
+
+    cat > run_networks.R <<'RSCRIPT'
+    args <- commandArgs(trailingOnly = TRUE)
+    gf_file <- args[1]; reference_network <- args[2]
+    substrates_file <- args[3]; products_file <- args[4]; unbalanced_file <- args[5]
+    all_subunits <- as.logical(args[6]); out_dir <- args[7]; prefix <- args[8]; ref_file <- args[9]
+
+    setwd("/srv/shiny-server")
+    Sys.setlocale("LC_ALL", "C")
+    source("functions/sessionFunctions.R")
+    initialize_session(app_dir = getwd(), verbose = FALSE)
+
+    write_table <- function(x, path) {
+      df <- tryCatch(as.data.frame(x), error = function(e) NULL)
+      if (is.null(df)) writeLines(capture.output(print(x)), path)
+      else write.table(df, path, sep = "\t", quote = FALSE, row.names = FALSE)
+    }
+    read_lines_clean <- function(f) { x <- trimws(readLines(f, warn = FALSE)); x[nzchar(x)] }
+    custom_network <- nzchar(ref_file)
+    if (custom_network) {
+      ref_net <- validate_reference_network(validate_and_read_file(file_path = ref_file))
+      if (!is.data.frame(ref_net)) stop("Invalid reference network: required columns are name, eq, way, ec, ko, md.")
+    } else {
+      ref_net <- get_reference_network_from_database(reference_network)
+    }
+    # Cofactors: database defaults (for a custom network: those of "Fermentation of glucose")
+    unbalanced <- read_lines_clean(unbalanced_file)
+    if (length(unbalanced) == 0) {
+      unbalanced <- get_metabolite_selections(
+        selected_network = if (custom_network) "Fermentation of glucose" else reference_network,
+        metabolite_col = "default_unbalanced_intermediates")
+    }
+    # Custom network without substrates/products: all metabolites of the network (except cofactors)
+    all_metabolites <- character(0)
+    if (custom_network) {
+      all_metabolites <- setdiff(unique(get_metabolite_names(ref_net$eq)), unbalanced)
+    }
+    pick <- function(f, col) {
+      x <- read_lines_clean(f)
+      if (length(x) > 0) return(x)
+      if (custom_network) return(all_metabolites)
+      get_metabolite_selections(selected_network = reference_network, metabolite_col = col)
+    }
+
+    gene_functions <- process_uploaded_gene_functions(validate_and_read_file(file_path = gf_file))
+    if (is.null(gene_functions)) stop("Unrecognized gene functions format.")
+
+    result <- compute_network_predictions(
+      reference_network        = ref_net,
+      gene_functions           = gene_functions,
+      substrates               = pick(substrates_file, "default_substrates"),
+      products                 = pick(products_file, "default_products"),
+      unbalanced_intermediates = unbalanced,
+      all_subunits             = all_subunits
+    )
+
+    saveRDS(result, file.path(out_dir, paste0(prefix, "_networks.rds")))
+    write_table(result$fluxes, file.path(out_dir, paste0(prefix, "_networks_fluxes.tsv")))
+    if (is.data.frame(result$reaction_table)) {
+      write_table(result$reaction_table, file.path(out_dir, paste0(prefix, "_networks_reactions.tsv")))
+    }
+    RSCRIPT
+
+    Rscript run_networks.R \
+      "~{gene_functions_file}" \
+      "~{reference_network}" \
+      "~{write_lines(substrates)}" \
+      "~{write_lines(products)}" \
+      "~{write_lines(unbalanced_intermediates)}" \
+      "~{all_subunits}" \
+      "$OUT" "~{samplename}" \
+      "~{default="" reference_network_file}"
+  >>>
+
+  output {
+    File fluxes_tsv = "results/~{samplename}_networks_fluxes.tsv"
+    File result_rds = "results/~{samplename}_networks.rds"
+    Array[File] extra_results = glob("results/*_networks_reactions.tsv")
+  }
+
+  runtime {
+    docker: "tjhackmann/microbedecoder:latest"
+    cpu: 8
+    memory: "16 GB"
+    disks: "local-disk 30 SSD"
+    preemptible: 1
+    maxRetries: 1
+  }
+}
+
+# ---------------------------------------------------------------------------
+# 5) Microbe Decoder - machine learning
+# ---------------------------------------------------------------------------
+task microbedecoder_ml {
+  input {
+    File gene_functions_file
+    String samplename
+    # Exact model names, e.g. "Fermentation (type of metabolism)", "Anaerobe (oxygen tolerance)"
+    Array[String] model_names
+  }
+
+  command <<<
+    set -euo pipefail
+    OUT="$(pwd)/results"
+    mkdir -p "$OUT"
+
+    cat > run_ml.R <<'RSCRIPT'
+    args <- commandArgs(trailingOnly = TRUE)
+    gf_file <- args[1]; models_file <- args[2]
+    out_dir <- args[3]; prefix <- args[4]
+
+    setwd("/srv/shiny-server")
+    Sys.setlocale("LC_ALL", "C")
+    source("functions/sessionFunctions.R")
+    initialize_session(app_dir = getwd(), verbose = FALSE)
+
+    write_table <- function(x, path) {
+      df <- tryCatch(as.data.frame(x), error = function(e) NULL)
+      if (is.null(df)) writeLines(capture.output(print(x)), path)
+      else write.table(df, path, sep = "\t", quote = FALSE, row.names = FALSE)
+    }
+    read_lines_clean <- function(f) { x <- trimws(readLines(f, warn = FALSE)); x[nzchar(x)] }
+
+    model_names <- read_lines_clean(models_file)
+    gene_functions <- process_uploaded_gene_functions(validate_and_read_file(file_path = gf_file))
+    if (is.null(gene_functions)) stop("Unrecognized gene functions format.")
+
+    model_paths <- get_model_paths_from_database(model_names, model_path_config = model_path_config)
+
+    result <- compute_ml_predictions(
+      df = gene_functions, model_names = model_names, model_paths = model_paths,
+      response = NULL, predictors = NULL, seed = NULL, ntree = NULL, maxnodes = NULL,
+      positive_class_weight = NULL, training_split = NULL, keep_models = FALSE
+    )
+
+    saveRDS(result, file.path(out_dir, paste0(prefix, "_ml.rds")))
+    write_table(result$probabilities, file.path(out_dir, paste0(prefix, "_ml_predictions.tsv")))
+    RSCRIPT
+
+    Rscript run_ml.R \
+      "~{gene_functions_file}" \
+      "~{write_lines(model_names)}" \
+      "$OUT" "~{samplename}"
+  >>>
+
+  output {
+    File predictions_tsv = "results/~{samplename}_ml_predictions.tsv"
+    File result_rds = "results/~{samplename}_ml.rds"
+  }
+
+  runtime {
+    docker: "tjhackmann/microbedecoder:latest"
+    cpu: 8
+    memory: "16 GB"
+    disks: "local-disk 30 SSD"
+    preemptible: 1
+    maxRetries: 1
+  }
+}
