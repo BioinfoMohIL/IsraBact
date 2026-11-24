@@ -19,13 +19,7 @@ workflow wf_neisseria_typing_reads {
 		File read2  
         String pubmlst_api_key
         File? reference
-		# If nextseq lanes
-        # File? read1_lane2
-        # File? read1_lane3
-        # File? read1_lane4
-        # File? read2_lane2
-        # File? read2_lane3
-        # File? read2_lane4
+	
 
 		# Int? genome_length
 
@@ -35,21 +29,6 @@ workflow wf_neisseria_typing_reads {
         Int trim_window_size = 10
 
 	}
-
-	# if (defined(read1_lane2)) {
-    #     call concatenate_lanes_workflow.concatenate_illumina_lanes {
-    #     input:
-    #         samplename = samplename,
-    #         read1_lane1 = read1,
-    #         read1_lane2 = select_first([read1_lane2]),
-    #         read1_lane3 = read1_lane3,
-    #         read1_lane4 = read1_lane4,
-    #         read2_lane1 = read2,
-    #         read2_lane2 = read2_lane2,
-    #         read2_lane3 = read2_lane3,
-    #         read2_lane4 = read2_lane4
-    #     }
-    # }
 
 	call read_QC.read_QC_trim_pe as read_QC_trim {
 		input:
@@ -71,23 +50,7 @@ workflow wf_neisseria_typing_reads {
             reference = reference
 	}
 
-	# call cg.cg_pipeline as cg_pipeline_raw {
-	# 	input:
-	# 		read1 = select_first([concatenate_illumina_lanes.read1_concatenated, read1]),
-	# 		read2 = select_first([concatenate_illumina_lanes.read2_concatenated, read2]),
-	# 		samplename = samplename,
-	# 		genome_length = select_first([genome_length, assembly.assembly_length])
-	# }
-
-	# call cg.cg_pipeline as cg_pipeline_clean {
-	# 	input:
-	# 		read1 = read_QC_trim.read1_clean,
-	# 		read2 = read_QC_trim.read2_clean,
-	# 		samplename = samplename,
-	# 		genome_length = select_first([genome_length, assembly.assembly_length])
-	# }
-
-
+	
     call nm_typing.neisseria_typing as typing {
 		input:
 			assembly = assembly.assembly_fasta,

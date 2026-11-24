@@ -1,5 +1,6 @@
 {
   "wf_neisseria_typing_reads.read1":"data/NM247_S122_L001_R1_001.fastq.gz",
   "wf_neisseria_typing_reads.read2":"data/NM247_S122_L001_R2_001.fastq.gz",
-  "wf_neisseria_typing_reads.samplename":"NM247"
+  "wf_neisseria_typing_reads.samplename":"NM247",
+  "wf_neisseria_typing_reads.pubmlst_api_key":"5QYwRph5OOOdeUsbtz7xfmC1RvT5hyWNf84Gjgve3Lw0SLGeFzHPDXzUIimPaT2j"
 }

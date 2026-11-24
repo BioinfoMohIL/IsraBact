@@ -1,6 +1,4 @@
 {
-  "wf_campycarba.assembly_fasta": "data/SRR_R.fasta",
-  "wf_campycarba.samplename": "SRR_R",
-  "wf_campycarba.species": "jejuni"
-
+  "wf_neisseria_typing_fasta.assembly_fasta":"data/NM247_filtered_contigs.fasta",
+  "wf_neisseria_typing_fasta.samplename":"NM247"
 }
