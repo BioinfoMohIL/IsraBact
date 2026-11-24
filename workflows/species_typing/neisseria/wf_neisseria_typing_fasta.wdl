@@ -33,7 +33,7 @@ workflow wf_neisseria_typing_fasta {
       String st = typing.st 
       String bast_type = typing.bast_type
       String clonal_complex = typing.clonal_complex
-      String mendevar_bexsero_reactivity  = typing.be_reactivity      
+      String mendevar_bexsero_reactivity  = typing.bexsero_cross_reactivity      
       String mendevar_trumenba_reactivity = typing.trumenba_cross_reactivity
       String FetA_VR = typing.FetA_VR
       String fHbp_peptide = typing.fHbp_peptide

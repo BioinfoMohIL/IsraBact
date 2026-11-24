@@ -1,6 +1,6 @@
 {
-  "wf_neisseria_typing_fasta.assembly_fasta":"data/NM245_filtered_contigs.fasta",
-  "wf_neisseria_typing_fasta.samplename":"NM245",
+  "wf_neisseria_typing_fasta.assembly_fasta":"data/NM247_filtered_contigs.fasta",
+  "wf_neisseria_typing_fasta.samplename":"NM247",
   "wf_neisseria_typing_fasta.pubmlst_api_key":"5QYwRph5OOOdeUsbtz7xfmC1RvT5hyWNf84Gjgve3Lw0SLGeFzHPDXzUIimPaT2j"
 
 }
