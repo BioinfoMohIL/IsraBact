@@ -10,7 +10,7 @@ task meningotype {
     File assembly
     String samplename
 
-    String docker = "bioinfomoh/meningotype:1.0"
+    String docker = "bioinfomoh/meningotype:1.1"
 
     Int disk_size = 100
     Int cpu = 8
