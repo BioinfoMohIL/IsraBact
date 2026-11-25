@@ -1,6 +1,6 @@
 version 1.0
 
-import "../../../tasks/species_typing/neisseria/neisseria_typing.wdl" as nm_typing
+import "../../../tasks/species_typing/neisseria/task_neisseria_typing.wdl" as nm_typing
 import "../../utilities/wf_assembly.wdl" as deno_assembly
 import "../../utilities/wf_read_qc_trim_pe.wdl" as read_QC
 # import "../../../tasks/quality_control/read/task_cg_pipeline.wdl" as cg
@@ -54,7 +54,8 @@ workflow wf_neisseria_typing_reads {
     call nm_typing.neisseria_typing as typing {
 		input:
 			assembly = assembly.assembly_fasta,
-            pubmlst_api_key = pubmlst_api_key
+            pubmlst_api_key = pubmlst_api_key,
+            samplename = samplename
     }
 
     call nm_typing.serogrouping as serogrouping {
@@ -144,7 +145,9 @@ workflow wf_neisseria_typing_reads {
 
         String serogroup = serogrouping.serogroup
         String genogroup = serogrouping.genogroup
-  
+
+        File? nt_api_raw_results = typing.api_json_tar
+        File? nt_logs = typing.logs
         File? nt_loci_best_matches = typing.best_matches_tar
 
         String mlst_profile        = typing.mlst_profile

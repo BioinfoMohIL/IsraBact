@@ -363,6 +363,51 @@
   .step[data-c="amber"] .tag{background:var(--amber-soft); color:#8A5A1E;}
   .step[data-c="violet"] .tag{background:var(--violet-soft); color:#4E3579;}
 
+
+  /* ---------- Source dropdown ---------- */
+
+  .source-select{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    margin:4px 0 18px;
+    max-width:460px;
+  }
+
+  .source-select label{
+    font-family:var(--mono);
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+
+  .source-select select{
+    font-family:var(--body);
+    font-size:0.92rem;
+    font-weight:500;
+    color:var(--ink);
+    background:var(--surface);
+    border:1px solid var(--blue);
+    border-radius:8px;
+    padding:10px 14px;
+    cursor:pointer;
+  }
+
+  .source-select select:focus{outline:2px solid var(--blue-soft); outline-offset:1px;}
+
+  .source-panel[hidden]{display:none;}
+
+  .source-panel .sub{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:0.95rem;
+    color:var(--ink);
+    margin:18px 0 6px;
+  }
+
+  .source-panel pre{margin:8px 0 14px; padding-right:110px;}
+
   .launch{
     display:inline-flex;
     align-items:center;
@@ -525,12 +570,40 @@
           <div>
             <span class="tag">Import reads</span>
             <h3>Get sequencing reads into the workspace</h3>
-            <p>Species detection needs FASTQ files already present in the Terra workspace. If they aren't there yet:</p>
-            <ol>
-              <li>Run the <strong>Basespace_Fetcher_MOH</strong> workflow.</li>
-              <li>Wait until FASTQ files are successfully imported.</li>
-              <li>Open the Terra workspace Data table.</li>
-            </ol>
+
+            <div class="source-select">
+              <label for="reads-source">Where do your reads come from?</label>
+              <select id="reads-source">
+                <option value="local">Our local sequencing Data directory - Public</option>
+                <option value="basespace">BaseSpace</option>
+              </select>
+            </div>
+
+            <div class="source-panel" id="panel-local">
+              <div class="sub">1. Prepare the table for Terra</div>
+              <ol>
+                <li>Launch <code>generate_seq_table_PUBLIC</code> by double-clicking on <code>generate_seq_table_PUBLIC.bat</code>, located here:
+                  <pre><span class="path-line">I:\Molecular Lab\Bioinformatics-David\scripts\terra\create_terra_seq_data_table</span><button class="copy-btn" data-copy="I:\Molecular Lab\Bioinformatics-David\scripts\terra\create_terra_seq_data_table" onclick="copyText(this,this.dataset.copy)">Copy path</button></pre>
+                </li>
+                <li>Fill in the form and select your reads files.</li>
+                <li>Finally, click the button <strong>"Generate Terra TSV"</strong>.</li>
+              </ol>
+
+              <div class="sub">2. Upload the table to Terra</div>
+              <ol>
+                <li>In your workspace, go to <strong>Data &gt; Import Data &gt; Upload TSV</strong>.</li>
+                <li>Check that the table was successfully uploaded, then go to the next step.</li>
+              </ol>
+            </div>
+
+            <div class="source-panel" id="panel-basespace" hidden>
+              <p>Species detection needs FASTQ files already present in the Terra workspace. If they aren't there yet:</p>
+              <ol>
+                <li>Run the <strong>Basespace_Fetcher_MOH</strong> workflow.</li>
+                <li>Wait until FASTQ files are successfully imported.</li>
+                <li>Open the Terra workspace Data table.</li>
+              </ol>
+            </div>
           </div>
         </div>
 
@@ -546,7 +619,10 @@
           <div>
             <span class="tag">Configure</span>
             <h3>Select samples and configure inputs</h3>
-            <p>From the Data table, select the samples to analyze. The default sample identifier is <code>tmp_id</code>.</p>
+            <ol>
+              <li>Select the imported <a href="https://dockstore.org/workflows/github.com/BioinfoMohIL/IsraBact/Species_Detection_PerSample_MOH:main?tab=info">Species_Detection_PerSample_MOH</a> workflow.</li>
+              <li>From the Data table, select the samples to analyze. The default sample identifier is <code>tmp_id</code>.</li>
+            </ol>
             <table>
               <tr><th>Workflow input</th><th>Description</th></tr>
               <tr><td><code>read1</code></td><td>Forward paired-end FASTQ file (R1)</td></tr>
@@ -694,6 +770,17 @@
       setTimeout(function(){ btn.textContent = original; }, 1500);
     });
   }
+
+  (function(){
+    var sel = document.getElementById('reads-source');
+    if(!sel) return;
+    function update(){
+      document.getElementById('panel-local').hidden = sel.value !== 'local';
+      document.getElementById('panel-basespace').hidden = sel.value !== 'basespace';
+    }
+    sel.addEventListener('change', update);
+    update();
+  })();
 
   (function(){
     var links = document.querySelectorAll('nav.toc a');

@@ -4,13 +4,14 @@ task neisseria_typing {
     input {
         File assembly
         String pubmlst_api_key = ""
+        String samplename
 
     }
     
     command <<<
         mkdir results
 
-        echo "NeisseriaTyping v1.2" > VERSION
+        echo "NeisseriaTyping v1.5" > VERSION
         date +%Y-%m-%d > DATE
 
         val=("st" "cc" "FetA_VR" "bast_type" "fHbp_peptide" "NHBA_peptide" "NadA_peptide" "PorA_VR1" "PorA_VR2" "abcZ" "adk" "aroE" "fumC" "gdh" "pdhC" "pgm" "bexsero_cross_reactivity" "trumenba_cross_reactivity")
@@ -20,7 +21,7 @@ task neisseria_typing {
 
         export PUBMLST_API_KEY='~{pubmlst_api_key}'
 
-        neisseria_typing --input ~{assembly} --output results --output_csv_file typing_report.csv --files "$files_arg" --split
+        neisseria_typing --input ~{assembly} --sample ~{samplename} --output results --output_csv_file typing_report.csv --files "$files_arg" --split
         echo "Exit code: $?"
 
         if ls *_best_matches.csv 1> /dev/null 2>&1; then
@@ -33,7 +34,9 @@ task neisseria_typing {
         String version = read_string("VERSION")
         String date = read_string("DATE")
         File typing_results = 'results/typing_report.csv'
+        File? api_json_tar = "results/~{samplename}_api_json.tar.gz"
         File? best_matches_tar = "best_matches.tar.gz"
+        File? logs = "results/~{samplename}_logs.txt"
 
         String fHbp_peptide = read_string("results/fHbp_peptide.txt")
         String NHBA_peptide = read_string("results/NHBA_peptide.txt") 
@@ -62,7 +65,7 @@ task neisseria_typing {
     }
 
     runtime {
-        docker: "bioinfomoh/neisseria_typing:1.2"
+        docker: "bioinfomoh/neisseria_typing:1.5"
         memory: "8 GB"
         maxRetries: 1
 

@@ -1,6 +1,6 @@
 version 1.0
 
-import "../../../tasks/species_typing/neisseria/neisseria_typing.wdl" as nm_typing
+import "../../../tasks/species_typing/neisseria/task_neisseria_typing.wdl" as nm_typing
 
 workflow wf_neisseria_typing_fasta {
   meta {
@@ -17,8 +17,8 @@ workflow wf_neisseria_typing_fasta {
   call nm_typing.neisseria_typing as typing {
     input:
       assembly = assembly_fasta,
-      pubmlst_api_key = pubmlst_api_key
-
+      pubmlst_api_key = pubmlst_api_key,
+      samplename = samplename
   }
 
   call nm_typing.serogrouping as serogrouping {
@@ -28,8 +28,13 @@ workflow wf_neisseria_typing_fasta {
   }
 
   output {
-      File nt_report = typing.typing_results
       String neisseria_typing_version = typing.version
+      String neisseria_typing_date = typing.date
+      File nt_report = typing.typing_results
+      File? nt_api_raw_results = typing.api_json_tar
+      File? nt_logs = typing.logs
+
+
       String st = typing.st 
       String bast_type = typing.bast_type
       String clonal_complex = typing.clonal_complex
