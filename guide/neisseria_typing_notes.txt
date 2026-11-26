@@ -1,0 +1,114 @@
+NEISSERIA MENINGITIDIS TYPING (PubMLST API) - RULES APPLIED BY THE CODE
+Updated 25 November 2026
+
+The rules below follow guidance given by email by Dr Keith Jolley, curator
+of PubMLST, between 23 and 25 November 2026. They are our reading of that
+guidance, not an official PubMLST statement.
+
+
+1. HOW TO READ THE VALUES
+
+  2, 5-3, F3-6   Exact allele found in PubMLST.
+  0              NadA only. Null allele: PubMLST found no nadA in the
+                 assembly, even with its low-stringency search (50%
+                 identity over 30% of the alignment length). The gene is
+                 absent as far as can be told.
+  novel          NadA only. Closest match with at least 90% protein
+                 identity but not an exact allele: probably a new variant.
+                 The BAST is not assigned.
+  new            Sequence type only. The 7 MLST alleles are exact but
+                 PubMLST has no ST for that combination.
+  ?              PubMLST answered but found nothing usable.
+  api_error      PubMLST could not be queried (HTTP error, timeout,
+                 network). Open the log (nt_logs) for the error type and
+                 rerun the sample.
+
+
+2. NADA PEPTIDE
+
+  a) The BAST answer is trusted first. When PubMLST finds no nadA at all,
+     its BAST answer already contains NadA_peptide = 0. The code keeps it
+     and sends no further NadA query.
+  b) If NadA is missing from that answer, the NadA locus is queried alone:
+       - exact match                            -> that allele
+       - closest match, >= 90% protein identity -> novel
+       - anything weaker, or nothing            -> 0
+  c) A novel NadA stops the BAST: bast_type and the two MenDeVAR columns
+     stay "?". The closest BAST is never reported.
+  d) If PubMLST cannot be reached, the value is api_error, never 0.
+
+
+3. WHY 90% PROTEIN IDENTITY
+
+  PubMLST holds sequences for a very large number of NadA variants, so a
+  new one is likely to differ by only one or two amino acids from its
+  closest match. A real NadA should therefore score well above 90%.
+
+  DNA and protein identities cannot be compared directly: with 4 DNA bases,
+  25% identity is expected by chance; with 20 amino acids, 28% is a
+  stronger signal but still not convincing.
+
+  Example (one of our samples): the NadA locus query returned a best match
+  of 27.96% identity (119 mismatches, 8 gaps). Far below 90%, so NadA = 0.
+  The BAST answer agreed (NadA 0, BAST 4928).
+
+  The 90% default comes from Dr Jolley's wording ("well over 90%"). It can
+  be changed in the script with --nada-novel-min-identity.
+
+
+4. BAST AND MENDEVAR
+
+  Only an exact BAST is reported. The closest BAST is never reported: if a
+  predicted reactivity rests on one protein variant and the closest match
+  differs exactly at that variant, the two would have completely different
+  reactivities. MenDeVAR values come with the BAST.
+
+
+5. OTHER LOCI (fHbp, NHBA, PorA, FetA, MLST)
+
+  An allele without an exact match stays "?". The guidance above was given
+  for NadA, so weak hits are not turned into "novel" or "0" for other loci.
+
+
+6. NEW SEQUENCE TYPES
+
+  "new" is written only when all 7 MLST alleles are exact and PubMLST
+  confirms it has no ST for that combination. If an allele is missing, the
+  ST stays "?".
+
+
+7. SUMMARY COLUMNS
+
+  Every locus is named, so a row can be read at a glance:
+    mlst_profile        abcZ:2,adk:3,aroE:4,fumC:3,gdh:8,pdhC:4,pgm:6
+    bast_profile        fHbp_peptide:16,NHBA_peptide:20,NadA_peptide:0,
+                        PorA_VR1:5-3,PorA_VR2:10-4
+    finetyping_profile  PorA_VR1:5-3,PorA_VR2:10-4,FetA_VR:F3-6
+  A missing locus is written adk:? or adk:api_error, never left out.
+
+
+8. BEING CONSIDERATE TO PUBMLST
+
+  - Every request carries the personal API key, so PubMLST knows who is
+    querying. The key is stored in the Terra workspace data as
+    pubmlst_api_key.
+  - Run ONE sample at a time (Dr Jolley asked for sequential queries: each
+    one runs a BLAST search on the server, up to 8 cores). Terra starts all
+    selected rows in parallel, so select a single row per submission.
+  - Within a sample, queries run one after another. Network errors, server
+    errors (5xx) and rate limiting (429) are retried up to 3 times with
+    growing pauses.
+  - An authentication error (401 or 403) stops the remaining queries at
+    once and all values become api_error. Other client errors (404, 451...)
+    are reported immediately, without retries.
+  - Longer term, Dr Jolley suggests typing against locally downloaded
+    databases, which does not depend on a remote service being available.
+
+
+9. TRACEABILITY
+
+  nt_logs              Steps of the run, each failed query with its error
+                       type, and a summary of the columns set to api_error.
+  nt_api_raw_results   Archive of the raw PubMLST responses (including the
+                       body of error responses), named with the sample name.
+  nt_loci_best_matches Closest match for loci without an exact allele.

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Species Detection Per Sample — Terra Workflow Guide</title>
+<title>Species Detection Per Sample &#8212; Terra Workflow Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -408,6 +408,8 @@
 
   .source-panel pre{margin:8px 0 14px; padding-right:110px;}
 
+  .ico{vertical-align:-4px; margin-right:6px; color:var(--teal);}
+
   .launch{
     display:inline-flex;
     align-items:center;
@@ -422,7 +424,7 @@
     letter-spacing:0.01em;
   }
 
-  .launch::before{content:"▶"; font-size:0.7em;}
+  .launch::before{content:"\25B6"; font-size:0.7em;}
 
   /* ---------- Tree diagram ---------- */
 
@@ -505,7 +507,7 @@
 
   <nav class="toc">
     <div class="toc-brand">BioinfoMohIL / Terra guide</div>
-    <div class="toc-lineage"><b>Kingdom</b> Workflow ▸ <b>Phylum</b> Terra ▸ <b>Class</b> WDL ▸ <b>Species</b> Kraken2</div>
+    <div class="toc-lineage"><b>Kingdom</b> Workflow &#9656; <b>Phylum</b> Terra &#9656; <b>Class</b> WDL &#9656; <b>Species</b> Kraken2</div>
     <ul>
       <li><a href="#quick-start" class="dot"><span class="dot"></span>Quick start</a></li>
       <li><a href="#workflow-description"><span class="dot"></span>Workflow description</a></li>
@@ -522,19 +524,19 @@
   <main>
 
     <header class="hero">
-      <div class="eyebrow">Terra · WDL · Kraken2</div>
+      <div class="eyebrow">Terra &#183; WDL &#183; Kraken2</div>
       <h1>Species Detection Per Sample</h1>
       <p class="lede">
-        Reference guide for running <strong>Species_Detection_PerSample_MOH</strong> on Terra —
+        Reference guide for running <strong>Species_Detection_PerSample_MOH</strong> on Terra &#8212;
         Kraken2-based taxonomic classification of sequencing reads, from BaseSpace import to detected species.
       </p>
       <div class="lineage-chip">
-        <b>read1 + read2</b><span class="sep">→</span><b>Kraken2 2.17.1</b><span class="sep">→</span><b>kraken2_species_detected</b>
+        <b>read1 + read2</b><span class="sep">&#8594;</span><b>Kraken2 2.17.1</b><span class="sep">&#8594;</span><b>kraken2_species_detected</b>
       </div>
     </header>
 
     <section id="quick-start">
-      <div class="section-head"><h2>🧬 Quick start</h2><div class="ruler"></div></div>
+      <div class="section-head"><h2><svg class="ico" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M7 3c0 6 10 6 10 12s-10 6-10 6"/><path d="M17 3c0 6-10 6-10 12s10 6 10 6"/><path d="M8.5 7h7M8.5 17h7M7.5 12h9"/></svg> Quick start</h2><div class="ruler"></div></div>
 
       <div class="steps">
 
@@ -731,7 +733,7 @@
     </section>
 
     <section id="troubleshooting">
-      <div class="section-head"><h2>⚠️ Troubleshooting</h2><div class="ruler"></div></div>
+      <div class="section-head"><h2><svg class="ico" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 21h20L12 3z"/><path d="M12 10v5M12 18h.01"/></svg> Troubleshooting</h2><div class="ruler"></div></div>
       <div class="box warning">
         <h3 style="margin-top:0;">Kraken database error</h3>
         <p>If Kraken2 reports:</p>
@@ -739,10 +741,10 @@
         <p>The database directory is incorrect. The folder provided to Kraken2 must contain:</p>
         <div class="filetree">
 <span class="dir">kraken_db/</span>
-└── <span class="dir">minikraken2_v2_8GB_201904_UPDATE/</span>
-&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="leaf">hash.k2d</span>
-&nbsp;&nbsp;&nbsp;&nbsp;├── <span class="leaf">taxo.k2d</span>
-&nbsp;&nbsp;&nbsp;&nbsp;└── <span class="leaf">opts.k2d</span>
+&#9492;&#9472;&#9472; <span class="dir">minikraken2_v2_8GB_201904_UPDATE/</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="leaf">hash.k2d</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&#9500;&#9472;&#9472; <span class="leaf">taxo.k2d</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&#9492;&#9472;&#9472; <span class="leaf">opts.k2d</span>
         </div>
       </div>
     </section>
@@ -755,7 +757,7 @@
     </section>
 
     <footer>
-      Maintained by BioinfoMohIL — Terra / WDL Kraken2 Species Detection Pipeline
+      Maintained by BioinfoMohIL &#8212; Terra / WDL Kraken2 Species Detection Pipeline
     </footer>
 
   </main>

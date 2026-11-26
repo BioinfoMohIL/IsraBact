@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typing Neisseria meningitidis on Terra</title>
+<style>
+  :root {
+    --paper: #fbfaff;
+    --surface: #f3f0fb;
+    --ink: #20173f;
+    --muted: #5d5680;
+    --line: #e1dbf2;
+    --violet: #4a35a0;
+    --safranin: #c2285f;
+    --safranin-soft: #fbe4ee;
+    --violet-soft: #e9e4fa;
+    --green-soft: #dcf2e9;
+    --green-ink: #145c43;
+    --grey-soft: #ebe9f1;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #140f26;
+      --surface: #1d1738;
+      --ink: #ece8fb;
+      --muted: #a79fcb;
+      --line: #2e2652;
+      --violet: #b6a8ff;
+      --safranin: #ff7fab;
+      --safranin-soft: #3a1830;
+      --violet-soft: #2a2250;
+      --green-soft: #12332a;
+      --green-ink: #7fe0b8;
+      --grey-soft: #292443;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #140f26; --surface: #1d1738; --ink: #ece8fb; --muted: #a79fcb; --line: #2e2652;
+    --violet: #b6a8ff; --safranin: #ff7fab; --safranin-soft: #3a1830; --violet-soft: #2a2250;
+    --green-soft: #12332a; --green-ink: #7fe0b8; --grey-soft: #292443;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 1rem/1.65 var(--sans);
+  }
+  .page { max-width: 52rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+
+  /* ---------- masthead ---------- */
+  .masthead { display: flex; gap: 1.5rem; align-items: center; padding-bottom: 2rem; border-bottom: 1px solid var(--line); }
+  .masthead svg { flex: none; width: 5.5rem; height: auto; }
+  h1 { font: 600 clamp(1.9rem, 5vw, 2.7rem)/1.12 var(--serif); letter-spacing: -0.01em; margin: 0 0 0.6rem; }
+  .lede { margin: 0; color: var(--muted); max-width: 40rem; }
+
+  .jump { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; margin: 1.1rem 0 0; padding: 0; list-style: none; font-size: 0.95rem; }
+  .jump a { color: var(--violet); text-decoration: underline; text-underline-offset: 3px; }
+
+  h2 { font: 600 1.55rem/1.2 var(--serif); margin: 3rem 0 0.9rem; }
+  h3 { font: 600 1.1rem/1.3 var(--sans); margin: 1.7rem 0 0.4rem; }
+  p { margin: 0.6rem 0; }
+  a { color: var(--violet); }
+  code {
+    font: 0.88em var(--mono);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.08em 0.38em;
+    overflow-wrap: anywhere;
+  }
+  :focus-visible { outline: 3px solid var(--safranin); outline-offset: 2px; border-radius: 3px; }
+
+  /* ---------- before you run ---------- */
+  .before { margin: 0; padding: 0; list-style: none; }
+  .before li { padding: 1rem 0; border-top: 1px solid var(--line); }
+  .before li:last-child { border-bottom: 1px solid var(--line); }
+  .before strong { display: block; font: 600 1.05rem/1.3 var(--serif); margin-bottom: 0.15rem; }
+  .before p { margin: 0.15rem 0 0; }
+
+  /* ---------- workflow dropdowns ---------- */
+  details.wf { border: 1px solid var(--line); border-radius: 12px; margin: 0.9rem 0; background: var(--paper); }
+  details.wf > summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.05rem 1.25rem;
+    border-radius: 12px;
+  }
+  details.wf > summary::-webkit-details-marker { display: none; }
+  details.wf > summary::after {
+    content: "";
+    flex: none;
+    margin-left: auto;
+    width: 0.6rem; height: 0.6rem;
+    border-right: 2px solid var(--muted);
+    border-bottom: 2px solid var(--muted);
+    transform: rotate(45deg);
+    transition: transform 0.18s ease;
+  }
+  details.wf[open] > summary::after { transform: rotate(-135deg); }
+  details.wf[open] > summary { background: var(--surface); border-bottom: 1px solid var(--line); border-radius: 12px 12px 0 0; }
+  .wf-name { font: 600 1.02rem/1.3 var(--mono); color: var(--violet); overflow-wrap: anywhere; }
+  .wf-sub { display: block; color: var(--muted); font-size: 0.93rem; margin-top: 0.1rem; font-family: var(--sans); font-weight: 400; }
+  .wf-body { padding: 0.4rem 1.25rem 1.3rem; }
+  .wf-body h4 { font: 600 0.98rem/1.3 var(--sans); margin: 1.4rem 0 0.4rem; }
+  .wf-body ol, .wf-body ul { margin: 0.4rem 0; padding-left: 1.3rem; }
+  .wf-body li { margin: 0.25rem 0; }
+  @media (prefers-reduced-motion: reduce) { details.wf > summary::after { transition: none; } }
+
+  /* ---------- tables ---------- */
+  .table-wrap { overflow-x: auto; margin: 0.6rem 0 0.2rem; border: 1px solid var(--line); border-radius: 8px; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.93rem; min-width: 30rem; }
+  th, td { text-align: left; vertical-align: top; padding: 0.55rem 0.8rem; border-bottom: 1px solid var(--line); }
+  th { background: var(--surface); font-weight: 600; }
+  tr:last-child td { border-bottom: 0; }
+  td:first-child { white-space: nowrap; }
+
+  /* ---------- value pills ---------- */
+  .pill {
+    display: inline-block;
+    font: 600 0.88rem/1.4 var(--mono);
+    padding: 0.05rem 0.55rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .p-exact { background: var(--green-soft); color: var(--green-ink); }
+  .p-zero  { background: var(--grey-soft); color: var(--ink); }
+  .p-novel { background: var(--violet-soft); color: var(--violet); }
+  .p-error { background: var(--safranin-soft); color: var(--safranin); }
+  .p-unk   { background: var(--grey-soft); color: var(--muted); }
+
+  /* ---------- NadA decision path ---------- */
+  .path { list-style: none; margin: 1rem 0; padding: 0 0 0 1.4rem; border-left: 3px solid var(--violet-soft); }
+  .path li { position: relative; padding: 0 0 1.25rem 1rem; }
+  .path li::before {
+    content: ""; position: absolute; left: -1.4rem; top: 0.5rem; transform: translateX(-50%);
+    width: 0.8rem; height: 0.8rem; border-radius: 50%; background: var(--violet); box-shadow: 0 0 0 4px var(--paper);
+  }
+  .path li:last-child { padding-bottom: 0; }
+  .path strong { display: block; font: 600 1.02rem/1.35 var(--serif); }
+  .path p { margin: 0.2rem 0; }
+  .outcomes { display: flex; flex-wrap: wrap; gap: 0.5rem 0.9rem; margin: 0.5rem 0 0; padding: 0; list-style: none; }
+  .outcomes li { padding: 0; }
+  .outcomes li::before { content: none; }
+  .outcomes span.why { color: var(--muted); font-size: 0.92rem; }
+
+  .note {
+    margin: 1.2rem 0;
+    padding: 0.9rem 1.1rem;
+    background: var(--surface);
+    border-left: 4px solid var(--safranin);
+    border-radius: 0 8px 8px 0;
+  }
+  .note p { margin: 0.25rem 0; }
+  .source { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+
+  @media (max-width: 34rem) {
+    .masthead { flex-direction: column; align-items: flex-start; }
+    .masthead svg { width: 4.2rem; }
+  }
+  @media print {
+    body { background: #fff; color: #000; }
+    details.wf:not([open]) > .wf-body { display: block; }
+    details.wf > summary::after { display: none; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <header class="masthead">
+    <!-- a pair of diplococci: the shape Neisseria shows under the microscope, stained pink like any Gram-negative -->
+    <svg viewBox="0 0 120 70" role="img" aria-label="Two kidney-shaped bacterial cells facing each other, a diplococcus">
+      <path d="M52 8 C28 2 8 18 8 35 C8 52 28 68 52 62 C42 52 42 18 52 8Z" fill="var(--safranin)"/>
+      <path d="M68 8 C92 2 112 18 112 35 C112 52 92 68 68 62 C78 52 78 18 68 8Z" fill="var(--safranin)" opacity="0.72"/>
+    </svg>
+    <div>
+      <h1>Typing Neisseria meningitidis on Terra</h1>
+      <p class="lede">How to run the two typing workflows, how to read their results, and the rules the code applies to PubMLST answers.</p>
+      <ul class="jump">
+        <li><a href="#before">Before you run</a></li>
+        <li><a href="#run">Run a workflow</a></li>
+        <li><a href="#values">Reading the values</a></li>
+        <li><a href="#rules">How the code decides</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <h2 id="before">Before you run</h2>
+  <ul class="before">
+    <li>
+      <strong>Store your PubMLST API key once, in the workspace</strong>
+      <p>In Terra, open <em>Data</em>, then <em>Workspace Data</em>, and add the variable <code>pubmlst_api_key</code> with your personal key (created at pubmlst.org/bigsdb). In the workflow configuration, set the input <code>pubmlst_api_key</code> to <code>workspace.pubmlst_api_key</code>. The script sends it to PubMLST in the <code>X-API-Key</code> header.</p>
+      <p>A <code>String</code> input is written in clear in the task command and in the run metadata, so keep workspace access restricted and never paste the key in a WDL file, a script or a data table.</p>
+    </li>
+    <li>
+      <strong>Launch one sample at a time</strong>
+      <p>Each typing query runs a BLAST search on the PubMLST server (up to 8 cores). Dr Jolley asked for sequential queries. Terra starts every selected row in parallel, so select a single row per submission and wait for it to finish before launching the next.</p>
+    </li>
+    <li>
+      <strong>Read <code>api_error</code> as a technical problem</strong>
+      <p>If a column shows <code>api_error</code>, PubMLST could not be queried for it. Open <code>nt_logs</code>: it names the query that failed and the error type.</p>
+    </li>
+  </ul>
+
+  <h2 id="run">Run a workflow</h2>
+  <p>Both workflows run the same typing: MLST, finetyping (PorA, FetA), BAST with MenDeVAR reactivity, and serogrouping. They differ only in what you start from.</p>
+
+  <details class="wf">
+    <summary>
+      <span>
+        <span class="wf-name">wf_neisseria_typing_fasta</span>
+        <span class="wf-sub">Start from an assembly (FASTA)</span>
+      </span>
+    </summary>
+    <div class="wf-body">
+      <h4>What it runs</h4>
+      <ol>
+        <li>Typing against PubMLST: MLST, finetyping, BAST and MenDeVAR.</li>
+        <li>Serogrouping of the same assembly.</li>
+      </ol>
+
+      <h4>Inputs</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Input</th><th>Type</th><th>Value to give</th></tr></thead>
+          <tbody>
+            <tr><td><code>samplename</code></td><td>String</td><td>Sample ID. It names every output file. From a data table: <code>this.&lt;table&gt;_id</code>.</td></tr>
+            <tr><td><code>assembly_fasta</code></td><td>File</td><td>The assembly of the isolate, for example <code>this.assembly_fasta</code>.</td></tr>
+            <tr><td><code>pubmlst_api_key</code></td><td>String</td><td><code>workspace.pubmlst_api_key</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Launch it</h4>
+      <ol>
+        <li>Open the workspace, then <em>Workflows</em>, then <code>wf_neisseria_typing_fasta</code>.</li>
+        <li>Choose <em>Run workflow with inputs defined by data table</em> and select your sample table.</li>
+        <li>Fill the three inputs above, save, and select one row.</li>
+        <li>Launch. When the run ends, check the typing columns and open <code>nt_logs</code> if any value is <code>api_error</code>.</li>
+      </ol>
+
+      <h4>Outputs</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Group</th><th>Columns</th></tr></thead>
+          <tbody>
+            <tr><td>MLST</td><td><code>st</code>, <code>clonal_complex</code>, <code>abcZ</code>, <code>adk</code>, <code>aroE</code>, <code>fumC</code>, <code>gdh</code>, <code>pdhC</code>, <code>pgm</code>, <code>mlst_profile</code></td></tr>
+            <tr><td>Finetyping</td><td><code>PorA_VR1</code>, <code>PorA_VR2</code>, <code>FetA_VR</code>, <code>finetyping_profile</code></td></tr>
+            <tr><td>BAST and MenDeVAR</td><td><code>bast_type</code>, <code>fHbp_peptide</code>, <code>NHBA_peptide</code>, <code>NadA_peptide</code>, <code>mendevar_bexsero_reactivity</code>, <code>mendevar_trumenba_reactivity</code>, <code>bast_profile</code></td></tr>
+            <tr><td>Serogroup</td><td><code>serogroup</code>, <code>genogroup</code></td></tr>
+            <tr><td>Run information</td><td><code>neisseria_typing_version</code>, <code>neisseria_typing_date</code></td></tr>
+            <tr><td>Files</td><td><code>nt_report</code> (CSV), <code>nt_logs</code>, <code>nt_api_raw_results</code> (raw PubMLST responses), <code>nt_loci_best_matches</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </details>
+
+  <details class="wf">
+    <summary>
+      <span>
+        <span class="wf-name">wf_neisseria_typing_reads</span>
+        <span class="wf-sub">Start from paired-end reads (FASTQ)</span>
+      </span>
+    </summary>
+    <div class="wf-body">
+      <h4>What it runs</h4>
+      <ol>
+        <li>Read quality control and trimming.</li>
+        <li>De novo assembly with SPAdes, then assembly quality checks (QUAST, BUSCO).</li>
+        <li>Typing against PubMLST: MLST, finetyping, BAST and MenDeVAR.</li>
+        <li>Serogrouping of the assembly.</li>
+      </ol>
+
+      <h4>Inputs</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Input</th><th>Type</th><th>Value to give</th></tr></thead>
+          <tbody>
+            <tr><td><code>samplename</code></td><td>String</td><td>Sample ID. It names every output file.</td></tr>
+            <tr><td><code>read1</code>, <code>read2</code></td><td>File</td><td>Forward and reverse FASTQ files of the isolate.</td></tr>
+            <tr><td><code>pubmlst_api_key</code></td><td>String</td><td><code>workspace.pubmlst_api_key</code></td></tr>
+            <tr><td><code>reference</code></td><td>File, optional</td><td>A reference genome passed to the assembly step. Leave empty for a plain de novo assembly.</td></tr>
+            <tr><td><code>trim_min_length</code></td><td>Int</td><td>Default 75.</td></tr>
+            <tr><td><code>trim_quality_min_score</code></td><td>Int</td><td>Default 20.</td></tr>
+            <tr><td><code>trim_window_size</code></td><td>Int</td><td>Default 10.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Launch it</h4>
+      <ol>
+        <li>Open the workspace, then <em>Workflows</em>, then <code>wf_neisseria_typing_reads</code>.</li>
+        <li>Choose <em>Run workflow with inputs defined by data table</em> and select your sample table.</li>
+        <li>Fill <code>samplename</code>, <code>read1</code>, <code>read2</code> and <code>pubmlst_api_key</code>. Change the optional inputs only if needed. Save, and select one row.</li>
+        <li>Launch. When the run ends, check the typing columns and open <code>nt_logs</code> if any value is <code>api_error</code>.</li>
+      </ol>
+
+      <h4>Outputs</h4>
+      <p>All typing outputs of the FASTA workflow (same names, except <code>nt_report</code>), plus:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Group</th><th>Columns</th></tr></thead>
+          <tbody>
+            <tr><td>Read QC</td><td><code>fastqc_num_reads_raw1</code>, <code>fastqc_num_reads_raw2</code>, <code>fastqc_num_reads_clean1</code>, <code>fastqc_num_reads_clean2</code>, FastQC HTML reports, <code>fastp_html_report</code>, tool versions</td></tr>
+            <tr><td>Assembly</td><td><code>assembly_fasta</code>, <code>assembler</code>, <code>assembler_version</code>, <code>seq_platform</code></td></tr>
+            <tr><td>Assembly quality</td><td><code>assembly_length</code>, <code>number_contigs</code>, <code>n50_value</code>, <code>quast_gc_percent</code>, <code>quast_report</code>, <code>busco_results</code>, <code>busco_report</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <p><strong>Using a reference genome.</strong> Dr Jolley advised that an allele found only after a reference-guided assembly should be checked on the reads, for example by viewing the alignment in Tablet. PubMLST itself only works on the assembly.</p>
+      </div>
+    </div>
+  </details>
+
+  <h2 id="values">Reading the values</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Value</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill p-exact">2</span> <span class="pill p-exact">5-3</span></td><td>Exact allele found in PubMLST.</td></tr>
+        <tr><td><span class="pill p-zero">0</span></td><td>NadA only. Null allele: PubMLST found no nadA in this assembly, even with its low-stringency search. The gene is absent as far as can be told.</td></tr>
+        <tr><td><span class="pill p-novel">novel</span></td><td>NadA only. A close match (at least 90% protein identity) that is not an exact allele: probably a new variant. The BAST is not assigned.</td></tr>
+        <tr><td><span class="pill p-novel">new</span></td><td>Sequence type only. The seven MLST alleles are exact, but PubMLST has no ST for that combination.</td></tr>
+        <tr><td><span class="pill p-unk">?</span></td><td>PubMLST answered but found nothing usable for this value.</td></tr>
+        <tr><td><span class="pill p-error">api_error</span></td><td>PubMLST could not be queried for this value (HTTP error, timeout, network). Open <code>nt_logs</code> for the error type, and rerun the sample.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The profile columns name every locus, so a row can be read at a glance:</p>
+  <p>
+    <code>mlst_profile</code> <code>abcZ:2,adk:3,aroE:4,fumC:3,gdh:8,pdhC:4,pgm:6</code><br>
+    <code>bast_profile</code> <code>fHbp_peptide:16,NHBA_peptide:20,NadA_peptide:0,PorA_VR1:5-3,PorA_VR2:10-4</code><br>
+    <code>finetyping_profile</code> <code>PorA_VR1:5-3,PorA_VR2:10-4,FetA_VR:F3-6</code>
+  </p>
+  <p>A missing locus is written <code>adk:?</code> or <code>adk:api_error</code>, never left out.</p>
+
+  <h2 id="rules">How the code decides</h2>
+  <p>The typing code applies the rules below. They follow guidance from Dr Keith Jolley, curator of PubMLST, given by email on 23 to 25 November 2026. They are our reading of that guidance, not an official PubMLST statement.</p>
+
+  <h3>NadA peptide</h3>
+  <ol class="path">
+    <li>
+      <strong>Trust the BAST answer first.</strong>
+      <p>When PubMLST finds no nadA at all, even with its low-stringency search (50% identity over 30% of the alignment length), its BAST answer already contains <code>NadA_peptide</code> as <code>0</code>. The code keeps that value and sends no further NadA query.</p>
+    </li>
+    <li>
+      <strong>If NadA is missing from that answer, query the NadA locus alone.</strong>
+      <ul class="outcomes">
+        <li><span class="pill p-exact">allele number</span> <span class="why">exact match</span></li>
+        <li><span class="pill p-novel">novel</span> <span class="why">closest match with at least 90% protein identity</span></li>
+        <li><span class="pill p-zero">0</span> <span class="why">anything weaker, or nothing</span></li>
+      </ul>
+    </li>
+    <li>
+      <strong>A novel NadA stops the BAST.</strong>
+      <p><code>bast_type</code> and both MenDeVAR columns stay <code>?</code>. The code never reports the closest BAST.</p>
+    </li>
+    <li>
+      <strong>If PubMLST cannot be reached, the value is <code>api_error</code>.</strong>
+      <p>A failed query is never turned into <code>0</code>.</p>
+    </li>
+  </ol>
+
+  <h3>Why 90% protein identity</h3>
+  <p>Dr Jolley's reasoning: PubMLST holds sequences for a very large number of NadA variants, so a new one is likely to differ by only one or two amino acids from its closest match. A real NadA should therefore score well above 90%.</p>
+  <p>DNA and protein identities cannot be compared directly. With four DNA bases, 25% identity is expected by chance. With 20 amino acids, 28% is a stronger signal, but still not convincing.</p>
+  <div class="note">
+    <p><strong>Example from one of our samples.</strong> The NadA locus query returned a best match of allele 113 with 27.96% identity (119 mismatches, 8 gaps). That is far below 90%, so NadA is <code>0</code>. The BAST answer agreed: NadA 0, BAST 4928.</p>
+    <p>The 90% default comes from Dr Jolley's wording (&ldquo;well over 90%&rdquo;). It can be changed in the script with <code>--nada-novel-min-identity</code>.</p>
+  </div>
+
+  <h3>BAST and MenDeVAR</h3>
+  <p>Only an exact BAST is reported. The closest BAST is never reported: if a prediction of reactivity rests on one protein variant and the closest match differs exactly at that variant, the two would have completely different reactivities. MenDeVAR values come with the BAST.</p>
+
+  <h3>fHbp, NHBA and the other loci</h3>
+  <p>An allele without an exact match stays <code>?</code>. The guidance above was given for NadA, so the code does not turn weak hits into <code>novel</code> or <code>0</code> for other loci.</p>
+
+  <h3>New sequence types</h3>
+  <p><code>new</code> is written only when all seven MLST alleles are exact and PubMLST confirms it has no ST for that combination. If an allele is missing, the ST stays <code>?</code>.</p>
+
+  <h3>Being considerate to PubMLST</h3>
+  <ul>
+    <li>Every request carries your API key, so PubMLST knows who is querying.</li>
+    <li>Within a sample, queries run one after another. Network errors, server errors (5xx) and rate limiting (429) are retried up to three times, with growing pauses.</li>
+    <li>An authentication error (401 or 403) stops the remaining queries at once, and all values become <code>api_error</code>.</li>
+    <li>Other client errors (404, 451 and so on) are reported immediately, without retries.</li>
+  </ul>
+
+  <h3>Everything is traceable</h3>
+  <ul>
+    <li><code>nt_logs</code>: the steps of the run, each failed query with its error type, and a summary of the columns marked <code>api_error</code>.</li>
+    <li><code>nt_api_raw_results</code>: an archive of the raw PubMLST responses, including the body of error responses, named with the sample name.</li>
+    <li><code>nt_loci_best_matches</code>: the closest match for loci without an exact allele.</li>
+  </ul>
+  <p>Dr Jolley also noted that typing against locally downloaded databases is the more stable long-term option, since it does not depend on a remote service being available.</p>
+
+  <p class="source">Prepared on 25 November 2026 for the MOH bioinformatics team. Based on the workflows <code>wf_neisseria_typing_fasta</code> and <code>wf_neisseria_typing_reads</code>.</p>
+</main>
+</body>
+</html>
